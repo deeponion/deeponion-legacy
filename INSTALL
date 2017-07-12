@@ -1,0 +1,9 @@
+Building DeepOnion
+
+See doc/readme-qt.rst for instructions on building DeepOnion Qt,
+the intended-for-end-users, nice-graphical-interface, reference
+implementation of DeepOnion.
+
+See doc/build-*.txt for instructions on building DeepOniond,
+the intended-for-services, no-graphical-interface, reference
+implementation of DeepOnion.

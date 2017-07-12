@@ -1,0 +1,262 @@
+# Copyright (c) 2009-2010 Satoshi Nakamoto
+# Distributed under the MIT/X11 software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+# x13 Version by mammix2 (mammix2@hotmail.com)
+CXX ?= g++
+CC1 ?= gcc
+USE_UPNP:=-
+USE_IPV6:=1
+
+DEPSDIR?=/usr/local
+BOOST_SUFFIX?=-mgw49-mt-s-1_57
+
+INCLUDEPATHS= \
+	-I"$(CURDIR)" \
+	-I"E:/boost_1_57_0" \
+	-I"E:/db-4.8.30.NC/build_unix" \
+	-I"E:/openssl-1.0.1l/include" \
+      -I"E:/libevent-2.0.22/include"
+
+LIBPATHS= \
+	-L"$(CURDIR)/leveldb" \
+	-L"E:/boost_1_57_0/stage/lib" \
+	-L"E:/db-4.8.30.NC/build_unix" \
+	-L"E:/openssl-1.0.1l" \
+      -L"E:/libevent-2.0.22/.libs"
+
+LIBS= \
+	-l leveldb \
+	-l memenv \
+	-l boost_system$(BOOST_SUFFIX) \
+	-l boost_filesystem$(BOOST_SUFFIX) \
+	-l boost_program_options$(BOOST_SUFFIX) \
+	-l boost_thread$(BOOST_SUFFIX) \
+	-l boost_chrono$(BOOST_SUFFIX) \
+	-l db_cxx \
+	-l ssl \
+	-l crypto \
+	-l event \
+	-l z \
+     -Wl,-Bdynamic
+
+LIBS += -l mingwthrd -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi
+
+DEFS=-DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
+DEBUGFLAGS=-g
+CFLAGS=-mthreads -O3 -msse2 -w -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
+LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat
+
+TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
+
+ifndef USE_UPNP
+	override USE_UPNP = -
+endif
+ifneq (${USE_UPNP}, -)
+	INCLUDEPATHS += -I"C:\miniupnpc-1.6-mgw"
+	LIBPATHS += -L"C:\miniupnpc-1.6-mgw"
+	LIBS += -l miniupnpc -l iphlpapi
+	DEFS += -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
+endif
+
+ifneq (${USE_IPV6}, -)
+	DEFS += -DUSE_IPV6=$(USE_IPV6)
+endif
+
+LIBS += -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi
+
+# TODO: make the mingw builds smarter about dependencies, like the linux/osx builds are
+HEADERS = $(wildcard *.h)
+
+OBJS= \
+	obj/address.o \
+     obj/anonymize.o \
+	obj/addressmap.o \
+	obj/aes.o \
+	obj/backtrace.o \
+	obj/buffers.o \
+	obj/channel.o \
+	obj/channeltls.o \
+	obj/circpathbias.o \
+	obj/circuitbuild.o \
+	obj/circuitlist.o \
+	obj/circuitmux.o \
+	obj/circuitmux_ewma.o \
+	obj/circuitstats.o \
+	obj/circuituse.o \
+	obj/command.o \
+	obj/compat.o \
+	obj/compat_libevent.o \
+	obj/config.o \
+	obj/config_codedigest.o \
+	obj/confparse.o \
+	obj/connection.o \
+	obj/connection_edge.o \
+	obj/connection_or.o \
+	obj/container.o \
+	obj/control.o \
+	obj/cpuworker.o \
+	obj/crypto.o \
+	obj/crypto_curve25519.o \
+	obj/crypto_format.o \
+	obj/curve25519-donna.o \
+	obj/di_ops.o \
+	obj/directory.o \
+	obj/dirserv.o \
+	obj/dirvote.o \
+	obj/dns.o \
+	obj/dnsserv.o \
+	obj/entrynodes.o \
+	obj/ext_orport.o \
+	obj/fp_pair.o \
+	obj/geoip.o \
+	obj/hibernate.o \
+	obj/log.o \
+	obj/memarea.o \
+	obj/mempool.o \
+	obj/microdesc.o \
+	obj/networkstatus.o \
+	obj/nodelist.o \
+	obj/onion.o \
+	obj/onion_fast.o \
+	obj/onion_main.o \
+	obj/onion_ntor.o \
+	obj/onion_tap.o \
+	obj/policies.o \
+	obj/procmon.o \
+	obj/reasons.o \
+	obj/relay.o \
+	obj/rendclient.o \
+	obj/rendcommon.o \
+	obj/rendmid.o \
+	obj/rendservice.o \
+	obj/rephist.o \
+	obj/replaycache.o \
+	obj/router.o \
+	obj/routerlist.o \
+	obj/routerparse.o \
+	obj/routerset.o \
+	obj/sandbox.o \
+	obj/statefile.o \
+	obj/status.o \
+	obj/torgzip.o \
+	obj/tortls.o \
+	obj/tor_util.o \
+	obj/transports.o \
+	obj/util_codedigest.o \
+	obj/groestl.o \
+	obj/blake.o \
+	obj/skein.o \
+	obj/keccak.o \
+	obj/jh.o \
+	obj/alert.o \
+	obj/version.o \
+	obj/checkpoints.o \
+	obj/netbase.o \
+	obj/addrman.o \
+	obj/crypter.o \
+	obj/key.o \
+	obj/db.o \
+	obj/init.o \
+	obj/keystore.o \
+	obj/miner.o \
+	obj/main.o \
+	obj/net.o \
+	obj/protocol.o \
+	obj/bitcoinrpc.o \
+	obj/rpcdump.o \
+	obj/rpcnet.o \
+	obj/rpcmining.o \
+	obj/rpcwallet.o \
+	obj/rpcblockchain.o \
+	obj/rpcrawtransaction.o \
+	obj/script.o \
+	obj/sync.o \
+	obj/util.o \
+	obj/wallet.o \
+	obj/walletdb.o \
+	obj/noui.o \
+	obj/kernel.o \
+     obj/txdb-leveldb.o \
+	obj/pbkdf2.o \
+	obj/scrypt.o \
+	obj/scrypt-arm.o \
+	obj/scrypt-x86.o \
+	obj/scrypt-x86_64.o \
+	obj/json_spirit_reader.o \
+	obj/json_spirit_writer.o \
+        obj/smessage.o \
+        obj/rpcsmessage.o
+
+all: DeepOniond.exe
+
+LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
+DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
+DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
+
+leveldb/libleveldb.a:
+	cd leveldb; make; cd ..
+obj/txdb-leveldb.o: leveldb/libleveldb.a
+
+obj/%.o: %.cpp $(HEADERS)
+	g++ -c $(CFLAGS) -o $@ $<
+
+obj/scrypt-x86.o: scrypt-x86.S
+	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
+
+obj/scrypt-x86_64.o: scrypt-x86_64.S
+	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
+
+obj/scrypt-arm.o: scrypt-arm.S
+	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
+
+obj/%.o: %.c
+	$(CXX) -c $(xCXXFLAGS) -fpermissive -MMD -MF $(@:%.o=%.d) -o $@ $<
+	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+	-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
+
+	rm -f $(@:%.o=%.d)
+obj/%.o: %.cpp
+	$(CXX) -c $(xCXXFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
+	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+	-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
+	rm -f $(@:%.o=%.d)
+
+obj/%.o: json/%.cpp
+	$(CXX) -c $(CFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
+	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+	-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
+	rm -f $(@:%.o=%.d)
+
+
+obj/%.o: tor/%.c
+	$(CC1) -c $(CFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
+	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+	-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
+	rm -f $(@:%.o=%.d)
+
+obj/anonymize.o: tor/anonymize.cpp
+	$(CXX) -c $(CFLAGS) -MMD -MF $(@:%.o=%.d) -o $@ $<
+	@cp $(@:%.o=%.d) $(@:%.o=%.P); \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+	-e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
+	rm -f $(@:%.o=%.d)
+
+DeepOniond.exe: $(OBJS:obj/%=obj/%)
+	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
+
+clean:
+	-rm -f DeepOniond.exe
+	-rm -f obj/*.o
+	-rm -f obj/*.P
+	-rm -f obj-test/*.o
+	-rm -f obj-test/*.P
+	-rm -f obj/build.h
+	-rm -f leveldb/libleveldb.a
+	-rm -f leveldb/libmemenv.a
+
+FORCE:
