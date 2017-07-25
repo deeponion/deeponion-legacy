@@ -460,7 +460,9 @@ QVariant TransactionTableModel::txStatusDecoration(const TransactionRecord *wtx)
         return QIcon(":/icons/transaction_conflicted");
     case TransactionStatus::Immature: {
         int total = wtx->status.depth + wtx->status.matures_in;
-        int part = (wtx->status.depth * 4 / total) + 1;
+        int part = (wtx->status.depth * 6 / total) + 1;
+        if(part > 5)
+        	part = 5;
         return QIcon(QString(":/icons/transaction_%1").arg(part));
         }
     case TransactionStatus::MaturesWarning:

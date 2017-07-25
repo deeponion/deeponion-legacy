@@ -29,6 +29,7 @@ Dependencies
  libboost    Boost             C++ Library
  miniupnpc   UPnP Support      Optional firewall-jumping support
  libqrencode QRCode generation Optional QRCode generation
+ libevent
 
 Note that libexecinfo should be installed, if you building under *BSD systems. 
 This library provides backtrace facility.
@@ -61,13 +62,19 @@ Versions used in this release:
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
-sudo apt-get install build-essential
-sudo apt-get install libssl-dev
-sudo apt-get install libdb++-dev
-sudo apt-get install libboost-all-dev
-sudo apt-get install libqrencode-dev
+sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
+   build-essential libboost-dev libboost-system-dev \
+   libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
+   libssl-dev libdb++-dev
+sudo apt-get install libevent-dev
 
-If using Boost 1.37, append -mt to the boost libraries in the makefile.
+also you need to make the libleveldb and libmemenv first:
+# cd deeponion
+# chmod +x src/leveldb/build_detect_platform
+# cd src/leveldb
+# make libleveldb.a libmemenv.a
+
+then do qmake and make to compile
 
 
 Dependency Build Instructions: Gentoo

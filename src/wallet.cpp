@@ -10,14 +10,14 @@
 #include "ui_interface.h"
 #include "base58.h"
 #include "kernel.h"
-#include "coincontrol.h"
+#include "coincontrol.h" 
 #include "smessage.h"
 #include <boost/algorithm/string/replace.hpp>
 
 using namespace std;
 extern unsigned int nStakeMaxAge;
 
-unsigned int nStakeSplitAge = 1 * 24 * 60 * 60;
+unsigned int nStakeSplitAge = 20 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
 
 //////////////////////////////////////////////////////////////////////////////

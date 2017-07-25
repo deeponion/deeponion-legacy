@@ -81,9 +81,11 @@ int64_t nTransactionFee = MIN_TX_FEE;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static const int NUM_OF_POW_CHECKPOINT = 0;
+static const int NUM_OF_POW_CHECKPOINT = 2;
 static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 {
+		{ 5675,  3630},
+		{ 9601,  4611}
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;
@@ -973,6 +975,7 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan)
 int GetSpecialHeight(const CBlockIndex* pindex, bool fProofOfStake)
 {
 	int count = 0;
+	int height = pindex->nHeight;
 	while (pindex)
 	{
 		if (pindex->IsProofOfStake() == fProofOfStake)
@@ -980,6 +983,7 @@ int GetSpecialHeight(const CBlockIndex* pindex, bool fProofOfStake)
 
 		pindex = pindex->pprev;
 	}
+	// printf(">>SP Height = %d, Count = %d\n", height, count);
 	return count;
 }
 
@@ -989,7 +993,6 @@ int GetPowHeightTable(const CBlockIndex* pindex)
 	int height = pindex->nHeight;
 	int maxCheck = height;
 	int index = -1;
-	const CBlockIndex* pindex0 = pindex;
 
 	if (NUM_OF_POW_CHECKPOINT != 0)
 	{
@@ -1016,8 +1019,8 @@ int GetPowHeightTable(const CBlockIndex* pindex)
 
 	if (index != -1)
 		count += checkpointPoWHeight[index][1];
-	else
-		++count;
+	
+	++count;
 
 	// printf(">> Height = %d, Count = %d\n", height, count);
 	return count;
@@ -1026,9 +1029,8 @@ int GetPowHeightTable(const CBlockIndex* pindex)
 int GetPowHeight(const CBlockIndex* pindex)
 {
 	int powH = 0;
-	powH = GetSpecialHeight(pindex, false);
-
-	// powH = GetPowHeightTable(pindex);
+	// powH = GetSpecialHeight(pindex, false);
+	powH = GetPowHeightTable(pindex);
 
 	return powH;
 }
@@ -1052,7 +1054,7 @@ int64_t GetProofOfWorkReward(int nHeight, int64_t nFees, const CBlockIndex* pind
 	}
 
 	int nPoWHeight = GetPowHeight(pindex);
-	// printf(">> nHeight = %d, nPoWHeight = %d\n", nHeight, nPoWHeight);
+	printf(">> nHeight = %d, nPoWHeight = %d\n", nHeight, nPoWHeight);
 	int mm = nPoWHeight / 131400;
 	nSubsidy >>= mm;
 
@@ -2608,7 +2610,7 @@ bool LoadBlockIndex(bool fAllowNew)
             block.nNonce   = 0;
         }
 
-		if (false && (block.GetHash() != hashGenesisBlock)) {
+		if (true && (block.GetHash() != hashGenesisBlock)) {
 			// This will figure out a valid hash and Nonce if you're
 			// creating a different genesis block:
 			uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
@@ -2623,6 +2625,10 @@ bool LoadBlockIndex(bool fAllowNew)
 			}
 		}
 		block.print();
+		printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
+		printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
+		printf("block.nTime = %u \n", block.nTime);
+		printf("block.nNonce = %u \n", block.nNonce);
 
         //// debug print
 		assert(block.hashMerkleRoot == uint256("0x48a457c277b124a06b568c0036d2c834e918d952c5b2dbf4035d173f50c8d14c"));
