@@ -1,6 +1,6 @@
 DeepOnion (ONION)
 
-DeepOnion (ONION) is a new PoW/PoS altcoin that is most secure. All the communications in DeepOnion network is done through the TOR network. 
+DeepOnion (ONION) is a new PoW/PoS altcoin that is the most secure. All the communications in DeepOnion network are done through the TOR network. 
 
 The code-level integration with TOR ensures that we are always in an secured environment. There is no client side configuration needed. The Client will automatically join the TOR network and connects to the other TOR nodes in the network (including our seed nodes). After you connect to the DeepOnion network, check your displayed IP using DeepOnion client console, you will see that your client is assigned a hidden TOR address (onion address). See the following screenshot.
 
