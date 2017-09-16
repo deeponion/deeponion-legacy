@@ -5,7 +5,10 @@ before_install:
   - sudo apt-get install -y build-essential libboost-dev libboost-system-dev
   - sudo apt-get install -y libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev
   - sudo apt-get install -y libssl-dev libdb++-dev
-  - sudo apt-get install -y libevent-dev
+  - sudo apt-get install -y libevent-dev 
+  - sudo apt-get install -y libminiupnpc-dev 
+  - sudo apt-get install -y libqrencode-dev
+  - sudo apt-get install -y libleveldb-dev
 
 install:
   - qmake
