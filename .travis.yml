@@ -12,4 +12,4 @@ before_install:
 
 install:
   - qmake
-  - make
+  - make > /dev/null
