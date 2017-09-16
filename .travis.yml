@@ -12,4 +12,4 @@ before_install:
 
 install:
   - qmake
-  - make > /dev/null
+  - make |& tail -30
