@@ -12,4 +12,5 @@ before_install:
 
 install:
   - qmake
+  - chmod +x src/leveldb/build_detect_platform
   - make |& tail -30
