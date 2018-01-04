@@ -1,4 +1,5 @@
 Copyright (c) 2009-2012 Bitcoin Developers
+Copyright (c) 2017-2018 DeepOnion Developers
 Distributed under the MIT/X11 software license, see the accompanying
 file license.txt or http://www.opensource.org/licenses/mit-license.php.
 This product includes software developed by the OpenSSL Project for use in
@@ -62,103 +63,27 @@ Versions used in this release:
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
-sudo apt-get install qt5-default qt5-qmake qtbase5-dev-tools qttools5-dev-tools \
-   build-essential libboost-dev libboost-system-dev \
-   libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev \
-   libssl-dev libdb++-dev
-sudo apt-get install libevent-dev
 
-also you need to make the libleveldb and libmemenv first:
-# cd deeponion
-# chmod +x src/leveldb/build_detect_platform
-# cd src/leveldb
-# make libleveldb.a libmemenv.a
+The following are commands needed to build on ubuntu/debian from scratch (use sudo if you are not root):
 
-then do qmake and make to compile
+    apt-get update
+    apt-get upgrade
+    apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev
+    apt-get install libboost-all-dev
+    apt-get install libqrencode-dev
+    apt-get install libminiupnpc-dev
+    apt-get install libevent-dev
+    apt-get install git
 
+    apt-get install software-properties-common
+    add-apt-repository ppa:bitcoin/bitcoin
+    apt-get update
+    apt-get install libdb4.8-dev libdb4.8++-dev
 
-Dependency Build Instructions: Gentoo
--------------------------------------
-
-Note: If you just want to install DeepOniond on Gentoo, you can add the DeepOnion
-      overlay and use your package manager:
-          layman -a DeepOnion && emerge DeepOniond
-
-emerge -av1 --noreplace boost glib openssl sys-libs/db
-
-Take the following steps to build (no UPnP support):
- cd ${DEEPONION_DIR}/src
- make -f makefile.unix USE_UPNP= BDB_INCLUDE_PATH='/usr/include/db4.8'
- strip DeepOniond
-
-
-Notes
------
-The release is built with GCC and then "strip DeepOniond" to strip the debug
-symbols, which reduces the executable size by about 90%.
-
-
-miniupnpc
----------
-tar -xzvf miniupnpc-1.6.tar.gz
-cd miniupnpc-1.6
-make
-sudo su
-make install
-
-
-Berkeley DB
------------
-You need Berkeley DB 4.8.  If you have to build Berkeley DB yourself:
-../dist/configure --enable-cxx
-make
-
-
-Boost
------
-If you need to build Boost yourself:
-sudo su
-./bootstrap.sh
-./bjam install
-
-
-Security
---------
-To help make your DeepOnion installation more secure by making certain attacks impossible to
-exploit even if a vulnerability is found, you can take the following measures:
-
-* Position Independent Executable
-    Build position independent code to take advantage of Address Space Layout Randomization
-    offered by some kernels. An attacker who is able to cause execution of code at an arbitrary
-    memory location is thwarted if he doesn't know where anything useful is located.
-    The stack and heap are randomly located by default but this allows the code section to be
-    randomly located as well.
-
-    On an Amd64 processor where a library was not compiled with -fPIC, this will cause an error
-    such as: "relocation R_X86_64_32 against `......' can not be used when making a shared object;"
-
-    To build with PIE, use:
-    make -f makefile.unix ... -e PIE=1
-
-    To test that you have built PIE executable, install scanelf, part of paxutils, and use:
-    scanelf -e ./DeepOnion
-
-    The output should contain:
-     TYPE
-    ET_DYN
-
-* Non-executable Stack
-    If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, DeepOnion should be built with a non-executable stack
-    but if one of the libraries it uses asks for an executable stack or someone makes a mistake
-    and uses a compiler extension which requires an executable stack, it will silently build an
-    executable without the non-executable stack protection.
-
-    To verify that the stack is non-executable after compiling use:
-    scanelf -e ./DeepOnion
-
-    the output should contain:
-    STK/REL/PTL
-    RW- R-- RW-
-
-    The STK RW- means that the stack is readable and writeable but not executable.
+    git clone https://github.com/deeponion/deeponion.git
+    cd deeponion
+    cd src
+    cd leveldb/
+    chmod 755 build_detect_platform
+    cd ..
+    make -f makefile.unix

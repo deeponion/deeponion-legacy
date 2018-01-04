@@ -1109,13 +1109,6 @@ void MapPort()
 #endif
 
 
-
-
-
-
-
-
-
 // DNS seeds
 // Each pair gives a source name and a seed name.
 // The first name is used as information source for addrman.
@@ -1126,8 +1119,14 @@ static const char *strDNSSeed[][2] = {
 
 // hidden service seeds
 static const char *strMainNetOnionSeed[][1] = {
-	{ "ajkik3nr2rg2yfzn.onion" },
+	{ "clazvyxuxubl2vgm.onion" },
+	{ "xui3kzolhlf7l27o.onion" },
+	{ "nikluyytbjyofh3k.onion" },
 	{ "jxiwwjdkyfg5pnov.onion" },
+	{ "tcqiq5t24mnmkkux.onion" },
+	{ "t3bauqgknp3uw74u.onion" },
+	{ "urrg7up7awygv6qz.onion" },
+	{ "ldmhzclj5y3tk52m.onion" },
 	{NULL}
 };
 
