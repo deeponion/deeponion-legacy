@@ -821,7 +821,7 @@ Address: %4
     <message>
         <location line="+5"/>
         <source>Address</source>
-        <translatio>地址</translation>
+        <translation>地址</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1010,7 +1010,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>(change)</source>
-        <translatio>(零钱)</translation>
+        <translation>(零钱)</translation>
     </message>
 </context>
 <context>
@@ -2589,7 +2589,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+1"/>
         <source>Amount</source>
-        <translation>金额/translation>
+        <translation>金额</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2870,7 +2870,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+4"/>
         <source>Invalid amount for -reservebalance=&lt;amount&gt;</source>
-        <translation>错误的金额数 -reservebalance=&lt;金额数&gt</translation>
+        <translation>错误的金额数 -reservebalance=&lt;金额数&gt;</translation>
     </message>
     <message>
         <location line="-82"/>
@@ -3207,7 +3207,7 @@ rpcpassword=%s
     <message>
         <location line="-1"/>
         <source>Unknown network specified in -onlynet: &apos;%s&apos;</source>
-        <translation>在 -onlynet: &apos;%s&apos 中指定了未知网络；</translation>
+        <translation>在 -onlynet: &apos;%s&apos; 中指定了未知网络；</translation>
     </message>
     <message>
         <location line="-1"/>
