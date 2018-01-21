@@ -109,8 +109,7 @@ BITCOIN_CORE_H = \
   sph_simd.h \
   sph_skein.h \
   sph_types.h \
-  pbkdf2.h \
-  tor/anonymize.h
+  pbkdf2.h 
 
 JSON_H = \
   json/json_spirit.h \
@@ -149,7 +148,6 @@ libbitcoin_server_a_SOURCES = \
   rpcnet.cpp \
   rpcrawtransaction.cpp \
   rpcsmessage.cpp \
-  tor/anonymize.cpp \
   $(JSON_H) \
   $(BITCOIN_CORE_H)
 

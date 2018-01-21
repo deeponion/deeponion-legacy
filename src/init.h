@@ -6,7 +6,7 @@
 #define BITCOIN_INIT_H
 
 #include "wallet.h"
-#include "tor/anonymize.h"
+#include "anonymize.h"
 
 extern CWallet* pwalletMain;
 extern std::string strWalletFileName;
