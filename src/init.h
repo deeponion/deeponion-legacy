@@ -15,4 +15,10 @@ void Shutdown(void* parg);
 bool AppInit2();
 std::string HelpMessage();
 
+// just for testing
+void test1();
+void test2();
+void computeHash(char* pA, int count);
+std::string sha256(const std::string str);
+
 #endif

@@ -9,7 +9,7 @@
 #include "init.h"
 #include "util.h"
 #include "ui_interface.h"
-#include "tor/anonymize.h"
+#include "anonymize.h"
 #include "checkpoints.h"
 #include "smessage.h"
 #include <boost/filesystem.hpp>
@@ -188,21 +188,21 @@ bool AppInit(int argc, char* argv[])
     return fRet;
 }
 
-extern void noui_connect();
-int main(int argc, char* argv[])
-{
-    bool fRet = false;
+// extern void noui_connect();
+// int main(int argc, char* argv[])
+// {
+//     bool fRet = false;
 
-    // Connect bitcoind signal handlers
-    noui_connect();
+//     // Connect bitcoind signal handlers
+//     noui_connect();
 
-    fRet = AppInit(argc, argv);
+//     fRet = AppInit(argc, argv);
 
-    if (fRet && fDaemon)
-        return 0;
+//     if (fRet && fDaemon)
+//         return 0;
 
-    return 1;
-}
+//     return 1;
+// }
 #endif
 
 bool static InitError(const std::string &str)
@@ -603,6 +603,7 @@ bool AppInit2()
         }
     }
 
+    /*
     if (mapArgs.count("-onlynet")) {
         std::set<enum Network> nets;
         BOOST_FOREACH(std::string snet, mapMultiArgs["-onlynet"]) {
@@ -657,15 +658,23 @@ bool AppInit2()
     } else {
         addrOnion = CService("127.0.0.1", onion_port);
     }
+*/
+    
+    CService addrOnion;
+    if (mapArgs.count("-tor") && mapArgs["-tor"] != "0") {
+        addrOnion = CService(mapArgs["-tor"], onion_port);
 
-    if (true) {
-        SetProxy(NET_TOR, addrOnion, 5);
-        SetReachable(NET_TOR);
+        if (!addrOnion.IsValid())
+            return InitError(strprintf(_("Invalid -tor address: '%s'"), mapArgs["-tor"].c_str()));
+    } else {
+        addrOnion = CService("127.0.0.1", onion_port);
     }
 
+    SetProxy(NET_TOR, addrOnion, 5);
+    SetReachable(NET_TOR);
+
+
     // see Step 2: parameter interactions for more information about these
-    fNoListen = !GetBoolArg("-listen", true);
-    fDiscover = GetBoolArg("-discover", true);
     fNameLookup = GetBoolArg("-dns", true);
     fTorEnabled = GetArg("-dontuse", 1);
 #ifdef USE_UPNP
@@ -673,6 +682,7 @@ bool AppInit2()
 #endif
 
     bool fBound = false;
+    /*
     if (!fNoListen)
     {
         std::string strError;
@@ -707,35 +717,54 @@ bool AppInit2()
         if (!fBound)
             return InitError(_("Failed to listen on any port. Use -listen=0 if you want this."));
     }
+	*/
+    
+    // Tor implementation
+    std::string strError;
 
-    if (isfTor == 1)
+    do 
     {
+        CService addrBind;
+        if (!Lookup("127.0.0.1", addrBind, GetListenPort(), false))
+            return InitError(strprintf(_("Cannot resolve binding address: '%s'"), "127.0.0.1"));
+
+        fBound |= Bind(addrBind);
+    } while (false);
+    
+    if (!fBound)
+        return InitError(_("Failed to listen on any port."));
+    
+    if (!(mapArgs.count("-tor") && mapArgs["-tor"] != "0")) {
         if (!NewThread(StartTor, NULL))
-                InitError(_("Error: could not start tor node"));
-        wait_initialized();
+                return InitError(_("Error: could not start tor node"));
+        
         uiInterface.InitMessage(_("Initialising Tor Network..."));
-        printf("Initialising Tor Network...\n");
+        printf("Initialising Tor Network...\n");        
     }
-
-
-
+    
     if (mapArgs.count("-externalip"))
     {
-        BOOST_FOREACH(string strAddr, mapMultiArgs["-externalip"]) {
+        BOOST_FOREACH(std::string strAddr, mapMultiArgs["-externalip"])
+        {
             CService addrLocal(strAddr, GetListenPort(), fNameLookup);
             if (!addrLocal.IsValid())
                 return InitError(strprintf(_("Cannot resolve -externalip address: '%s'"), strAddr.c_str()));
             AddLocal(CService(strAddr, GetListenPort(), fNameLookup), LOCAL_MANUAL);
         }
-    }
-
-    if (isfTor == 1)
+    } else 
     {
         string automatic_onion;
-        filesystem::path const hostname_path = GetDefaultDataDir() / "onion" / "hostname";
+        filesystem::path hostname_path = GetDataDir() / "tor" / "onion" / "hostname";
 
-        if (!filesystem::exists(hostname_path)) {
-            return InitError(_("No external address found."));
+        int attempts = 0;
+        while (1) {
+            if (filesystem::exists(hostname_path))
+                break;
+            ++attempts;
+            boost::this_thread::sleep(boost::posix_time::seconds(2));
+            if (attempts > 8)
+                return InitError(_("Timed out waiting for onion hostname."));
+            printf("No onion hostname yet, will retry in 2 seconds... (%d/8)\n", attempts);
         }
 
         ifstream file(hostname_path.string().c_str());
@@ -743,22 +772,16 @@ bool AppInit2()
         AddLocal(CService(automatic_onion, GetListenPort(), fNameLookup), LOCAL_MANUAL);
     }
 
-    if (mapArgs.count("-reservebalance")) // DeepOnion: reserve balance amount
+    if (mapArgs.count("-reservebalance")) // ppcoin: reserve balance amount
     {
         if (!ParseMoney(mapArgs["-reservebalance"], nReserveBalance))
         {
             InitError(_("Invalid amount for -reservebalance=<amount>"));
             return false;
-        }
-    }
-
-    if (mapArgs.count("-checkpointkey")) // DeepOnion: checkpoint master priv key
-    {
-        if (!Checkpoints::SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
-            InitError(_("Unable to sign checkpoint, wrong checkpointkey?\n"));
-    }
-
-    BOOST_FOREACH(string strDest, mapMultiArgs["-seednode"])
+        };
+    };
+    
+    BOOST_FOREACH(std::string strDest, mapMultiArgs["-seednode"])
         AddOneShot(strDest);
 
     // ********************************************************* Step 7: load blockchain
@@ -985,12 +1008,14 @@ bool AppInit2()
      // Add wallet transactions that aren't already in a block to mapTransactions
     pwalletMain->ReacceptWalletTransactions();
 
-#if !defined(QT_GUI)
-    // Loop until process is exit()ed from shutdown() function,
-    // called from ThreadRPCServer thread when a "stop" command is received.
-    while (1)
-        MilliSleep(5000);
-#endif
+    if (fHeadless)
+	{
+		// Loop until process is exit()ed from shutdown() function,
+		// called from ThreadRPCServer thread when a "stop" command is received.
+		while (1)
+		    MilliSleep(5000);
+	}
+
 
     return true;
 }

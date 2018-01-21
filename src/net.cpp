@@ -600,18 +600,44 @@ void ThreadTorNet(void* parg)
     printf("ThreadTorNet exited\n");
 }
 
+static char *convert_str(const std::string &s) {
+    char *pc = new char[s.size()+1];
+    std::strcpy(pc, s.c_str());
+    return pc;
+}
+
 void ThreadTorNet2(void* parg) {
-    std::string logDecl = "notice file " + GetDefaultDataDir().string() + "/tor/tor.log";
-    char *argvLogDecl = (char*) logDecl.c_str();
+    struct stat sb;
 
-    char* argv[] = {
-        "tor",
-        "--hush",
-        "--Log",
-        argvLogDecl
-    };
+    boost::filesystem::path tor_dir = GetDataDir() / "tor";
+    boost::filesystem::create_directory(tor_dir);
+    boost::filesystem::path log_file = tor_dir / "tor.log";
 
-    tor_main(4, argv);
+    std::vector<std::string> argv;
+    argv.push_back("tor");
+    argv.push_back("--Log");
+    argv.push_back("notice file " + log_file.string());
+    argv.push_back("--SocksPort");
+    argv.push_back("9081");
+    argv.push_back("--ignore-missing-torrc");
+    argv.push_back("-f");
+    std::string torrc = (tor_dir / "torrc").string();
+    argv.push_back(torrc);
+    argv.push_back("--DataDirectory");
+    argv.push_back(tor_dir.string());
+    argv.push_back("--GeoIPFile");
+    argv.push_back((tor_dir / "geoip").string());
+    argv.push_back("--GeoIPv6File");
+    argv.push_back((tor_dir / "geoipv6").string());
+    argv.push_back("--HiddenServiceDir");
+    argv.push_back((tor_dir / "onion").string());
+    argv.push_back("--HiddenServicePort");
+    argv.push_back("17570");
+
+    std::vector<char *> argv_c;
+    std::transform(argv.begin(), argv.end(), std::back_inserter(argv_c), convert_str);
+
+    tor_main(argv_c.size(), &argv_c[0]);
 }
 
 void ThreadSocketHandler(void* parg)
