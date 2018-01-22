@@ -7,7 +7,6 @@ INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
     src/xxhash \
-    src/tor \
     src/lz4
 QT += core gui network
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE MINIUPNP_STATICLIB
@@ -85,7 +84,7 @@ QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
 # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
-win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat,--large-address-aware -static
+win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat,--large-address-aware -static -fstack-protector
 win32:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 lessThan(QT_MAJOR_VERSION, 5): win32: QMAKE_LFLAGS *= -static
 
@@ -145,7 +144,18 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
 }
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
-LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
+LIBS += $$PWD/src/leveldb/libleveldb.a \
+	$$PWD/src/leveldb/libmemenv.a \
+   	$$PWD/src/torlibs-win/libtor.a \
+	$$PWD/src/torlibs-win/libor.a \
+	$$PWD/src/torlibs-win/libor-ctime.a \
+	$$PWD/src/torlibs-win/libor-crypto.a \
+	$$PWD/src/torlibs-win/libor-event.a \
+	$$PWD/src/torlibs-win/libor-trunnel.a \
+	$$PWD/src/torlibs-win/libcurve25519_donna.a \
+	$$PWD/src/torlibs-win/libed25519_donna.a \
+	$$PWD/src/torlibs-win/libed25519_ref10.a \
+	$$PWD/src/torlibs-win/libkeccak-tiny.a 
 
 ##hashing sources
 SOURCES += \
@@ -163,84 +173,6 @@ SOURCES += \
     src/skein.c \
     src/fugue.c \
     src/hamsi.c 
-
-SOURCES +=     src/tor/address.c \
-    src/tor/addressmap.c \
-    src/tor/aes.c \
-    src/tor/backtrace.c \
-    src/tor/buffers.c \
-    src/tor/channel.c \
-    src/tor/channeltls.c \
-    src/tor/circpathbias.c \
-    src/tor/circuitbuild.c \
-    src/tor/circuitlist.c \
-    src/tor/circuitmux.c \
-    src/tor/circuitmux_ewma.c \
-    src/tor/circuitstats.c \
-    src/tor/circuituse.c \
-    src/tor/command.c \
-    src/tor/compat.c \
-    src/tor/compat_libevent.c \
-    src/tor/config.c \
-    src/tor/config_codedigest.c \
-    src/tor/confparse.c \
-    src/tor/connection.c \
-    src/tor/connection_edge.c \
-    src/tor/connection_or.c \
-    src/tor/container.c \
-    src/tor/control.c \
-    src/tor/cpuworker.c \
-    src/tor/crypto.c \
-    src/tor/crypto_curve25519.c \
-    src/tor/crypto_format.c \
-    src/tor/curve25519-donna.c \
-    src/tor/di_ops.c \
-    src/tor/directory.c \
-    src/tor/dirserv.c \
-    src/tor/dirvote.c \
-    src/tor/dns.c \
-    src/tor/dnsserv.c \
-    src/tor/entrynodes.c \
-    src/tor/ext_orport.c \
-    src/tor/fp_pair.c \
-    src/tor/geoip.c \
-    src/tor/hibernate.c \
-    src/tor/log.c \
-    src/tor/memarea.c \
-    src/tor/mempool.c \
-    src/tor/microdesc.c \
-    src/tor/networkstatus.c \
-    src/tor/nodelist.c \
-    src/tor/onion.c \
-    src/tor/onion_fast.c \
-    src/tor/onion_main.c \
-    src/tor/onion_ntor.c \
-    src/tor/onion_tap.c \
-    src/tor/policies.c \
-    src/tor/anonymize.cpp \
-    src/tor/procmon.c \
-    src/tor/reasons.c \
-    src/tor/relay.c \
-    src/tor/rendclient.c \
-    src/tor/rendcommon.c \
-    src/tor/rendmid.c \
-    src/tor/rendservice.c \
-    src/tor/rephist.c \
-    src/tor/replaycache.c \
-    src/tor/router.c \
-    src/tor/routerlist.c \
-    src/tor/routerparse.c \
-    src/tor/routerset.c \
-    src/tor/sandbox.c \
-    src/tor/statefile.c \
-    src/tor/status.c \
-    src/tor/strlcat.c \
-    src/tor/strlcpy.c \
-    src/tor/tor_util.c \
-    src/tor/torgzip.c \
-    src/tor/tortls.c \
-    src/tor/transports.c \
-    src/tor/util_codedigest.c \
     
 NO_LEVELDB=1
 !contains(NO_LEVELDB, 1) {
