@@ -73,6 +73,7 @@ bool fPrintToDebugger = false;
 bool fRequestShutdown = false;
 bool fShutdown = false;
 bool fDaemon = false;
+bool fHeadless = false;
 bool fServer = false;
 bool fCommandLine = false;
 string strMiscWarning;

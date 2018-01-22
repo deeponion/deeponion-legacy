@@ -40,6 +40,10 @@ typedef unsigned long long  uint64;
 static const int64_t COIN = 100000000;
 static const int64_t CENT = 1000000;
 
+static const int64_t DEEPVAULT_SIGNATURE_AMOUNT = 1689;
+static const std::string DEEPVAULT_FUNDING_ADDRESS = "DUyj8TeHTXwnsdy3AbsfBSye5jZRZ9DkH5";
+static const int START_SCAN_BLOCK = 123000;
+
 #define BEGIN(a)            ((char*)&(a))
 #define END(a)              ((char*)&((&(a))[1]))
 #define UBEGIN(a)           ((unsigned char*)&(a))
@@ -146,6 +150,7 @@ extern bool fPrintToConsole;
 extern bool fPrintToDebugger;
 extern bool fRequestShutdown;
 extern bool fShutdown;
+extern bool fHeadless;
 extern bool fDaemon;
 extern bool fServer;
 extern bool fCommandLine;
