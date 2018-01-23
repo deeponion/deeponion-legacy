@@ -28,7 +28,7 @@ Download it from [here](http://sourceforge.net/projects/mingw-w64/files/Toolchai
 
 Unpack the contents of this package somewhere on your disk. I have it under *C:\bin\toolchains\mingw32*
 
-Then expand you system PATH variable so that it contains the location of the *bin* directory from the above MinGW.
+Then expand your system PATH variable so that it contains the location of the *bin* directory from the above MinGW.
 
 `PATH=C:\bin\toolchains\mingw32\bin;YOUR_OTHER_VARIABLES`
 
