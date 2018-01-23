@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>DeepOnion - Debug window</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QTabWidget" name="tabWidget">

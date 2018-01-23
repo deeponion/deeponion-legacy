@@ -22,7 +22,7 @@ BEGIN
             VALUE "FileDescription",    "DeepOnion-Qt (OSS GUI client for DeepOnion)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "DeepOnion-Qt"
-            VALUE "LegalCopyright",     "2014-2016 The DeepOnion developers"
+            VALUE "LegalCopyright",     "2017-2018 The DeepOnion developers"
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "DeepOnion-Qt.exe"
             VALUE "ProductName",        "DeepOnion-Qt"

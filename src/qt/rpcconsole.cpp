@@ -307,9 +307,9 @@ void RPCConsole::clear()
                 "table { }"
                 "td.time { color: #808080; padding-top: 3px; } "
                 "td.message { font-family: Monospace; font-size: 12px; } "
-                "td.cmd-request { color: #006060; } "
+                "td.cmd-request { color: #ffff99; } "
                 "td.cmd-error { color: red; } "
-                "b { color: #006060; } "
+                "b { color: #ffff99; } "
                 );
 
     message(CMD_REPLY, (tr("Welcome to the DeepOnion RPC console.") + "<br>" +

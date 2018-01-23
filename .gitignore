@@ -115,3 +115,11 @@ contrib/devtools/split-debug.sh
 .vscode/
 db4/
 db-4.8.30.NC/
+
+Makefile.Debug
+Makefile.Release
+deeponion-qt_plugin_import.cpp
+object_script.DeepOnion-qt.Debug
+object_script.DeepOnion-qt.Release
+release/
+

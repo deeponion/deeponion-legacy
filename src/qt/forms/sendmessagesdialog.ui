@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Send Messages</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1,0">
    <property name="bottomMargin">
     <number>8</number>
@@ -43,8 +46,6 @@
         <property name="styleSheet">
          <string notr="true">QLabel {
         background-color: transparent;
-        color: black;
-        font-weight: normal;
 }</string>
         </property>
         <property name="text">
@@ -112,21 +113,12 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>828</width>
-        <height>268</height>
+        <width>830</width>
+        <height>315</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
+       <property name="margin">
         <number>0</number>
        </property>
        <item>

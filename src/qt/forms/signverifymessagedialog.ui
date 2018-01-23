@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Signatures - Sign / Verify a Message</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+
+</string>
+  </property>
   <property name="modal">
    <bool>true</bool>
   </property>

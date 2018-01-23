@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -31,12 +34,12 @@
            <widget class="QLabel" name="label_5">
             <property name="font">
              <font>
-              <weight>50</weight>
-              <bold>false</bold>
+              <weight>75</weight>
+              <bold>true</bold>
              </font>
             </property>
             <property name="text">
-             <string>&lt;b&gt;Wallet&lt;/b&gt;</string>
+             <string>Wallet</string>
             </property>
            </widget>
           </item>
@@ -84,8 +87,14 @@
           </property>
           <item row="0" column="0">
            <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Spendable:&lt;/b&gt;</string>
+             <string>Spendable:</string>
             </property>
            </widget>
           </item>
@@ -113,8 +122,14 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_6">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Stake:&lt;/b&gt;</string>
+             <string>Stake:</string>
             </property>
            </widget>
           </item>
@@ -142,8 +157,14 @@
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_3">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Unconfirmed:&lt;/b&gt;</string>
+             <string>Unconfirmed:</string>
             </property>
            </widget>
           </item>
@@ -171,8 +192,14 @@
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="labelImmatureText">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Immature:&lt;/b&gt;</string>
+             <string>Immature:</string>
             </property>
            </widget>
           </item>
@@ -204,8 +231,14 @@
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="labelTotalText">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Total:&lt;/b&gt;</string>
+             <string>Total:</string>
             </property>
            </widget>
           </item>
@@ -224,7 +257,7 @@
              <string>Your current total balance</string>
             </property>
             <property name="text">
-             <string notr="true">&lt;b&gt;0 ONION&lt;/b&gt;</string>
+             <string notr="true">0 ONION</string>
             </property>
             <property name="textInteractionFlags">
              <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -287,7 +320,7 @@
      <item>
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://deeponion.org&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline; color:#062a2d;&quot;&gt;https://deeponion.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://deeponion.org&quot;&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline; color:#ffffff;&quot;&gt;https://deeponion.org&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -314,8 +347,14 @@
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
             <property name="text">
-             <string>&lt;b&gt;Recent transactions&lt;/b&gt;</string>
+             <string>Recent transactions</string>
             </property>
            </widget>
           </item>
@@ -353,7 +392,9 @@
         <item>
          <widget class="QListView" name="listTransactions">
           <property name="styleSheet">
-           <string notr="true">QListView { background: transparent; }</string>
+           <string notr="true">QListView { background: transparent; }
+color: rgb(255, 255, 255);
+QToolTip { color: black; }</string>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>

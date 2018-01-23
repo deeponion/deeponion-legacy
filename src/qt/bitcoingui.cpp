@@ -107,6 +107,35 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+    
+	qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: white; background-color: #313c62;} \
+		QWidget {color:white; background-color: #313c62;} \
+		QMenu {color: white; background-color: #313c62; border-color: #313c62;} \
+        QMainWindow {background-color: #313c62; border:none;font-family:'Open Sans,sans-serif';} \
+		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
+		QHeaderView::section {color:white; background-color: #313c62; } \
+		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
+		QLineEdit {color: #1b202f; background: #d7e6ff; selection-background-color: #d7e6ff;} \
+		QLineEdit:hover{border: 1px solid gray; background-color: #d7e6ff;} \
+		QTabWidget {color:white; background-color: #313c62;} \
+		QTabWidget::pane {color:white; background-color: #313c62; border: 1px solid gray;} \
+		QTabBar::tab {color:white; background-color: #313c62; border: 1px solid gray; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
+		QComboBox:hover, QPushButton:hover {background-color: #1b202f;} \
+		QDialog {color:white; background-color: #313c62;} \
+		QLabel {color:white; background-color: #313c62;} \
+		QToolBar {color:white; background-color: #313c62;} \
+		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid gray;} \
+		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
+		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QPushButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QStatusBar {color:white; background-color: #1b202f; border: 1px solid gray;} \
+		QMenuBar {background-color: #313c62;} \
+		QToolTip {color: white; border: 0px; background-color: #313c62; opacity: 225;} \
+		QMenuBar::item {color: white; background-color: #313c62;} \
+		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #313c62;}");
+
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -221,9 +250,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
     }
 
+    progressBar->setStyleSheet("color: white; background-color: #1b202f; border-color: #313c62;");
+    progressBarLabel->setStyleSheet("color: white; background-color: #1b202f; border-color: #313c62;");
+    
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
+    statusBar()->setStyleSheet("color: white; background-color: #1b202f; border-color: #313c62;");
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
