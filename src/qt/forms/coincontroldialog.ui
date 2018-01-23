@@ -377,14 +377,20 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>0</y>
-        <width>781</width>
-        <height>47</height>
+        <y>4</y>
+        <width>801</width>
+        <height>31</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayoutPanel" stretch="0,0,0,0">
        <property name="spacing">
         <number>14</number>
+       </property>
+       <property name="topMargin">
+        <number>1</number>
+       </property>
+       <property name="bottomMargin">
+        <number>1</number>
        </property>
        <item>
         <widget class="QPushButton" name="pushButtonSelectAll">

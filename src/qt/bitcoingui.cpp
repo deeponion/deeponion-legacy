@@ -130,6 +130,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
 		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
 		QPushButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
 		QStatusBar {color:white; background-color: #1b202f; border: 1px solid gray;} \
 		QMenuBar {background-color: #313c62;} \
 		QToolTip {color: white; border: 0px; background-color: #313c62; opacity: 225;} \
