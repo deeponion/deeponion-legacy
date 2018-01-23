@@ -18,7 +18,8 @@ Start the Setup executable and select *All Packages/MSYS* in the installation ma
 * *msys-automake-bin*
 * *msys-libtool-bin*
 
-After having selected them click the menu *Installation/Apply changes*
+After having selected them click the menu *Installation/Apply changes*.
+
 I've installed my MSYS under `C:/bin/mingwX` (I have several versions of it and didn't want to mess them up).
 
 **MinGW Setup** 
