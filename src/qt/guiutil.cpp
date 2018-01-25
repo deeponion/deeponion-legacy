@@ -89,8 +89,8 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     SendCoinsRecipient rv;
     rv.address = uri.path();
     rv.amount = 0;
-    QUrlQuery qry = QUrlQuery(uri);
-    QList<QPair<QString, QString> > items = qry.queryItems();
+    QUrlQuery *qry = new QUrlQuery(uri);
+    QList<QPair<QString, QString> > items = qry->queryItems();
     for (QList<QPair<QString, QString> >::iterator i = items.begin(); i != items.end(); i++)
     {
         bool fShouldReturnFalse = false;
@@ -178,7 +178,7 @@ QString getSaveFileName(QWidget *parent, const QString &caption,
     QString myDir;
     if(dir.isEmpty()) // Default to user documents location
     {
-        QString saveDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
+        myDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
     }
     else
     {
