@@ -235,7 +235,7 @@ RES_IMAGES = \
 
 RES_MOVIES = qt/res/movies/update_spinner.mng
 
-BITCOIN_RC = qt/res/bitcoin-qt-res.rc
+BITCOIN_RC = qt/res/bitcoin-qt.rc
 
 BITCOIN_QT_INCLUDES = -I$(builddir)/qt -I$(srcdir)/qt -I$(srcdir)/qt/forms \
   -I$(builddir)/qt/forms -I$(srcdir)/qt/plugins/mrichtexteditor
