@@ -89,8 +89,8 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
     SendCoinsRecipient rv;
     rv.address = uri.path();
     rv.amount = 0;
-    QUrlQuery qry = QUrlQuery(uri);
-    QList<QPair<QString, QString> > items = qry.queryItems();
+    QUrlQuery *qry = new QUrlQuery(uri);
+    QList<QPair<QString, QString> > items = qry->queryItems();
     for (QList<QPair<QString, QString> >::iterator i = items.begin(); i != items.end(); i++)
     {
         bool fShouldReturnFalse = false;
