@@ -178,7 +178,7 @@ QString getSaveFileName(QWidget *parent, const QString &caption,
     QString myDir;
     if(dir.isEmpty()) // Default to user documents location
     {
-        QString saveDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
+        myDir = QStandardPaths::standardLocations(QStandardPaths::DocumentsLocation)[0];
     }
     else
     {
