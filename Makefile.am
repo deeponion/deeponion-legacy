@@ -14,7 +14,7 @@ OSX_APP=DeepOnion-Qt.app
 OSX_DMG=DeepOnion-Qt.dmg
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
-OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/deeponion.icns
+OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/DeepOnion.icns
 OSX_PLIST=$(top_srcdir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 
@@ -68,7 +68,7 @@ $(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/Resources/deeponion.icns: $(OSX_INSTALLER_ICONS)
+$(OSX_APP)/Contents/Resources/DeepOnion.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
@@ -77,7 +77,7 @@ $(OSX_APP)/Contents/MacOS/DeepOnion-Qt: $(BITCOIN_QT_BIN)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
-  $(OSX_APP)/Contents/Resources/deeponion.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/Resources/DeepOnion.icns $(OSX_APP)/Contents/Info.plist \
   $(OSX_APP)/Contents/MacOS/DeepOnion-Qt
 
 if BUILD_DARWIN
