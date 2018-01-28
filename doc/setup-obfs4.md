@@ -52,3 +52,30 @@ Jan 28 20:31:16.000 [notice] Tor has successfully opened a circuit. Looks like c
 Jan 28 20:31:16.000 [notice] Bootstrapped 100%: Done
 
 ```
+
+### Windows Installation 
+
+As Windows has no default Package Managers there are several ways to get **obfs4proxy.exe**. One could simply install the Tor-Browser manually and put the provided obfs4proxy.exe into a globally discoverable path, or by using one of the available Package Managers, like *choclolatey* for example. As obfs4proxy.exe is a [portable executable](https://tor.stackexchange.com/questions/14850/where-can-i-download-windows-binary-for-obfs4proxy) any of the possible ways is *correct* and it's up to the user to decide.
+
+#### Installation with Chocolatey
+
+[Install](https://chocolatey.org/install) Chocolatey package manager and then open a new DOS console. Type in the [following command](https://chocolatey.org/packages/tor-browser/7.0.2) (adapt the Tor version accordingly)
+
+```
+choco install tor-browser --version 7.0.2
+```
+
+#### Installation with Tor-Browser
+
+[Download](https://www.torproject.org/download/download.html.en) the Tor-Browser. 
+
+#### Getting obfs4proxy.exe & making it available
+
+After you've installed Tor search for **obfs4proxy.exe** within *Tor/PluggableTransports* inside the TorBrowser installation directory. 
+
+![pluggable-transports-dir](https://img1.picload.org/image/ddpogdli/tor_path.png)
+
+
+Copy this file to a new location that's **globally available**. Restart the Wallet. It will automatically find the file.
+
+
