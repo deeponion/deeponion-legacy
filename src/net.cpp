@@ -649,7 +649,7 @@ void ThreadTorNet2(void* parg) {
     argv.push_back("17570");
 
     if (clientTransportPlugin) {
-      printf("Using external obfs4proxy as ClientTransportPlugin.\nSpecify bridges in %s\n", torrc.c_str());
+      LogPrintf("Using external obfs4proxy as ClientTransportPlugin.\nSpecify bridges in %s\n", torrc.c_str());
       argv.push_back("--ClientTransportPlugin");
       argv.push_back(*clientTransportPlugin);
       argv.push_back("--UseBridges");
