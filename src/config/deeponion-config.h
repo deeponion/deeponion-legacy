@@ -198,7 +198,7 @@
 #define HAVE_PTHREAD 1
 
 /* Have PTHREAD_PRIO_INHERIT. */
-#define HAVE_PTHREAD_PRIO_INHERIT 1
+/* #undef HAVE_PTHREAD_PRIO_INHERIT */
 
 /* Define to enable SSE/SSE2 optimizations. */
 #define HAVE_SSE2 1
@@ -271,10 +271,10 @@
 #define STRERROR_R_CHAR_P 1
 
 /* Define if dbus support should be compiled in */
-/* #undef USE_DBUS */
+#define USE_DBUS 1
 
 /* Define if QR support should be compiled in */
-/* #undef USE_QRCODE */
+#define USE_QRCODE 1
 
 /* UPnP support not compiled if undefined, otherwise value (0 or 1) determines
    default state */
