@@ -144,8 +144,8 @@ contains(BITCOIN_NEED_QT_PLUGINS, 1) {
 }
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
-LIBS += $$PWD/src/leveldb/libleveldb.a \
-	$$PWD/src/leveldb/libmemenv.a \
+LIBS += $$PWD/src/leveldb-win/libleveldb.a \
+	$$PWD/src/leveldb-win/libmemenv.a \
    	$$PWD/src/torlibs-win/libtor.a \
 	$$PWD/src/torlibs-win/libor.a \
 	$$PWD/src/torlibs-win/libor-ctime.a \
