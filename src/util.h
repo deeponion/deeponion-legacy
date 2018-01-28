@@ -129,12 +129,7 @@ inline void MilliSleep(int64_t n)
 #define ATTR_WARN_PRINTF(X,Y)
 #endif
 
-
-
-
-
-
-
+#define LogPrintf printf
 
 extern std::map<std::string, std::string> mapArgs;
 extern std::map<std::string, std::vector<std::string> > mapMultiArgs;
