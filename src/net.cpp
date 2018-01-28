@@ -9,6 +9,8 @@
 #include "strlcpy.h"
 #include "addrman.h"
 #include "ui_interface.h"
+#include "util.h"
+#include <sys/stat.h>
 
 #ifdef WIN32
 #include <string.h>
@@ -23,6 +25,7 @@
 
 using namespace std;
 using namespace boost;
+namespace fs = boost::filesystem;
 
 extern "C" { int tor_main(int argc, char *argv[]); }
 
@@ -607,11 +610,22 @@ static char *convert_str(const std::string &s) {
 }
 
 void ThreadTorNet2(void* parg) {
+    boost::optional<std::string> clientTransportPlugin;
     struct stat sb;
 
-    boost::filesystem::path tor_dir = GetDataDir() / "tor";
-    boost::filesystem::create_directory(tor_dir);
-    boost::filesystem::path log_file = tor_dir / "tor.log";
+    #ifdef WIN32
+    if (stat("obfs4proxy.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
+       clientTransportPlugin = "obfs4 exec obfs4proxy.exe";
+    }
+    #else
+    if ((stat("obfs4proxy", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
+       clientTransportPlugin = "obfs4 exec obfs4proxy";
+    }
+    #endif
+
+    fs::path tor_dir = GetDataDir() / "tor";
+    fs::create_directory(tor_dir);
+    fs::path log_file = tor_dir / "tor.log";
 
     std::vector<std::string> argv;
     argv.push_back("tor");
@@ -633,6 +647,14 @@ void ThreadTorNet2(void* parg) {
     argv.push_back((tor_dir / "onion").string());
     argv.push_back("--HiddenServicePort");
     argv.push_back("17570");
+
+    if (clientTransportPlugin) {
+      LogPrintf("Using external obfs4proxy as ClientTransportPlugin.\nSpecify bridges in %s\n", torrc);
+      argv.push_back("--ClientTransportPlugin");
+      argv.push_back(*clientTransportPlugin);
+      argv.push_back("--UseBridges");
+      argv.push_back("1");
+    }
 
     std::vector<char *> argv_c;
     std::transform(argv.begin(), argv.end(), std::back_inserter(argv_c), convert_str);
