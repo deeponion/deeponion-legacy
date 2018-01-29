@@ -81,4 +81,4 @@ Copy this file to your Wallet's installation directory. Restart the Wallet. It w
 
 The output on Windows would look like this:
 
-![obfs4-output-windows]()
+![obfs4-output-windows](https://img1.picload.org/image/ddpoigow/output.png)
