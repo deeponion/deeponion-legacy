@@ -55,7 +55,9 @@ Jan 28 20:31:16.000 [notice] Bootstrapped 100%: Done
 
 ### Windows Installation 
 
-As Windows has no default Package Managers there are several ways to get **obfs4proxy.exe**. One could simply install the Tor-Browser manually and put the provided obfs4proxy.exe into a globally discoverable path, or by using one of the available Package Managers, like *choclolatey* for example. As obfs4proxy.exe is a [portable executable](https://tor.stackexchange.com/questions/14850/where-can-i-download-windows-binary-for-obfs4proxy) any of the possible ways is *correct* and it's up to the user to decide.
+As Windows has no default Package Manager there are several ways to get **obfs4proxy.exe**. One could simply install the Tor-Browser manually and put the provided **obfs4proxy.exe** into the directory of your DeepOnion installation. 
+
+There are also some open-source Package Managers for Windows available, like *choclolatey* for example. As **obfs4proxy.exe** is a [portable executable](https://tor.stackexchange.com/questions/14850/where-can-i-download-windows-binary-for-obfs4proxy) any of the possible ways is *correct* and it's up to the user to decide.
 
 #### Installation with Chocolatey
 
@@ -67,15 +69,16 @@ choco install tor-browser --version 7.0.2
 
 #### Installation with Tor-Browser
 
-[Download](https://www.torproject.org/download/download.html.en) the Tor-Browser. 
+[Download](https://www.torproject.org/download/download.html.en) the Tor-Browser installation package and run it..
 
 #### Getting obfs4proxy.exe & making it available
 
-After you've installed Tor search for **obfs4proxy.exe** within *Tor/PluggableTransports* inside the TorBrowser installation directory. 
+After you've installed Tor search for **obfs4proxy.exe** within *Tor/PluggableTransports* inside your Tor-Browser's installation directory. 
 
 ![pluggable-transports-dir](https://img1.picload.org/image/ddpogdli/tor_path.png)
 
+Copy this file to your Wallet's installation directory. Restart the Wallet. It will automatically find the file.
 
-Copy this file to a new location that's **globally available**. Restart the Wallet. It will automatically find the file.
+The output on Windows would look like this:
 
-
+![obfs4-output-windows](https://img1.picload.org/image/ddpoigow/output.png)
