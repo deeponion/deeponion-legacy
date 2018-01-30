@@ -16,7 +16,12 @@ Visit this [website](https://bridges.torproject.org/bridges) to get a list of Br
 
 Your *datadir* depends on the OS you're using. Possible locations of the *torrc* are:
 
-* Windows - %APPDATA%/DeepOnion/tor
+* Windows - %APPDATA%/Roaming/DeepOnion/tor
+
+This is the path under Windows.
+
+![win-torrc-path](https://img2.picload.org/image/ddpcagra/torrc_path.png)
+
 * Linux - ~/.DeepOnion/tor
 * Mac -  ~/Library/Application Support/DeepOnion/tor
 
