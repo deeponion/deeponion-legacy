@@ -35,6 +35,10 @@ Bridge 52.19.30.6:8443 FC5D6558344479BBB10E8638CC8CEB8BA6E32DAD
 Bridge 178.63.28.14:443 88CB40E536DD6F6775626E6A3BCC5D9C0B7BAFEA
 ```
 
+If you're editing this file under Windows, please take care of saving it as **torrc** only. Usually, Windows appends a file extension, like *txt*, which must be avoided. Therefore it's recommended to use an editor like [Notepad++](https://notepad-plus-plus.org/download/v7.5.4.html). On saving the file you can select the option "All files" to save with the file name only.
+
+![save-notepad](https://img3.picload.org/image/ddpclrrr/notepad.png)
+
 Start your wallet, or daemon if running *headless*, and trace your tor's *logfile* with:
 
 ```
