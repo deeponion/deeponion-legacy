@@ -581,8 +581,8 @@ bool AppInit2()
 
     // ********************************************************* Step 6: network initialization
 
-    uiInterface.InitMessage(_("Initialising Tor Network..."));
-    printf("Initialising Tor Network...\n");
+    uiInterface.InitMessage(_("Initializing Tor Network..."));
+    printf("Initializing Tor Network...\n");
 
     int nSocksVersion = GetArg("-socks", 5);
 
@@ -644,8 +644,8 @@ bool AppInit2()
         if (!NewThread(StartTor, NULL))
                 return InitError(_("Error: could not start tor node"));
         
-        uiInterface.InitMessage(_("Initialising Tor Network..."));
-        printf("Initialising Tor Network...\n");        
+        uiInterface.InitMessage(_("Initializing Tor Network..."));
+        printf("Initializing Tor Network...\n");        
     }
     
     if (mapArgs.count("-externalip"))
