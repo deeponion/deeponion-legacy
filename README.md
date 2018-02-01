@@ -1,25 +1,21 @@
-DeepOnion (ONION) :rocket:
+![alt text](https://image.ibb.co/mfR4R6/DO.png "DeepOnion")
 =====================================
 
 DeepOnion (ONION) is an anonymous cryptocurrency that is untraceable. All transactions are private and sent through the TOR network.
 
-The integration with TOR ensures that users are always in a secured environment. There is no client-side configuration needed. The client will automatically join the TOR network and connect to the available TOR nodes in the network (including our seed nodes). After you connect to the DeepOnion network, you may check your displayed IP using DeepOnion client console, where you will see that your client is assigned a hidden TOR address (.onion address).
+The integration with TOR + OBFS4 (The obfourscator) ensures that our users are always on a secure environment. There is no client-side configuration needed. Our client will automatically join the TOR network and connect to the available TOR nodes on the network (including our seed nodes). After a successful connection to the DeepOnion network, you may check your displayed IP using DeepOnion client console, where you will see that your client is assigned a hidden TOR address (.onion address).
 
-### Specifications
+## Specifications
 
-:small_blue_diamond: PoW/PoS 
+| Specification | Value |
+|:-----------|:-----------|
+| PoW - PoS | `Both` |
+| Algorithm | `X13` |
+| Confirmations | `5 tx` |
+| Block Confirm. | `50 minted confirms` |
+| Port | `17570` |
+| RPC Port | `18580` |
 
-:small_blue_diamond: X13 algorithm for PoW
-
-:small_blue_diamond: 5 transaction confirmations 
-
-:small_blue_diamond: 50 minted block confirmations
-
-:small_blue_diamond: Total coins will be ~25 million after 10 years.
-
-:small_blue_diamond: 18 million ONIONs (90%) will be premined at genesis block and they will be gradually distrubted FREELY to the community (for details please see https://deeponion.org)
-
-:small_blue_diamond: 2 million ONIONs are be minable by the public
 
 ##### PoW:
 
@@ -39,11 +35,30 @@ The integration with TOR ensures that users are always in a secured environment.
 > - Minimum holding time before the pos will be generated 1 day.
 > - Maximum allowed accumulated coin is 30 days.
 
-###### Connection Port: 17570 
-###### RPC Port: 18580
 
-:package: For software downloads please see https://deeponion.org/#downloads, or read the
-[original whitepaper]( https://deeponion.org/White-Paper.pdf).
+## Resources
+
+:package: Software downloads please see [Downloads](https://deeponion.org/#downloads)
+
+[Whitepaper]( https://deeponion.org/White-Paper.pdf) 
+
+[Roadmap]( https://deeponion.org/#roadmap)
+
+[AirDrop]( https://deeponion.org/airdrop.html)
+
+[Community]( https://deeponion.org/community/)
+
+[Support]( https://deeponion.help)
+
+
+## DeepOnion.conf file
+
+Download [DeepOnion.conf](https://deeponion.org/DeepOnion.conf.php?action=download) (right-click download as)
+
+For more info on how setup your .conf file please visit https://deeponion.org/DeepOnion.conf.php
+
+## Roadmap 
+
 
 
 
