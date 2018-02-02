@@ -612,16 +612,31 @@ static char *convert_str(const std::string &s) {
 void ThreadTorNet2(void* parg) {
     boost::optional<std::string> clientTransportPlugin;
     struct stat sb;
-
-    #ifdef WIN32
-    if (stat("obfs4proxy.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
-       clientTransportPlugin = "obfs4 exec obfs4proxy.exe";
+    std::string torPlugin = GetArg("-torplugin", "");
+    std::string torPluginPath = GetArg("-torpluginpath", "");
+    if (torPlugin == "meek") {
+        printf("Using Tor with Pluggable Transport => MEEK\n");
+        #ifdef WIN32
+        if (stat("meek-client.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
+        clientTransportPlugin = std::string("meek exec ") + std::string(torPluginPath);
+        }
+        #else
+        if ((stat("meek-client", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which meek-client")) {
+        clientTransportPlugin = std::string("meek exec ") + std::string(torPluginPath);
+        }
+        #endif
+    } else if (torPlugin == "obfs4"){
+        printf("Using Tor with Pluggable Transport => OBFS4\n");
+        #ifdef WIN32
+        if (stat("obfs4proxy.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
+        clientTransportPlugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        }
+        #else
+        if ((stat("obfs4proxy", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
+        clientTransportPlugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        }
+        #endif
     }
-    #else
-    if ((stat("obfs4proxy", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
-       clientTransportPlugin = "obfs4 exec obfs4proxy";
-    }
-    #endif
 
     fs::path tor_dir = GetDataDir() / "tor";
     fs::create_directory(tor_dir);
@@ -649,7 +664,6 @@ void ThreadTorNet2(void* parg) {
     argv.push_back("17570");
 
     if (clientTransportPlugin) {
-      LogPrintf("Using external obfs4proxy as ClientTransportPlugin.\nSpecify bridges in %s\n", torrc.c_str());
       argv.push_back("--ClientTransportPlugin");
       argv.push_back(*clientTransportPlugin);
       argv.push_back("--UseBridges");
