@@ -1,4 +1,4 @@
-## Meek Obfuscation layer Setup
+## Meek Obfuscation Layer Setup
 
 **Meek** is another [pluggable transport](https://trac.torproject.org/projects/tor/wiki/doc/PluggableTransports) supported by DeepOnion which relays the traffic through a third-party server, for example a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network). This technique uses a trick called [domain fronting](https://www.bamsoftware.com/papers/fronting/) to communicate with a Tor relay while appearing to communicate with another domain.
 
@@ -33,7 +33,7 @@ torpluginpath=MEEK_CLIENT_EXE_PATH (e.g. c:\bin\meek-client.exe or /usr/bin/meek
 
 On Windows the full path to `meek-client.exe` depends on your [Tor-Browser](https://www.torproject.org/projects/torbrowser.html.en) path. Do not attempt to start your Wallet UI or daemon without having provided the full path to *meek-client*. 
 
-This is an examplte of a location of *meek-client.exe* when Tor-Browser was installed under `C:\bin`:
+This is an example of a location of *meek-client.exe* when Tor-Browser was installed under `C:\bin`:
 
 ![meek-location-win](https://img3.picload.org/image/ddwawdiw/meek_client.png)
 
