@@ -609,34 +609,38 @@ static char *convert_str(const std::string &s) {
     return pc;
 }
 
-void ThreadTorNet2(void* parg) {
-    boost::optional<std::string> clientTransportPlugin;
-    struct stat sb;
+void SetupPluggableTransport(boost::optional<std::string>& plugin, struct stat* sb) {
     std::string torPlugin = GetArg("-torplugin", "");
     std::string torPluginPath = GetArg("-torpluginpath", "");
     if (torPlugin == "meek") {
         printf("Using Tor with Pluggable Transport => MEEK\n");
         #ifdef WIN32
-        if (stat("meek-client.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
-        clientTransportPlugin = std::string("meek exec ") + std::string(torPluginPath);
+        if (stat("meek-client.exe", sb) == 0 && (*sb).st_mode & S_IXUSR) {
+            plugin = std::string("meek exec ") + std::string(torPluginPath);
         }
         #else
-        if ((stat("meek-client", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which meek-client")) {
-        clientTransportPlugin = std::string("meek exec ") + std::string(torPluginPath);
+        if ((stat("meek-client", sb) == 0 && (*sb).st_mode & S_IXUSR) || !std::system("which meek-client")) {
+            plugin = std::string("meek exec ") + std::string(torPluginPath);
         }
         #endif
     } else if (torPlugin == "obfs4"){
         printf("Using Tor with Pluggable Transport => OBFS4\n");
         #ifdef WIN32
-        if (stat("obfs4proxy.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
-        clientTransportPlugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        if (stat("obfs4proxy.exe", sb) == 0 && (*sb).st_mode & S_IXUSR) {
+            plugin = std::string("obfs4 exec ") + std::string(torPluginPath);
         }
         #else
-        if ((stat("obfs4proxy", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
-        clientTransportPlugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        if ((stat("obfs4proxy", sb) == 0 && (*sb).st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
+            plugin = std::string("obfs4 exec ") + std::string(torPluginPath);
         }
         #endif
     }
+}
+
+void ThreadTorNet2(void* parg) {
+    boost::optional<std::string> clientTransportPlugin;
+    struct stat sb;
+    SetupPluggableTransport(clientTransportPlugin, &sb);
 
     fs::path tor_dir = GetDataDir() / "tor";
     fs::create_directory(tor_dir);
