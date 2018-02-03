@@ -8,6 +8,21 @@ To run the Wallet with obfs4 enabled one must install the *obfs4proxy* [package]
 sudo apt-get install obfs4proxy
 ```
 
+#### Activate obfs4 functionality in DeepOnion.conf
+
+Open your *DeepOnion.conf* and add those two lines:
+
+```
+torplugin=obfs4
+torpluginpath=OBFS4PROXY_PATH (e.g. c:\bin\obfs4proxy.exe or /usr/bin/obfs4proxy)
+```
+
+To find the full path of the obfs4proxy executable you can also use those commands under Windows respective Linux/Mac:
+
+`where obfs4proxy.exe`
+
+`which obfs4proxy`
+
 #### Find available Bridges
 
 Visit this [website](https://bridges.torproject.org/bridges) to get a list of Bridges which you'll insert into the *torrc* file under your *datadir*.
