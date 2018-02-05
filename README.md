@@ -3,7 +3,18 @@
 
 DeepOnion (ONION) is an anonymous cryptocurrency that is untraceable. All transactions are private and sent through the TOR network.
 
-The integration with TOR + OBFS4 (The obfourscator) ensures that our users are always on a secure environment. There is no client-side configuration needed. Our client will automatically join the TOR network and connect to the available TOR nodes on the network (including our seed nodes). After a successful connection to the DeepOnion network, you may check your displayed IP using DeepOnion client console, where you will see that your client is assigned a hidden TOR address (.onion address).
+The integration with TOR ensures that our users are always on a secure environment. There is no client-side configuration needed. Our client will automatically join the TOR network and connect to the available TOR nodes on the network (including our seed nodes). After a successful connection to the DeepOnion network, you may check your displayed IP using DeepOnion client console, where you will see that your client is assigned a hidden TOR address (.onion address).
+
+#### Pluggable Transports
+
+>DeepOnion has expanded and added the option for advanced users to configure PT's such as obfs4 & Meek. 
+>
+>Instructions:
+>
+>[Setup obfs4]( https://github.com/deeponion/deeponion/blob/master/doc/setup-obfs4.md)
+>
+>[Setup Meek]( https://github.com/deeponion/deeponion/blob/master/doc/setup-meek.md)
+
 
 ## Specifications
 
