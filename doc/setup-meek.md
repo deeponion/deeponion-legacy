@@ -6,7 +6,7 @@
 
 If you're on Windows a Tor-Browser installation is **mandatory** as we will be using the **meek-client.exe** from the installation directory. Please, [download the installation package](https://www.torproject.org/projects/torbrowser.html.en) for your system and run the installer.
 
-Under Windows the meek-client executable is located under 
+Under Windows the meek-client executable is located at 
 
 `YOUR_TOR_BROWSER_ROOT\Browser\TorBrowser\Tor\PluggableTransports`
 
@@ -77,4 +77,13 @@ Open your *tor.log* which is located under the same folder where your *torrc* is
 
 ### Potential Issues
 
-During our tests *on Windows* we experienced issues when running the Wallet UI with multiple Bridge entries in *torrc*. The problems didn't show up with configurations containing a single Bridge entry.
+* During our tests *on Windows* we experienced issues when running the Wallet UI with multiple Bridge entries in *torrc*. The problems didn't show up with configurations containing only a **single** active Bridge entry.
+* After closing the Wallet UI on Windows you'll have to close the running meek-client.exe manually (via [TaskManager](https://en.wikipedia.org/wiki/Task_Manager_(Windows)) for example)
+* If your Bridge is blocked, as it often happens in China, please get additional information from below websites. The front servers can change at any time and it's your responsibility to be up-to-date.
+
+
+[In China, Meek-azure and Meek-amazon can not be used, the following is the log, how can we use Meek?](https://tor.stackexchange.com/questions/14170/in-china-meek-azure-and-meek-amazon-can-not-be-used-the-following-is-the-log)
+
+[What to do if meek gets blocked?](https://lists.torproject.org/pipermail/tor-talk/2015-January/036410.html)
+
+A list of **censored** *cloudfront* domains can be found [here](https://en.greatfire.org/search/all/cloudfront.net).
