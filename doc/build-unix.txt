@@ -16,7 +16,7 @@ First get the dependencies:
 
     apt-get update
     apt-get upgrade
-    apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev
+    apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev bsdmainutils
     apt-get install libqrencode-dev libminiupnpc-dev libevent-dev libcap-dev libseccomp-dev git
 
 
