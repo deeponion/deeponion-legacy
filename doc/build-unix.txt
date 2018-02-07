@@ -36,5 +36,9 @@ build with autotools:
     ./autogen.sh
     ./configure --with-gui=qt5    (if you want to build daemon, use --without-gui)
     make
+    
+ISSUES
+======
+It has been reported that under Debian 9 the installation of libssl1.1-dev leads to compilation errors. If you experience such issues, put libssl1.0-dev into your install list.
 
 
