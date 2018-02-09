@@ -1075,7 +1075,11 @@ void ThreadMapPort2(void* parg)
 #else
     /* miniupnpc 1.6 */
     int error = 0;
+#ifdef MAC_OSX
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 0, &error);
+#else
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
+#endif
 #endif
 
     struct UPNPUrls urls;
