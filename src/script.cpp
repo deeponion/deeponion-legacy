@@ -1645,6 +1645,10 @@ public:
             Process(script);
     }
 
+    void operator()(const CStealthAddress &stxAddr) {
+        CScript script;      
+    }
+
     void operator()(const CNoDestination &none) {}
 };
 
@@ -2008,6 +2012,13 @@ public:
         script->clear();
         *script << OP_HASH160 << scriptID << OP_EQUAL;
         return true;
+    }
+
+    bool operator()(const CStealthAddress &stxAddr) const {
+        script->clear();
+        //*script << OP_HASH160 << scriptID << OP_EQUAL;
+        printf("TODO\n");
+        return false;
     }
 };
 

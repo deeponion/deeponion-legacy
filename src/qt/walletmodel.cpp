@@ -149,11 +149,29 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         return OK;
     }
 
+    std::vector<std::pair<CScript, int64> > vecSend;
+
+    std::map<int, std::string> mapStealthNarr;
+
     // Pre-check input data for validity
     foreach(const SendCoinsRecipient &rcp, recipients)
     {
         std::string sAddr = rcp.address.toStdString();
-            
+
+        if(!validateAddress(rcp.address))
+        {
+            return InvalidAddress;
+        }
+
+        setAddress.insert(rcp.address);
+
+        if(rcp.amount <= 0)
+        {
+            return InvalidAmount;
+        }
+
+        total += rcp.amount;
+
         if (rcp.typeInd == AddressTableModel::AT_Stealth)
         {
             CStealthAddress sxAddr;
@@ -164,25 +182,24 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 ec_point pkSendTo;
                 ec_point ephem_pubkey;
                 
-                
                 if (GenerateRandomSecret(ephem_secret) != 0)
                 {
                     printf("GenerateRandomSecret failed.\n");
                     return Aborted;
-                };
+                }
                 
                 if (StealthSecret(ephem_secret, sxAddr.scan_pubkey, sxAddr.spend_pubkey, secretShared, pkSendTo) != 0)
                 {
                     printf("Could not generate receiving public key.\n");
                     return Aborted;
-                };
+                }
                 
                 CPubKey cpkTo(pkSendTo);
                 if (!cpkTo.IsValid())
                 {
                     printf("Invalid public key generated.\n");
                     return Aborted;
-                };
+                }
                 
                 CKeyID ckidTo = cpkTo.GetID();
                 
@@ -192,22 +209,22 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 {
                     printf("Could not generate ephem public key.\n");
                     return Aborted;
-                };
+                }
                 
                 if (fDebug)
                 {
-                    printf("Stealth send to generated pubkey %"PRIszu": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
+                    printf("Stealth send to generated pubkey %" PRIszu ": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
                     printf("hash %s\n", addrTo.ToString().c_str());
-                    printf("ephem_pubkey %"PRIszu": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
-                };
+                    printf("ephem_pubkey %" PRIszu ": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
+                }
                 
                 CScript scriptPubKey;
                 scriptPubKey.SetDestination(addrTo.Get());
                 
                 vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
-                
+
                 CScript scriptP = CScript() << OP_RETURN << ephem_pubkey;
-                
+                    
                 if (rcp.narration.length() > 0)
                 {
                     std::string sNarr = rcp.narration.toStdString();
@@ -245,20 +262,17 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 vecSend.push_back(make_pair(scriptP, 0));
                 
                 continue;
-            }; // else drop through to normal
+            }
+            else
+            {
+                printf("Couldn't parse stealth address!\n");		
+                return Aborted;		
+            } // else drop through to normal
         }
 
-        if(!validateAddress(rcp.address))
-        {
-            return InvalidAddress;
-        }
-        setAddress.insert(rcp.address);
-
-        if(rcp.amount <= 0)
-        {
-            return InvalidAmount;
-        }
-        total += rcp.amount;
+        CScript scriptPubKey;
+        scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
+        vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
     }
 
     if(recipients.size() > setAddress.size())
@@ -266,50 +280,29 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         return DuplicateAddress;
     }
 
-    int64_t nBalance = 0;
-    std::vector<COutput> vCoins;
-    wallet->AvailableCoins(vCoins, true, coinControl);
-
-    BOOST_FOREACH(const COutput& out, vCoins)
-        nBalance += out.tx->vout[out.i].nValue;
-
-    if(total > nBalance)
+    if(total > getBalance())
     {
         return AmountExceedsBalance;
     }
 
-    if((total + nTransactionFee) > nBalance)
+    if((total + nTransactionFee) > getBalance())
     {
         return SendCoinsReturn(AmountWithFeeExceedsBalance, nTransactionFee);
     }
 
-    std::map<int, std::string> mapStealthNarr;
-
     {
         LOCK2(cs_main, wallet->cs_wallet);
-        CWalletTx wtx;
-
-        // Sendmany
-        std::vector<std::pair<CScript, int64_t> > vecSend;
-        foreach(const SendCoinsRecipient &rcp, recipients)
-        {
-            CScript scriptPubKey;
-            scriptPubKey.SetDestination(CBitcoinAddress(rcp.address.toStdString()).Get());
-            vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
-        }
 
         CWalletTx wtx;
+
         CReserveKey keyChange(wallet);
-        int64_t nFeeRequired = 0;
-         int nChangePos = -1;
-        bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePos);
+        int64 nFeeRequired = 0;
+        bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired);
         
         std::map<int, std::string>::iterator it;
         for (it = mapStealthNarr.begin(); it != mapStealthNarr.end(); ++it)
         {
             int pos = it->first;
-            if (nChangePos > -1 && it->first >= nChangePos)
-                pos++;
             
             char key[64];
             if (snprintf(key, sizeof(key), "n_%u", pos) < 1)
@@ -319,10 +312,10 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             };
             wtx.mapValue[key] = it->second;
         };
-
+        
         if(!fCreated)
         {
-            if((total + nFeeRequired) > nBalance) // FIXME: could cause collisions in the future
+            if((total + nFeeRequired) > wallet->GetBalance())
             {
                 return SendCoinsReturn(AmountWithFeeExceedsBalance, nFeeRequired);
             }
@@ -348,9 +341,11 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         {
             LOCK(wallet->cs_wallet);
 
-            if (rcp.typeInd == AddressTableModel::AT_Stealth) {
+            if (rcp.typeInd == AddressTableModel::AT_Stealth)
+            {
                 wallet->UpdateStealthAddress(strAddress, strLabel, true);
-            } else {
+            } else
+            {
                 std::map<CTxDestination, std::string>::iterator mi = wallet->mapAddressBook.find(dest);
                 
                 // Check if we have a new address or an updated label
@@ -539,6 +534,11 @@ void WalletModel::UnlockContext::CopyFrom(const UnlockContext& rhs)
 bool WalletModel::getPubKey(const CKeyID &address, CPubKey& vchPubKeyOut) const
 {
     return wallet->GetPubKey(address, vchPubKeyOut);   
+}
+
+CWallet * WalletModel::getWallet()
+{
+    return wallet;
 }
 
 // returns a list of COutputs from COutPoints

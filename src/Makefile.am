@@ -57,6 +57,7 @@ BITCOIN_CORE_H = \
   coincontrol.h \
   compat.h \
   crypter.h \
+  lz4/lz4.h \
   db.h \
   hash.h \
   hashblock.h \
@@ -74,6 +75,7 @@ BITCOIN_CORE_H = \
   script.h \
   serialize.h \
   smessage.h \
+  stealth.h \
   sync.h \
   threadsafety.h \
   tinyformat.h \
@@ -100,6 +102,7 @@ BITCOIN_CORE_H = \
   sph_simd.h \
   sph_skein.h \
   sph_types.h \
+  xxhash/xxhash.h \
   pbkdf2.h 
 
 JSON_H = \
@@ -156,6 +159,7 @@ libbitcoin_wallet_a_SOURCES = \
   rpcsmessage.cpp \
   wallet.cpp \
   walletdb.cpp \
+  stealth.cpp \
   $(BITCOIN_CORE_H)
 
 # common: shared between bitcoind, and bitcoin-qt and non-server tools
@@ -168,6 +172,7 @@ libbitcoin_common_a_SOURCES = \
   protocol.cpp \
   smessage.cpp \
   script.cpp \
+  stealth.cpp \
   kernel.cpp \
   miner.cpp \
   sync.cpp \
@@ -188,6 +193,8 @@ libbitcoin_common_a_SOURCES = \
   shavite.c \
   simd.c \
   skein.c \
+  xxhash/xxhash.c \
+  lz4/lz4.c \
   $(BITCOIN_CORE_H)
 
 # util: shared between all executables.
