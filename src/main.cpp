@@ -55,8 +55,8 @@ int nCoinbaseMaturity = 40;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
-uint256 nBestChainTrust = 0;
-uint256 nBestInvalidTrust = 0;
+CBigNum bnBestChainTrust = 0;
+CBigNum bnBestInvalidTrust = 0;
 
 uint256 hashBestChain = 0;
 CBlockIndex* pindexBest = NULL;
@@ -1275,24 +1275,19 @@ bool IsInitialBlockDownload()
 
 void static InvalidChainFound(CBlockIndex* pindexNew)
 {
-    if (pindexNew->nChainTrust > nBestInvalidTrust)
+    if (pindexNew->bnChainTrust > bnBestInvalidTrust)
     {
-        nBestInvalidTrust = pindexNew->nChainTrust;
-        CTxDB().WriteBestInvalidTrust(CBigNum(nBestInvalidTrust));
+        bnBestInvalidTrust = pindexNew->bnChainTrust;
+        CTxDB().WriteBestInvalidTrust(bnBestInvalidTrust);
         uiInterface.NotifyBlocksChanged();
     }
 
-    uint256 nBestInvalidBlockTrust = pindexNew->nChainTrust - pindexNew->pprev->nChainTrust;
-    uint256 nBestBlockTrust = pindexBest->nHeight != 0 ? (pindexBest->nChainTrust - pindexBest->pprev->nChainTrust) : pindexBest->nChainTrust;
-
-    printf("InvalidChainFound: invalid block=%s  height=%d  trust=%s  blocktrust=%" PRId64 "  date=%s\n",
-      pindexNew->GetBlockHash().ToString().c_str(), pindexNew->nHeight,
-      CBigNum(pindexNew->nChainTrust).ToString().c_str(), nBestInvalidBlockTrust.Get64(),
-      DateTimeStrFormat("%x %H:%M:%S", pindexNew->GetBlockTime()).c_str());
-    printf("InvalidChainFound:  current best=%s  height=%d  trust=%s  blocktrust=%" PRId64 "  date=%s\n",
-      hashBestChain.ToString().c_str(), nBestHeight,
-      CBigNum(pindexBest->nChainTrust).ToString().c_str(),
-      nBestBlockTrust.Get64(),
+    printf("InvalidChainFound: invalid block=%s  height=%d  trust=%s  date=%s\n",
+      pindexNew->GetBlockHash().ToString().substr(0,20).c_str(), pindexNew->nHeight,
+      pindexNew->bnChainTrust.ToString().c_str(), DateTimeStrFormat("%x %H:%M:%S",
+      pindexNew->GetBlockTime()).c_str());
+    printf("InvalidChainFound:  current best=%s  height=%d  trust=%s  date=%s\n",
+      hashBestChain.ToString().substr(0,20).c_str(), nBestHeight, bnBestChainTrust.ToString().c_str(),
       DateTimeStrFormat("%x %H:%M:%S", pindexBest->GetBlockTime()).c_str());
 }
 
@@ -1954,7 +1949,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 
         // Reorganize is costly in terms of db load, as it works in a single db transaction.
         // Try to limit how much needs to be done inside
-        while (pindexIntermediate->pprev && pindexIntermediate->pprev->nChainTrust > pindexBest->nChainTrust)
+        while (pindexIntermediate->pprev && pindexIntermediate->pprev->bnChainTrust > pindexBest->bnChainTrust)
         {
             vpindexSecondary.push_back(pindexIntermediate);
             pindexIntermediate = pindexIntermediate->pprev;
@@ -2003,16 +1998,16 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     pindexBest = pindexNew;
     pblockindexFBBHLast = NULL;
     nBestHeight = pindexBest->nHeight;
-    nBestChainTrust = pindexNew->nChainTrust;
+    bnBestChainTrust = pindexNew->bnChainTrust;
     nTimeBestReceived = GetTime();
     nTransactionsUpdated++;
 
-    uint256 nBestBlockTrust = pindexBest->nHeight != 0 ? (pindexBest->nChainTrust - pindexBest->pprev->nChainTrust) : pindexBest->nChainTrust;
+    CBigNum bnBestBlockTrust = pindexBest->nHeight != 0 ? (pindexBest->bnChainTrust - pindexBest->pprev->bnChainTrust) : pindexBest->bnChainTrust;
 
     printf("SetBestChain: new best=%s  height=%d  trust=%s  blocktrust=%" PRId64 "  date=%s\n",
       hashBestChain.ToString().c_str(), nBestHeight,
-      CBigNum(nBestChainTrust).ToString().c_str(),
-      nBestBlockTrust.Get64(),
+      CBigNum(bnBestChainTrust).ToString().c_str(),
+      bnBestBlockTrust,
       DateTimeStrFormat("%x %H:%M:%S", pindexBest->GetBlockTime()).c_str());
 
     // Check the version of the last 100 blocks to see if we need to upgrade:
@@ -2133,7 +2128,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
     }
 
     // DeepOnion: compute chain trust score
-    pindexNew->nChainTrust = (pindexNew->pprev ? pindexNew->pprev->nChainTrust : 0) + pindexNew->GetBlockTrust();
+    pindexNew->bnChainTrust = (pindexNew->pprev ? pindexNew->pprev->bnChainTrust : 0) + pindexNew->GetBlockTrust();
 
     // DeepOnion: compute stake entropy bit for stake modifier
     if (!pindexNew->SetStakeEntropyBit(GetStakeEntropyBit()))
@@ -2167,7 +2162,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
         return false;
 
     // New best
-    if (pindexNew->nChainTrust > nBestChainTrust)
+    if (pindexNew->bnChainTrust > bnBestChainTrust)
         if (!SetBestChain(txdb, pindexNew))
             return false;
 
@@ -2359,7 +2354,7 @@ bool CBlock::AcceptBlock()
     return true;
 }
 
-uint256 CBlockIndex::GetBlockTrust() const
+CBigNum CBlockIndex::GetBlockTrust() const
 {
     CBigNum bnTarget;
     bnTarget.SetCompact(nBits);
@@ -2367,7 +2362,7 @@ uint256 CBlockIndex::GetBlockTrust() const
     if (bnTarget <= 0)
         return 0;
 
-    return ((CBigNum(1)<<256) / (bnTarget+1)).getuint256();
+     return (IsProofOfStake() ? (CBigNum(1)<<256) / (bnTarget+1) : 1);
 }
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired, unsigned int nToCheck)
