@@ -219,7 +219,15 @@ extern json_spirit::Value getblockbynumber(const json_spirit::Array& params, boo
 extern json_spirit::Value getcheckpoint(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getnetworkhashps(const json_spirit::Array& params, bool fHelp);
 
-extern json_spirit::Value smsgenable(const json_spirit::Array& params, bool fHelp); // in rpcsmessage.cpp
+extern json_spirit::Value getnewstealthaddress(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value liststealthaddresses(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value importstealthaddress(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value sendtostealthaddress(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value clearwallettransactions(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value scanforalltxns(const json_spirit::Array &params, bool fHelp);
+extern json_spirit::Value scanforstealthtxns(const json_spirit::Array &params, bool fHelp);
+
+extern json_spirit::Value smsgenable(const json_spirit::Array &params, bool fHelp); // in rpcsmessage.cpp
 extern json_spirit::Value smsgdisable(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsglocalkeys(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsgoptions(const json_spirit::Array& params, bool fHelp);
