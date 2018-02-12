@@ -2141,8 +2141,9 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             return DoS(100, error("CheckBlock() : more than one coinbase"));
 
     // Check coinbase timestamp
-    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime))
+    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime)) {
         return DoS(50, error("CheckBlock() : coinbase timestamp is too early"));
+    }
 
     if (IsProofOfStake())
     {
@@ -2619,12 +2620,11 @@ bool LoadBlockIndex(bool fAllowNew)
 
         if(fTestNet)
         {
-        	block.nTime    = 1517297195;
-            block.nNonce   = 395168;
+        	block.nTime    = 1499845000;
+            block.nNonce   = 8141;
         }
 
-        if(true) {
- 		// if (false && (block.GetHash() != hashGenesisBlock)) {
+ 		if (false && (block.GetHash() != hashGenesisBlock)) {
 			// This will figure out a valid hash and Nonce if you're
 			// creating a different genesis block:
 			uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
