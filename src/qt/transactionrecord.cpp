@@ -129,7 +129,14 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     sub.address = mapValue["to"];
                 }
 
-                int64_t nValue = txout.nValue;
+                int64 nValue = txout.nValue;
+
+                // Dont't show second part of stealth tx with amount zero and no address
+                if (nValue < MIN_TXOUT_AMOUNT)
+                {
+                    continue;
+                }
+
                 /* Add fee to first output */
                 if (nTxFee > 0)
                 {

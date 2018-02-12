@@ -126,8 +126,8 @@ void WalletModel::updateAddressBook(const QString &address, const QString &label
 bool WalletModel::validateAddress(const QString &address)
 {
     std::string sAddr = address.toStdString();
-    
-    if (sAddr.length() > 75)
+
+    if (sAddr.length() > STEALTH_LENGTH_TRESHOLD)
     {
         if (IsStealthAddress(sAddr)) {
             return true;
@@ -181,93 +181,86 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 ec_secret secretShared;
                 ec_point pkSendTo;
                 ec_point ephem_pubkey;
-                
+
                 if (GenerateRandomSecret(ephem_secret) != 0)
                 {
                     printf("GenerateRandomSecret failed.\n");
                     return Aborted;
-                }
-                
+                };
+
                 if (StealthSecret(ephem_secret, sxAddr.scan_pubkey, sxAddr.spend_pubkey, secretShared, pkSendTo) != 0)
                 {
                     printf("Could not generate receiving public key.\n");
                     return Aborted;
-                }
-                
+                };
+
                 CPubKey cpkTo(pkSendTo);
                 if (!cpkTo.IsValid())
                 {
                     printf("Invalid public key generated.\n");
                     return Aborted;
-                }
-                
+                };
+
                 CKeyID ckidTo = cpkTo.GetID();
-                
+
                 CBitcoinAddress addrTo(ckidTo);
-                
+
                 if (SecretToPublicKey(ephem_secret, ephem_pubkey) != 0)
                 {
                     printf("Could not generate ephem public key.\n");
                     return Aborted;
-                }
-                
+                };
+
                 if (fDebug)
                 {
                     printf("Stealth send to generated pubkey %" PRIszu ": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
                     printf("hash %s\n", addrTo.ToString().c_str());
                     printf("ephem_pubkey %" PRIszu ": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
-                }
-                
+                };
+
                 CScript scriptPubKey;
                 scriptPubKey.SetDestination(addrTo.Get());
-                
+
                 vecSend.push_back(make_pair(scriptPubKey, rcp.amount));
 
                 CScript scriptP = CScript() << OP_RETURN << ephem_pubkey;
-                    
+
                 if (rcp.narration.length() > 0)
                 {
                     std::string sNarr = rcp.narration.toStdString();
-                    
+
                     if (sNarr.length() > 24)
                     {
                         printf("Narration is too long.\n");
                         return NarrationTooLong;
                     };
-                    
+
                     std::vector<unsigned char> vchNarr;
-                    
+
                     SecMsgCrypter crypter;
                     crypter.SetKey(&secretShared.e[0], &ephem_pubkey[0]);
-                    
-                    if (!crypter.Encrypt((uint8_t*)&sNarr[0], sNarr.length(), vchNarr))
+
+                    if (!crypter.Encrypt((uint8_t *)&sNarr[0], sNarr.length(), vchNarr))
                     {
                         printf("Narration encryption failed.\n");
                         return Aborted;
                     };
-                    
+
                     if (vchNarr.size() > 48)
                     {
                         printf("Encrypted narration is too long.\n");
                         return Aborted;
                     };
-                    
+
                     if (vchNarr.size() > 0)
                         scriptP = scriptP << OP_RETURN << vchNarr;
-                    
-                    int pos = vecSend.size()-1;
+
+                    int pos = vecSend.size() - 1;
                     mapStealthNarr[pos] = sNarr;
                 };
-                
+
                 vecSend.push_back(make_pair(scriptP, 0));
-                
-                continue;
-            }
-            else
-            {
-                printf("Couldn't parse stealth address!\n");		
-                return Aborted;		
-            } // else drop through to normal
+            }; // else drop through to normal
         }
 
         CScript scriptPubKey;
@@ -298,12 +291,12 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         CReserveKey keyChange(wallet);
         int64 nFeeRequired = 0;
         bool fCreated = wallet->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired);
-        
+
         std::map<int, std::string>::iterator it;
         for (it = mapStealthNarr.begin(); it != mapStealthNarr.end(); ++it)
         {
             int pos = it->first;
-            
+
             char key[64];
             if (snprintf(key, sizeof(key), "n_%u", pos) < 1)
             {
@@ -312,7 +305,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             };
             wtx.mapValue[key] = it->second;
         };
-        
+
         if(!fCreated)
         {
             if((total + nFeeRequired) > wallet->GetBalance())
@@ -347,7 +340,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             } else
             {
                 std::map<CTxDestination, std::string>::iterator mi = wallet->mapAddressBook.find(dest);
-                
+
                 // Check if we have a new address or an updated label
                 if (mi == wallet->mapAddressBook.end() || mi->second != strLabel)
                 {

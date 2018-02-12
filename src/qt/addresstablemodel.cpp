@@ -355,7 +355,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
 
     if(type == Send)
     {
-        if (strAddress.length() > 75)
+        if (strAddress.length() > STEALTH_LENGTH_TRESHOLD)
         {
             CStealthAddress sxAddr;
             if (!sxAddr.SetEncoded(strAddress))
@@ -470,8 +470,8 @@ QString AddressTableModel::labelForAddress(const QString &address) const
     {
         LOCK(wallet->cs_wallet);
         std::string sAddr = address.toStdString();
-        
-        if (sAddr.length() > 75)
+
+        if (sAddr.length() > STEALTH_LENGTH_TRESHOLD)
         {
             CStealthAddress sxAddr;
             if (!sxAddr.SetEncoded(sAddr))

@@ -32,6 +32,8 @@ class CCoinControl;
 typedef std::map<CKeyID, CStealthKeyMetadata> StealthKeyMetaMap;
 typedef std::map<std::string, std::string> mapValue_t;
 
+static const int STEALTH_LENGTH_TRESHOLD = 75;
+
 /** (client) version numbers for particular wallet features */
 enum WalletFeature
 {
@@ -193,8 +195,8 @@ public:
     int64_t GetImmatureBalance() const;
     int64_t GetStake() const;
     int64_t GetNewMint() const;
-    bool CreateTransaction(const std::vector<std::pair<CScript, int64> >& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet);
-    bool CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet);
+    bool CreateTransaction(const std::vector<std::pair<CScript, int64> > &vecSend, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet);
+    bool CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string &sNarr, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet);
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey);
 
     bool GetStakeWeight(const CKeyStore& keystore, uint64_t& nMinWeight, uint64_t& nMaxWeight, uint64_t& nWeight);

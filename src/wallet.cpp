@@ -1396,13 +1396,13 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
     BOOST_FOREACH (const PAIRTYPE(CScript, int64)& s, vecSend)
     {
         if (nValue < 0) {
-	    printf("CreateTransaction() : nValue < 0 \n");
+	        printf("CreateTransaction() : nValue < 0 \n");
             return false;
-	}
+	    }
         nValue += s.second;
     }
     if (vecSend.empty() || nValue < 0) {
-	printf("CreateTransaction() : vecSend is empty or nValue < 0 \n");
+	    printf("CreateTransaction() : vecSend is empty or nValue < 0 \n");
         return false;
     }
 
@@ -1426,15 +1426,15 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
                 // vouts to the payees
                 BOOST_FOREACH (const PAIRTYPE(CScript, int64)& s, vecSend)
                 {
-			wtxNew.vout.push_back(CTxOut(s.second, s.first));
-		}
+			        wtxNew.vout.push_back(CTxOut(s.second, s.first));
+		        }
                 // Choose coins to use
                 set<pair<const CWalletTx*,unsigned int> > setCoins;
                 int64 nValueIn = 0;
                 if (!SelectCoins(nTotalValue, wtxNew.nTime, setCoins, nValueIn)) {
-		    printf("CreateTransaction() : SelectCoins Failed \n");
+		            printf("CreateTransaction() : SelectCoins Failed \n");
                     return false;
-		}
+		        }
                 BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
                 {
                     int64 nCredit = pcoin.first->vout[pcoin.second].nValue;
@@ -1505,16 +1505,16 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
                 int nIn = 0;
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
                     if (!SignSignature(*this, *coin.first, wtxNew, nIn++)) {
-			printf("CreateTransaction() : Sign Signatue Failed \n");
+			            printf("CreateTransaction() : Sign Signatue Failed \n");
                         return false;
-		    }
+		            }
 
                 // Limit size
                 unsigned int nBytes = ::GetSerializeSize(*(CTransaction*)&wtxNew, SER_NETWORK, PROTOCOL_VERSION);
                 if (nBytes >= MAX_BLOCK_SIZE_GEN/5) {
-		    printf("CreateTransaction() : Transaction too large \n");
-                    return false;
-		}
+		                printf("CreateTransaction() : Transaction too large \n");
+                        return false;
+		            }
                 dPriority /= nBytes;
 
                 // Check that enough fee is included
@@ -1890,7 +1890,7 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
     if (narr.size() > 0) {
         scriptP = scriptP << OP_RETURN << narr;
     }
-        vecSend.push_back(make_pair(scriptP, nTransactionFee));
+    vecSend.push_back(make_pair(scriptP, nTransactionFee));
 
     // -- shuffle inputs, change output won't mix enough as it must be not fully random for plantext narrations
     std::random_shuffle(vecSend.begin(), vecSend.end());
