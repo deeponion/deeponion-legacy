@@ -268,6 +268,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/init.h \
     src/mruset.h \
     src/stealth.h \
+	src/openssl_compat.h \
     src/json/json_spirit_writer_template.h \
     src/json/json_spirit_writer.h \
     src/json/json_spirit_value.h \
