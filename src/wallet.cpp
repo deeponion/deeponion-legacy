@@ -1505,7 +1505,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
                 int nIn = 0;
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
                     if (!SignSignature(*this, *coin.first, wtxNew, nIn++)) {
-			            printf("CreateTransaction() : Sign Signatue Failed \n");
+			            printf("CreateTransaction() : Sign Signature Failed \n");
                         return false;
 		            }
 
