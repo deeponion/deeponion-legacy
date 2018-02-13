@@ -1207,6 +1207,13 @@ static const char *strMainNetOnionSeed[][1] = {
 	{NULL}
 };
 
+static const char *strTestNetOnionSeed[][1] = {
+	{ "h7daoyqq4pqgfdtu.onion" },
+	{ "ut7sroqvi6aonro3.onion" },
+	{ "734d6h5tnplvcxel.onion" },
+	{NULL}
+};
+
 void ThreadDNSAddressSeed(void* parg)
 {
     // Make this thread recognisable as the DNS seeding thread
@@ -1287,7 +1294,8 @@ void ThreadOnionSeed2(void* parg)
 {
     printf("ThreadOnionSeed started\n");
 
-    static const char *(*strOnionSeed)[1] = strMainNetOnionSeed;
+    static const char *(*strOnionSeed)[1] = fTestNet ? strTestNetOnionSeed : strMainNetOnionSeed;
+    
     int found = 0;
 
     printf("Loading addresses from .onion seeds\n");

@@ -148,8 +148,11 @@ int main(int argc, char *argv[])
     // as it is used to locate QSettings)
     app.setOrganizationName("DeepOnion");
     //XXX app.setOrganizationDomain("");
-    if(GetBoolArg("-testnet")) // Separate UI settings for testnet
+    bool isTestNet = false;
+    if(GetBoolArg("-testnet")) { // Separate UI settings for testnet
         app.setApplicationName("DeepOnion-Qt-testnet");
+        isTestNet = true;
+    }
     else
         app.setApplicationName("DeepOnion-Qt");
 
@@ -200,8 +203,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-
-    QSplashScreen splash(QPixmap(":/images/splash"), 0);
+    QSplashScreen splash(QPixmap(GetBoolArg("-testnet") ? ":/images/splash_testnet" : ":/images/splash"), 0);
 
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min"))
     {
