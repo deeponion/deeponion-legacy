@@ -669,7 +669,10 @@ void ThreadTorNet2(void* parg) {
     argv.push_back("--HiddenServiceDir");
     argv.push_back((tor_dir / "onion").string());
     argv.push_back("--HiddenServicePort");
-    argv.push_back("17570");
+    if(fTestNet)
+    	argv.push_back("26550");
+    else
+    	argv.push_back("17570");
 
     if (clientTransportPlugin) {
       argv.push_back("--ClientTransportPlugin");
