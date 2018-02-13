@@ -1464,7 +1464,6 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
     switch (whichTypeRet)
     {
     case TX_NONSTANDARD:
-        return false;
     case TX_NULL_DATA:
         return false;
     case TX_PUBKEY:
