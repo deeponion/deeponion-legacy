@@ -39,6 +39,11 @@ build with autotools:
     
 ISSUES
 ======
+
+Debian 9: 
+
 It has been reported that under Debian 9 the installation of libssl1.1-dev leads to compilation errors. If you experience such issues, put libssl1.0-dev into your install list.
 
+Ubuntu 14.04:
 
+If you have problems with boost libraries visit this link for a possible solution: https://github.com/deeponion/deeponion/issues/63#issuecomment-365329304
