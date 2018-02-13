@@ -186,20 +186,20 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 {
                     printf("GenerateRandomSecret failed.\n");
                     return Aborted;
-                };
+                }
 
                 if (StealthSecret(ephem_secret, sxAddr.scan_pubkey, sxAddr.spend_pubkey, secretShared, pkSendTo) != 0)
                 {
                     printf("Could not generate receiving public key.\n");
                     return Aborted;
-                };
+                }
 
                 CPubKey cpkTo(pkSendTo);
                 if (!cpkTo.IsValid())
                 {
                     printf("Invalid public key generated.\n");
                     return Aborted;
-                };
+                }
 
                 CKeyID ckidTo = cpkTo.GetID();
 
@@ -209,14 +209,14 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 {
                     printf("Could not generate ephem public key.\n");
                     return Aborted;
-                };
+                }
 
                 if (fDebug)
                 {
                     printf("Stealth send to generated pubkey %" PRIszu ": %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
                     printf("hash %s\n", addrTo.ToString().c_str());
                     printf("ephem_pubkey %" PRIszu ": %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
-                };
+                }
 
                 CScript scriptPubKey;
                 scriptPubKey.SetDestination(addrTo.Get());
@@ -260,7 +260,14 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                 };
 
                 vecSend.push_back(make_pair(scriptP, 0));
-            }; // else drop through to normal
+
+                continue;
+            }
+            else
+            {
+                printf("Couldn't parse stealth address!\n");
+                return Aborted;
+            }
         }
 
         CScript scriptPubKey;
