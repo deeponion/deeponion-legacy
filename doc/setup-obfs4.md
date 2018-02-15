@@ -8,6 +8,21 @@ To run the Wallet with obfs4 enabled one must install the *obfs4proxy* [package]
 sudo apt-get install obfs4proxy
 ```
 
+#### Activate obfs4 functionality in DeepOnion.conf
+
+Open your *DeepOnion.conf* and add those two lines:
+
+```
+torplugin=obfs4
+torpluginpath=OBFS4PROXY_PATH (e.g. c:\bin\obfs4proxy.exe or /usr/bin/obfs4proxy)
+```
+
+To find the full path of the obfs4proxy executable you can also use those commands under Windows respective Linux/Mac:
+
+`where obfs4proxy.exe`
+
+`which obfs4proxy`
+
 #### Find available Bridges
 
 Visit this [website](https://bridges.torproject.org/bridges) to get a list of Bridges which you'll insert into the *torrc* file under your *datadir*.
@@ -34,6 +49,10 @@ Bridge 80.92.79.70:80 312D64274C29156005843EECB19C6865FA3CC10C
 Bridge 52.19.30.6:8443 FC5D6558344479BBB10E8638CC8CEB8BA6E32DAD
 Bridge 178.63.28.14:443 88CB40E536DD6F6775626E6A3BCC5D9C0B7BAFEA
 ```
+
+If you're editing this file under Windows, please take care of saving it as **torrc** only. Usually, Windows appends a file extension, like *txt*, which must be avoided. Therefore it's recommended to use an editor like [Notepad++](https://notepad-plus-plus.org/download/v7.5.4.html). On saving the file you can select the option "All files" to save with the file name only.
+
+![save-notepad](https://img3.picload.org/image/ddpclrrr/notepad.png)
 
 Start your wallet, or daemon if running *headless*, and trace your tor's *logfile* with:
 

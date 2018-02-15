@@ -31,6 +31,10 @@ extern "C" { int tor_main(int argc, char *argv[]); }
 
 static const int MAX_OUTBOUND_CONNECTIONS = 16;
 
+#ifndef MSG_NOSIGNAL
+	#define MSG_NOSIGNAL 0x4000 //Do not generate SIGPIPE.
+#endif
+
 void ThreadMessageHandler2(void* parg);
 void ThreadSocketHandler2(void* parg);
 void ThreadOpenConnections2(void* parg);
@@ -609,19 +613,38 @@ static char *convert_str(const std::string &s) {
     return pc;
 }
 
+void SetupPluggableTransport(boost::optional<std::string>& plugin, struct stat* sb) {
+    std::string torPlugin = GetArg("-torplugin", "");
+    std::string torPluginPath = GetArg("-torpluginpath", "");
+    if (torPlugin == "meek") {
+        printf("Using Tor with Pluggable Transport => MEEK\n");
+        #ifdef WIN32
+        if (stat("meek-client.exe", sb) == 0 && (*sb).st_mode & S_IXUSR) {
+            plugin = std::string("meek exec ") + std::string(torPluginPath);
+        }
+        #else
+        if ((stat("meek-client", sb) == 0 && (*sb).st_mode & S_IXUSR) || !std::system("which meek-client")) {
+            plugin = std::string("meek exec ") + std::string(torPluginPath);
+        }
+        #endif
+    } else if (torPlugin == "obfs4"){
+        printf("Using Tor with Pluggable Transport => OBFS4\n");
+        #ifdef WIN32
+        if (stat("obfs4proxy.exe", sb) == 0 && (*sb).st_mode & S_IXUSR) {
+            plugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        }
+        #else
+        if ((stat("obfs4proxy", sb) == 0 && (*sb).st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
+            plugin = std::string("obfs4 exec ") + std::string(torPluginPath);
+        }
+        #endif
+    }
+}
+
 void ThreadTorNet2(void* parg) {
     boost::optional<std::string> clientTransportPlugin;
     struct stat sb;
-
-    #ifdef WIN32
-    if (stat("obfs4proxy.exe", &sb) == 0 && sb.st_mode & S_IXUSR) {
-       clientTransportPlugin = "obfs4 exec obfs4proxy.exe";
-    }
-    #else
-    if ((stat("obfs4proxy", &sb) == 0 && sb.st_mode & S_IXUSR) || !std::system("which obfs4proxy")) {
-       clientTransportPlugin = "obfs4 exec obfs4proxy";
-    }
-    #endif
+    SetupPluggableTransport(clientTransportPlugin, &sb);
 
     fs::path tor_dir = GetDataDir() / "tor";
     fs::create_directory(tor_dir);
@@ -646,10 +669,12 @@ void ThreadTorNet2(void* parg) {
     argv.push_back("--HiddenServiceDir");
     argv.push_back((tor_dir / "onion").string());
     argv.push_back("--HiddenServicePort");
-    argv.push_back("17570");
+    if(fTestNet)
+    	argv.push_back("26550");
+    else
+    	argv.push_back("17570");
 
     if (clientTransportPlugin) {
-      LogPrintf("Using external obfs4proxy as ClientTransportPlugin.\nSpecify bridges in %s\n", torrc.c_str());
       argv.push_back("--ClientTransportPlugin");
       argv.push_back(*clientTransportPlugin);
       argv.push_back("--UseBridges");
@@ -905,7 +930,7 @@ void ThreadSocketHandler2(void* parg)
 
                     if (nPos > ReceiveBufferSize()) {
                         if (!pnode->fDisconnect)
-                            printf("socket recv flood control disconnect (%"PRIszu" bytes)\n", vRecv.size());
+                            printf("socket recv flood control disconnect (%" PRIszu " bytes)\n", vRecv.size());
                         pnode->CloseSocketDisconnect();
                     }
                     else {
@@ -1053,7 +1078,11 @@ void ThreadMapPort2(void* parg)
 #else
     /* miniupnpc 1.6 */
     int error = 0;
+#ifdef MAC_OSX
+    devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, 0, &error);
+#else
     devlist = upnpDiscover(2000, multicastif, minissdpdpath, 0, 0, &error);
+#endif
 #endif
 
     struct UPNPUrls urls;
@@ -1178,6 +1207,13 @@ static const char *strMainNetOnionSeed[][1] = {
 	{NULL}
 };
 
+static const char *strTestNetOnionSeed[][1] = {
+	{ "h7daoyqq4pqgfdtu.onion" },
+	{ "ut7sroqvi6aonro3.onion" },
+	{ "734d6h5tnplvcxel.onion" },
+	{NULL}
+};
+
 void ThreadDNSAddressSeed(void* parg)
 {
     // Make this thread recognisable as the DNS seeding thread
@@ -1258,7 +1294,8 @@ void ThreadOnionSeed2(void* parg)
 {
     printf("ThreadOnionSeed started\n");
 
-    static const char *(*strOnionSeed)[1] = strMainNetOnionSeed;
+    static const char *(*strOnionSeed)[1] = fTestNet ? strTestNetOnionSeed : strMainNetOnionSeed;
+    
     int found = 0;
 
     printf("Loading addresses from .onion seeds\n");
@@ -1299,7 +1336,7 @@ void DumpAddresses()
     CAddrDB adb;
     adb.Write(addrman);
 
-    printf("Flushed %d addresses to peers.dat  %"PRId64"ms\n",
+    printf("Flushed %d addresses to peers.dat  %" PRId64 "ms\n",
            addrman.size(), GetTimeMillis() - nStart);
 }
 
