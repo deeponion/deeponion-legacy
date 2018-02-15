@@ -16,7 +16,7 @@ First get the dependencies:
 
     apt-get update
     apt-get upgrade
-    apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libboost-all-dev
+    apt-get install build-essential libtool autotools-dev autoconf automake pkg-config libssl-dev libboost-all-dev bsdmainutils
     apt-get install libqrencode-dev libminiupnpc-dev libevent-dev libcap-dev libseccomp-dev git
 
 
@@ -36,5 +36,14 @@ build with autotools:
     ./autogen.sh
     ./configure --with-gui=qt5    (if you want to build daemon, use --without-gui)
     make
+    
+ISSUES
+======
 
+Debian 9: 
 
+It has been reported that under Debian 9 the installation of libssl1.1-dev leads to compilation errors. If you experience such issues, put libssl1.0-dev into your install list.
+
+Ubuntu 14.04:
+
+If you have problems with boost libraries visit this link for a possible solution: https://github.com/deeponion/deeponion/issues/63#issuecomment-365329304

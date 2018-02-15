@@ -3,13 +3,6 @@
 *.exe
 DeepOnion-qt
 DeepOniond
-src/bitcoin
-src/bitcoind
-src/bitcoin-cli
-src/bitcoin-tx
-src/test/test_bitcoin
-src/test/test_bitcoin_fuzzy
-src/qt/test/test_bitcoin-qt
 
 # autoreconf
 Makefile.in
@@ -32,13 +25,10 @@ config.log
 config.status
 configure
 libtool
-src/config/bitcoin-config.h
-src/config/bitcoin-config.h.in
+src/config/deeponion-config.h
 src/config/stamp-h1
 share/setup.nsi
 share/qt/Info.plist
-
-src/univalue/gen
 
 src/qt/*.moc
 src/qt/moc_*.cpp
@@ -76,13 +66,10 @@ src/qt/test/moc*.cpp
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
-bitcoin-qt
-Bitcoin-Qt.app
 background.tiff*
 
 # Unit-tests
 Makefile.test
-bitcoin-qt_test
 
 # Resources cpp
 qrc_*.cpp
@@ -122,4 +109,3 @@ deeponion-qt_plugin_import.cpp
 object_script.DeepOnion-qt.Debug
 object_script.DeepOnion-qt.Release
 release/
-

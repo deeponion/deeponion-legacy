@@ -23,6 +23,10 @@ static CCriticalSection cs_proxyInfos;
 int nConnectTimeout = 5000;
 bool fNameLookup = false;
 
+#ifndef MSG_NOSIGNAL
+#define MSG_NOSIGNAL 0x4000 //Do not generate SIGPIPE.
+#endif
+
 static const unsigned char pchIPv4[12] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0xff, 0xff };
 
 enum Network ParseNetwork(std::string net) {
