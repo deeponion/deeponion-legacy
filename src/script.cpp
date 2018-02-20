@@ -1402,6 +1402,11 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                 if (vch1.size() > MAX_OP_RETURN_RELAY)
                     break;
             }
+            else if (opcode2 == OP_RETURN)
+            {
+                typeRet = TX_NULL_DATA;
+                return true;
+            }
             else if (opcode1 != opcode2 || vch1 != vch2)
             {
                 // Others must match exactly
