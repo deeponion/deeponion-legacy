@@ -1,6 +1,7 @@
 #ifndef RPCCONSOLE_H
 #define RPCCONSOLE_H
-
+#include <QCompleter>
+#include <QWidget>
 #include <QDialog>
 
 namespace Ui {
@@ -59,7 +60,7 @@ private:
     ClientModel *clientModel;
     QStringList history;
     int historyPtr;
-
+    QCompleter *autoCompleter;
     void startExecutor();
 };
 
