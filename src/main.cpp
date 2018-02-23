@@ -2010,12 +2010,12 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
         const CBlockIndex* pindex = pindexBest;
         for (int i = 0; i < 100 && pindex != NULL; i++)
         {
-            if (pindex->nVersion > CBlock::CURRENT_VERSION)
+            if (pindex->nVersion > BLOCK_VERSION_STEALTH_ADDRESS)
                 ++nUpgraded;
             pindex = pindex->pprev;
         }
         if (nUpgraded > 0)
-            printf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, CBlock::CURRENT_VERSION);
+            printf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, BLOCK_VERSION_STEALTH_ADDRESS);
         if (nUpgraded > 100/2)
             // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
             strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
@@ -2314,6 +2314,13 @@ bool CBlock::AcceptBlock()
 
     if (CheckpointsMode == Checkpoints::ADVISORY && !cpSatisfies)
         strMiscWarning = _("WARNING: syncronized checkpoint violation detected, but skipped!");
+
+    if (nHeight > SWITCH_BLOCK_STEALTH_ADDRESS
+        || nVersion != BLOCK_VERSION_DEFAULT) {
+            if (nHeight <= SWITCH_BLOCK_STEALTH_ADDRESS
+                || nVersion != BLOCK_VERSION_STEALTH_ADDRESS)
+            return error("AcceptBlock(): rejected nVersion");
+    }
 
     // Enforce rule that the coinbase starts with serialized block height
     CScript expect = CScript() << nHeight;

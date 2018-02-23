@@ -36,6 +36,7 @@ static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
+static const int SWITCH_BLOCK_STEALTH_ADDRESS = 400000;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -811,9 +812,13 @@ public:
 
 };
 
-
-
-
+enum
+{
+    BLOCK_VERSION_UNKNOWN         = 0,
+    BLOCK_VERSION_DEFAULT         = 6,
+    BLOCK_VERSION_STEALTH_ADDRESS = 7,
+    BLOCK_VERSION_STEALTH_STAKING = 8, //TODO
+};
 
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
@@ -829,26 +834,28 @@ class CBlock
 {
 public:
     // header
-    static const int CURRENT_VERSION=6;
-    int nVersion;
-    uint256 hashPrevBlock;
-    uint256 hashMerkleRoot;
-    unsigned int nTime;
-    unsigned int nBits;
-    unsigned int nNonce;
+  int nVersion;
+  uint256 hashPrevBlock;
+  uint256 hashMerkleRoot;
+  unsigned int nTime;
+  unsigned int nBits;
+  unsigned int nNonce;
 
-    // network and disk
-    std::vector<CTransaction> vtx;
+  // network and disk
+  std::vector<CTransaction> vtx;
 
-    // DeepOnion: block signature - signed by one of the coin base txout[N]'s owner
-    std::vector<unsigned char> vchBlockSig;
+  // DeepOnion: block signature - signed by one of the coin base txout[N]'s owner
+  std::vector<unsigned char> vchBlockSig;
 
-    // memory only
-    mutable std::vector<uint256> vMerkleTree;
+  // memory only
+  mutable std::vector<uint256> vMerkleTree;
 
-    // Denial-of-service detection:
-    mutable int nDoS;
-    bool DoS(int nDoSIn, bool fIn) const { nDoS += nDoSIn; return fIn; }
+  // Denial-of-service detection:
+  mutable int nDoS;
+  bool DoS(int nDoSIn, bool fIn) const
+  {
+      nDoS += nDoSIn;
+      return fIn; }
 
     CBlock()
     {
@@ -880,7 +887,7 @@ public:
 
     void SetNull()
     {
-        nVersion = CBlock::CURRENT_VERSION;
+        nVersion = nBestHeight >= SWITCH_BLOCK_STEALTH_ADDRESS ? BLOCK_VERSION_STEALTH_ADDRESS : BLOCK_VERSION_DEFAULT;
         hashPrevBlock = 0;
         hashMerkleRoot = 0;
         nTime = 0;
