@@ -76,7 +76,7 @@ Value getinfo(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
         throw runtime_error(
-            "getinfo [include_unconfirmed_balance=flase]\n"
+            "getinfo [include_unconfirmed_balance=false]\n"
             "Returns an object containing various state info."
             "include_unconfirmed_balance - if true balance will include unconfirmed transactions");
 
