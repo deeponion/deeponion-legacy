@@ -119,6 +119,12 @@ public:
      * @throws an exception (json_spirit::Value) when an error happens.
      */
     json_spirit::Value execute(const std::string &method, const json_spirit::Array &params) const;
+
+    /**
+    * Returns a list of registered commands
+    * @returns List of registered commands.
+    */
+    std::vector<std::string> listCommands() const;
 };
 
 extern const CRPCTable tableRPC;
