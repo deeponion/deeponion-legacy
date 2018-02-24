@@ -684,7 +684,7 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
         unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
 
         // Don't accept it if it can't get into a block
-        int64 txMinFee = tx.GetMinFee(1000, false, GMF_RELAY);
+        int64 txMinFee = tx.GetMinFee(1000, GMF_RELAY);
         if (nFees < txMinFee)
             return error("CTxMemPool::accept() : not enough fees %s, %" PRId64 " < %" PRId64,
                          hash.ToString().c_str(),
