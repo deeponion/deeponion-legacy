@@ -1327,8 +1327,7 @@ bool CTransaction::DisconnectInputs(CTxDB& txdb)
     return true;
 }
 
-int64 CTransaction::GetMinFee(unsigned int nBlockSize, bool fAllowFree,
-                              enum GetMinFee_mode mode) const
+int64 CTransaction::GetMinFee(unsigned int nBlockSize, enum GetMinFee_mode mode) const
 {
     // Base fee is either MIN_TX_FEE or MIN_RELAY_TX_FEE
     int64 nBaseFee = (mode == GMF_RELAY) ? MIN_RELAY_TX_FEE : MIN_TX_FEE;
