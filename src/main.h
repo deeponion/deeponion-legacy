@@ -578,7 +578,7 @@ public:
     {
         // Large (in bytes) low-priority (new, small-coin) transactions
         // need a fee.
-        return dPriority > COIN * 144 / 250;
+        return dPriority > COIN * 360 / 250;
     }
 
     int64 GetMinFee(unsigned int nBlockSize=1, enum GetMinFee_mode mode=GMF_BLOCK) const;
