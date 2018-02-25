@@ -114,7 +114,6 @@ CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake, int64_t* pFees)
     auto_ptr<CBlock> pblock(new CBlock());
     if (!pblock.get())
         return NULL;
-    pblock->nVersion = nBestHeight >= SWITCH_BLOCK_STEALTH_ADDRESS ? BLOCK_VERSION_STEALTH_ADDRESS : BLOCK_VERSION_DEFAULT;
     CBlockIndex* pindexPrev = pindexBest;
 
     // Create coinbase tx

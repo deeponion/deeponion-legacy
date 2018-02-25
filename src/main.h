@@ -36,7 +36,7 @@ static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
-static const int SWITCH_BLOCK_STEALTH_ADDRESS = fTestNet ? 15300 : 400000;
+static const int SWITCH_BLOCK_STEALTH_ADDRESS = 450000;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -574,7 +574,7 @@ public:
      */
     int64_t GetValueIn(const MapPrevTx& mapInputs) const;
 
-    int64 GetMinFee(unsigned int nBlockSize = 1, enum GetMinFee_mode mode = GMF_BLOCK) const;
+    int64 GetMinFee(unsigned int nBlockSize = 1, enum GetMinFee_mode mode = GMF_BLOCK, unsigned int nBytes = 0) const;
 
     bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
     {
@@ -805,14 +805,6 @@ public:
 
 };
 
-enum
-{
-    BLOCK_VERSION_UNKNOWN         = 0,
-    BLOCK_VERSION_DEFAULT         = 6,
-    BLOCK_VERSION_STEALTH_ADDRESS = 7,
-    BLOCK_VERSION_STEALTH_STAKING = 8, //TODO
-};
-
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
  * requirements.  When they solve the proof-of-work, they broadcast the block
@@ -827,6 +819,7 @@ class CBlock
 {
 public:
     // header
+    static const int CURRENT_VERSION=6;
   int nVersion;
   uint256 hashPrevBlock;
   uint256 hashMerkleRoot;
@@ -880,7 +873,7 @@ public:
 
     void SetNull()
     {
-        nVersion = nBestHeight >= SWITCH_BLOCK_STEALTH_ADDRESS ? BLOCK_VERSION_STEALTH_ADDRESS : BLOCK_VERSION_DEFAULT;
+        nVersion = CBlock::CURRENT_VERSION;
         hashPrevBlock = 0;
         hashMerkleRoot = 0;
         nTime = 0;
