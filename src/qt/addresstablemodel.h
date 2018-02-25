@@ -77,6 +77,8 @@ public:
 
     EditStatus getEditStatus() const { return editStatus; }
 
+    bool beforeSaSwitch() const;
+    
 private:
     WalletModel *walletModel;
     CWallet *wallet;

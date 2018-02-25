@@ -514,3 +514,11 @@ void AddressTableModel::emitDataChanged(int idx)
 {
     emit dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length()-1, QModelIndex()));
 }
+
+bool AddressTableModel::beforeSaSwitch() const
+{
+	if(wallet->GetBestBlockHeight() < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
+		return true;
+	
+	return false;
+}

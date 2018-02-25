@@ -59,6 +59,16 @@ void EditAddressDialog::setModel(AddressTableModel *model)
     mapper->addMapping(ui->labelEdit, AddressTableModel::Label);
     mapper->addMapping(ui->addressEdit, AddressTableModel::Address);
 	mapper->addMapping(ui->stealthCB, AddressTableModel::Type);
+	
+	// disable SA related widgets before switch point
+    if(model->beforeSaSwitch()) {
+    	ui->stealthCB->setEnabled(false);
+    	ui->stealthCB->setText("Stealth Address (disabled before SA switch-block)");
+    }
+    else {
+    	ui->stealthCB->setEnabled(true);
+    	ui->stealthCB->setText("Stealth Address");
+    }
 }
 
 void EditAddressDialog::loadRow(int row)
