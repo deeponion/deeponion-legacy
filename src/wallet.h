@@ -79,7 +79,7 @@ class CWallet : public CCryptoKeyStore
 {
 private:
     bool SelectCoinsSimple(int64_t nTargetValue, unsigned int nSpendTime, int nMinConf, std::set<std::pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64_t& nValueRet) const;
-    bool SelectCoins(int64 nTargetValue, unsigned int nSpendTime, std::set<std::pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64& nValueRet) const;
+    bool SelectCoins(int64 nTargetValue, unsigned int nSpendTime, std::set<std::pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64& nValueRet, const CCoinControl *coinControl=NULL) const;
 
     CWalletDB *pwalletdbEncryption;
 
@@ -196,8 +196,8 @@ public:
     int64_t GetImmatureBalance() const;
     int64_t GetStake() const;
     int64_t GetNewMint() const;
-    bool CreateTransaction(const std::vector<std::pair<CScript, int64> > &vecSend, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet);
-    bool CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string &sNarr, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet);
+    bool CreateTransaction(const std::vector<std::pair<CScript, int64> > &vecSend, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet, const CCoinControl *coinControl=NULL);
+    bool CreateTransaction(CScript scriptPubKey, int64_t nValue, std::string &sNarr, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet, const CCoinControl *coinControl=NULL);
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey);
 
     bool GetStakeWeight(const CKeyStore& keystore, uint64_t& nMinWeight, uint64_t& nMaxWeight, uint64_t& nWeight);
