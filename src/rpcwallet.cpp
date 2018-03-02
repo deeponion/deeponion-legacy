@@ -1444,6 +1444,7 @@ void ThreadCleanWalletPassphrase(void* parg)
         if (nWalletUnlockTime)
         {
             nWalletUnlockTime = 0;
+            pwalletMain->Lock();
         }
     }
     else
@@ -1549,6 +1550,7 @@ Value walletlock(const Array& params, bool fHelp)
 
     {
         LOCK(cs_nWalletUnlockTime);
+        pwalletMain->Lock();
         nWalletUnlockTime = 0;
     }
 

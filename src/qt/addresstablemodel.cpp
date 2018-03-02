@@ -79,7 +79,7 @@ public:
                                   QString::fromStdString(it->label),
                                   QString::fromStdString(it->Encoded()),
                                   true));
-            };
+            }
         }
         // qLowerBound() and qUpperBound() require our cachedAddressTable list to be sorted in asc order
         qSort(cachedAddressTable.begin(), cachedAddressTable.end(), AddressTableEntryLessThan());
@@ -372,7 +372,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                 {
                     editStatus = DUPLICATE_ADDRESS;
                     return QString();
-                };
+                }
                 
                 sxAddr.label = strLabel;
                 wallet->AddStealthAddress(sxAddr);
@@ -384,7 +384,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
             {
                 editStatus = INVALID_ADDRESS;
                 return QString();
-            };
+            }
             // Check for duplicate addresses
             {
                 LOCK(wallet->cs_wallet);
@@ -392,7 +392,7 @@ QString AddressTableModel::addRow(const QString &type, const QString &label, con
                 {
                     editStatus = DUPLICATE_ADDRESS;
                     return QString();
-                };
+                }
                 
                 wallet->SetAddressBookName(CBitcoinAddress(strAddress).Get(), strLabel);
             }
