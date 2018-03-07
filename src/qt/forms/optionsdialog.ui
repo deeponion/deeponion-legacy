@@ -334,6 +334,30 @@
        <string>&amp;Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Display">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_0_Display">
+        <item>
+         <widget class="QLabel" name="themeLabel">
+          <property name="text">
+           <string>Theme:</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::PlainText</enum>
+          </property>
+          <property name="buddy">
+           <cstring>theme</cstring>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QValueComboBox" name="theme">
+          <property name="toolTip">
+           <string>Wallet theme can be set here.</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_1_Display">
          <item>

@@ -67,6 +67,9 @@
 #include <QTextDocument>
 
 #include <iostream>
+#include <algorithm>
+#include <string>
+#include <c++/cstring>
 
 extern CWallet* pwalletMain;
 extern int64_t nLastCoinStakeSearchInterval;
@@ -107,8 +110,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
-    
-	qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: white; background-color: #313c62;} \
+
+    qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: white; background-color: #313c62;} \
 		QWidget {color:white; background-color: #313c62;} \
 		QMenu {color: white; background-color: #313c62; border-color: #313c62;} \
         QMainWindow {background-color: #313c62; border:none;font-family:'Open Sans,sans-serif';} \
@@ -124,11 +127,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QComboBox:hover, QPushButton:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #313c62;} \
 		QLabel {color:white; background-color: #313c62;} \
-		QToolBar {color:white; background-color: #313c62;} \
 		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid gray;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
-		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+        QToolBar {color:white; background-color: #313c62;} \
+		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px; width: 100px} \
+		QToolButton:selected {color:red; background-color: #1b202f; border: 1px solid gray; padding: 3px; width: 100px} \
 		QPushButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
 		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
 		QStatusBar {color:white; background-color: #1b202f; border: 1px solid gray;} \
@@ -136,7 +140,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QToolTip {color: white; border: 0px; background-color: #313c62; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #313c62;} \
 		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #313c62;}");
-
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -167,7 +170,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     // Create tabs
     overviewPage = new OverviewPage();
-	messagePage   = new MessagePage(this);
+	  messagePage   = new MessagePage(this);
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     transactionView = new TransactionView(this);
@@ -183,8 +186,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
     centralWidget = new QStackedWidget(this);
-    centralWidget->addWidget(overviewPage);;	
-	centralWidget->addWidget(messagePage);
+    centralWidget->addWidget(overviewPage);;
+	  centralWidget->addWidget(messagePage);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -205,15 +208,15 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     labelEncryptionIcon = new QLabel();
     labelStakingIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
-	labelOnionIcon = new QLabel();
+    labelOnionIcon = new QLabel();
     labelBlocksIcon = new QLabel();
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelStakingIcon);
     frameBlocksLayout->addStretch();
-	frameBlocksLayout->addWidget(labelOnionIcon);
-	frameBlocksLayout->addStretch();
+    frameBlocksLayout->addWidget(labelOnionIcon);
+    frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelConnectionsIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
@@ -253,7 +256,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     progressBar->setStyleSheet("color: white; background-color: #1b202f; border-color: #313c62;");
     progressBarLabel->setStyleSheet("color: white; background-color: #1b202f; border-color: #313c62;");
-    
+
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
@@ -297,10 +300,10 @@ void BitcoinGUI::createActions()
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
     overviewAction->setToolTip(tr("Show general overview of wallet"));
     overviewAction->setCheckable(true);
-    overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
+	  overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
-	
-	messageAction = new QAction(QIcon(":/icons/messaging"), tr("&Messages"), this);
+
+	  messageAction = new QAction(QIcon(":/icons/messaging"), tr("&Messages"), this);
     messageAction->setToolTip(tr("View and Send Encrypted messages"));
     messageAction->setCheckable(true);
     messageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
@@ -340,7 +343,7 @@ void BitcoinGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
-	connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
 
     quitAction = new QAction(QIcon(":/icons/quit"), tr("E&xit"), this);
@@ -366,7 +369,7 @@ void BitcoinGUI::createActions()
     encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
-    changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
+    //changeoptions PassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
     unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
@@ -392,11 +395,6 @@ void BitcoinGUI::createActions()
     connect(lockWalletAction, SIGNAL(triggered()), this, SLOT(lockWallet()));
     connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
-}
-
-void BitcoinGUI::changeStyleSheet()
-{
-    setStyleSheet(QInputDialog::getText(this, "Change Stylesheet", "Sheet", QLineEdit::Normal, styleSheet()));
 }
 
 void BitcoinGUI::createMenuBar()
@@ -444,7 +442,15 @@ void BitcoinGUI::createToolBars(QToolBar* toolbar)
     toolbar->addAction(unlockWalletAction);
     toolbar->addAction(lockWalletAction);
     toolbar->addAction(messageAction);
-	toolbar->addAction(exportAction);
+    toolbar->addAction(exportAction);
+
+
+	//Configure vertical display of the Actions in the Toolbar
+	toolbar->setOrientation(Qt::Vertical);
+	//Anchor the Toolbar in the Left area of the main window
+	addToolBar(Qt::LeftToolBarArea, toolbar);
+	//If we ever want to make the toolbar fixed
+	//toolbar->setMovable(false);
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -464,7 +470,7 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
 #endif
             if(trayIcon)
             {
-                trayIcon->setToolTip(tr("DeepOnion client") + QString(" ") + tr("[testnet]")); 
+                trayIcon->setToolTip(tr("DeepOnion client") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
             }
@@ -595,7 +601,9 @@ void BitcoinGUI::optionsClicked()
         return;
     OptionsDialog dlg;
     dlg.setModel(clientModel->getOptionsModel());
+    connect(&dlg, SIGNAL(finished(int)), this, SLOT(optionsDialogFinished(int)));
     dlg.exec();
+
 }
 
 void BitcoinGUI::aboutClicked()
@@ -1131,4 +1139,72 @@ void BitcoinGUI::updateOnionIcon()
 		labelOnionIcon->setPixmap(QIcon(":/icons/tor_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr(display.c_str()));
 	}
+}
+
+void BitcoinGUI::optionsDialogFinished (int result)
+{
+    if(result != QDialog::Accepted){
+       return;
+   }
+
+    if (QString::compare(clientModel->getOptionsModel()->getTheme(), new QString("blue"), Qt::CaseInsensitive)) {
+        qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: #525252; background-color: #F7F7F7;}\
+                MenuBar::item {color: #525252;}\
+                QMenuBar::item:hover, QMenuBar::item:selected {color: white; font-weight: bold; background-color: #1E335C;}\
+                QMenu {color: white; background-color: #1E335C;} \
+                QMainWindow {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #486EBA, stop: 1 #1E335C); border: none; font-family:'Open Sans,sans-serif';} \
+		QTableView {color:#525252; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
+		QHeaderView::section {color:red; background-color: #4266AD; } \
+		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
+		QLineEdit {color: #1b202f; background: #d7e6ff; selection-background-color: #d7e6ff;} \
+		QLineEdit:hover{border: 1px solid gray; background-color: #d7e6ff;} \
+		QTabWidget {color:yellow; background-color: #F7F7F7;} \
+		QTabWidget::pane {color:yellow; background-color: #F7F7F7; border: 1px solid gray;} \
+		QTabBar::tab {color:green; background-color: #F7F7F7; border: 1px solid gray; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
+		QComboBox:hover, QPushButton:hover {background-color: #1b202f;} \
+		QDialog {color:pink; background-color: #F7F7F7;} \
+		QLabel {color:white;} \
+		QTreeView { color: #525252; background-color:#3973ac; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: #525252; background-color: #3973ac; border: 1px solid gray;} \
+		QTreeView::item:hover {color: #525252; background-color: #79a6d2; border: 1px solid #0099cc;} \
+                QToolBar {color:white; background-color: white; border: 0px solid red;} \
+		QToolButton {color:#486EBA; background-color: #FFFFFF; border: 0px; padding: 3px; width: 100px} \
+		QToolButton:hover,QToolButton:pressed, QToolButton:selected  {color:#FFFFFF; background-color: #486EBA; border: 0px; padding: 3px; width: 100px} \
+		QPushButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QStatusBar {color:#70D882; background-color: #4D4D4D; border: 1px solid #4D4D4D;} \
+		QToolTip {color: #486EBA; border: 0px; background-color: #F7F7F7; opacity: 225;}");
+    } else {
+        qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: white; background-color: #313c62;} \
+		QWidget {color:white; background-color: #313c62;} \
+		QMenu {color: white; background-color: #313c62; border-color: #313c62;} \
+                QMainWindow {background-color: #313c62; border:none;font-family:'Open Sans,sans-serif';} \
+		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
+		QHeaderView::section {color:white; background-color: #313c62; } \
+		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
+		QLineEdit {color: #1b202f; background: #d7e6ff; selection-background-color: #d7e6ff;} \
+		QLineEdit:hover{border: 1px solid gray; background-color: #d7e6ff;} \
+		QTabWidget {color:white; background-color: #313c62;} \
+		QTabWidget::pane {color:white; background-color: #313c62; border: 1px solid gray;} \
+		QTabBar::tab {color:white; background-color: #313c62; border: 1px solid gray; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
+		QComboBox:hover, QPushButton:hover {background-color: #1b202f;} \
+		QDialog {color:white; background-color: #313c62;} \
+		QLabel {color:white; background-color: #313c62;} \
+		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid gray;} \
+		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
+                QToolBar {color:white; background-color: #313c62;} \
+		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px; width: 100px} \
+		QToolButton:selected {color:red; background-color: #1b202f; border: 1px solid gray; padding: 3px; width: 100px} \
+		QPushButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
+		QStatusBar {color:white; background-color: #1b202f; border: 1px solid gray;} \
+		QMenuBar {background-color: #313c62;} \
+		QToolTip {color: white; border: 0px; background-color: #313c62; opacity: 225;} \
+		QMenuBar::item {color: white; background-color: #313c62;} \
+		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #313c62;}");
+    }
+    
 }

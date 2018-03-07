@@ -80,6 +80,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
+    ui->theme->addItem(QString("(") + tr("default") + QString(")"), QVariant("default"));
+    ui->theme->addItem(QString("Blue"), QVariant("blue"));
     ui->unit->setModel(new BitcoinUnits(this));
 
     /* Widget-to-option mapper */
@@ -147,6 +149,7 @@ void OptionsDialog::setMapper()
 
     /* Display */
     mapper->addMapping(ui->lang, OptionsModel::Language);
+    mapper->addMapping(ui->theme, OptionsModel::Theme);
     mapper->addMapping(ui->unit, OptionsModel::DisplayUnit);
     mapper->addMapping(ui->displayAddresses, OptionsModel::DisplayAddresses);
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
