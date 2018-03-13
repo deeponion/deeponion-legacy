@@ -5,7 +5,6 @@ noinst_LIBRARIES += qt/libbitcoinqt.a
 QT_TS = \
   qt/locale/bitcoin_en.ts \
   qt/locale/bitcoin_fr.ts \
-  qt/locale/bitcoin_sc.ts \
   qt/locale/bitcoin_ru.ts 
   
 QT_FORMS_UI = \
