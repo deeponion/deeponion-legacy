@@ -104,6 +104,7 @@ const char* GetTxnOutputType(txnouttype t)
     case TX_PUBKEYHASH: return "pubkeyhash";
     case TX_SCRIPTHASH: return "scripthash";
     case TX_MULTISIG: return "multisig";
+    case TX_NULL_DATA: return "nulldata";
     }
     return NULL;
 }
@@ -252,6 +253,7 @@ const char* GetOpName(opcodetype opcode)
     }
 }
 
+
 static bool IsCanonicalPubKey(const valtype &vchPubKey) {
     if (vchPubKey.size() < 33)
         return error("Non-canonical public key: too short");
@@ -319,6 +321,7 @@ static bool IsCanonicalSignature(const valtype &vchSig) {
 
     return true;
 }
+
 
 bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, const CTransaction& txTo, unsigned int nIn, int nHashType)
 {
@@ -879,17 +882,17 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                         break;
 
                     case OP_MUL:
-                        if (!BN_mul(&bn, &bn1, &bn2, pctx))
+                        if (!BN_mul(bn.get(), bn1.getc(), bn2.getc(), pctx))
                             return false;
                         break;
 
                     case OP_DIV:
-                        if (!BN_div(&bn, NULL, &bn1, &bn2, pctx))
+                        if (!BN_div(bn.get(), NULL, bn1.getc(), bn2.getc(), pctx))
                             return false;
                         break;
 
                     case OP_MOD:
-                        if (!BN_mod(&bn, &bn1, &bn2, pctx))
+                        if (!BN_mod(bn.get(), bn1.getc(), bn2.getc(), pctx))
                             return false;
                         break;
 
@@ -1011,8 +1014,12 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                     // Drop the signature, since there's no way for a signature to sign itself
                     scriptCode.FindAndDelete(CScript(vchSig));
 
-                    bool fSuccess = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
-                        CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                    bool fSuccess = false;
+                    if(pindexBest->nHeight < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
+                        fSuccess = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
+                            CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                    else
+                    	fSuccess = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
 
                     popstack(stack);
                     popstack(stack);
@@ -1072,8 +1079,12 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                         valtype& vchPubKey = stacktop(-ikey);
 
                         // Check signature
-                        bool fOk = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
-                            CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                        bool fOk = false;
+                        if(pindexBest->nHeight < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
+                            fOk = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
+                                CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                        else
+                        	fOk = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
 
                         if (fOk)
                         {
@@ -1306,6 +1317,11 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
 
         // Sender provides N pubkeys, receivers provides M signatures
         mTemplates.insert(make_pair(TX_MULTISIG, CScript() << OP_SMALLINTEGER << OP_PUBKEYS << OP_SMALLINTEGER << OP_CHECKMULTISIG));
+
+        // Empty, provably prunable, data-carrying output
+        mTemplates.insert(make_pair(TX_NULL_DATA, CScript() << OP_RETURN));
+        mTemplates.insert(make_pair(TX_NULL_DATA, CScript() << OP_RETURN << OP_SMALLDATA));
+        mTemplates.insert(make_pair(TX_NULL_DATA, CScript() << OP_RETURN << OP_SMALLDATA << OP_RETURN << OP_SMALLDATA));
     }
 
     // Shortcut for pay-to-script-hash, which are more constrained than the other types:
@@ -1390,6 +1406,17 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
                 else
                     break;
             }
+            else if (opcode2 == OP_SMALLDATA)
+            {
+                // small pushdata, <= MAX_OP_RETURN_RELAY bytes
+                if (vch1.size() > MAX_OP_RETURN_RELAY)
+                    break;
+            }
+            else if (opcode2 == OP_RETURN)
+            {
+                typeRet = TX_NULL_DATA;
+                return true;
+            }
             else if (opcode1 != opcode2 || vch1 != vch2)
             {
                 // Others must match exactly
@@ -1452,6 +1479,7 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
     switch (whichTypeRet)
     {
     case TX_NONSTANDARD:
+    case TX_NULL_DATA:
         return false;
     case TX_PUBKEY:
         keyID = CPubKey(vSolutions[0]).GetID();
@@ -1474,6 +1502,7 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
         scriptSigRet << OP_0; // workaround CHECKMULTISIG bug
         return (SignN(vSolutions, keystore, hash, nHashType, scriptSigRet));
     }
+    
     return false;
 }
 
@@ -1482,6 +1511,7 @@ int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned c
     switch (t)
     {
     case TX_NONSTANDARD:
+    case TX_NULL_DATA:
         return -1;
     case TX_PUBKEY:
         return 1;
@@ -1497,10 +1527,15 @@ int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned c
     return -1;
 }
 
-bool IsStandard(const CScript& scriptPubKey)
+bool IsStandard(const CScript &scriptPubKey)
+{
+    txnouttype whichType;
+    return IsStandard(scriptPubKey, whichType);
+}
+
+bool IsStandard(const CScript &scriptPubKey, txnouttype &whichType)
 {
     vector<valtype> vSolutions;
-    txnouttype whichType;
     if (!Solver(scriptPubKey, whichType, vSolutions))
         return false;
 
@@ -1517,7 +1552,6 @@ bool IsStandard(const CScript& scriptPubKey)
 
     return whichType != TX_NONSTANDARD;
 }
-
 
 unsigned int HaveKeys(const vector<valtype>& pubkeys, const CKeyStore& keystore)
 {
@@ -1541,6 +1575,9 @@ public:
     bool operator()(const CNoDestination &dest) const { return false; }
     bool operator()(const CKeyID &keyID) const { return keystore->HaveKey(keyID); }
     bool operator()(const CScriptID &scriptID) const { return keystore->HaveCScript(scriptID); }
+    bool operator()(const CStealthAddress &stxAddr) const {
+        return stxAddr.scan_secret.size() == ec_secret_size;
+    }
 };
 
 bool IsMine(const CKeyStore &keystore, const CTxDestination &dest)
@@ -1559,6 +1596,7 @@ bool IsMine(const CKeyStore &keystore, const CScript& scriptPubKey)
     switch (whichType)
     {
     case TX_NONSTANDARD:
+    case TX_NULL_DATA:
         return false;
     case TX_PUBKEY:
         keyID = CPubKey(vSolutions[0]).GetID();
@@ -1609,6 +1647,10 @@ bool ExtractDestination(const CScript& scriptPubKey, CTxDestination& addressRet)
         addressRet = CScriptID(uint160(vSolutions[0]));
         return true;
     }
+    else if (whichType == TX_NULL_DATA)
+    {
+        return true;
+    }
     // Multisig txns have more than one address...
     return false;
 }
@@ -1642,6 +1684,10 @@ public:
             Process(script);
     }
 
+    void operator()(const CStealthAddress &stxAddr) {
+        CScript script;      
+    }
+
     void operator()(const CNoDestination &none) {}
 };
 
@@ -1657,6 +1703,12 @@ bool ExtractDestinations(const CScript& scriptPubKey, txnouttype& typeRet, vecto
     vector<valtype> vSolutions;
     if (!Solver(scriptPubKey, typeRet, vSolutions))
         return false;
+
+    if (typeRet == TX_NULL_DATA)
+    {
+        // This is data, not addresses
+        return false;
+    }
 
     if (typeRet == TX_MULTISIG)
     {
@@ -1847,6 +1899,7 @@ static CScript CombineSignatures(CScript scriptPubKey, const CTransaction& txTo,
     switch (txType)
     {
     case TX_NONSTANDARD:
+    case TX_NULL_DATA:
         // Don't know anything about this, assume bigger one is correct:
         if (sigs1.size() >= sigs2.size())
             return PushAll(sigs1);
@@ -2005,6 +2058,13 @@ public:
         script->clear();
         *script << OP_HASH160 << scriptID << OP_EQUAL;
         return true;
+    }
+
+    bool operator()(const CStealthAddress &stxAddr) const {
+        script->clear();
+        //*script << OP_HASH160 << scriptID << OP_EQUAL;
+        printf("TODO\n");
+        return false;
     }
 };
 

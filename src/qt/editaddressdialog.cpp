@@ -19,16 +19,25 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
     case NewReceivingAddress:
         setWindowTitle(tr("New receiving address"));
         ui->addressEdit->setEnabled(false);
+        ui->addressEdit->setVisible(false);
+        ui->addressEditLabel->setVisible(false);
+        ui->stealthCB->setEnabled(true);
+        ui->stealthCB->setVisible(true);
         break;
     case NewSendingAddress:
         setWindowTitle(tr("New sending address"));
+		ui->stealthCB->setVisible(false);
         break;
     case EditReceivingAddress:
         setWindowTitle(tr("Edit receiving address"));
         ui->addressEdit->setEnabled(false);
+		ui->addressEdit->setVisible(true);
+		ui->stealthCB->setEnabled(false);
+		ui->stealthCB->setVisible(true);
         break;
     case EditSendingAddress:
         setWindowTitle(tr("Edit sending address"));
+		ui->stealthCB->setVisible(false);
         break;
     }
 
@@ -44,12 +53,22 @@ EditAddressDialog::~EditAddressDialog()
 void EditAddressDialog::setModel(AddressTableModel *model)
 {
     this->model = model;
-    if(!model)
-        return;
-
+	if(!model)
+	    return;
     mapper->setModel(model);
     mapper->addMapping(ui->labelEdit, AddressTableModel::Label);
     mapper->addMapping(ui->addressEdit, AddressTableModel::Address);
+	mapper->addMapping(ui->stealthCB, AddressTableModel::Type);
+	
+	// disable SA related widgets before switch point
+    if(model->beforeSaSwitch()) {
+    	ui->stealthCB->setEnabled(false);
+    	ui->stealthCB->setText("Stealth Address (disabled before SA switch-block)");
+    }
+    else {
+    	ui->stealthCB->setEnabled(true);
+    	ui->stealthCB->setText("Stealth Address");
+    }
 }
 
 void EditAddressDialog::loadRow(int row)
@@ -61,15 +80,18 @@ bool EditAddressDialog::saveCurrentRow()
 {
     if(!model)
         return false;
-
     switch(mode)
     {
     case NewReceivingAddress:
     case NewSendingAddress:
+		{
+	    int typeInd  = ui->stealthCB->isChecked() ? AddressTableModel::AT_Stealth : AddressTableModel::AT_Normal;
         address = model->addRow(
                 mode == NewSendingAddress ? AddressTableModel::Send : AddressTableModel::Receive,
                 ui->labelEdit->text(),
-                ui->addressEdit->text());
+                ui->addressEdit->text(),
+				typeInd);
+		}
         break;
     case EditReceivingAddress:
     case EditSendingAddress:
@@ -86,12 +108,11 @@ void EditAddressDialog::accept()
 {
     if(!model)
         return;
-
     if(!saveCurrentRow())
     {
         switch(model->getEditStatus())
         {
-        case AddressTableModel::OK:
+		case AddressTableModel::OK:
             // Failed with unknown reason. Just reject.
             break;
         case AddressTableModel::NO_CHANGES:
@@ -117,7 +138,6 @@ void EditAddressDialog::accept()
                 tr("New key generation failed."),
                 QMessageBox::Ok, QMessageBox::Ok);
             break;
-
         }
         return;
     }

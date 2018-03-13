@@ -31,7 +31,10 @@ share/setup.nsi
 share/qt/Info.plist
 
 src/qt/*.moc
+src/qt/libbitcoinqt.a
 src/qt/moc_*.cpp
+src/qt/plugins/mrichtexteditor/moc_*
+src/qt/plugins/mrichtexteditor/ui_mrichtextedit.h
 src/qt/forms/ui_*.h
 
 src/qt/test/moc*.cpp
@@ -55,6 +58,7 @@ src/qt/test/moc*.cpp
 *.log
 *.trs
 *.dmg
+src/*.a
 
 *.json.h
 *.raw.h

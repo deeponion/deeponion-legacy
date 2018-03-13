@@ -27,6 +27,8 @@ class SendCoinsRecipient
 public:
     QString address;
     QString label;
+    QString narration;
+    int typeInd;
     qint64 amount;
 };
 
@@ -49,6 +51,7 @@ public:
         DuplicateAddress,
         TransactionCreationFailed, // Error returned when wallet is still locked
         TransactionCommitFailed,
+        NarrationTooLong,
         Aborted
     };
 
@@ -125,6 +128,7 @@ public:
     void lockCoin(COutPoint& output);
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
+    CWallet * getWallet();
 
 private:
     CWallet *wallet;

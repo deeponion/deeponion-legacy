@@ -35,6 +35,8 @@ static const int64_t MIN_TX_FEE = 100000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
+static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
+static const int SWITCH_BLOCK_STEALTH_ADDRESS = 450000;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -60,8 +62,8 @@ extern unsigned int nStakeMinAge;
 extern unsigned int nNodeLifespan;
 extern int nCoinbaseMaturity;
 extern int nBestHeight;
-extern uint256 nBestChainTrust;
-extern uint256 nBestInvalidTrust;
+extern CBigNum bnBestChainTrust;
+extern CBigNum bnBestInvalidTrust;
 extern uint256 hashBestChain;
 extern CBlockIndex* pindexBest;
 extern unsigned int nTransactionsUpdated;
@@ -81,8 +83,6 @@ extern int64_t nReserveBalance;
 extern int64_t nMinimumInputValue;
 extern bool fUseFastIndex;
 extern unsigned int nDerivationMethodIndex;
-
-extern bool fEnforceCanonical;
 
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
@@ -574,7 +574,7 @@ public:
      */
     int64_t GetValueIn(const MapPrevTx& mapInputs) const;
 
-    int64_t GetMinFee(unsigned int nBlockSize=1, enum GetMinFee_mode mode=GMF_BLOCK, unsigned int nBytes = 0) const;
+    int64 GetMinFee(unsigned int nBlockSize = 1, enum GetMinFee_mode mode = GMF_BLOCK, unsigned int nBytes = 0) const;
 
     bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
     {
@@ -689,9 +689,8 @@ protected:
     const CTxOut& GetOutputFor(const CTxIn& input, const MapPrevTx& inputs) const;
 };
 
-
-
-
+bool IsStandardTx(const CTransaction& tx);
+bool IsFinalTx(const CTransaction &tx, int nBlockHeight, int64_t nBlockTime);
 
 /** A transaction with a merkle branch linking it to the block chain. */
 class CMerkleTx : public CTransaction
@@ -806,10 +805,6 @@ public:
 
 };
 
-
-
-
-
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
  * requirements.  When they solve the proof-of-work, they broadcast the block
@@ -825,25 +820,28 @@ class CBlock
 public:
     // header
     static const int CURRENT_VERSION=6;
-    int nVersion;
-    uint256 hashPrevBlock;
-    uint256 hashMerkleRoot;
-    unsigned int nTime;
-    unsigned int nBits;
-    unsigned int nNonce;
+  int nVersion;
+  uint256 hashPrevBlock;
+  uint256 hashMerkleRoot;
+  unsigned int nTime;
+  unsigned int nBits;
+  unsigned int nNonce;
 
-    // network and disk
-    std::vector<CTransaction> vtx;
+  // network and disk
+  std::vector<CTransaction> vtx;
 
-    // DeepOnion: block signature - signed by one of the coin base txout[N]'s owner
-    std::vector<unsigned char> vchBlockSig;
+  // DeepOnion: block signature - signed by one of the coin base txout[N]'s owner
+  std::vector<unsigned char> vchBlockSig;
 
-    // memory only
-    mutable std::vector<uint256> vMerkleTree;
+  // memory only
+  mutable std::vector<uint256> vMerkleTree;
 
-    // Denial-of-service detection:
-    mutable int nDoS;
-    bool DoS(int nDoSIn, bool fIn) const { nDoS += nDoSIn; return fIn; }
+  // Denial-of-service detection:
+  mutable int nDoS;
+  bool DoS(int nDoSIn, bool fIn) const
+  {
+      nDoS += nDoSIn;
+      return fIn; }
 
     CBlock()
     {
@@ -1101,7 +1099,7 @@ public:
     CBlockIndex* pnext;
     unsigned int nFile;
     unsigned int nBlockPos;
-    uint256 nChainTrust; // DeepOnion: trust score of block chain
+    CBigNum bnChainTrust; // DeepOnion: trust score of block chain
     int nHeight;
 
     int64_t nMint;
@@ -1138,7 +1136,7 @@ public:
         nFile = 0;
         nBlockPos = 0;
         nHeight = 0;
-        nChainTrust = 0;
+        bnChainTrust = 0;
         nMint = 0;
         nMoneySupply = 0;
         nFlags = 0;
@@ -1163,7 +1161,7 @@ public:
         nFile = nFileIn;
         nBlockPos = nBlockPosIn;
         nHeight = 0;
-        nChainTrust = 0;
+        bnChainTrust = 0;
         nMint = 0;
         nMoneySupply = 0;
         nFlags = 0;
@@ -1212,7 +1210,7 @@ public:
         return (int64_t)nTime;
     }
 
-    uint256 GetBlockTrust() const;
+    CBigNum GetBlockTrust() const;
 
     bool IsInMainChain() const
     {
