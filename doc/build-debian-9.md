@@ -33,7 +33,9 @@ deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main
 deb http://ftp.de.debian.org/debian jessie-backports main
 ```    
 
-Exit and copy and save the [Bitcoin repository key](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xD46F45428842CE5E) ([ref](https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin)) as BTC.gpg in ~/Downloads, add to keyring and update the system:
+Exit and save the changes (Ctrl+x).
+
+Now go to [Bitcoin repository key](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xD46F45428842CE5E) ([ref](https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin)) copy the text, paste in a file and save as BTC.gpg in ~/Downloads, add to keyring and update the system:
 
 ```
 sudo apt-key add ~/Downloads/BTC.gpg
@@ -47,7 +49,7 @@ sudo apt install libdb4.8-dev libdb4.8++-dev libssl1.0 libssl1.0-dev
 
 #### Clone and compile DeepOnion
 
-Clone deeponion repository to persistent volume, as you would normally:
+Clone deeponion repository:
 
 ```
 cd 
