@@ -1,12 +1,16 @@
-DEBIAN 9 BUILD NOTES
-=====================
-
-Disclaimer: this guide has it's a modified version of this original guide: [DeepOnion in Tails persistent volume](https://gist.github.com/dragononcrypto/d3df54d72b23f7c1023876cc7264707e)
+### DEBIAN 9 STRETCH BUILD NOTES
 
 
-The following are commands needed to build on Debian from scratch (use sudo if you are not root). It is verified with Debian 8
+#### Disclaimer
 
-First get the dependencies:
+This guide has it's a modified version of this original guide: [DeepOnion in Tails persistent volume](https://gist.github.com/dragononcrypto/d3df54d72b23f7c1023876cc7264707e)
+
+
+The following are commands needed to build on Debian from scratch (use sudo if you are not root). It has been verified with Debian 9 Stretch
+
+#### Prepare the system
+
+First of all we need to get some dependencies:
 
 ``` 
 sudo apt update && sudo apt upgrade -y
@@ -29,8 +33,6 @@ deb http://ppa.launchpad.net/bitcoin/bitcoin/ubuntu xenial main
 deb http://ftp.de.debian.org/debian jessie-backports main
 ```    
 
-Exit and update the system:
-
 Exit and copy and save the [Bitcoin repository key](https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xD46F45428842CE5E) ([ref](https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin)) as BTC.gpg in ~/Downloads, add to keyring and update the system:
 
 ```
@@ -43,6 +45,8 @@ Install additional dependencies Berkeley 4.8++ and OpenSSL 1.0
 sudo apt install libdb4.8-dev libdb4.8++-dev libssl1.0 libssl1.0-dev
 ```
 
+#### Clone and compile DeepOnion
+
 Clone deeponion repository to persistent volume, as you would normally:
 
 ```
@@ -50,7 +54,7 @@ cd
 git clone --recursive https://github.com/deeponion/deeponion.git
 ```
 
-Build with autotools into the persistent volume:
+Build with autotools:
 
 ```
 cd deeponion
