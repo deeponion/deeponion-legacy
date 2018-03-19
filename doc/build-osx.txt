@@ -32,7 +32,7 @@ brew install qrencode [only use if building the Wallet UI]
 
 cd deeponion
 ./autogen.sh
-configure --with-gui=qt5 --disable-tests [or use --without-gui if only building the daemon]
+./configure --with-gui=qt5 --disable-tests [or use --without-gui if only building the daemon]
 make
 
 4. Outputs
