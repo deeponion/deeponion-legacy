@@ -1,0 +1,29 @@
+--- port/port_posix.h	2018-03-18 14:43:36.000000000 +0100
++++ port/port_posix2.h	2018-03-18 14:33:01.000000000 +0100
+@@ -8,7 +8,7 @@
+ #define STORAGE_LEVELDB_PORT_PORT_POSIX_H_
+ 
+ #undef PLATFORM_IS_LITTLE_ENDIAN
+-#if defined(OS_MACOSX)
++#if defined(__APPLE__) || defined(MAC_OSX)
+   #include <machine/endian.h>
+   #if defined(__DARWIN_LITTLE_ENDIAN) && defined(__DARWIN_BYTE_ORDER)
+     #define PLATFORM_IS_LITTLE_ENDIAN \
+@@ -50,7 +50,7 @@
+ #define PLATFORM_IS_LITTLE_ENDIAN (__BYTE_ORDER == __LITTLE_ENDIAN)
+ #endif
+ 
+-#if defined(OS_MACOSX) || defined(OS_SOLARIS) || defined(OS_FREEBSD) ||\
++#if defined(__APPLE__) || defined(OS_MACOSX) || defined(OS_SOLARIS) || defined(OS_FREEBSD) ||\
+     defined(OS_NETBSD) || defined(OS_OPENBSD) || defined(OS_DRAGONFLYBSD) ||\
+     defined(OS_ANDROID) || defined(OS_HPUX) || defined(CYGWIN)
+ // Use fread/fwrite/fflush on platforms without _unlocked variants
+@@ -65,7 +65,7 @@
+ #define fdatasync fsync
+ #endif
+ 
+-#if defined(OS_MACOSX)
++#if defined(OS_MACOSX) || defined(__APPLE__)
+ #define fdatasync(fd) fcntl(fd, F_FULLFSYNC, 0)
+ #endif
+ 
