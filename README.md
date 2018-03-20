@@ -1,3 +1,8 @@
+## Branch for MacOS
+
+**Read** [this tutorial](https://github.com/deeponion/deeponion/blob/macos/doc/build-macos.md) on how to build a working version for MacOS.
+
+
 ![alt text](https://image.ibb.co/mfR4R6/DO.png "DeepOnion")
 =====================================
 
