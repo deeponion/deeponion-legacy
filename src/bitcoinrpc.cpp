@@ -399,7 +399,7 @@ static string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
             "<HTML>\r\n"
             "<HEAD>\r\n"
             "<TITLE>Error</TITLE>\r\n"
-            "<META HTTP-EQUIV='Content-Type' CONTENT='text/html;  style="color:rgb(215,186,125)">\r\n"
+            "<META HTTP-EQUIV='Content-Type' CONTENT='text/html;  style=\"color:rgb(215,186,125)\">\r\n"
             "</HEAD>\r\n"
             "<BODY><H1>401 Unauthorized.</H1></BODY>\r\n"
             "</HTML>\r\n", rfc1123Time().c_str(), FormatFullVersion().c_str());
