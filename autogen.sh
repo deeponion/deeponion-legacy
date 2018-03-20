@@ -18,3 +18,6 @@ $PATCH -p0 < ../tor-or-am.patch
 $PATCH -p0 < ../tor-am.patch
 ./autogen.sh
 popd
+pushd src/leveldb
+$PATCH -p0 < ../../leveldb.patch
+popd
