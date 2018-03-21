@@ -4,6 +4,7 @@ Open a *Terminal*.
 
 ```
 git clone --recursive https://github.com/deeponion/deeponion.git
+cd deeponion
 git checkout macos
 ```
 
