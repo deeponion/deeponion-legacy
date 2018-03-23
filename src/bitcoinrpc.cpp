@@ -233,101 +233,98 @@ Value stop(const Array& params, bool fHelp)
 //
 
 static const CRPCCommand vRPCCommands[] =
-    {
-        //  name                      function                 safemd  unlocked
-        //  ------------------------  -----------------------  ------  --------
-        {"help", &help, true, true},
-        {"stop", &stop, true, true},
-        {"getbestblockhash", &getbestblockhash, true, false},
-        {"getblockcount", &getblockcount, true, false},
-        {"getconnectioncount", &getconnectioncount, true, false},
-        {"getpeerinfo", &getpeerinfo, true, false},
-        {"getdifficulty", &getdifficulty, true, false},
-        {"getnetworkhashps", &getnetworkhashps, true, false},
-        {"getinfo", &getinfo, true, false},
-        {"getsubsidy", &getsubsidy, true, false},
-        {"getmininginfo", &getmininginfo, true, false},
-        {"getstakinginfo", &getstakinginfo, true, false},
-        {"getnewaddress", &getnewaddress, true, false},
-        {"getnewpubkey", &getnewpubkey, true, false},
-        {"getaccountaddress", &getaccountaddress, true, false},
-        {"setaccount", &setaccount, true, false},
-        {"getaccount", &getaccount, false, false},
-        {"getaddressesbyaccount", &getaddressesbyaccount, true, false},
-        {"sendtoaddress", &sendtoaddress, false, false},
-        {"getreceivedbyaddress", &getreceivedbyaddress, false, false},
-        {"getreceivedbyaccount", &getreceivedbyaccount, false, false},
-        {"listreceivedbyaddress", &listreceivedbyaddress, false, false},
-        {"listreceivedbyaccount", &listreceivedbyaccount, false, false},
-        {"backupwallet", &backupwallet, true, false},
-        {"keypoolrefill", &keypoolrefill, true, false},
-        {"walletpassphrase", &walletpassphrase, true, false},
-        {"walletpassphrasechange", &walletpassphrasechange, false, false},
-        {"walletlock", &walletlock, true, false},
-        {"encryptwallet", &encryptwallet, false, false},
-        {"validateaddress", &validateaddress, true, false},
-        {"validatepubkey", &validatepubkey, true, false},
-        {"getbalance", &getbalance, false, false},
-        {"move", &movecmd, false, false},
-        {"sendfrom", &sendfrom, false, false},
-        {"sendmany", &sendmany, false, false},
-        {"addmultisigaddress", &addmultisigaddress, false, false},
-        {"addredeemscript", &addredeemscript, false, false},
-        {"getrawmempool", &getrawmempool, true, false},
-        {"getblock", &getblock, false, false},
-        {"getblockbynumber", &getblockbynumber, false, false},
-        {"getblockhash", &getblockhash, false, false},
-        {"gettransaction", &gettransaction, false, false},
-        {"listtransactions", &listtransactions, false, false},
-        {"listaddressgroupings", &listaddressgroupings, false, false},
-        {"signmessage", &signmessage, false, false},
-        {"verifymessage", &verifymessage, false, false},
-        {"getwork", &getwork, true, false},
-        {"getworkex", &getworkex, true, false},
-        {"listaccounts", &listaccounts, false, false},
-        {"settxfee", &settxfee, false, false},
-        {"getblocktemplate", &getblocktemplate, true, false},
-        {"submitblock", &submitblock, false, false},
-        {"listsinceblock", &listsinceblock, false, false},
-        {"dumpprivkey", &dumpprivkey, false, false},
-        {"dumpwallet", &dumpwallet, true, false},
-        {"importwallet", &importwallet, false, false},
-        {"importprivkey", &importprivkey, false, false},
-        {"listunspent", &listunspent, false, false},
-        {"getrawtransaction", &getrawtransaction, false, false},
-        {"createrawtransaction", &createrawtransaction, false, false},
-        {"decoderawtransaction", &decoderawtransaction, false, false},
-        {"decodescript", &decodescript, false, false},
-        {"signrawtransaction", &signrawtransaction, false, false},
-        {"sendrawtransaction", &sendrawtransaction, false, false},
-        {"getcheckpoint", &getcheckpoint, true, false},
-        {"reservebalance", &reservebalance, false, true},
-        {"checkwallet", &checkwallet, false, true},
-        {"repairwallet", &repairwallet, false, true},
-        {"resendtx", &resendtx, false, true},
-        {"makekeypair", &makekeypair, false, true},
-        {"sendalert", &sendalert, false, false},
-
-        {"getnewstealthaddress", &getnewstealthaddress, false, false},
-        {"liststealthaddresses", &liststealthaddresses, false, false},
-        {"importstealthaddress", &importstealthaddress, false, false},
-        {"sendtostealthaddress", &sendtostealthaddress, false, false},
-        {"scanforalltxns", &scanforalltxns, false, false},
-        {"scanforstealthtxns", &scanforstealthtxns, false, false},
-
-        {"smsgenable", &smsgenable, false, false},
-        {"smsgdisable", &smsgdisable, false, false},
-        {"smsglocalkeys", &smsglocalkeys, false, false},
-        {"smsgoptions", &smsgoptions, false, false},
-        {"smsgscanchain", &smsgscanchain, false, false},
-        {"smsgscanbuckets", &smsgscanbuckets, false, false},
-        {"smsgaddkey", &smsgaddkey, false, false},
-        {"smsggetpubkey", &smsggetpubkey, false, false},
-        {"smsgsend", &smsgsend, false, false},
-        {"smsgsendanon", &smsgsendanon, false, false},
-        {"smsginbox", &smsginbox, false, false},
-        {"smsgoutbox", &smsgoutbox, false, false},
-        {"smsgbuckets", &smsgbuckets, false, false},
+{ //  name                      function                 safemd  unlocked
+  //  ------------------------  -----------------------  ------  --------
+    { "help",                   &help,                   true,   true },
+    { "stop",                   &stop,                   true,   true },
+    { "getbestblockhash",       &getbestblockhash,       true,   false },
+    { "getblockcount",          &getblockcount,          true,   false },
+    { "getconnectioncount",     &getconnectioncount,     true,   false },
+    { "getpeerinfo",            &getpeerinfo,            true,   false },
+    { "getdifficulty",          &getdifficulty,          true,   false },
+    { "getnetworkhashps",       &getnetworkhashps,       true,   false },
+    { "getinfo",                &getinfo,                true,   false },
+    { "getsubsidy",             &getsubsidy,             true,   false },
+    { "getmininginfo",          &getmininginfo,          true,   false },
+    { "getstakinginfo",         &getstakinginfo,         true,   false },
+    { "getnewaddress",          &getnewaddress,          true,   false },
+    { "getnewpubkey",           &getnewpubkey,           true,   false },
+    { "getaccountaddress",      &getaccountaddress,      true,   false },
+    { "setaccount",             &setaccount,             true,   false },
+    { "getaccount",             &getaccount,             false,  false },
+    { "getaddressesbyaccount",  &getaddressesbyaccount,  true,   false },
+    { "sendtoaddress",          &sendtoaddress,          false,  false },
+    { "getreceivedbyaddress",   &getreceivedbyaddress,   false,  false },
+    { "getreceivedbyaccount",   &getreceivedbyaccount,   false,  false },
+    { "listreceivedbyaddress",  &listreceivedbyaddress,  false,  false },
+    { "listreceivedbyaccount",  &listreceivedbyaccount,  false,  false },
+    { "backupwallet",           &backupwallet,           true,   false },
+    { "keypoolrefill",          &keypoolrefill,          true,   false },
+    { "walletpassphrase",       &walletpassphrase,       true,   false },
+    { "walletpassphrasechange", &walletpassphrasechange, false,  false },
+    { "walletlock",             &walletlock,             true,   false },
+    { "encryptwallet",          &encryptwallet,          false,  false },
+    { "validateaddress",        &validateaddress,        true,   false },
+    { "validatepubkey",         &validatepubkey,         true,   false },
+    { "getbalance",             &getbalance,             false,  false },
+    { "move",                   &movecmd,                false,  false },
+    { "sendfrom",               &sendfrom,               false,  false },
+    { "sendmany",               &sendmany,               false,  false },
+    { "addmultisigaddress",     &addmultisigaddress,     false,  false },
+    { "addredeemscript",        &addredeemscript,        false,  false },
+    { "getrawmempool",          &getrawmempool,          true,   false },
+    { "getblock",               &getblock,               false,  false },
+    { "getblockbynumber",       &getblockbynumber,       false,  false },
+    { "getblockhash",           &getblockhash,           false,  false },
+    { "gettransaction",         &gettransaction,         false,  false },
+    { "listtransactions",       &listtransactions,       false,  false },
+    { "listaddressgroupings",   &listaddressgroupings,   false,  false },
+    { "signmessage",            &signmessage,            false,  false },
+    { "verifymessage",          &verifymessage,          false,  false },
+    { "getwork",                &getwork,                true,   false },
+    { "getworkex",              &getworkex,              true,   false },
+    { "listaccounts",           &listaccounts,           false,  false },
+    { "settxfee",               &settxfee,               false,  false },
+    { "getblocktemplate",       &getblocktemplate,       true,   false },
+    { "submitblock",            &submitblock,            false,  false },
+    { "listsinceblock",         &listsinceblock,         false,  false },
+    { "dumpprivkey",            &dumpprivkey,            false,  false },
+    { "dumpwallet",             &dumpwallet,             true,   false },
+    { "importwallet",           &importwallet,           false,  false },
+    { "importprivkey",          &importprivkey,          false,  false },
+    { "listunspent",            &listunspent,            false,  false },
+    { "getrawtransaction",      &getrawtransaction,      false,  false },
+    { "createrawtransaction",   &createrawtransaction,   false,  false },
+    { "decoderawtransaction",   &decoderawtransaction,   false,  false },
+    { "decodescript",           &decodescript,           false,  false },
+    { "signrawtransaction",     &signrawtransaction,     false,  false },
+    { "sendrawtransaction",     &sendrawtransaction,     false,  false },
+    { "getcheckpoint",          &getcheckpoint,          true,   false },
+    { "reservebalance",         &reservebalance,         false,  true},
+    { "checkwallet",            &checkwallet,            false,  true},
+    { "repairwallet",           &repairwallet,           false,  true},
+    { "resendtx",               &resendtx,               false,  true},
+    { "makekeypair",            &makekeypair,            false,  true},
+    { "sendalert",              &sendalert,              false,  false},
+    { "getnewstealthaddress",   &getnewstealthaddress,   false, false},
+    { "liststealthaddresses",   &liststealthaddresses,   false, false},
+    { "importstealthaddress",   &importstealthaddress,   false, false},
+    { "sendtostealthaddress",   &sendtostealthaddress,   false, false},
+    { "scanforalltxns",         &scanforalltxns,         false, false},
+    { "scanforstealthtxns",     &scanforstealthtxns,     false, false},
+    { "smsgenable",             &smsgenable,             false,  false},
+    { "smsgdisable",            &smsgdisable,            false,  false},
+    { "smsglocalkeys",          &smsglocalkeys,          false,  false},
+    { "smsgoptions",            &smsgoptions,            false,  false},
+    { "smsgscanchain",          &smsgscanchain,          false,  false},
+    { "smsgscanbuckets",        &smsgscanbuckets,        false,  false},
+    { "smsgaddkey",             &smsgaddkey,             false,  false},
+    { "smsggetpubkey",          &smsggetpubkey,          false,  false},
+    { "smsgsend",               &smsgsend,               false,  false},
+    { "smsgsendanon",           &smsgsendanon,           false,  false},
+    { "smsginbox",              &smsginbox,              false,  false},
+    { "smsgoutbox",             &smsgoutbox,             false,  false},
+    { "smsgbuckets",            &smsgbuckets,            false,  false},
 };
 
 CRPCTable::CRPCTable()
@@ -402,7 +399,7 @@ static string HTTPReply(int nStatus, const string& strMsg, bool keepalive)
             "<HTML>\r\n"
             "<HEAD>\r\n"
             "<TITLE>Error</TITLE>\r\n"
-            "<META HTTP-EQUIV='Content-Type' CONTENT='text/html; charset=ISO-8859-1'>\r\n"
+            "<META HTTP-EQUIV='Content-Type' CONTENT='text/html;  style=\"color:rgb(215,186,125)\">\r\n"
             "</HEAD>\r\n"
             "<BODY><H1>401 Unauthorized.</H1></BODY>\r\n"
             "</HTML>\r\n", rfc1123Time().c_str(), FormatFullVersion().c_str());
@@ -709,8 +706,8 @@ void ThreadRPCServer(void* parg)
 }
 
 // Forward declaration required for RPCListen
-template <typename Protocol, typename SocketAcceptorService>
-static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
+template <typename Protocol>
+static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
                              ssl::context& context,
                              bool fUseSSL,
                              AcceptedConnection* conn,
@@ -719,8 +716,8 @@ static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, 
 /**
  * Sets up I/O resources to accept and handle a new connection.
  */
-template <typename Protocol, typename SocketAcceptorService>
-static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
+template <typename Protocol>
+static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
                    ssl::context& context,
                    const bool fUseSSL)
 {
@@ -730,7 +727,7 @@ static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketA
     acceptor->async_accept(
             conn->sslStream.lowest_layer(),
             conn->peer,
-            boost::bind(&RPCAcceptHandler<Protocol, SocketAcceptorService>,
+            boost::bind(&RPCAcceptHandler<Protocol>,
                 acceptor,
                 boost::ref(context),
                 fUseSSL,
@@ -741,8 +738,8 @@ static void RPCListen(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketA
 /**
  * Accept and handle incoming connection.
  */
-template <typename Protocol, typename SocketAcceptorService>
-static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol, SocketAcceptorService> > acceptor,
+template <typename Protocol>
+static void RPCAcceptHandler(boost::shared_ptr< basic_socket_acceptor<Protocol> > acceptor,
                              ssl::context& context,
                              const bool fUseSSL,
                              AcceptedConnection* conn,
@@ -821,7 +818,7 @@ void ThreadRPCServer2(void* parg)
 
     asio::io_service io_service;
 
-    ssl::context context(io_service, ssl::context::sslv23);
+    ssl::context context(ssl::context::sslv23);
     if (fUseSSL)
     {
         context.set_options(ssl::context::no_sslv2);
@@ -837,7 +834,7 @@ void ThreadRPCServer2(void* parg)
         else printf("ThreadRPCServer ERROR: missing server private key file %s\n", pathPKFile.string().c_str());
 
         string strCiphers = GetArg("-rpcsslciphers", "TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH");
-        SSL_CTX_set_cipher_list(context.impl(), strCiphers.c_str());
+        SSL_CTX_set_cipher_list(context.native_handle(), strCiphers.c_str());
     }
 
     // Try a dual IPv6/IPv4 socket, falling back to separate IPv4 and IPv6 sockets
@@ -1142,7 +1139,7 @@ Object CallRPC(const string& strMethod, const Array& params)
     // Connect to localhost
     bool fUseSSL = GetBoolArg("-rpcssl");
     asio::io_service io_service;
-    ssl::context context(io_service, ssl::context::sslv23);
+    ssl::context context(ssl::context::sslv23);
     context.set_options(ssl::context::no_sslv2);
     asio::ssl::stream<asio::ip::tcp::socket> sslStream(io_service, context);
     SSLIOStreamDevice<asio::ip::tcp> d(sslStream, fUseSSL);
