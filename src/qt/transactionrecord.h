@@ -6,6 +6,13 @@
 #include <QList>
 #include <QString>
 
+// modified BOOST_FOREACH to show indices
+#define INDEX_FOREACH(index, a, b)                           \
+    for (unsigned int index = static_cast<unsigned int>(-1); \
+         index == static_cast<unsigned int>(-1);)            \
+        BOOST_FOREACH (a, b)                                 \
+            if (++index, true)
+
 class CWallet;
 class CWalletTx;
 

@@ -37,7 +37,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         //
         // Credit
         //
-        BOOST_FOREACH(const CTxOut& txout, wtx.vout)
+        INDEX_FOREACH(i, const CTxOut& txout, wtx.vout)
         {
             if(wallet->IsMine(txout))
             {
@@ -57,6 +57,15 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     sub.type = TransactionRecord::RecvFromOther;
                     sub.address = mapValue["from"];
                 }
+
+                snprintf(cbuf, sizeof(cbuf), "n_%u", i);
+                mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
+                if (mi != wtx.mapValue.end() && !mi->second.empty())
+                {
+                    sub.narration = mi->second;
+                    LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                }
+
                 if (wtx.IsCoinBase())
                 {
                     // Generated (proof-of-work)
@@ -73,7 +82,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     sub.credit = nNet > 0 ? nNet : wtx.GetValueOut() - nDebit;
                     hashPrev = hash;
                 }
-
+                
                 parts.append(sub);
             }
         }
@@ -100,7 +109,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     continue;
                 narration = mi->second;
                 break;
-            };
+            }
             parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", narration,
                                            -(nDebit - nChange), nCredit - nChange));
         }
@@ -110,7 +119,6 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             // Debit
             //
             int64_t nTxFee = nDebit - wtx.GetValueOut();
-
             for (unsigned int nOut = 0; nOut < wtx.vout.size(); nOut++)
             {
                 const CTxOut& txout = wtx.vout[nOut];
@@ -141,7 +149,11 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 snprintf(cbuf, sizeof(cbuf), "n_%u", nOut);
                 mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
+                {
                     sub.narration = mi->second;
+                    LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                }
+                    
 
                 int64 nValue = txout.nValue;
 
@@ -158,7 +170,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     nTxFee = 0;
                 }
                 sub.debit = -nValue;
-
+                
                 parts.append(sub);
             }
         }
