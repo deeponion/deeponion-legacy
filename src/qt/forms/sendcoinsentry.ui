@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>SendCoinsEntry</class>
  <widget class="QFrame" name="SendCoinsEntry">
@@ -7,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>729</width>
-    <height>161</height>
+    <height>177</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,23 +22,7 @@
    <enum>QFrame::Sunken</enum>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="spacing">
-    <number>12</number>
-   </property>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>A&amp;mount:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>payAmount</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
+   <item row="0" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Pay &amp;To:</string>
@@ -52,43 +35,7 @@
      </property>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="BitcoinAmountField" name="payAmount"/>
-   </item>
-   <item row="4" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
-     <property name="spacing">
-      <number>0</number>
-     </property>
-     <item>
-      <widget class="QValidatedLineEdit" name="addAsLabel">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="toolTip">
-        <string>Enter a label for this address to add it to your address book</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>&amp;Label:</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-     <property name="buddy">
-      <cstring>addAsLabel</cstring>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
+   <item row="0" column="1">
     <layout class="QHBoxLayout" name="payToLayout">
      <property name="spacing">
       <number>0</number>
@@ -156,6 +103,88 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>&amp;Label:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy">
+      <cstring>addAsLabel</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QValidatedLineEdit" name="addAsLabel">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="toolTip">
+        <string>Enter a label for this address to add it to your address book</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>&amp;Narration:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy">
+      <cstring>addAsNarration</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QValidatedLineEdit" name="addAsNarration">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="toolTip">
+        <string>Enter a short note to send with payment (max 24 characters)</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>A&amp;mount:</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+     <property name="buddy">
+      <cstring>payAmount</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="BitcoinAmountField" name="payAmount"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -176,3 +205,4 @@
  </resources>
  <connections/>
 </ui>
+
