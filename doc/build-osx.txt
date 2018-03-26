@@ -11,33 +11,40 @@ Mac OS X DeepOniond build instructions
 Laszlo Hanyecz <solar@heliacal.net>
 Douglas Huff <dhuff@jrbobdobbs.org>
 
+
+See readme-qt.rst for instructions on building DeepOnion QT, the
+graphical user interface.
+
+Tested on 10.5 and 10.6 intel.  PPC is not supported because it's big-endian.
+
+All of the commands should be executed in Terminal.app.. it's in
+/Applications/Utilities
+
+You need to install XCode with all the options checked so that the compiler and
+everything is available in /usr not just /Developer I think it comes on the DVD
+but you can get the current version from http://developer.apple.com
+
+
 1.  Clone the github tree to get the source code:
 
-git clone --recursive https://github.com/deeponion/deeponion.git
+git clone git@github.com:rat4/DeepOnion.git DeepOnion
 
-2.  Download and install Brew for Mac (https://brew.sh)
+2.  Download and install MacPorts from http://www.macports.org/
 
-2.  Install dependencies with Brew
+2a. (for 10.7 Lion)
+    Edit /opt/local/etc/macports/macports.conf and uncomment "build_arch i386"
 
-brew install boost@1.57 --cc=clang 
-brew link boost
-brew install berkeley-db@4 
-brew install openssl 
-brew install miniupnpc
-brew install qt5  [only use if building the Wallet UI]
-brew install qrencode [only use if building the Wallet UI]
+3.  Install dependencies from MacPorts
 
-3.  Now you should be able to build DeepOnion:
+sudo port install boost db48 openssl miniupnpc
 
-cd deeponion
-./autogen.sh
-configure --with-gui=qt5 --disable-tests [or use --without-gui if only building the daemon]
-make
+Optionally install qrencode (and set USE_QRCODE=1):
+sudo port install qrencode
 
-4. Outputs
-The daemon will be located under src/DeepOniond, the Wallet UI under src/qt/DeepOnion-qt.
+4.  Now you should be able to build DeepOniond:
 
-5. Running the executables
+cd DeepOnion/src
+make -f makefile.osx
 
 Run:
   ./DeepOniond --help  # for a list of command-line options.
@@ -45,5 +52,3 @@ Run
   ./DeepOniond -daemon # to start the DeepOnion daemon.
 Run
   ./DeepOniond help # When the daemon is running, to get a list of RPC commands
-run
-  ./DeepOnion-qt # for Wallet UI
