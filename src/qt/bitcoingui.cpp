@@ -65,6 +65,7 @@
 #include <QStyleFactory>
 #include <QTextStream>
 #include <QTextDocument>
+#include <QDockWidget>
 
 #include <iostream>
 
@@ -435,16 +436,28 @@ void BitcoinGUI::createMenuBar()
 
 void BitcoinGUI::createToolBars(QToolBar* toolbar)
 {
-	toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-    toolbar->addAction(overviewAction);
-    toolbar->addAction(sendCoinsAction);
-    toolbar->addAction(receiveCoinsAction);
-    toolbar->addAction(historyAction);
-    toolbar->addAction(addressBookAction);
-    toolbar->addAction(unlockWalletAction);
-    toolbar->addAction(lockWalletAction);
-    toolbar->addAction(messageAction);
-	toolbar->addAction(exportAction);
+	if (1 == 0) {
+        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        toolbar->addAction(overviewAction);
+        toolbar->addAction(sendCoinsAction);
+        toolbar->addAction(receiveCoinsAction);
+        toolbar->addAction(historyAction);
+        toolbar->addAction(addressBookAction);
+        toolbar->addAction(unlockWalletAction);
+        toolbar->addAction(lockWalletAction);
+        toolbar->addAction(messageAction);
+        toolbar->addAction(exportAction);
+    } else {
+        //------------------ Adding a new look ----------
+        menu = new MenuPage();
+        QDockWidget *dock = new QDockWidget();
+        dock->setStyleSheet("border: 0;");
+        dock->setContentsMargins(0,0,0,0);
+        addDockWidget(Qt::LeftDockWidgetArea, dock);
+        dock->setWidget(menu);
+        dock->setTitleBarWidget(new QWidget());
+        menu->LinkMenu(this);
+    }
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
+#include "menupage.h"
 
 class TransactionTableModel;
 class ClientModel;
@@ -16,6 +17,7 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
+class MenuPage;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -53,6 +55,9 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
+
+    //------------------ Adding new theme ----------
+    MenuPage *menu;
 
 protected:
     void changeEvent(QEvent *e);

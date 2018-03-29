@@ -46,6 +46,15 @@
         <file alias="toolbar_testnet">res/icons/toolbar_testnet.png</file>
         <file alias="tor_active">res/icons/tor.png</file>
         <file alias="tor_inactive">res/icons/tor2.png</file>
+
+        <file alias="NewOverviewS">res/icons/new/overview_s.png</file>
+        <file alias="NewSendCoinsS">res/icons/new/send_s.png</file>
+        <file alias="NewReceiveCoinsS">res/icons/new/receive_s.png</file>
+        <file alias="NewTransactionsS">res/icons/new/transactions_s.png</file>
+        <file alias="NewAddressBookS">res/icons/new/address_book_s.png</file>
+        <file alias="NewMessagesS">res/icons/new/messages_s.png</file>
+        <file alias="NewExportUS">res/icons/new/export_us.png</file>
+
     </qresource>
     <qresource prefix="/images">
         <file alias="about_new">res/images/about.png</file>
