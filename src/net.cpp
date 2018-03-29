@@ -490,6 +490,7 @@ void CNode::CloseSocketDisconnect()
         closesocket(hSocket);
         hSocket = INVALID_SOCKET;
         vRecv.clear();
+        uiInterface.NotifyNetworkActiveChanged(false);
     }
 }
 

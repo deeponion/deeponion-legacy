@@ -1,5 +1,5 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2017 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "trafficgraphwidget.h"
@@ -47,15 +47,16 @@ int TrafficGraphWidget::getGraphRangeMins() const
 
 void TrafficGraphWidget::paintPath(QPainterPath &path, QQueue<float> &samples)
 {
-  int h = height() - YMARGIN * 2, w = width() - XMARGIN * 2;
-  int sampleCount = samples.size(), x = XMARGIN + w, y;
+  int sampleCount = samples.size();
   if (sampleCount > 0)
   {
+    int h = height() - YMARGIN * 2, w = width() - XMARGIN * 2;
+    int x = XMARGIN + w;
     path.moveTo(x, YMARGIN + h);
     for (int i = 0; i < sampleCount; ++i)
     {
       x = XMARGIN + w - w * i / DESIRED_SAMPLES;
-      y = YMARGIN + h - (int)(h * samples.at(i) / fMax);
+      int y = YMARGIN + h - (int)(h * samples.at(i) / fMax);
       path.lineTo(x, y);
     }
     path.lineTo(x, YMARGIN + h);
@@ -80,9 +81,11 @@ void TrafficGraphWidget::paintEvent(QPaintEvent *)
   float val = pow(10.0f, base);
 
   const QString units = tr("KB/s");
+  const float yMarginText = 2.0;
+
   // draw lines
   painter.setPen(axisCol);
-  painter.drawText(XMARGIN, YMARGIN + h - h * val / fMax, QString("%1 %2").arg(val).arg(units));
+  painter.drawText(XMARGIN, YMARGIN + h - h * val / fMax - yMarginText, QString("%1 %2").arg(val).arg(units));
   for (float y = val; y < fMax; y += val)
   {
     int yy = YMARGIN + h - h * y / fMax;
@@ -94,7 +97,7 @@ void TrafficGraphWidget::paintEvent(QPaintEvent *)
     axisCol = axisCol.darker();
     val = pow(10.0f, base - 1);
     painter.setPen(axisCol);
-    painter.drawText(XMARGIN, YMARGIN + h - h * val / fMax, QString("%1 %2").arg(val).arg(units));
+    painter.drawText(XMARGIN, YMARGIN + h - h * val / fMax - yMarginText, QString("%1 %2").arg(val).arg(units));
     int count = 1;
     for (float y = val; y < fMax; y += val, count++)
     {

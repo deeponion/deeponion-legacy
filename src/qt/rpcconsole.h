@@ -1,3 +1,7 @@
+// Copyright (c) 2011-2017 The Bitcoin Core developers
+// Copyright (c) 2018 The DeepOnion developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef RPCCONSOLE_H
 #define RPCCONSOLE_H
 
@@ -60,6 +64,8 @@ private slots:
     void message(int category, const QString &message, bool html = false);
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);
+    /** Set network state shown in the UI */
+    void setNetworkActive(bool networkActive);
     /** Set number of blocks shown in the UI */
     void setNumBlocks(int count, int countOfPeers);
     /** Go forward or back in history */
@@ -93,6 +99,10 @@ private:
       SUBVERSION_COLUMN_WIDTH = 100,
       PING_COLUMN_WIDTH = 80
   };
+
+  /** Update UI with latest network info from model. */
+  void updateNetworkState();
+
 };
 
 #endif // RPCCONSOLE_H

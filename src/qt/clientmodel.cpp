@@ -100,6 +100,11 @@ void ClientModel::updateNumConnections(int numConnections)
     emit numConnectionsChanged(numConnections);
 }
 
+void ClientModel::updateNetworkActive(bool networkActive)
+{
+    Q_EMIT networkActiveChanged(networkActive);
+}
+
 void ClientModel::updateAlert(const QString &hash, int status)
 {
     // Show error message notification for new alert
@@ -191,11 +196,18 @@ static void NotifyAlertChanged(ClientModel *clientmodel, const uint256 &hash, Ch
                               Q_ARG(int, status));
 }
 
+static void NotifyNetworkActiveChanged(ClientModel *clientmodel, bool networkActive)
+{
+    QMetaObject::invokeMethod(clientmodel, "updateNetworkActive", Qt::QueuedConnection,
+                              Q_ARG(bool, networkActive));
+}
+
 void ClientModel::subscribeToCoreSignals()
 {
     // Connect signals to client
     uiInterface.NotifyBlocksChanged.connect(boost::bind(NotifyBlocksChanged, this));
     uiInterface.NotifyNumConnectionsChanged.connect(boost::bind(NotifyNumConnectionsChanged, this, _1));
+    uiInterface.NotifyNetworkActiveChanged.connect(boost::bind(NotifyNetworkActiveChanged, this, _1));
     uiInterface.NotifyAlertChanged.connect(boost::bind(NotifyAlertChanged, this, _1, _2));
 }
 
@@ -204,5 +216,6 @@ void ClientModel::unsubscribeFromCoreSignals()
     // Disconnect signals from client
     uiInterface.NotifyBlocksChanged.disconnect(boost::bind(NotifyBlocksChanged, this));
     uiInterface.NotifyNumConnectionsChanged.disconnect(boost::bind(NotifyNumConnectionsChanged, this, _1));
+    uiInterface.NotifyNetworkActiveChanged.connect(boost::bind(NotifyNetworkActiveChanged, this, _1));
     uiInterface.NotifyAlertChanged.disconnect(boost::bind(NotifyAlertChanged, this, _1, _2));
 }

@@ -222,6 +222,7 @@ RPCConsole::RPCConsole(QWidget *parent) : QDialog(parent),
     ui->messagesWidget->installEventFilter(this);
 
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
+    connect(ui->btnClearTrafficGraph, SIGNAL(clicked()), ui->trafficGraph, SLOT(clear()));
 
     // set OpenSSL version label
     ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
@@ -280,12 +281,17 @@ bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
 void RPCConsole::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
+    ui->trafficGraph->setClientModel(model);
     if(model)
     {
+        setNumConnections(model->getNumConnections());
         // Subscribe to information, replies, messages, errors
         connect(model, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
         connect(model, SIGNAL(numBlocksChanged(int,int)), this, SLOT(setNumBlocks(int,int)));
 
+        updateNetworkState();
+
+        connect(model, SIGNAL(networkActiveChanged(bool)), this, SLOT(setNetworkActive(bool)));
         updateTrafficStats(model->getTotalBytesRecv(), model->getTotalBytesSent());
         connect(model, SIGNAL(bytesChanged(quint64, quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
 
@@ -310,7 +316,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->buildDate->setText(model->formatBuildDate());
         ui->startupTime->setText(model->formatClientStartupTime());
 
-        setNumConnections(model->getNumConnections());
+        
         ui->isTestNet->setChecked(model->isTestNet());
 
         setNumBlocks(model->getNumBlocks(), model->getNumBlocksOfPeers());
@@ -392,7 +398,17 @@ void RPCConsole::setNumConnections(int count)
     if (!clientModel)
         return;
 
-    QString connections = QString::number(count) + " (";
+    updateNetworkState();
+}
+
+void RPCConsole::setNetworkActive(bool networkActive)
+{
+    updateNetworkState();
+}
+
+void RPCConsole::updateNetworkState()
+{
+    QString connections = QString::number(clientModel->getNumConnections()) + " (";
     connections += tr("In:") + " " + QString::number(clientModel->getNumConnections(CONNECTIONS_IN)) + " / ";
     connections += tr("Out:") + " " + QString::number(clientModel->getNumConnections(CONNECTIONS_OUT)) + ")";
 
