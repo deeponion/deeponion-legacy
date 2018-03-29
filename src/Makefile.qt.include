@@ -55,6 +55,7 @@ QT_MOC_CPP = \
   qt/moc_qvalidatedlineedit.cpp \
   qt/moc_qvalidatedtextedit.cpp \
   qt/moc_qvaluecombobox.cpp \
+  qt/moc_peertablemodel.cpp \
   qt/moc_qrcodedialog.cpp \
   qt/moc_rpcconsole.cpp \
   qt/moc_sendcoinsdialog.cpp \
@@ -67,6 +68,7 @@ QT_MOC_CPP = \
   qt/moc_transactionfilterproxy.cpp \
   qt/moc_transactiontablemodel.cpp \
   qt/moc_transactionview.cpp \
+  qt/moc_trafficgraphwidget.cpp \
   qt/moc_walletmodel.cpp
 
 BITCOIN_MM = \
@@ -114,11 +116,14 @@ BITCOIN_QT_H = \
   qt/qvaluecombobox.h \
   qt/qrcodedialog.h \
   qt/rpcconsole.h \
+  qt/peertablemodel.h \
+  qt/scicon.h \
   qt/sendcoinsdialog.h \
   qt/sendcoinsentry.h \
   qt/sendmessagesdialog.h \
   qt/sendmessagesentry.h \
   qt/signverifymessagedialog.h \
+  qt/trafficgraphwidget.h \
   qt/transactiondesc.h \
   qt/transactiondescdialog.h \
   qt/transactionfilterproxy.h \
@@ -193,6 +198,7 @@ BITCOIN_QT_CPP = \
   qt/notificator.cpp \
   qt/optionsdialog.cpp \
   qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
   qt/messagemodel.cpp \
   qt/rpcconsole.cpp
 
@@ -218,6 +224,8 @@ BITCOIN_QT_CPP += \
   qt/qvaluecombobox.cpp \
   qt/plugins/mrichtexteditor/mrichtextedit.cpp \
   qt/signverifymessagedialog.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/scicon.cpp \
   qt/transactiondesc.cpp \
   qt/transactiondescdialog.cpp \
   qt/transactionfilterproxy.cpp \
