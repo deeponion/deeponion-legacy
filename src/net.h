@@ -23,8 +23,9 @@ class CRequestTracker;
 class CNode;
 class CBlockIndex;
 extern int nBestHeight;
-
-
+typedef int NodeId;
+extern NodeId nLastNodeId;
+extern CCriticalSection cs_nLastNodeId;
 
 inline unsigned int ReceiveBufferSize() { return 1000*GetArg("-maxreceivebuffer", 5*1000); }
 inline unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 1*1000); }
@@ -136,18 +137,33 @@ extern std::map<CInv, int64_t> mapAlreadyAskedFor;
 class CNodeStats
 {
 public:
-    uint64_t nServices;
-    int64_t nLastSend;
-    int64_t nLastRecv;
-    int64_t nTimeConnected;
-    std::string addrName;
-    int nVersion;
-    std::string strSubVer;
-    bool fInbound;
-    int nStartingHeight;
-    int nMisbehavior;
+  NodeId nodeid;
+  uint64_t nServices;
+  int64_t nLastSend;
+  int64_t nLastRecv;
+  int64_t nTimeConnected;
+  int64_t nTimeOffset;
+  std::string addrName;
+  int nVersion;
+  std::string strSubVer;
+  bool fInbound;
+  int nStartingHeight;
+  int nMisbehavior;
+  uint64_t nSendBytes;
+  uint64_t nRecvBytes;
+  double dPingTime;
+  double dPingWait;
+  std::string addrLocal;
 };
 
+class CNodeStateStats
+{
+  public:
+    int nMisbehavior;
+    int nSyncHeight;
+    int nCommonHeight;
+    std::vector<int> vHeightInFlight;
+};
 
 class SecMsgNode
 {
@@ -185,10 +201,13 @@ public:
     CDataStream vRecv;
     CCriticalSection cs_vSend;
     CCriticalSection cs_vRecv;
+    uint64_t nSendBytes;
+    uint64_t nRecvBytes;
     int64_t nLastSend;
     int64_t nLastRecv;
     int64_t nLastSendEmpty;
     int64_t nTimeConnected;
+    int64_t nTimeOffset;
     int nHeaderStart;
     unsigned int nMessageStart;
     CAddress addr;
@@ -205,7 +224,9 @@ public:
     bool fDisconnect;
     CSemaphoreGrant grantOutbound;
     int nRefCount;
-protected:
+    NodeId id;
+
+  protected:
 
     // Denial-of-service detection/prevention
     // Key is IP address, value is banned-until-time
@@ -214,62 +235,74 @@ protected:
     int nMisbehavior;
 
 public:
-    std::map<uint256, CRequestTracker> mapRequests;
-    CCriticalSection cs_mapRequests;
-    uint256 hashContinue;
-    CBlockIndex* pindexLastGetBlocksBegin;
-    uint256 hashLastGetBlocksEnd;
-    int nStartingHeight;
+  NodeId GetId() const
+  {
+      return id;
+  }
+  std::map<uint256, CRequestTracker> mapRequests;
+  CCriticalSection cs_mapRequests;
+  uint256 hashContinue;
+  CBlockIndex *pindexLastGetBlocksBegin;
+  uint256 hashLastGetBlocksEnd;
+  int nStartingHeight;
 
-    // flood relay
-    std::vector<CAddress> vAddrToSend;
-    std::set<CAddress> setAddrKnown;
-    bool fGetAddr;
-    std::set<uint256> setKnown;
-    uint256 hashCheckpointKnown; // last known sent sync-checkpoint
+  // flood relay
+  std::vector<CAddress> vAddrToSend;
+  std::set<CAddress> setAddrKnown;
+  bool fGetAddr;
+  std::set<uint256> setKnown;
+  uint256 hashCheckpointKnown; // last known sent sync-checkpoint
 
-    // inventory based relay
-    mruset<CInv> setInventoryKnown;
-    std::vector<CInv> vInventoryToSend;
-    CCriticalSection cs_inventory;
-    std::multimap<int64_t, CInv> mapAskFor;
-	
-	SecMsgNode smsgData;
+  // inventory based relay
+  mruset<CInv> setInventoryKnown;
+  std::vector<CInv> vInventoryToSend;
+  CCriticalSection cs_inventory;
+  std::multimap<int64_t, CInv> mapAskFor;
 
-    CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn=false) : vSend(SER_NETWORK, MIN_PROTO_VERSION), vRecv(SER_NETWORK, MIN_PROTO_VERSION)
-    {
-        nServices = 0;
-        hSocket = hSocketIn;
-        nLastSend = 0;
-        nLastRecv = 0;
-        nLastSendEmpty = GetTime();
-        nTimeConnected = GetTime();
-        nHeaderStart = -1;
-        nMessageStart = -1;
-        addr = addrIn;
-        addrName = addrNameIn == "" ? addr.ToStringIPPort() : addrNameIn;
-        nVersion = 0;
-        strSubVer = "";
-        fOneShot = false;
-        fClient = false; // set by version message
-        fInbound = fInboundIn;
-		fVerified = false;
-        fNetworkNode = false;
-        fSuccessfullyConnected = false;
-        fDisconnect = false;
-        nRefCount = 0;
-        hashContinue = 0;
-        pindexLastGetBlocksBegin = 0;
-        hashLastGetBlocksEnd = 0;
-        nStartingHeight = -1;
-        fGetAddr = false;
-        nMisbehavior = 0;
-        hashCheckpointKnown = 0;
-        setInventoryKnown.max_size(SendBufferSize() / 1000);
+  SecMsgNode smsgData;
 
-        // Be shy and don't send version until we hear
-        if (hSocket != INVALID_SOCKET && !fInbound)
-            PushVersion();
+  CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn = false) : vSend(SER_NETWORK, MIN_PROTO_VERSION), vRecv(SER_NETWORK, MIN_PROTO_VERSION)
+  {
+      nServices = 0;
+      hSocket = hSocketIn;
+      nLastSend = 0;
+      nLastRecv = 0;
+      nSendBytes = 0;
+      nRecvBytes = 0;
+      nLastSendEmpty = GetTime();
+      nTimeConnected = GetTime();
+      nTimeOffset = 0;
+      nHeaderStart = -1;
+      nMessageStart = -1;
+      addr = addrIn;
+      addrName = addrNameIn == "" ? addr.ToStringIPPort() : addrNameIn;
+      nVersion = 0;
+      strSubVer = "";
+      fOneShot = false;
+      fClient = false; // set by version message
+      fInbound = fInboundIn;
+      fVerified = false;
+      fNetworkNode = false;
+      fSuccessfullyConnected = false;
+      fDisconnect = false;
+      nRefCount = 0;
+      hashContinue = 0;
+      pindexLastGetBlocksBegin = 0;
+      hashLastGetBlocksEnd = 0;
+      nStartingHeight = -1;
+      fGetAddr = false;
+      nMisbehavior = 0;
+      hashCheckpointKnown = 0;
+      setInventoryKnown.max_size(SendBufferSize() / 1000);
+
+      {
+          LOCK(cs_nLastNodeId);
+          id = nLastNodeId++;
+      }
+
+      // Be shy and don't send version until we hear
+      if (hSocket != INVALID_SOCKET && !fInbound)
+          PushVersion();
     }
 
     ~CNode()
@@ -282,8 +315,13 @@ public:
     }
 
 private:
-    CNode(const CNode&);
-    void operator=(const CNode&);
+  // Network usage totals
+  static CCriticalSection cs_totalBytesRecv;
+  static CCriticalSection cs_totalBytesSent;
+  static uint64_t nTotalBytesRecv;
+  static uint64_t nTotalBytesSent;
+  CNode(const CNode &);
+  void operator=(const CNode &);
 public:
 
 
@@ -664,6 +702,13 @@ public:
     static bool IsBanned(CNetAddr ip);
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
+
+    // Network stistics
+    static void RecordBytesRecv(uint64_t bytes);
+    static void RecordBytesSent(uint64_t bytes);
+
+    static uint64_t GetTotalBytesRecv();
+    static uint64_t GetTotalBytesSent();
 };
 
 inline void RelayInventory(const CInv& inv)

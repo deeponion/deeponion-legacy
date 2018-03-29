@@ -1,6 +1,7 @@
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
+#include "peertablemodel.h"
 #include "addresstablemodel.h"
 #include "transactiontablemodel.h"
 
@@ -17,6 +18,8 @@ ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), optionsModel(optionsModel),
     cachedNumBlocks(0), cachedNumBlocksOfPeers(0), pollTimer(0)
 {
+    peerTableModel = new PeerTableModel(this);
+
     numBlocksAtStartup = -1;
 
     pollTimer = new QTimer(this);
@@ -32,11 +35,19 @@ ClientModel::~ClientModel()
     unsubscribeFromCoreSignals();
 }
 
-int ClientModel::getNumConnections() const
+int ClientModel::getNumConnections(unsigned int flags) const
 {
-    return vNodes.size();
-}
+    LOCK(cs_vNodes);
+    if (flags == CONNECTIONS_ALL) // Shortcut if we want total
+        return vNodes.size();
 
+    int nNum = 0;
+    BOOST_FOREACH (CNode *pnode, vNodes)
+        if (flags & (pnode->fInbound ? CONNECTIONS_IN : CONNECTIONS_OUT))
+            nNum++;
+
+    return nNum;
+}
 int ClientModel::getNumBlocks() const
 {
     return nBestHeight;
@@ -56,6 +67,16 @@ QDateTime ClientModel::getLastBlockDate() const
         return QDateTime::fromTime_t(1427729379); // Genesis block's time
 }
 
+quint64 ClientModel::getTotalBytesRecv() const
+{
+    return CNode::GetTotalBytesRecv();
+}
+
+quint64 ClientModel::getTotalBytesSent() const
+{
+    return CNode::GetTotalBytesSent();
+}
+
 void ClientModel::updateTimer()
 {
     // Some quantities (such as number of blocks) change so fast that we don't want to be notified for each change.
@@ -70,6 +91,8 @@ void ClientModel::updateTimer()
 
         emit numBlocksChanged(newNumBlocks, newNumBlocksOfPeers);
     }
+
+    emit bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
 }
 
 void ClientModel::updateNumConnections(int numConnections)
@@ -119,6 +142,11 @@ QString ClientModel::getStatusBarWarnings() const
 OptionsModel *ClientModel::getOptionsModel()
 {
     return optionsModel;
+}
+
+PeerTableModel *ClientModel::getPeerTableModel()
+{
+    return peerTableModel;
 }
 
 QString ClientModel::formatFullVersion() const

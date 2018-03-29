@@ -3,7 +3,16 @@
 
 #include <QObject>
 
+enum NumConnections
+{
+    CONNECTIONS_NONE = 0,
+    CONNECTIONS_IN = (1U << 0),
+    CONNECTIONS_OUT = (1U << 1),
+    CONNECTIONS_ALL = (CONNECTIONS_IN | CONNECTIONS_OUT),
+};
+
 class OptionsModel;
+class PeerTableModel;
 class AddressTableModel;
 class TransactionTableModel;
 class CWallet;
@@ -22,10 +31,14 @@ public:
     ~ClientModel();
 
     OptionsModel *getOptionsModel();
+    PeerTableModel *getPeerTableModel();
 
-    int getNumConnections() const;
+    int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
     int getNumBlocks() const;
     int getNumBlocksAtStartup();
+
+    quint64 getTotalBytesRecv() const;
+    quint64 getTotalBytesSent() const;
 
     QDateTime getLastBlockDate() const;
 
@@ -46,6 +59,8 @@ public:
 private:
     OptionsModel *optionsModel;
 
+    PeerTableModel *peerTableModel;
+
     int cachedNumBlocks;
     int cachedNumBlocksOfPeers;
 
@@ -58,6 +73,7 @@ private:
 signals:
     void numConnectionsChanged(int count);
     void numBlocksChanged(int count, int countOfPeers);
+    void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
 
     //! Asynchronous error notification
     void error(const QString &title, const QString &message, bool modal);
