@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>200</width>
+    <width>160</width>
     <height>704</height>
    </rect>
   </property>
@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>200</width>
+    <width>160</width>
     <height>0</height>
    </size>
   </property>
@@ -320,8 +320,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #393848;
-border-style: none;</string>
+   <string notr="true">background-color: #393848;border-style: none;</string>
   </property>
   <layout class="QVBoxLayout" name="topLayout">
    <property name="spacing">
@@ -340,27 +339,50 @@ border-style: none;</string>
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+    <widget class="QPushButton" name="pushButton">
      <property name="minimumSize">
       <size>
-       <width>200</width>
-       <height>0</height>
+       <width>0</width>
+       <height>60</height>
       </size>
      </property>
-     <property name="maximumSize">
+     <property name="font">
+      <font>
+       <family>Tahoma</family>
+       <pointsize>16</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: white; style: bold; background-color: #3C6EC0</string>
+     </property>
+     <property name="text">
+      <string>DeepOnion</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../bitcoin.qrc">
+       <normaloff>:/icons/DeepOnionLogo</normaloff>
+       <normalon>:/icons/DeepOnionLogo</normalon>:/icons/DeepOnionLogo</iconset>
+     </property>
+     <property name="iconSize">
       <size>
-       <width>200</width>
-       <height>16777215</height>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>40</height>
       </size>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: white;</string>
+      <string notr="true">background-color: #393848;</string>
      </property>
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -368,23 +390,6 @@ border-style: none;</string>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-     </layout>
     </widget>
    </item>
    <item>
@@ -397,8 +402,8 @@ border-style: none;</string>
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
-       <height>60</height>
+       <width>160</width>
+       <height>40</height>
       </size>
      </property>
      <property name="maximumSize">
@@ -410,7 +415,7 @@ border-style: none;</string>
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -425,32 +430,24 @@ border-style: none;</string>
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848
-}
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
 }</string>
      </property>
      <property name="text">
       <string>Overview</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewOverviewS</normaloff>
        <normalon>:/icons/NewOverviewS</normalon>:/icons/NewOverviewS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -471,7 +468,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -484,7 +481,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -493,32 +490,25 @@ border:5px solid color: #4a0e95;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848;
 }
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
-}</string>
+</string>
      </property>
      <property name="text">
       <string>Send Coins</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewSendCoinsS</normaloff>
        <normalon>:/icons/NewSendCoinsS</normalon>:/icons/NewSendCoinsS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -536,7 +526,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -549,7 +539,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -558,32 +548,24 @@ border:5px solid color: #4a0e95;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848;
-}
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
 }</string>
      </property>
      <property name="text">
       <string>Receive Coins</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewReceiveCoinsS</normaloff>
        <normalon>:/icons/NewReceiveCoinsS</normalon>:/icons/NewReceiveCoinsS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -601,7 +583,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -614,7 +596,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -626,32 +608,24 @@ border:5px solid color: #4a0e95;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848;
-}
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
 }</string>
      </property>
      <property name="text">
       <string>Transactions</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewTransactionsS</normaloff>
        <normalon>:/icons/NewTransactionsS</normalon>:/icons/NewTransactionsS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -669,7 +643,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -682,7 +656,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -691,32 +665,24 @@ border:5px solid color: #4a0e95;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848;
-}
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
 }</string>
      </property>
      <property name="text">
       <string>Address Book</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewAddressBookS</normaloff>
        <normalon>:/icons/NewAddressBookS</normalon>:/icons/NewAddressBookS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -734,7 +700,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -747,7 +713,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -756,32 +722,24 @@ border:5px solid color: #4a0e95;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 5px;
+padding-left: 10px;
 text-align:left;
 color: white;
 background-color: #393848;
-}
-
-QPushButton:hover {
-background-color: #121349;
-color: white;
-height:35px;
-width:120px;
-border:5px solid color: #4a0e95;
 }</string>
      </property>
      <property name="text">
       <string>Messages</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewMessagesS</normaloff>
        <normalon>:/icons/NewMessagesS</normalon>:/icons/NewMessagesS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="checkable">
@@ -802,7 +760,7 @@ border:5px solid color: #4a0e95;
      </property>
      <property name="minimumSize">
       <size>
-       <width>200</width>
+       <width>160</width>
        <height>60</height>
       </size>
      </property>
@@ -815,7 +773,7 @@ border:5px solid color: #4a0e95;
      <property name="font">
       <font>
        <family>ZoinLight</family>
-       <pointsize>16</pointsize>
+       <pointsize>12</pointsize>
        <weight>50</weight>
        <bold>false</bold>
       </font>
@@ -823,7 +781,7 @@ border:5px solid color: #4a0e95;
      <property name="styleSheet">
       <string notr="true">border:0;
 height: 60px;
-padding-left: 5px;
+padding-left:10px;
 text-align:left;
 background-color: #393848;
 </string>
@@ -832,13 +790,13 @@ background-color: #393848;
       <string>Export</string>
      </property>
      <property name="icon">
-      <iconset>
+      <iconset resource="../bitcoin.qrc">
        <normaloff>:/icons/NewExportUS</normaloff>:/icons/NewExportUS</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>48</width>
-       <height>48</height>
+       <width>24</width>
+       <height>24</height>
       </size>
      </property>
      <property name="flat">
@@ -882,104 +840,6 @@ background-color: #393848;
          </size>
         </property>
        </spacer>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <widget class="QFrame" name="frame">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="minimumSize">
-      <size>
-       <width>200</width>
-       <height>60</height>
-      </size>
-     </property>
-     <property name="sizeIncrement">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LeftToRight</enum>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #121646, stop: 1 #510c9f);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="lineWidth">
-      <number>0</number>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>0</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QPushButton" name="LearnMore">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>200</width>
-          <height>60</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>ZoinLight</family>
-          <pointsize>12</pointsize>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color:white;
-border:0;
-text-align:center;
-</string>
-        </property>
-        <property name="text">
-         <string> Learn more about Zoin</string>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>:/icons/zoin-logo-white</normaloff>:/icons/zoin-logo-white</iconset>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>30</width>
-          <height>30</height>
-         </size>
-        </property>
-        <property name="checkable">
-         <bool>true</bool>
-        </property>
-       </widget>
       </item>
      </layout>
     </widget>

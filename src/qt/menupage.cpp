@@ -39,7 +39,8 @@ MenuPage::MenuPage(QWidget *parent) :
    connect(ui->AddressBook, SIGNAL(pressed()), this, SLOT(ClickedItem()));
    connect(ui->Messages, SIGNAL(pressed()), this, SLOT(ClickedItem()));
    connect(ui->Export, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   ui->Overview->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+    //Change style to clicked to Dashboard button
+   ui->Overview->setStyleSheet(selectedButtonStyle);
 
 }
 
@@ -58,14 +59,13 @@ void MenuPage::ClickedItem(){
     ui->Messages->setCheckable(false);
     ui->Export->setCheckable(false);
 
-    ui->Overview->setStyleSheet("color: rgb(0, 0, 0); height: 60px;padding-left: 5px; text-align:left;");
-    ui->SendCoins->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-    ui->ReceiveCoins->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-    ui->Transactions->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-    ui->AddressBook->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-    ui->Messages ->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-    ui->Export->setStyleSheet("color: rgb(0, 0, 0);height: 60px;padding-left: 5px; text-align:left;");
-
+    ui->Overview->setStyleSheet(normalButtonStyle);
+    ui->SendCoins->setStyleSheet(normalButtonStyle);
+    ui->ReceiveCoins->setStyleSheet(normalButtonStyle);
+    ui->Transactions->setStyleSheet(normalButtonStyle);
+    ui->AddressBook->setStyleSheet(normalButtonStyle);
+    ui->Messages ->setStyleSheet(normalButtonStyle);
+    ui->Export->setStyleSheet(deactivatedButtonStyle);
 
     int screen = 0;
     QObject *sender = QObject::sender();
@@ -88,31 +88,31 @@ void MenuPage::ClickedItem(){
     switch(screen){
     case 0:
         ui->Overview->setCheckable(true);
-        ui->Overview->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->Overview->setStyleSheet(selectedButtonStyle);
         break;
     case 1:
         ui->SendCoins->setCheckable(true);
-        ui->SendCoins->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->SendCoins->setStyleSheet(selectedButtonStyle);
         break;
     case 2:
         ui->ReceiveCoins->setCheckable(true);
-        ui->ReceiveCoins->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->ReceiveCoins->setStyleSheet(selectedButtonStyle);
         break;
     case 3:
         ui->Transactions->setCheckable(true);
-        ui->Transactions->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->Transactions->setStyleSheet(selectedButtonStyle);
         break;
     case 4:
         ui->AddressBook->setCheckable(true);
-        ui->AddressBook->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->AddressBook->setStyleSheet(selectedButtonStyle);
         break;
     case 5:
         ui->Messages->setCheckable(true);
-        ui->Messages->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->Messages->setStyleSheet(selectedButtonStyle);
         break;
     case 6:
         ui->Export->setCheckable(true);
-        ui->Export->setStyleSheet("color: rgb(75, 13, 149); border-left :5px solid rgb(74,14,149);height: 60px;padding-left: 5px; text-align:left;");
+        ui->Export->setStyleSheet(selectedButtonStyle);
         break;
     default:
         break;
@@ -129,7 +129,6 @@ void MenuPage::LinkMenu(BitcoinGUI *gui){
     connect(ui->Transactions, SIGNAL(pressed()), gui, SLOT(gotoHistoryPage()));
     connect(ui->AddressBook, SIGNAL(pressed()), gui, SLOT(gotoAddressBookPage()));
     connect(ui->Messages, SIGNAL(pressed()), gui, SLOT(gotoMessagePage()));
-    connect(ui->Export, SIGNAL(pressed()), gui, SLOT(gotoZoinodePage()));
 }
 
 void MenuPage::ClickedItemNonSlot(int s){

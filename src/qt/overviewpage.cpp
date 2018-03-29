@@ -117,7 +117,8 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
-    ui->wallet_logo_lbl->setPixmap(QPixmap(":images/wallet_logo"));
+    //DD: we no longer add our logo on the overview page
+    //ui->wallet_logo_lbl->setPixmap(QPixmap(":images/wallet_logo"));
 }
 
 void OverviewPage::handleTransactionClicked(const QModelIndex &index)
