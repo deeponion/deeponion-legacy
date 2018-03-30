@@ -13,6 +13,7 @@ enum NumConnections
 
 class OptionsModel;
 class PeerTableModel;
+class BanTableModel;
 class AddressTableModel;
 class TransactionTableModel;
 class CWallet;
@@ -32,6 +33,7 @@ public:
 
     OptionsModel *getOptionsModel();
     PeerTableModel *getPeerTableModel();
+    BanTableModel *getBanTableModel();
 
     int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
     int getNumBlocks() const;
@@ -58,8 +60,8 @@ public:
 
 private:
     OptionsModel *optionsModel;
-
     PeerTableModel *peerTableModel;
+    BanTableModel *banTableModel;
 
     int cachedNumBlocks;
     int cachedNumBlocksOfPeers;

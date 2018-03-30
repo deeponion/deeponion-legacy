@@ -1,4 +1,5 @@
 #include "clientmodel.h"
+#include "bantablemodel.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "peertablemodel.h"
@@ -14,11 +15,13 @@
 
 static const int64_t nClientStartupTime = GetTime();
 
-ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
-    QObject(parent), optionsModel(optionsModel),
-    cachedNumBlocks(0), cachedNumBlocksOfPeers(0), pollTimer(0)
+ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) : 
+                    QObject(parent), optionsModel(optionsModel),
+                    cachedNumBlocks(0), cachedNumBlocksOfPeers(0), pollTimer(0),
+                    peerTableModel(0), banTableModel(0)
 {
     peerTableModel = new PeerTableModel(this);
+    banTableModel = new BanTableModel(this);
 
     numBlocksAtStartup = -1;
 
@@ -152,6 +155,11 @@ OptionsModel *ClientModel::getOptionsModel()
 PeerTableModel *ClientModel::getPeerTableModel()
 {
     return peerTableModel;
+}
+
+BanTableModel *ClientModel::getBanTableModel()
+{
+    return banTableModel;
 }
 
 QString ClientModel::formatFullVersion() const

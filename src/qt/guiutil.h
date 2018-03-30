@@ -31,6 +31,8 @@ namespace GUIUtil
 
     /* Format a CNodeCombinedStats.nTimeOffset into a user-readable string. */
     QString formatTimeOffset(int64_t nTimeOffset);
+    // Returns true if given address+amount meets "dust" definition
+    QString getEntryData(QAbstractItemView *view, int column, int role);
     // Render Bitcoin addresses in monospace font
     QFont bitcoinAddressFont();
 
