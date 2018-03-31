@@ -87,9 +87,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent) : QMainWindow(parent),
                                           rpcConsole(0)
 {
 
-    /* Open CSS when configured */
-    this->setStyleSheet(GUIUtil::loadStyleSheet());
-
     GUIUtil::restoreWindowGeometry("nWindow", QSize(890, 600), this);
 
 #ifdef Q_OS_MAC
@@ -110,6 +107,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent) : QMainWindow(parent),
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+
+    /* Open CSS when configured */
+    qApp->setStyleSheet(GUIUtil::loadStyleSheet());
 
     // Accept D&D of URIs
     setAcceptDrops(true);
