@@ -280,12 +280,10 @@ bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
 
 void RPCConsole::setClientModel(ClientModel *model)
 {
-    LogPrintf("setClientModel entered\n");
     clientModel = model;
     ui->trafficGraph->setClientModel(model);
     if (model && clientModel->getPeerTableModel() && clientModel->getBanTableModel())
     {
-        LogPrintf("setClientModel | setting up the client model\n");
         setNumConnections(model->getNumConnections());
         // Subscribe to information, replies, messages, errors
         connect(model, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
@@ -310,11 +308,11 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
 
         // create peer table context menu actions
-        QAction *disconnectAction = new QAction(tr("&Disconnect Node"), this);
-        QAction *banAction1h = new QAction(tr("Ban Node for") + " " + tr("1 &hour"), this);
-        QAction *banAction24h = new QAction(tr("Ban Node for") + " " + tr("1 &day"), this);
-        QAction *banAction7d = new QAction(tr("Ban Node for") + " " + tr("1 &week"), this);
-        QAction *banAction365d = new QAction(tr("Ban Node for") + " " + tr("1 &year"), this);
+        QAction *disconnectAction = new QAction(tr("&Disconnect"), this);
+        QAction *banAction1h = new QAction(tr("Ban for") + " " + tr("1 &hour"), this);
+        QAction *banAction24h = new QAction(tr("Ban for") + " " + tr("1 &day"), this);
+        QAction *banAction7d = new QAction(tr("Ban for") + " " + tr("1 &week"), this);
+        QAction *banAction365d = new QAction(tr("Ban for") + " " + tr("1 &year"), this);
 
         peersTableContextMenu = new QMenu(this);
         peersTableContextMenu->addAction(disconnectAction);
@@ -359,7 +357,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->banlistWidget->horizontalHeader()->setStretchLastSection(true);
 
         // create ban table context menu action
-        QAction *unbanAction = new QAction(tr("&Unban Node"), this);
+        QAction *unbanAction = new QAction(tr("&Unban"), this);
         // create ban table context menu
         banTableContextMenu = new QMenu(this);
         banTableContextMenu->addAction(unbanAction);
@@ -583,12 +581,9 @@ void RPCConsole::on_sldGraphRange_valueChanged(int value)
 
 void RPCConsole::showPeersTableContextMenu(const QPoint &point)
 {
-    LogPrintf("showPeersTableContextMenu entered\n");
     QModelIndex index = ui->peerWidget->indexAt(point);
     if (index.isValid())
         peersTableContextMenu->exec(QCursor::pos());
-    else
-        LogPrintf("showPeersTableContextMenu | index invalid | menu will not be shown\n");
 }
 
 void RPCConsole::showBanTableContextMenu(const QPoint &point)
@@ -600,12 +595,9 @@ void RPCConsole::showBanTableContextMenu(const QPoint &point)
 
 void RPCConsole::showOrHideBanTableIfRequired()
 {
-    LogPrintf("showOrHideBanTableIfRequired entered\n");
     if (!clientModel)
-    {
-        LogPrintf("showOrHideBanTableIfRequired | clientModel is NULL | leaving function\n");
         return;
-    }
+    
 
     bool visible = clientModel->getBanTableModel()->shouldShow();
     ui->banlistWidget->setVisible(visible);
