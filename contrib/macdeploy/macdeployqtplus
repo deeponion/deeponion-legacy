@@ -764,13 +764,13 @@ if config.dmg is not None:
         if verbose >= 2:
             print "+ Applying fancy settings +"
 
-        if fancy.has_key("background_picture"):
-            bg_path = os.path.join(disk_root, os.path.basename(fancy["background_picture"]))
-            if verbose >= 3:
-                print fancy["background_picture"], "->", bg_path
-            shutil.copy2(fancy["background_picture"], bg_path)
+        if "background_picture" in fancy:
+              bg_path = os.path.join(disk_root, os.path.basename(fancy["background_picture"]))
+              if verbose >= 3:
+                 print(fancy["background_picture"], "->", bg_path)
+              shutil.copy2(fancy["background_picture"], bg_path)
         else:
-            bg_path = None
+             bg_path = None
 
         if fancy.get("applications_symlink", False):
             os.symlink("/Applications", os.path.join(disk_root, "Applications"))
