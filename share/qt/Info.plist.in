@@ -29,10 +29,10 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Bitcoin-Qt</string>
+  <string>DeepOnion-Qt</string>
 
   <key>CFBundleIdentifier</key>
-  <string>org.bitcoinfoundation.Bitcoin-Qt</string>
+  <string>org.deeponion.DeepOnion-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
