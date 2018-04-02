@@ -260,7 +260,7 @@ def copyFramework(framework, path, verbose):
         #standard place for Nokia Qt installer's frameworks
         fromPath = "/Library/Frameworks/" + framework.sourceFilePath
     else:
-        fromPath = os.path.join("contrib/macdeploy/libs/", framework.sourceFilePath)
+        fromPath = os.path.join("contrib/Frameworks/", framework.sourceFilePath)
     toDir = os.path.join(path, framework.destinationDirectory)
     toPath = os.path.join(toDir, framework.binaryName)
 
@@ -833,7 +833,7 @@ if config.dmg is not None:
             print(s)
 
         p = subprocess.Popen(['osascript', '-'], stdin=subprocess.PIPE)
-        p.communicate(input=s)
+        p.communicate(input=s.encode('utf-8'))
         if p.returncode:
             print("Error running osascript.")
 
