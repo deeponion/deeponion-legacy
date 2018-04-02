@@ -66,6 +66,7 @@
         <file alias="new_connect_2">res/icons/new/connect2_16.png</file>
         <file alias="new_connect_3">res/icons/new/connect3_16.png</file>
         <file alias="new_connect_4">res/icons/new/connect4_16.png</file>
+        <file alias="new_synced">res/icons/new/synced.png</file>
 
     </qresource>
     <qresource prefix="/images">

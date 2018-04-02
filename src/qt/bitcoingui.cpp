@@ -205,7 +205,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocks->setObjectName("frameBlocks");
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("background-color: #3C6EC0; border: 1px solid red;");
+    frameBlocks->setStyleSheet("background-color: #1A1A21;");
 
 
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
@@ -276,13 +276,13 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
     }
 
-    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921;");
-    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921; padding-left: 10px");
+    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px;");
+    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px; padding-left: 10px");
     
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921;");
+    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px;");
     statusBar()->setMinimumHeight(56);
     statusBar()->setMaximumHeight(56);
 
@@ -740,11 +740,12 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         text = tr("%n day(s) ago","",secs/(60*60*24));
     }
 
+
     // Set icon state: spinning if catching up, tick otherwise
     if(secs < 90*60 && count >= nTotalBlocks)
     {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
-        labelBlocksIcon->setPixmap(QIcon(":/icons/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        labelBlocksIcon->setPixmap(QIcon(":/icons/new_synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 
         overviewPage->showOutOfSyncWarning(false);
     }
