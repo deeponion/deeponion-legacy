@@ -56,7 +56,6 @@ public:
   {
     Address = 0,
     Subversion = 1,
-    Ping = 2
   };
 
   /** @name Methods overridden from QAbstractTableModel

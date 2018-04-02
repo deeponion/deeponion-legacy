@@ -30,8 +30,6 @@ bool NodeLessThan::operator()(const CNodeCombinedStats &left, const CNodeCombine
     return pLeft->addrName.compare(pRight->addrName) < 0;
   case PeerTableModel::Subversion:
     return pLeft->strSubVer.compare(pRight->strSubVer) < 0;
-  case PeerTableModel::Ping:
-    return pLeft->dPingTime < pRight->dPingTime;
   }
 
   return false;
@@ -118,7 +116,7 @@ PeerTableModel::PeerTableModel(ClientModel *parent) : QAbstractTableModel(parent
                                                       clientModel(parent),
                                                       timer(0)
 {
-  columns << tr("Address/Hostname") << tr("User Agent") << tr("Ping Time");
+  columns << tr("Address/Hostname") << tr("User Agent");
   priv = new PeerTablePriv();
   // default to unsorted
   priv->sortColumn = -1;
@@ -170,14 +168,7 @@ QVariant PeerTableModel::data(const QModelIndex &index, int role) const
       return QString::fromStdString(rec->nodeStats.addrName);
     case Subversion:
       return QString::fromStdString(rec->nodeStats.strSubVer);
-    case Ping:
-      return GUIUtil::formatPingTime(rec->nodeStats.dPingTime);
     }
-  }
-  else if (role == Qt::TextAlignmentRole)
-  {
-    if (index.column() == Ping)
-      return (int)(Qt::AlignRight | Qt::AlignVCenter);
   }
 
   return QVariant();
