@@ -37,13 +37,13 @@
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>60</height>
+       <height>59</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>60</height>
+       <height>59</height>
       </size>
      </property>
      <property name="font">
@@ -55,7 +55,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: #3B6EBF; color: white; padding: 10px;</string>
+      <string notr="true">background-color: #3B6EBF; color: white;padding-right: 10px;</string>
      </property>
      <property name="text">
       <string>Dashboard</string>

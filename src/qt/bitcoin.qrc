@@ -55,6 +55,17 @@
         <file alias="NewMessagesS">res/icons/new/messages_s.png</file>
         <file alias="NewExportUS">res/icons/new/export_us.png</file>
         <file alias="DeepOnionLogo">res/icons/new/deepOnionLogo.png</file>
+        <file alias="new_lock_closed">res/icons/new/lock_closed.png</file>
+        <file alias="new_lock_open">res/icons/new/lock_open.png</file>
+        <file alias="new_staking_off">res/icons/new/staking_off.png</file>
+        <file alias="new_staking_on">res/icons/new/staking_on.png</file>
+        <file alias="new_tor_active">res/icons/new/tor.png</file>
+        <file alias="new_tor_inactive">res/icons/new/tor2.png</file>
+        <file alias="new_connect_0">res/icons/new/connect0_16.png</file>
+        <file alias="new_connect_1">res/icons/new/connect1_16.png</file>
+        <file alias="new_connect_2">res/icons/new/connect2_16.png</file>
+        <file alias="new_connect_3">res/icons/new/connect3_16.png</file>
+        <file alias="new_connect_4">res/icons/new/connect4_16.png</file>
 
     </qresource>
     <qresource prefix="/images">

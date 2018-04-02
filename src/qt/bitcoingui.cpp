@@ -185,7 +185,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     centralWidget = new QStackedWidget(this);
     //DD adding this to remove the small border that separates left menu and central area
-    centralWidget->setStyleSheet("border: 0;");
+    centralWidget->layout()->setContentsMargins(0,0,0,0);
+    layout()->setContentsMargins(0,0,0,0);
+    setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; }");
     centralWidget->addWidget(overviewPage);;	
 	centralWidget->addWidget(messagePage);
     centralWidget->addWidget(transactionsPage);
@@ -194,23 +196,43 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->addWidget(sendCoinsPage);
     setCentralWidget(centralWidget);
 
-    // Create status bar
+    // Returns the status bar for the main window. Method from QWindow.
     statusBar();
+    statusBar()->setSizeGripEnabled(false);
 
     // Status bar notification icons
     QFrame *frameBlocks = new QFrame();
     frameBlocks->setObjectName("frameBlocks");
     frameBlocks->setContentsMargins(0,0,0,0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+    frameBlocks->setStyleSheet("background-color: #3C6EC0; border: 1px solid red;");
+
+
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
     frameBlocksLayout->setContentsMargins(3,0,3,0);
     frameBlocksLayout->setSpacing(3);
+    int statusIconLabelHeight = 32;
     labelEncryptionIcon = new QLabel();
+    labelEncryptionIcon->setStyleSheet("background-color: #1A1A21;");
+    labelEncryptionIcon->setMinimumWidth(statusIconLabelHeight);
+    labelEncryptionIcon->setMinimumHeight(statusIconLabelHeight);
     labelStakingIcon = new QLabel();
+    labelStakingIcon->setStyleSheet("background-color: #1A1A21;");
+    labelStakingIcon->setMinimumWidth(statusIconLabelHeight);
+    labelStakingIcon->setMinimumHeight(statusIconLabelHeight);
     labelConnectionsIcon = new QLabel();
+    labelConnectionsIcon->setStyleSheet("background-color: #1A1A21;");
+    labelConnectionsIcon->setMinimumWidth(statusIconLabelHeight);
+    labelConnectionsIcon->setMinimumHeight(statusIconLabelHeight);
 	labelOnionIcon = new QLabel();
+    labelOnionIcon->setStyleSheet("background-color: #1A1A21;");
+    labelOnionIcon->setMinimumWidth(statusIconLabelHeight);
+    labelOnionIcon->setMinimumHeight(statusIconLabelHeight);
     labelBlocksIcon = new QLabel();
-    frameBlocksLayout->addStretch();
+    labelBlocksIcon->setStyleSheet("background-color: #1A1A21;");
+    labelBlocksIcon->setMinimumWidth(statusIconLabelHeight);
+    labelBlocksIcon->setMinimumHeight(statusIconLabelHeight);
+    //frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelEncryptionIcon);
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelStakingIcon);
@@ -254,13 +276,15 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
     }
 
-    progressBar->setStyleSheet("color: white; background-color: #1b202f; border-color: #191921;");
-    progressBarLabel->setStyleSheet("color: white; background-color: #1b202f; border-color: #191921;");
+    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921;");
+    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921; padding-left: 10px");
     
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("color: white; background-color: #1b202f; border-color: #191921;");
+    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21; border-color: #191921;");
+    statusBar()->setMinimumHeight(56);
+    statusBar()->setMaximumHeight(56);
 
     syncIconMovie = new QMovie(":/movies/update_spinner", "mng", this);
 
@@ -364,16 +388,16 @@ void BitcoinGUI::createActions()
     optionsAction->setToolTip(tr("Modify configuration options for DeepOnion"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
-    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
+    encryptWalletAction = new QAction(QIcon(":/icons/new_lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
     backupWalletAction = new QAction(QIcon(":/icons/filesave"), tr("&Backup Wallet..."), this);
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
-    unlockWalletAction = new QAction(QIcon(":/icons/lock_open"), tr("&Unlock Wallet..."), this);
+    unlockWalletAction = new QAction(QIcon(":/icons/new_lock_open"), tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
-    lockWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Lock Wallet"), this);
+    lockWalletAction = new QAction(QIcon(":/icons/new_lock_closed"), tr("&Lock Wallet"), this);
     lockWalletAction->setToolTip(tr("Lock wallet"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
@@ -625,18 +649,18 @@ void BitcoinGUI::setNumConnections(int count)
     QString icon;
     switch(count)
     {
-    case 0: icon = ":/icons/connect_0"; break;
-    case 1: case 2: case 3: icon = ":/icons/connect_1"; break;
-    case 4: case 5: case 6: icon = ":/icons/connect_2"; break;
-    case 7: case 8: case 9: icon = ":/icons/connect_3"; break;
-    default: icon = ":/icons/connect_4"; break;
+    case 0: icon = ":/icons/new_connect_0"; break;
+    case 1: case 2: case 3: icon = ":/icons/new_connect_1"; break;
+    case 4: case 5: case 6: icon = ":/icons/new_connect_2"; break;
+    case 7: case 8: case 9: icon = ":/icons/new_connect_3"; break;
+    default: icon = ":/icons/new_connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
     labelConnectionsIcon->setToolTip(tr("%n active connection(s) to DeepOnion network", "", count));
 
 	if (fTorEnabled == 1)
 	{
-		labelOnionIcon->setPixmap(QIcon(":/icons/tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		labelOnionIcon->setPixmap(QIcon(":/icons/new_tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr("Connecting over the Tor network"));
 	}
 
@@ -1000,7 +1024,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Unlocked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/new_lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1010,7 +1034,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Locked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/new_lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1111,12 +1135,12 @@ void BitcoinGUI::updateStakingIcon()
     {
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelStakingIcon->setPixmap(QIcon(":/icons/new_staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelStakingIcon->setToolTip(tr("Staking.<br>Your weight is %1<br>Network weight is %2").arg(nWeight).arg(nNetworkWeight));
     }
     else
     {
-        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelStakingIcon->setPixmap(QIcon(":/icons/new_staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         if (pwalletMain && pwalletMain->IsLocked())
             labelStakingIcon->setToolTip(tr("Not staking because wallet is locked"));
         else if (vNodes.empty())
@@ -1137,13 +1161,13 @@ void BitcoinGUI::updateOnionIcon()
 
 	if (ipaddress == std::string("0.0.0.0"))
 	{
-		labelOnionIcon->setPixmap(QIcon(":/icons/tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		labelOnionIcon->setPixmap(QIcon(":/icons/new_tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr("Connecting over the Tor Network"));
 	}
 	else
 	{
 		std::string display = std::string("Connected over the Tor Network. IP: ") + ipaddress;
-		labelOnionIcon->setPixmap(QIcon(":/icons/tor_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		labelOnionIcon->setPixmap(QIcon(":/icons/new_tor_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr(display.c_str()));
 	}
 }
