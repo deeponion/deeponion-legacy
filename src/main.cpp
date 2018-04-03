@@ -3038,7 +3038,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
             pfrom->PushVersion();
 
         pfrom->fClient = !(pfrom->nServices & NODE_NETWORK);
-
+        
+        int64_t nTimeOffset = nTime - GetTime();
+        pfrom->nTimeOffset = nTimeOffset;
         if (GetBoolArg("-synctime", true))
             AddTimeData(pfrom->addr, nTime);
 
@@ -3915,4 +3917,10 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
     }
     return true;
+}
+
+bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats)
+{
+    // TODO: incomplete
+    return false;
 }

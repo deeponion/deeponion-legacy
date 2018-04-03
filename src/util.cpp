@@ -988,12 +988,19 @@ bool WildcardMatch(const string& str, const string& mask)
     return WildcardMatch(str.c_str(), mask.c_str());
 }
 
+std::string bytesReadable(uint64_t nBytes)
+{
+    if (nBytes >= 1024ll * 1024ll * 1024ll * 1024ll)
+        return strprintf("%.2f TB", nBytes / 1024.0 / 1024.0 / 1024.0 / 1024.0);
+    if (nBytes >= 1024 * 1024 * 1024)
+        return strprintf("%.2f GB", nBytes / 1024.0 / 1024.0 / 1024.0);
+    if (nBytes >= 1024 * 1024)
+        return strprintf("%.2f MB", nBytes / 1024.0 / 1024.0);
+    if (nBytes >= 1024)
+        return strprintf("%.2f KB", nBytes / 1024.0);
 
-
-
-
-
-
+    return strprintf("%d B", nBytes);
+};
 
 static std::string FormatException(std::exception* pex, const char* pszThread)
 {

@@ -125,6 +125,8 @@ void StakeMiner(CWallet *pwallet);
 void ResendWalletTransactions(bool fForce = false);
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
+// get node statistics (currently not implemented)
+bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 
 /** Position on disk for a particular transaction. */
 class CDiskTxPos
