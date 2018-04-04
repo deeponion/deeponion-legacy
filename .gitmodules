@@ -1,3 +1,7 @@
+[submodule "tor"]
+        path = tor
+        url = https://github.com/brakmic/tor/tor.git
+        branch = release-0.3.3
 [submodule "src/leveldb"]
 	path = src/leveldb
 	url = https://github.com/bitcoin-core/leveldb-old.git
