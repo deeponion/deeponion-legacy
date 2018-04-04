@@ -49,4 +49,4 @@ After a successful compilation you have the option to create a DMG for easier ma
 
 For this type: `sudo make deploy` in the Terminal and enter the **administrator password** when asked. 
 
-Your Mac will now start to create several files and also open a Window with DeepOnion icons in it. Do not interfere with this process. Let it finish its work. After a successful DMG creation you'll get an **DeepOnion-Qt.dmg** file in `deeponion` directory. Use this file by double clicking on it and installing the Wallet in the Applications path.
+Your Mac will now start to create several files and also open a Window with DeepOnion icons in it. **Do not interfere with this process!** Let it finish its work. After a successful DMG creation you'll get an **DeepOnion-Qt.dmg** file in `deeponion` directory. Use this file by double clicking on it and installing the Wallet in the Applications path.
