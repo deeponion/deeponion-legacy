@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-[ -d .git ] && [ -f ./tor/.git ] || \
+[ -d .git ] && [ -d tor ] && [ -d src/leveldb ] || \
   { echo "Please run this command from the root of a recursive Git clone of the DeepOnion repository." && exit 1; }
 
 git submodule init 

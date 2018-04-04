@@ -1,7 +1,6 @@
 [submodule "tor"]
-	path = tor
-	url = https://git.torproject.org/tor.git
-	branch = maint-0.3.3
+        path = tor
+        url = https://github.com/brakmic/deeponion/tor
 [submodule "src/leveldb"]
 	path = src/leveldb
 	url = https://github.com/bitcoin-core/leveldb-old.git
