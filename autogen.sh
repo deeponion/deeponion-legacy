@@ -7,7 +7,7 @@ git submodule init
 git submodule sync --recursive 
 git submodule update --recursive --force
 
-pushd tor && git clean -fdx . && git checkout release-0.3.3 && git pull && popd
+pushd tor && git clean -fdx . && popd
 
 autoreconf --no-recursive --install
 
