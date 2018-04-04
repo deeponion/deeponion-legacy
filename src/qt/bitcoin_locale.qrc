@@ -4,6 +4,5 @@
         <file alias="fr">locale/bitcoin_fr.qm</file>
         <file alias="ru">locale/bitcoin_ru.qm</file>
         <file alias="es">locale/bitcoin_es.qm</file>
-        <file alias="sc">locale/bitcoin_sc.qm</file>
     </qresource>
 </RCC>
