@@ -3,7 +3,17 @@
 
 #include <QObject>
 
+enum NumConnections
+{
+    CONNECTIONS_NONE = 0,
+    CONNECTIONS_IN = (1U << 0),
+    CONNECTIONS_OUT = (1U << 1),
+    CONNECTIONS_ALL = (CONNECTIONS_IN | CONNECTIONS_OUT),
+};
+
 class OptionsModel;
+class PeerTableModel;
+class BanTableModel;
 class AddressTableModel;
 class TransactionTableModel;
 class CWallet;
@@ -22,10 +32,15 @@ public:
     ~ClientModel();
 
     OptionsModel *getOptionsModel();
+    PeerTableModel *getPeerTableModel();
+    BanTableModel *getBanTableModel();
 
-    int getNumConnections() const;
+    int getNumConnections(unsigned int flags = CONNECTIONS_ALL) const;
     int getNumBlocks() const;
     int getNumBlocksAtStartup();
+
+    quint64 getTotalBytesRecv() const;
+    quint64 getTotalBytesSent() const;
 
     QDateTime getLastBlockDate() const;
 
@@ -45,6 +60,8 @@ public:
 
 private:
     OptionsModel *optionsModel;
+    PeerTableModel *peerTableModel;
+    BanTableModel *banTableModel;
 
     int cachedNumBlocks;
     int cachedNumBlocksOfPeers;
@@ -57,7 +74,9 @@ private:
     void unsubscribeFromCoreSignals();
 signals:
     void numConnectionsChanged(int count);
+    void networkActiveChanged(bool networkActive);
     void numBlocksChanged(int count, int countOfPeers);
+    void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
 
     //! Asynchronous error notification
     void error(const QString &title, const QString &message, bool modal);
@@ -65,6 +84,7 @@ signals:
 public slots:
     void updateTimer();
     void updateNumConnections(int numConnections);
+    void updateNetworkActive(bool networkActive);
     void updateAlert(const QString &hash, int status);
 };
 

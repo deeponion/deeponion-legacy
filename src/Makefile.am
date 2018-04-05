@@ -257,9 +257,9 @@ DISTCLEANFILES = obj/build.h
 EXTRA_DIST = leveldb
 
 clean-local:
-	-$(MAKE) -C leveldb clean
-	r-rm -f leveldb/*/*.gcda leveldb/*/*.gcno leveldb/helpers/memenv/*.gcda leveldb/helpers/memenv/*.gcno
-	-rm -f config.h
+	$(MAKE) -C leveldb clean
+	rm -f leveldb/*/*.gcda leveldb/*/*.gcno leveldb/helpers/memenv/*.gcda leveldb/helpers/memenv/*.gcno
+	rm -f config.h
 
 .rc.o:
 	@test -f $(WINDRES)

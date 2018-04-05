@@ -244,6 +244,7 @@ static const CRPCCommand vRPCCommands[] =
         {"getpeerinfo", &getpeerinfo, true, false},
         {"getdifficulty", &getdifficulty, true, false},
         {"getnetworkhashps", &getnetworkhashps, true, false},
+        {"getnettotals", &getnettotals, true, false},
         {"getinfo", &getinfo, true, false},
         {"getsubsidy", &getsubsidy, true, false},
         {"getmininginfo", &getmininginfo, true, false},

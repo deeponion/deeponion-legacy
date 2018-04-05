@@ -229,11 +229,7 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 void runCommand(std::string strCommand);
 
-
-
-
-
-
+std::string bytesReadable(uint64_t nBytes);
 
 
 
