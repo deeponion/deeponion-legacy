@@ -1,1 +1,1 @@
-Tor 0.3.3.0-alpha-dev (git-48a51c5f8b80a359)
+Tor 0.3.3.4-alpha-dev (git-cd929a8c1f6ce162)
