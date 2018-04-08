@@ -287,7 +287,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         setNumConnections(model->getNumConnections());
         // Subscribe to information, replies, messages, errors
         connect(model, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
-        connect(model, SIGNAL(numBlocksChanged(int, int)), this, SLOT(setNumBlocks(int, int)));
+        connect(model, SIGNAL(numBlocksChanged(int, int, int)), this, SLOT(setNumBlocks(int, int, int)));
 
         updateNetworkState();
 
@@ -379,7 +379,7 @@ void RPCConsole::setClientModel(ClientModel *model)
 
         ui->isTestNet->setChecked(model->isTestNet());
 
-        setNumBlocks(model->getNumBlocks(), model->getNumBlocksOfPeers());
+        setNumBlocks(model->getNumBlocks(), model->getNumBlocksOfPeers(), model->getNumBlocksAtStartup());
 
         //Setup autocomplete and attach it
         QStringList wordList;
@@ -483,7 +483,7 @@ void RPCConsole::updateNetworkState()
     ui->numberOfConnections->setText(connections);
 }
 
-void RPCConsole::setNumBlocks(int count, int countOfPeers)
+void RPCConsole::setNumBlocks(int count, int countOfPeers, int nBlocksAtStartup)
 {
     ui->numberOfBlocks->setText(QString::number(count));
     ui->totalBlocks->setText(QString::number(countOfPeers));

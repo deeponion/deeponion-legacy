@@ -75,7 +75,7 @@ private slots:
     /** Set network state shown in the UI */
     void setNetworkActive(bool networkActive);
     /** Set number of blocks shown in the UI */
-    void setNumBlocks(int count, int countOfPeers);
+    void setNumBlocks(int count, int countOfPeers, int nBlocksAtStartup);
     /** Go forward or back in history */
     void browseHistory(int offset);
     /** Scroll console view to end */

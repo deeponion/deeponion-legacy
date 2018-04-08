@@ -86,13 +86,14 @@ void ClientModel::updateTimer()
     // Periodically check and update with a timer.
     int newNumBlocks = getNumBlocks();
     int newNumBlocksOfPeers = getNumBlocksOfPeers();
+    int nBlocksAtStartup = getNumBlocksAtStartup();
 
     if(cachedNumBlocks != newNumBlocks || cachedNumBlocksOfPeers != newNumBlocksOfPeers)
     {
         cachedNumBlocks = newNumBlocks;
         cachedNumBlocksOfPeers = newNumBlocksOfPeers;
 
-        emit numBlocksChanged(newNumBlocks, newNumBlocksOfPeers);
+        emit numBlocksChanged(newNumBlocks, newNumBlocksOfPeers, nBlocksAtStartup);
     }
 
     emit bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
@@ -124,7 +125,7 @@ void ClientModel::updateAlert(const QString &hash, int status)
 
     // Emit a numBlocksChanged when the status message changes,
     // so that the view recomputes and updates the status bar.
-    emit numBlocksChanged(getNumBlocks(), getNumBlocksOfPeers());
+    emit numBlocksChanged(getNumBlocks(), getNumBlocksOfPeers(), getNumBlocksAtStartup());
 }
 
 bool ClientModel::isTestNet() const
