@@ -607,8 +607,7 @@ void BitcoinGUI::setNumConnections(int count)
 
     if (fTorEnabled == 1)
     {
-        labelOnionIcon->setPixmap(QIcon(":/icons/tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-        labelOnionIcon->setToolTip(tr("Connecting over the Tor network"));
+        updateOnionIcon();
     }
 }
 
