@@ -243,9 +243,6 @@
          <property name="text">
           <string>Using OpenSSL version</string>
          </property>
-         <property name="indent">
-          <number>10</number>
-         </property>
         </widget>
        </item>
        <item row="2" column="1">
