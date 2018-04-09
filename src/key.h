@@ -38,10 +38,10 @@
 // see www.keylength.com
 // script supports up to 75 for single byte push
 //
-/*struct ECDSA_SIG_st {
+struct ECDSA_SIG_st {
    BIGNUM *r;
    BIGNUM *s;
-};*/
+};
 
 class key_error : public std::runtime_error
 {
