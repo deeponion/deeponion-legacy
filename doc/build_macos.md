@@ -1,6 +1,6 @@
 Open a *Terminal*.
 
-1.  *Clone the github tree to get the source code and checkout the Mac branch*
+1.  *Clone the github tree to get the source code*
 
 ```
 git clone --recursive https://github.com/deeponion/deeponion.git
