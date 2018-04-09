@@ -68,7 +68,6 @@ src/*.a
 *.la
 
 # Compilation and Qt preprocessor part
-*.qm
 Makefile
 background.tiff*
 

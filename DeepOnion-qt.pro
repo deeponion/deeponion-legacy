@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.6.1.0
+VERSION = 1.6.2.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
@@ -232,6 +232,7 @@ DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
+	src/qt/bantablemodel.h \
     src/qt/optionsdialog.h \
     src/qt/coincontroldialog.h \
     src/qt/coincontroltreewidget.h \
@@ -241,6 +242,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/aboutdialog.h \
     src/qt/editaddressdialog.h \
     src/qt/bitcoinaddressvalidator.h \
+	src/qt/trafficgraphwidget.h \
     src/alert.h \
     src/addrman.h \
     src/base58.h \
@@ -283,6 +285,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/transactionrecord.h \
     src/qt/guiconstants.h \
     src/qt/optionsmodel.h \
+	src/qt/peertablemodel.h \
     src/qt/monitoreddatamapper.h \
     src/qt/transactiondesc.h \
     src/qt/transactiondescdialog.h \
@@ -313,6 +316,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
     src/qt/qvalidatedtextedit.h \
+	src/qt/scicon.h \
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
@@ -344,10 +348,12 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
+	src/qt/bantablemodel.cpp \
     src/qt/optionsdialog.cpp \
     src/qt/sendcoinsdialog.cpp \
     src/qt/coincontroldialog.cpp \
     src/qt/coincontroltreewidget.cpp \
+	src/qt/trafficgraphwidget.cpp \
     src/qt/addressbookpage.cpp \
     src/qt/signverifymessagedialog.cpp \
     src/qt/aboutdialog.cpp \
@@ -355,6 +361,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
     src/qt/messagepage.cpp \
     src/qt/messagemodel.cpp \
+	src/qt/peertablemodel.cpp \
     src/qt/sendmessagesdialog.cpp \
     src/qt/sendmessagesentry.cpp \
     src/qt/qvalidatedtextedit.cpp \
@@ -406,6 +413,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoinunits.cpp \
     src/qt/qvaluecombobox.cpp \
     src/qt/askpassphrasedialog.cpp \
+	src/qt/scicon.cpp \
     src/protocol.cpp \
     src/qt/notificator.cpp \
     src/qt/qtipcserver.cpp \

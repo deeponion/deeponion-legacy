@@ -257,6 +257,12 @@
            <property name="toolTip">
             <string>SOCKS version of the proxy (e.g. 5)</string>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>75</width>
+             <height>0</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item>
