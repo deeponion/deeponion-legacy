@@ -787,6 +787,11 @@ void RPCConsole::unbanSelectedNode()
     clientModel->getBanTableModel()->refresh();
 }
 
+void RPCConsole::showConfEditor()
+{
+    GUIUtil::openConfigfile();
+}
+
 void RPCConsole::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
