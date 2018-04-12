@@ -66,6 +66,8 @@ private slots:
     void showOrHideBanTableIfRequired();
     /** clear the selected node */
     void clearSelectedNode();
+    /** Open external (default) editor with DeepOnion.conf */
+    void showConfEditor();
 
   public slots:
     void clear();
@@ -90,6 +92,7 @@ private slots:
     void banSelectedNode(int bantime);
     /** Unban a selected node on the Bans tab */
     void unbanSelectedNode();
+
   signals:
     // For RPC command executor
     void stopExecutor();
