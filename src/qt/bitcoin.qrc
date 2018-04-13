@@ -109,6 +109,10 @@
         <file alias="update_spinner">res/movies/loadermng.mng</file>
     </qresource>
 
+    <qresource prefix="/fonts">
+        <file alias="HelveticaNeue">res/fonts/HelveticaNeue.ttf</file>
+    </qresource>
+
     <qresource prefix="/images">
         <file alias="about_new">res/images/about.png</file>
         <file alias="splash">res/images/splash.png</file>
