@@ -116,6 +116,8 @@ private:
     RPCConsole *rpcConsole;
 
     QMovie *syncIconMovie;
+    int spinnerFrame;
+    int prevBlocks;
 
     /** Create the main UI actions. */
     void createActions();

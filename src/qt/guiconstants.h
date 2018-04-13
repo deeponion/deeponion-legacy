@@ -32,3 +32,6 @@ static const int MAX_URI_LENGTH = 255;
 #define EXPORT_IMAGE_SIZE 256
 
 #endif // GUICONSTANTS_H
+
+/* Number of frames in spinner animation */
+#define SPINNER_FRAMES 36

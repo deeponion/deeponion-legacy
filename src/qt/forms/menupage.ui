@@ -348,7 +348,7 @@
      </property>
      <property name="font">
       <font>
-       <family>Tahoma</family>
+       <family>Helvetica Neue</family>
        <pointsize>16</pointsize>
        <weight>75</weight>
        <bold>true</bold>

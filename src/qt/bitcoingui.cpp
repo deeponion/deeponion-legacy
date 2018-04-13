@@ -36,6 +36,7 @@
 #include "macdockiconhandler.h"
 #endif
 
+#include <QFontDatabase>
 #include <QApplication>
 #include <QMainWindow>
 #include <QMenuBar>
@@ -86,7 +87,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     aboutQtAction(0),
     trayIcon(0),
     notificator(0),
-    rpcConsole(0)
+    rpcConsole(0),
+    prevBlocks(0),
+    spinnerFrame(0)
 {
 
 #ifdef Q_OS_MAC
@@ -109,34 +112,35 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     
-	qApp->setStyleSheet("QComboBox {border: 1px solid gray; color: white; background-color: #2A2937;} \
+	qApp->setStyleSheet("QComboBox {border: 1px solid red; color: white; background-color: #2A2937;} \
 		QWidget {color:white; background-color: #2A2A37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #2A2A37; border:none;font-family:'Open Sans,sans-serif';} \
+        QMainWindow {background-color: #2A2A37; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
 		QHeaderView::section {color:white; background-color: #2A2937; } \
 		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
 		QLineEdit {color: #1b202f; background: #d7e6ff; selection-background-color: #d7e6ff;} \
-		QLineEdit:hover{border: 1px solid gray; background-color: #d7e6ff;} \
+		QLineEdit:hover{border: 1px solid red; background-color: #d7e6ff;} \
 		QTabWidget {color:white; background-color: #2A2937;} \
-		QTabWidget::pane {color:white; background-color: #2A2937; border: 1px solid gray;} \
-		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid gray; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabWidget::pane {color:white; background-color: #2A2937; border: 1px solid red;} \
+		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid red; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
 		QComboBox:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2A2937;} \
-		QLabel {color:white; background-color: #2A2937;} \
+		QLabel {color:white; background-color: #2A2937; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid gray;} \
+		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid red;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
-		QToolButton {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
-		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid gray; padding: 3px;} \
-		QStatusBar {color:white; background-color: #1b202f; border: 1px solid gray;} \
+		QToolButton {color:white; background-color: #1b202f; border: 1px solid red; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid red; padding: 3px;} \
 		QMenuBar {background-color: #2A2937;} \
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
-		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}");
+		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
+        QPushButton {font-family:'Helvetica Neue';}");
 
+    QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
     setAcceptDrops(true);
 
@@ -273,16 +277,17 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QString curStyle = qApp->style()->metaObject()->className();
     if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
     {
-        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 1px solid grey; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
+        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 0px; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
     }
 
-    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px;");
-    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px; padding-left: 10px");
-    
+    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21;");
+    //progressBar->setFrameStyle(QFrame::NoFrame);
+    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21;padding-left: 10px;");
+    progressBarLabel->setFrameStyle(QFrame::NoFrame);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21; border: 0px;");
+    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21;");
     statusBar()->setMinimumHeight(56);
     statusBar()->setMaximumHeight(56);
 
@@ -727,22 +732,22 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     {
         text = tr("%n second(s) ago","",secs);
     }
-    else if(secs < 60*60)
+    else if(secs < 3600) // 60 * 60
     {
         text = tr("%n minute(s) ago","",secs/60);
     }
-    else if(secs < 24*60*60)
+    else if(secs < 86400) // 24*60*60
     {
-        text = tr("%n hour(s) ago","",secs/(60*60));
+        text = tr("%n hour(s) ago","",secs/3600);
     }
     else
     {
-        text = tr("%n day(s) ago","",secs/(60*60*24));
+        text = tr("%n day(s) ago","",secs/86400);
     }
 
 
-    // Set icon state: spinning if catching up, tick otherwise
-    if(secs < 90*60 && count >= nTotalBlocks)
+    // Set icon state: spinning if catching up, tick otherwise 5400 = 90*60
+    if(secs < 5400 && count >= nTotalBlocks)
     {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
         labelBlocksIcon->setPixmap(QIcon(":/icons/new_synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -752,9 +757,16 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     else
     {
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
-        labelBlocksIcon->setMovie(syncIconMovie);
-        syncIconMovie->start();
-
+        //Old version using the movie, even though, I have never seen the movie so I doubt it works..
+        //labelBlocksIcon->setMovie(syncIconMovie);
+        //syncIconMovie->start();
+        //labelBlocksIcon->setPixmap(QIcon(":/icons/new_notsynced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        if(count != prevBlocks) {
+            labelBlocksIcon->setPixmap(QIcon(QString(":/movies/spinner-%1").arg(spinnerFrame, 3, 10, QChar('0'))).
+                    pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+            spinnerFrame = (spinnerFrame + 1) % SPINNER_FRAMES;
+        }
+        prevBlocks = count;
         overviewPage->showOutOfSyncWarning(true);
     }
 
