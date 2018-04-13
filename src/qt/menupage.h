@@ -54,7 +54,7 @@ public:
 
     QString normalButtonStyle ="border:0; height: 60px;padding-left: 5px;text-align:left;color: white;background-color: #393848";
     QString deactivatedButtonStyle ="border:0; height: 60px;padding-left: 5px;text-align:left;color: #787878;background-color: #393848";
-    QString selectedButtonStyle = "border:0; height: 60px;padding-left: 5px;text-align:left;color: white;background-color: #3C6EC0";
+    QString selectedButtonStyle = "border:0; height: 60px;padding-left: 5px;text-align:left;color: white;background-color: #486EBA";
 
 public Q_SLOTS:
     void ClickedItem();

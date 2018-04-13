@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+   <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
@@ -43,9 +43,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -106,18 +106,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -135,9 +135,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -198,18 +198,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -227,9 +227,9 @@
      <colorrole role="Button">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -290,18 +290,18 @@
      <colorrole role="Base">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
      <colorrole role="Window">
       <brush brushstyle="SolidPattern">
        <color alpha="255">
-        <red>57</red>
-        <green>56</green>
-        <blue>72</blue>
+        <red>0</red>
+        <green>128</green>
+        <blue>0</blue>
        </color>
       </brush>
      </colorrole>
@@ -320,7 +320,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #393848;border-style: none;</string>
+   <string notr="true">background-color: green;border-style: none;</string>
   </property>
   <layout class="QVBoxLayout" name="topLayout">
    <property name="spacing">
@@ -355,7 +355,7 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white; style: bold; background-color: #3C6EC0</string>
+      <string notr="true">color: white; style: bold; background-color: #486EBA</string>
      </property>
      <property name="text">
       <string>DeepOnion</string>
@@ -374,23 +374,20 @@
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame">
-     <property name="minimumSize">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
+       <width>20</width>
        <height>40</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #393848;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-    </widget>
+    </spacer>
    </item>
    <item>
     <widget class="QPushButton" name="Overview">
@@ -433,7 +430,7 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -493,9 +490,8 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848;
-}
-</string>
+background-color: #393947;
+}</string>
      </property>
      <property name="text">
       <string>Send Coins</string>
@@ -551,7 +547,7 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848;
+background-color: #393947;
 }</string>
      </property>
      <property name="text">
@@ -611,7 +607,7 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848;
+background-color: #393947;
 }</string>
      </property>
      <property name="text">
@@ -668,7 +664,7 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848;
+background-color: #393947;
 }</string>
      </property>
      <property name="text">
@@ -725,7 +721,7 @@ height: 60px;
 padding-left: 10px;
 text-align:left;
 color: white;
-background-color: #393848;
+background-color: #393947;
 }</string>
      </property>
      <property name="text">
@@ -783,7 +779,7 @@ background-color: #393848;
 height: 60px;
 padding-left:10px;
 text-align:left;
-background-color: #393848;
+background-color: #393947;
 </string>
      </property>
      <property name="text">
@@ -805,44 +801,17 @@ background-color: #393848;
     </widget>
    </item>
    <item>
-    <widget class="QFrame" name="frame_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
      </property>
-     <property name="minimumSize">
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>200</width>
-       <height>0</height>
+       <width>20</width>
+       <height>40</height>
       </size>
      </property>
-     <property name="styleSheet">
-      <string notr="true">border:0;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
-      <item>
-       <spacer name="verticalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>33</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
-    </widget>
+    </spacer>
    </item>
   </layout>
  </widget>

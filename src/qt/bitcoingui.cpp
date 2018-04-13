@@ -113,9 +113,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
     
 	qApp->setStyleSheet("QComboBox {border: 1px solid red; color: white; background-color: #2A2937;} \
-		QWidget {color:white; background-color: #2A2A37;} \
+		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #2A2A37; border:none;font-family:'Helvetica Neue';} \
+        QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
 		QHeaderView::section {color:white; background-color: #2A2937; } \
 		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
@@ -139,6 +139,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QMenuBar::item {color: white; background-color: #2A2937;} \
 		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
         QPushButton {font-family:'Helvetica Neue';}");
+
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs

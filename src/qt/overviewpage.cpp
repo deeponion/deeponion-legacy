@@ -104,16 +104,16 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->setupUi(this);
 
     // Recent transactions
-    ui->listTransactions->setItemDelegate(txdelegate);
-    ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
-    ui->listTransactions->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
-    ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);
+    //ui->listTransactions->setItemDelegate(txdelegate);
+    //ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
+    //ui->listTransactions->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
+    //ui->listTransactions->setAttribute(Qt::WA_MacShowFocusRect, false);
 
     connect(ui->listTransactions, SIGNAL(clicked(QModelIndex)), this, SLOT(handleTransactionClicked(QModelIndex)));
 
     // init "out of sync" warning labels
     ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
-    ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
+    //ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
     // start with displaying the "out of sync" warnings
     showOutOfSyncWarning(true);
@@ -135,15 +135,18 @@ OverviewPage::~OverviewPage()
 void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance)
 {
     int unit = model->getOptionsModel()->getDisplayUnit();
+
     currentBalance = balance;
     currentStake = stake;
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
-    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
-    ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
+
+// Removing ONION unit from the Wallet Summary Section. Unfortunately there is no space for that.
+    ui->labelBalance->setText(BitcoinUnits::formatWithoutUnit(unit, balance));
+    ui->labelStake->setText(BitcoinUnits::formatWithoutUnit(unit, stake));
+    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithoutUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(BitcoinUnits::formatWithoutUnit(unit, immatureBalance));
+    ui->labelTotal->setText(BitcoinUnits::formatWithoutUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -181,14 +184,32 @@ void OverviewPage::setModel(WalletModel *model)
         // Set up transaction list
         filter = new TransactionFilterProxy();
         filter->setSourceModel(model->getTransactionTableModel());
-        filter->setLimit(NUM_ITEMS);
         filter->setDynamicSortFilter(true);
+        filter->setLimit(NUM_ITEMS);
         filter->setSortRole(Qt::EditRole);
         filter->setShowInactive(false);
-        filter->sort(TransactionTableModel::Status, Qt::DescendingOrder);
+        //filter->sort(TransactionTableModel::Status, Qt::DescendingOrder);
 
         ui->listTransactions->setModel(filter);
-        ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
+        ui->listTransactions->setAlternatingRowColors(true);
+        ui->listTransactions->setSortingEnabled(true);
+        ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
+        ui->listTransactions->verticalHeader()->hide();
+
+        ui->listTransactions->horizontalHeader()->resizeSection(
+                TransactionTableModel::Status, 23);
+        ui->listTransactions->horizontalHeader()->resizeSection(
+                TransactionTableModel::Date, 120);
+        ui->listTransactions->horizontalHeader()->resizeSection(
+                TransactionTableModel::Type, 120);
+        ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
+        ui->listTransactions->horizontalHeader()->resizeSection(
+                TransactionTableModel::Amount, 100);
+        ui->listTransactions->horizontalHeader()->setStyleSheet("background-color: #486EBA; color: white;");
+
+
+
+        //ui->listTransactions->setModelColumn(TransactionTableModel::ToAddress);
 
         // Keep up to date with wallet
         setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getImmatureBalance());
@@ -233,5 +254,5 @@ void OverviewPage::updateDisplayUnit()
 void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
-    ui->labelTransactionsStatus->setVisible(fShow);
+    //ui->labelTransactionsStatus->setVisible(fShow);
 }
