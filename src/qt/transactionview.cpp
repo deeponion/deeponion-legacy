@@ -37,13 +37,10 @@ TransactionView::TransactionView(QWidget *parent) :
 
     //Adding the Page Title QLabel
     QLabel *pageTitleLabel = new QLabel(tr("Transactions"));
-    pageTitleLabel->setAlignment(Qt::AlignRight);
+    pageTitleLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     pageTitleLabel->setFixedHeight(59);
-    QFont font = pageTitleLabel->font();
-    font.setPointSize(16);
-    font.setBold(true);
-    pageTitleLabel->setFont(font);
-    pageTitleLabel->setStyleSheet("background-color: #486EBA; color: white;padding-right: 10px; font-size: 16px; font-face: bold;");
+    pageTitleLabel->setStyleSheet("background-color: #486EBA; color: white;padding-right: 10px; font-size: 16pt; \
+                                          font-weight: bold; font-family: Helvetica Neue");
 
     // Build filter row
     setContentsMargins(0,0,0,0);
@@ -71,6 +68,9 @@ TransactionView::TransactionView(QWidget *parent) :
     dateWidget->addItem(tr("Last month"), LastMonth);
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
+    dateWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue; \
+                                      padding-top: 14px; padding-bottom: 14px;");
+
     hlayout->addWidget(dateWidget);
 
     typeWidget = new QComboBox(this);
@@ -88,10 +88,14 @@ TransactionView::TransactionView(QWidget *parent) :
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
+    typeWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
+                                      padding-top: 14px; padding-bottom: 14px;");
 
     hlayout->addWidget(typeWidget);
 
     addressWidget = new QLineEdit(this);
+    addressWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
+                                         padding-top: 14px; padding-bottom: 14px;");
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     addressWidget->setPlaceholderText(tr("Enter address or label to search"));
@@ -109,6 +113,9 @@ TransactionView::TransactionView(QWidget *parent) :
     amountWidget->setFixedWidth(100);
 #endif
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
+    amountWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
+                                        padding-top: 14px; padding-bottom: 14px;");
+
     hlayout->addWidget(amountWidget);
 
     QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -119,9 +126,27 @@ TransactionView::TransactionView(QWidget *parent) :
 
     vlayout->addWidget(pageTitleLabel);
     vlayout->insertSpacing(1,40);
-    vlayout->addLayout(hlayout);
-    vlayout->addWidget(createDateRangeWidget());
-    vlayout->addWidget(view);
+
+        QHBoxLayout *hlayout1 = new QHBoxLayout();
+        hlayout1->setContentsMargins(0,0,0,0);
+        hlayout1->setSpacing(0);
+        hlayout1->insertSpacing(0, 60);
+            QVBoxLayout *vlayout1 = new QVBoxLayout();
+            vlayout1->setContentsMargins(0,0,0,0);
+            vlayout1->setSpacing(0);
+            vlayout1->addLayout(hlayout);
+            vlayout1->addWidget(createDateRangeWidget());
+            vlayout1->insertSpacing(2, 20);
+            vlayout1->addWidget(view);
+
+        hlayout1->addLayout(vlayout1);
+        hlayout1->addSpacing(60);
+
+    vlayout->addLayout(hlayout1);
+//    vlayout->addLayout(hlayout);
+//    vlayout->addWidget(createDateRangeWidget());
+//    vlayout->addWidget(view);
+    vlayout->addSpacing(20);
     vlayout->setSpacing(0);
     int width = view->verticalScrollBar()->sizeHint().width();
     // Cover scroll bar width with spacing
@@ -185,6 +210,7 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
+        transactionView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
@@ -200,6 +226,10 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         transactionView->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
+        transactionView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}");
     }
 }
 
