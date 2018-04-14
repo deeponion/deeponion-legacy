@@ -27,12 +27,24 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QLabel>
+#include <QFont>
 #include <QDateTimeEdit>
 
 TransactionView::TransactionView(QWidget *parent) :
     QWidget(parent), model(0), transactionProxyModel(0),
     transactionView(0)
 {
+
+    //Adding the Page Title QLabel
+    QLabel *pageTitleLabel = new QLabel(tr("Transactions"));
+    pageTitleLabel->setAlignment(Qt::AlignRight);
+    pageTitleLabel->setFixedHeight(59);
+    QFont font = pageTitleLabel->font();
+    font.setPointSize(16);
+    font.setBold(true);
+    pageTitleLabel->setFont(font);
+    pageTitleLabel->setStyleSheet("background-color: #486EBA; color: white;padding-right: 10px; font-size: 16px; font-face: bold;");
+
     // Build filter row
     setContentsMargins(0,0,0,0);
 
@@ -104,6 +116,9 @@ TransactionView::TransactionView(QWidget *parent) :
     vlayout->setSpacing(0);
 
     QTableView *view = new QTableView(this);
+
+    vlayout->addWidget(pageTitleLabel);
+    vlayout->insertSpacing(1,40);
     vlayout->addLayout(hlayout);
     vlayout->addWidget(createDateRangeWidget());
     vlayout->addWidget(view);

@@ -192,6 +192,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setAlternatingRowColors(true);
+        ui->listTransactions->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
         ui->listTransactions->setSortingEnabled(true);
         ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
         ui->listTransactions->verticalHeader()->hide();
@@ -205,7 +206,10 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        ui->listTransactions->horizontalHeader()->setStyleSheet("background-color: #486EBA; color: white;");
+        ui->listTransactions->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}");
 
 
 
