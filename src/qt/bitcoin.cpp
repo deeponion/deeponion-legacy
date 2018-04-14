@@ -7,6 +7,7 @@
 #include "optionsmodel.h"
 #include "messagemodel.h"
 #include "guiutil.h"
+#include "intro.h"
 #include "guiconstants.h"
 #include "util.h"
 #include "net.h"
@@ -127,11 +128,17 @@ int main(int argc, char *argv[])
     Q_INIT_RESOURCE(bitcoin);
     QApplication app(argc, argv);
 
+    // Already apply custom stylesheets so they are already visible on the intro screen
+    qApp->setStyleSheet(GUIUtil::loadStyleSheet());
+
     // Install global event filter that makes sure that long tooltips can be word-wrapped
     app.installEventFilter(new GUIUtil::ToolTipToRichTextFilter(TOOLTIP_WRAP_THRESHOLD, &app));
 
     // Command-line options take precedence:
     ParseParameters(argc, argv);
+
+    if (!Intro::pickDataDirectory())
+        return EXIT_SUCCESS;
 
     // ... then bitcoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
