@@ -113,19 +113,18 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
     
 	qApp->setStyleSheet("QComboBox {border: 1px solid red; color: white; background-color: #2A2937;} \
+        QComboBox:hover {background-color: #1b202f;} \
 		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
         QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
 		QHeaderView::section {color:white; background-color: #2A2937; } \
 		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
-		QLineEdit {color: #1b202f; background: #d7e6ff; selection-background-color: #d7e6ff;} \
-		QLineEdit:hover{border: 1px solid red; background-color: #d7e6ff;} \
+		QLineEdit {color: #FFFFFF; background: #393947; border: none; selection-background-color: #d7e6ff; font-size: 12px; font-family: Helvetica Neue} \
 		QTabWidget {color:white; background-color: #2A2937;} \
 		QTabWidget::pane {color:white; background-color: #2A2937; border: 1px solid red;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid red; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QComboBox:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2A2937;} \
 		QLabel {color:white; background-color: #2A2937; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \

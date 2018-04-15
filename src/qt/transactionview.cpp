@@ -49,17 +49,17 @@ TransactionView::TransactionView(QWidget *parent) :
     hlayout->setContentsMargins(0,0,0,0);
 #ifdef Q_OS_MAC
     hlayout->setSpacing(5);
-    hlayout->addSpacing(26);
+    //hlayout->addSpacing(26);
 #else
     hlayout->setSpacing(0);
-    hlayout->addSpacing(23);
+    //hlayout->addSpacing(23);
 #endif
 
     dateWidget = new QComboBox(this);
 #ifdef Q_OS_MAC
     dateWidget->setFixedWidth(121);
 #else
-    dateWidget->setFixedWidth(120);
+    dateWidget->setFixedWidth(135);
 #endif
     dateWidget->addItem(tr("All"), All);
     dateWidget->addItem(tr("Today"), Today);
@@ -69,15 +69,17 @@ TransactionView::TransactionView(QWidget *parent) :
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
     dateWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue; \
-                                      padding-top: 14px; padding-bottom: 14px;");
+                                      padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none; \
+                                      QComboBox::drop-down {border: none}");
 
     hlayout->addWidget(dateWidget);
+    hlayout->insertSpacing(1, 8);
 
     typeWidget = new QComboBox(this);
 #ifdef Q_OS_MAC
     typeWidget->setFixedWidth(121);
 #else
-    typeWidget->setFixedWidth(120);
+    typeWidget->setFixedWidth(112);
 #endif
 
     typeWidget->addItem(tr("All"), TransactionFilterProxy::ALL_TYPES);
@@ -88,19 +90,38 @@ TransactionView::TransactionView(QWidget *parent) :
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
-    typeWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
-                                      padding-top: 14px; padding-bottom: 14px;");
+    typeWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue; \
+                                      padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;");
 
     hlayout->addWidget(typeWidget);
+    hlayout->insertSpacing(3, 8);
+
+    QFrame *frameForAddress = new QFrame();
+    frameForAddress->setFixedHeight(44);
+    frameForAddress->setFixedWidth(378);
+    frameForAddress->setStyleSheet("background-color: #393947; padding-left: 5px");
+    QHBoxLayout *hlayoutFrameForAddress = new QHBoxLayout();
+    hlayoutFrameForAddress->setContentsMargins(0,0,0,0);
+    frameForAddress->setLayout(hlayoutFrameForAddress);
+
+
 
     addressWidget = new QLineEdit(this);
-    addressWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
-                                         padding-top: 14px; padding-bottom: 14px;");
+
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     addressWidget->setPlaceholderText(tr("Enter address or label to search"));
 #endif
-    hlayout->addWidget(addressWidget);
+    hlayoutFrameForAddress->addWidget(addressWidget);
+
+
+    QFrame *frameForAmount = new QFrame();
+    frameForAmount->setFixedHeight(44);
+    frameForAmount->setFixedWidth(117);
+    frameForAmount->setStyleSheet("background-color: #393947; padding-left: 5px");
+    QHBoxLayout *hlayoutFrameForAmount = new QHBoxLayout();
+    hlayoutFrameForAmount->setContentsMargins(0,0,0,0);
+    frameForAmount->setLayout(hlayoutFrameForAmount);
 
     amountWidget = new QLineEdit(this);
 #if QT_VERSION >= 0x040700
@@ -113,10 +134,12 @@ TransactionView::TransactionView(QWidget *parent) :
     amountWidget->setFixedWidth(100);
 #endif
     amountWidget->setValidator(new QDoubleValidator(0, 1e20, 8, this));
-    amountWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue \
-                                        padding-top: 14px; padding-bottom: 14px;");
 
-    hlayout->addWidget(amountWidget);
+    hlayoutFrameForAmount->addWidget(amountWidget);
+
+    hlayout->addWidget(frameForAddress);
+    hlayout->insertSpacing(5, 8);
+    hlayout->addWidget(frameForAmount);
 
     QVBoxLayout *vlayout = new QVBoxLayout(this);
     vlayout->setContentsMargins(0,0,0,0);
@@ -143,18 +166,10 @@ TransactionView::TransactionView(QWidget *parent) :
         hlayout1->addSpacing(60);
 
     vlayout->addLayout(hlayout1);
-//    vlayout->addLayout(hlayout);
-//    vlayout->addWidget(createDateRangeWidget());
-//    vlayout->addWidget(view);
     vlayout->addSpacing(20);
     vlayout->setSpacing(0);
     int width = view->verticalScrollBar()->sizeHint().width();
-    // Cover scroll bar width with spacing
-#ifdef Q_OS_MAC
-    hlayout->addSpacing(width+2);
-#else
-    hlayout->addSpacing(width);
-#endif
+
     // Always show scroll bar
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     view->setTabKeyNavigation(false);
@@ -211,6 +226,8 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
         transactionView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
+                    //QScrollBar:vertical {border: none;background-color: #474757;width: 10px;margin: 25px 0 0px 0;} \
+                    //QScrollBar::handle:vertical{border-radius: 4px; border: none; background-color: rgba(193, 193, 193, 75%); min-height: 25px;}");
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
