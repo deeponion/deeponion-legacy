@@ -72,7 +72,6 @@ QT_MOC_CPP = \
   qt/moc_transactiontablemodel.cpp \
   qt/moc_transactionview.cpp \
   qt/moc_trafficgraphwidget.cpp \
-  qt/moc_walletmodel.cpp \
   qt/moc_walletmodel.cpp
 
 BITCOIN_MM = \
