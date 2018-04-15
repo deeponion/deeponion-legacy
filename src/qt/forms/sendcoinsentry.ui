@@ -14,7 +14,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: #393947; border: none;</string>
   </property>
   <property name="frameShape">
    <enum>QFrame::StyledPanel</enum>
@@ -28,6 +28,14 @@
    </property>
    <item row="5" column="0">
     <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF</string>
+     </property>
      <property name="text">
       <string>A&amp;mount:</string>
      </property>
@@ -41,6 +49,14 @@
    </item>
    <item row="3" column="0">
     <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF</string>
+     </property>
      <property name="text">
       <string>Pay &amp;To:</string>
      </property>
@@ -53,7 +69,17 @@
     </widget>
    </item>
    <item row="5" column="1">
-    <widget class="BitcoinAmountField" name="payAmount"/>
+    <widget class="BitcoinAmountField" name="payAmount">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>32</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: #2b2b37; color: #FFFFFF; padding: 5px;</string>
+     </property>
+    </widget>
    </item>
    <item row="4" column="1">
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -65,11 +91,17 @@
        <property name="enabled">
         <bool>true</bool>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>Enter a label for this address to add it to your address book</string>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-color: #2b2b37; color: #FFFFFF;padding-left: 5px;</string>
        </property>
       </widget>
      </item>
@@ -77,6 +109,14 @@
    </item>
    <item row="4" column="0">
     <widget class="QLabel" name="label_4">
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #FFFFFF</string>
+     </property>
      <property name="text">
       <string>&amp;Label:</string>
      </property>
@@ -95,11 +135,17 @@
      </property>
      <item>
       <widget class="QValidatedLineEdit" name="payTo">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>32</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>The address to send the payment to</string>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true">background-color: #2b2b37; color: #FFFFFF; margin-right: 5px; padding-left: 5px;</string>
        </property>
        <property name="maxLength">
         <number>102</number>
@@ -110,6 +156,9 @@
       <widget class="QToolButton" name="addressBookButton">
        <property name="toolTip">
         <string>Choose address from address book</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
        </property>
        <property name="text">
         <string/>
@@ -128,6 +177,9 @@
        <property name="toolTip">
         <string>Paste address from clipboard</string>
        </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
+       </property>
        <property name="text">
         <string/>
        </property>
@@ -144,6 +196,9 @@
       <widget class="QToolButton" name="deleteButton">
        <property name="toolTip">
         <string>Remove this recipient</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;</string>
        </property>
        <property name="text">
         <string/>

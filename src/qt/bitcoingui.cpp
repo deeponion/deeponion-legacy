@@ -112,7 +112,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
     
-	qApp->setStyleSheet("QComboBox {border: 1px solid red; color: white; background-color: #2A2937;} \
+	qApp->setStyleSheet("QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
 		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
@@ -121,18 +121,18 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QHeaderView::section {color:white; background-color: #2A2937; } \
 		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
 		QLineEdit {color: #FFFFFF; background: #393947; border: none; selection-background-color: #d7e6ff; font-size: 12px; font-family: Helvetica Neue} \
-		QTabWidget {color:white; background-color: #2A2937;} \
-		QTabWidget::pane {color:white; background-color: #2A2937; border: 1px solid red;} \
+		QTabWidget {color:white; background-color: #2B2B37;} \
+		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid red;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid red; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QDialog {color:white; background-color: #2A2937;} \
-		QLabel {color:white; background-color: #2A2937; font-family:'Helvetica Neue';} \
+		QDialog {color:white; background-color: #2B2B37;} \
+		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid red;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
-		QToolButton {color:white; background-color: #1b202f; border: 1px solid red; padding: 3px;} \
-		QDialogButtonBox {color:white; background-color: #1b202f; border: 1px solid red; padding: 3px;} \
+		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
 		QMenuBar {background-color: #2A2937;} \
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
