@@ -78,12 +78,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+11"/>
         <source>Show &amp;QR Code</source>
-        <translation>Enseñar &amp;QR Code</translation>
+        <translation>Enseñar Códgio &amp;QR</translation>
     </message>
     <message>
         <location line="+11"/>
-        <source>Sign a message to prove you own a Ember address</source>
-        <translation>Firmar un mensaje para demostrar que es dueño de su dirección de Ember</translation>
+        <source>Sign a message to prove you own a DeepOnion address</source>
+        <translation>Firmar un mensaje para demostrar que es dueño de su dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -97,8 +97,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location line="-14"/>
-        <source>Verify a message to ensure it was signed with a specified Ember address</source>
-        <translation>Verifique el mensaje para asegurarse que fue firmado por una dirección específica de Ember</translation>
+        <source>Verify a message to ensure it was signed with a specified DeepOnion address</source>
+        <translation>Verifique el mensaje para asegurarse que fue firmado por una dirección específica de DeepOnion</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -239,7 +239,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Advertencia: Si encripta su cartera y pierde su frase de contraseña, puede &lt;b&gt;PERDER TODAS SUS MONEDAS&lt;/ b&gt;!</translation>
+        <translation>Advertencia: Si encripta su monedero y pierde su frase de contraseña, puede &lt;b&gt;PERDER TODAS SUS MONEDAS&lt;/ b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -400,7 +400,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Cifrar monedero…</translation>
+        <translation>&amp;Cifrar monedero...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -589,8 +589,8 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-403"/>
         <source>%n second(s) ago</source>
         <translation>
-            <numerusform>%n second ago</numerusform>
-            <numerusform>%n seconds ago</numerusform>
+            <numerusform>hace %n segundo</numerusform>
+            <numerusform>hace %n segundos</numerusform>
         </translation>
     </message>
     <message>
@@ -606,7 +606,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+18"/>
         <source>&amp;Unlock Wallet...</source>
-        <translation>&amp;Desbloquear cartera...</translation>
+        <translation>&amp;Desbloquear monedero...</translation>
     </message>
     <message numerus="yes">
         <location line="+297"/>
@@ -650,7 +650,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+59"/>
         <source>This transaction is over the size limit.  You can still send it for a fee of %1, which goes to the nodes that process your transaction and helps to support the network.  Do you want to pay the fee?</source>
-        <translation>La transacción supera el límite de tamaño. Todavía puedes enviarla por una tasa del 1%, la cual va a los nodos que gestionan tu transacción y ayuda a la red. ¿Quieres pagas esta tasa?</translation>
+        <translation>La transacción supera el límite de tamaño. Sin embargo puedes enviarla por una tasa del 1%, la cual va a los nodos que gestionan tu transacción y ayuda a la red. ¿Quieres pagar esta tasa?</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -690,7 +690,7 @@ Dirección: %4
         <location line="-15"/>
         <location line="+15"/>
         <source>URI can not be parsed! This can be caused by an invalid DeepOnion address or malformed URI parameters.</source>
-        <translation>URI no se puede analizar! Esto puede ser causado por una dirección de DeepOnion no válida o parámetros de URI malformados.</translation>
+        <translation>¿URI no se puede analizar! Esto puede ser causado por una dirección de DeepOnion no válida o parámetros de URI malformados.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -715,7 +715,7 @@ Dirección: %4
     <message>
         <location line="+3"/>
         <source>Backup Failed</source>
-        <translation>Copia de Seguridad a fracasado</translation>
+        <translation>La copia de Seguridad ha fracasado</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -904,12 +904,12 @@ Dirección: %4
     <message>
         <location line="+2"/>
         <source>Copy fee</source>
-        <translation>Copiar donación</translation>
+        <translation>Copiar tasa</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy after fee</source>
-        <translation>Copiar después de aplicar donación</translation>
+        <translation>Copiar después de aplicar la tasa</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -983,9 +983,9 @@ Dirección: %4
  This means a fee of at least %1 per kb is required.
 
  Can vary +/- 1 Byte per input.</source>
-        <translation>Esta etiqueta se convierte en rojo, si el tamaño de la transacción es mayor que 10000 bytes.
+        <translation>Esta etiqueta se convierte en roja si el tamaño de la transacción es mayor que 10000 bytes.
 
-Esto significa que se requiere una cuota de al menos el %1 por kb.
+Esto significa que se requiere una tasa de al menos el %1 por kb.
 
 Puede variar + / - 1 Byte por entrada.</translation>
     </message>
@@ -996,11 +996,11 @@ Puede variar + / - 1 Byte por entrada.</translation>
 This label turns red, if the priority is smaller than &quot;medium&quot;.
 
  This means a fee of at least %1 per kb is required.</source>
-        <translation>Las transacciones con mayor prioridad son más probables en entrar hacia un bloque. 
+        <translation>Las transacciones con mayor prioridad tienen más posbilidades de entrar en un bloque. 
 
-Esta etiqueta se convierte en rojo, si la prioridad es menor que &quot;medium&quot;.
+Esta etiqueta se convierte en roja si la prioridad es menor que la &quot;media&quot;.
 
-Esto significa que se requiere una cuota de al menos el %1 por kb.</translation>
+Esto significa que se requiere una tasa de al menos el %1 por kb.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1009,20 +1009,20 @@ Esto significa que se requiere una cuota de al menos el %1 por kb.</translation>
  This means a fee of at least %2 is required. 
 
  Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
-        <translation>Esta etiqueta se convierte en rojo, si cualquier recipiente recibe una cantidad menor que %1.
+        <translation>Esta etiqueta se convierte en roja si cualquier recipiente recibe una cantidad menor que %1.
 
-Esto significa que se requiere una cuota de al menos %2.
+Esto significa que se requiere una tasa de al menos %2.
 
-Las cantidades inferiores a 0.546 veces la cuota mínima del relé se muestran en forma de DUST.</translation>
+Las cantidades inferiores a 0.546 veces la tasa mínima del relé se muestran en forma de DUST.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This label turns red, if the change is smaller than %1.
 
  This means a fee of at least %2 is required.</source>
-        <translation>Esta etiqueta se convierte en rojo, si el cambio es menor que %1.
+        <translation>Esta etiqueta se convierte en roja si el cambio es menor que %1.
 
-Esto significa que se requiere una cuota de al menos %2.</translation>
+Esto significa que se requiere una tasa de al menos %2.</translation>
     </message>
     <message>
         <location line="+37"/>
@@ -1066,7 +1066,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+10"/>
         <source>The address associated with this address book entry. This can only be modified for sending addresses.</source>
-        <translation>La dirección asociada con esta entrada de la libreta de direcciones. Esto sólo puede ser modificada para direcciones de envío.</translation>
+        <translation>La dirección asociada con esta entrada de la libreta de direcciones. Esto sólo puede ser modificado para direcciones de envío.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="+20"/>
@@ -1173,7 +1173,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+15"/>
         <source>Pay transaction &amp;fee</source>
-        <translation>Comisión de &amp;transacciones</translation>
+        <translation>Tasa de &amp;transacciones</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -1198,7 +1198,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
-        <translation>Desconectar bases de datos de bloques y direcciones al cerrar. Esto significa que pueden ser movidas a otro directorio, pero ralentiza el cierre de la aplicación. La cartera siempre se desconecta.</translation>
+        <translation>Desconectar bases de datos de bloques y direcciones al cerrar. Esto significa que pueden ser movidas a otro directorio, pero ralentiza el cierre de la aplicación. El monedero siempre se desconecta.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1298,7 +1298,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+13"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
-        <translation>El idioma del interfaz de usuario se puede configurar aquí. Esta configuración se aplicará después de reiniciar DeepOnion.</translation>
+        <translation>El idioma de la interfaz de usuario se puede configurar aquí. Esta configuración se aplicará después de reiniciar DeepOnion.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1308,7 +1308,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+13"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>Elegir la subdivisión predeterminada para mostrar cantidades en la interfaz y cuando se envían bitcoins.</translation>
+        <translation>Elegir la subdivisión predeterminada para mostrar cantidades en la interfaz y cuando se envían las monedas.</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1379,7 +1379,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
         <location line="+33"/>
         <location line="+231"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DeepOnion network after a connection is established, but this process has not completed yet.</source>
-        <translation>La información mostrada podría estar obsoleta. Tu cartera se sincroniza automáticamente con la red VERGE después de establecerse una  conexión, pero este proceso aún no se completa.</translation>
+        <translation>La información mostrada podría estar obsoleta. Tu monedero se sincroniza automáticamente con la red DeepOnion después de establecerse una  conexión, pero este proceso aún no se completa.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1594,8 +1594,8 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
     <message>
         <location line="+7"/>
-        <source>Show the DeepOnion-Qt help message to get a list with possible Ember command-line options.</source>
-        <translation>Mostrar el mensaje de ayuda de DeepOnion-Qt para obtener una lista con las posibles opciones de línea de comandos para Ember.</translation>
+        <source>Show the DeepOnion-Qt help message to get a list with possible DeepOnion command-line options.</source>
+        <translation>Mostrar el mensaje de ayuda de DeepOnion-Qt para obtener una lista con las posibles opciones de línea de comandos para DeepOnion.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1685,7 +1685,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+19"/>
         <source>Insufficient funds!</source>
-        <translation>Fondos insuficientes!</translation>
+        <translation>¡Fondos insuficientes!</translation>
     </message>
     <message>
         <location line="+77"/>
@@ -1814,12 +1814,12 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Copy fee</source>
-        <translation>Copiar donación</translation>
+        <translation>Copiar tasa</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Copy after fee</source>
-        <translation>Copiar después de aplicar donación</translation>
+        <translation>Copiar después de aplicar la tasa</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1849,7 +1849,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+5"/>
         <source>Confirm send coins</source>
-        <translation>Confirmar el envío de bitcoins</translation>
+        <translation>Confirmar el envío de monedas</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1889,7 +1889,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+5"/>
         <source>Error: Transaction creation failed.</source>
-        <translation>Error: Transaction creation failed.</translation>
+        <translation>Error: La creación de la transacción ha fallado.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2276,7 +2276,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="-39"/>
         <source>Transaction fee</source>
-        <translation>Comisión de transacción</translation>
+        <translation>Tasa de transacción</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -2539,7 +2539,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>To yourself</source>
-        <translation>A usted mismo</translation>
+        <translation>A tí mismo</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2800,7 +2800,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="+101"/>
         <source>Error: Transaction creation failed  </source>
-        <translation></translation>
+        <translation>Error: La creación de la transacción ha fallado.</translation>
     </message>
     <message>
         <location line="-5"/>
@@ -2845,12 +2845,12 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     <message>
         <location line="-20"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
-        <translation>Establecer el tamaño máximo de las transacciones alta-prioridad/baja-comisión en bytes (por defecto: 27000)</translation>
+        <translation>Establecer el tamaño máximo de las transacciones alta-prioridad/baja-tasa en bytes (por defecto: 27000)</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Aviso: ¡-paytxfee tiene un valor muy alto! Esta es la comisión que pagará si envía una transacción.</translation>
+        <translation>Aviso: ¡-paytxfee tiene un valor muy alto! Esta es la tasa que pagará si envía una transacción.</translation>
     </message>
     <message>
         <location line="+61"/>
@@ -3185,7 +3185,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Cannot obtain a lock on data directory %s.  DeepOnion is probably already running.</source>
-        <translation>No se pudo  obtener lock en el directorio de datos %s.  DeepOnion está probablemente ejecutándose ya.</translation>
+        <translation>No se puede obtener un bloqueo sobre el directorio de datos %s. DeepOnion está probablemente ejecutándose ya.</translation>
     </message>
     <message>
         <location line="-98"/>
@@ -3305,7 +3305,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="-97"/>
         <source>Fee per KB to add to transactions you send</source>
-        <translation>Comisión por KB a añadir a las transacciones que envía</translation>
+        <translation>Tasa por KB a añadir a las transacciones que envía</translation>
     </message>
     <message>
         <location line="+55"/>
