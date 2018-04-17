@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>946</width>
-    <height>402</height>
+    <height>458</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -158,7 +158,7 @@
            <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>6</number>
+           <number>20</number>
           </property>
           <item>
            <layout class="QVBoxLayout" name="verticalLayoutCoinControl" stretch="0,0,0,0,1">

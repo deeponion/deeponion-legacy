@@ -141,7 +141,7 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
 
-// Removing ONION unit from the Wallet Summary Section. Unfortunately there is no space for that.
+    // Removing ONION unit from the Wallet Summary Section. Unfortunately there is no space for that.
     ui->labelBalance->setText(BitcoinUnits::formatWithoutUnit(unit, balance));
     ui->labelStake->setText(BitcoinUnits::formatWithoutUnit(unit, stake));
     ui->labelUnconfirmed->setText(BitcoinUnits::formatWithoutUnit(unit, unconfirmedBalance));
