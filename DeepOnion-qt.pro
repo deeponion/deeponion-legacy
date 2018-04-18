@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.6.2.0
+VERSION = 1.6.3.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
@@ -15,6 +15,7 @@ CONFIG += thread static
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 lessThan(QT_MAJOR_VERSION, 5): CONFIG += static
 QMAKE_CXXFLAGS = -fpermissive
+PRE_TARGETDEPS += compiler_TSQM_make_all
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
