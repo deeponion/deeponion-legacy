@@ -46,6 +46,8 @@
         <file alias="toolbar_testnet">res/icons/toolbar_testnet.png</file>
         <file alias="tor_active">res/icons/tor.png</file>
         <file alias="tor_inactive">res/icons/tor2.png</file>
+        <file alias="fontbigger">res/icons/fontbigger.png</file>
+        <file alias="fontsmaller">res/icons/fontsmaller.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="about_new">res/images/about.png</file>
