@@ -17,13 +17,14 @@
 #include "qrcodedialog.h"
 #endif
 
-AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
+AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere fromWhere) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
     optionsModel(0),
     mode(mode),
-    tab(tab)
+    tab(tab),
+    fromWhere(fromWhere)
 {
     ui->setupUi(this);
 
@@ -61,6 +62,11 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
         ui->deleteButton->setVisible(false);
         ui->signMessage->setVisible(true);
         break;
+    }
+
+    if (fromWhere == FromSendMessagesDialog || fromWhere == FromSendCoinsEntry ||
+            fromWhere == FromSignVerifyMessageDialog) {
+        ui->pageTitleLabel->setVisible(false);
     }
 
     // Context menu actions

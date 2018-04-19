@@ -189,7 +189,7 @@
                  <item>
                   <widget class="QLabel" name="labelWalletStatus">
                    <property name="styleSheet">
-                    <string notr="true">color: red;</string>
+                    <string notr="true">color: #ff667c;</string>
                    </property>
                    <property name="text">
                     <string>(out of sync)</string>

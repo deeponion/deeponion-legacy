@@ -235,7 +235,7 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->verticalHeader()->hide();
 
         transactionView->horizontalHeader()->resizeSection(
-                TransactionTableModel::Status, 23);
+                TransactionTableModel::Status, 28);
         transactionView->horizontalHeader()->resizeSection(
                 TransactionTableModel::Date, 120);
         transactionView->horizontalHeader()->resizeSection(

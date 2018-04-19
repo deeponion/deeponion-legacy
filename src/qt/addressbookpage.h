@@ -34,7 +34,14 @@ public:
         ForEditing  /**< Open address book for editing */
     };
 
-    explicit AddressBookPage(Mode mode, Tabs tab, QWidget *parent = 0);
+    enum FromWhere {
+        FromSendCoinsEntry,
+        FromSendMessagesDialog,
+        FromSignVerifyMessageDialog,
+        FromBitcoinGui
+    };
+
+    explicit AddressBookPage(Mode mode, Tabs tab, QWidget *parent = 0, FromWhere fromWhere = FromBitcoinGui);
     ~AddressBookPage();
 
     void setModel(AddressTableModel *model);
@@ -51,6 +58,7 @@ private:
     OptionsModel *optionsModel;
     Mode mode;
     Tabs tab;
+    FromWhere fromWhere;
     QString returnValue;
     QSortFilterProxyModel *proxyModel;
     QMenu *contextMenu;

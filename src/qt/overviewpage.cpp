@@ -198,7 +198,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->verticalHeader()->hide();
 
         ui->listTransactions->horizontalHeader()->resizeSection(
-                TransactionTableModel::Status, 23);
+                TransactionTableModel::Status, 28);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Date, 120);
         ui->listTransactions->horizontalHeader()->resizeSection(

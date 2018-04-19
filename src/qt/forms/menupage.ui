@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>160</width>
+    <width>180</width>
     <height>704</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>160</width>
+    <width>180</width>
     <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>200</width>
+    <width>180</width>
     <height>16777215</height>
    </size>
   </property>
@@ -342,8 +342,14 @@
     <widget class="QPushButton" name="pushButton">
      <property name="minimumSize">
       <size>
-       <width>0</width>
+       <width>180</width>
        <height>60</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>180</width>
+       <height>16777215</height>
       </size>
      </property>
      <property name="font">
@@ -355,20 +361,20 @@
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: white; style: bold; background-color: #486EBA</string>
+      <string notr="true">background-color: #486EBA</string>
      </property>
      <property name="text">
-      <string>DeepOnion</string>
+      <string/>
      </property>
      <property name="icon">
       <iconset resource="../bitcoin.qrc">
-       <normaloff>:/icons/DeepOnionLogo</normaloff>
-       <normalon>:/icons/DeepOnionLogo</normalon>:/icons/DeepOnionLogo</iconset>
+       <normaloff>:/icons/DeepOnionLogoWithTextWhite</normaloff>
+       <normalon>:/icons/DeepOnionLogoWithTextWhite</normalon>:/icons/DeepOnionLogoWithTextWhite</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>32</width>
-       <height>32</height>
+       <width>160</width>
+       <height>36</height>
       </size>
      </property>
     </widget>
@@ -399,13 +405,13 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>40</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -465,13 +471,13 @@ background-color: #393947
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -522,13 +528,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -579,13 +585,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -639,13 +645,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -696,13 +702,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
@@ -756,13 +762,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>160</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>16777215</width>
+       <width>180</width>
        <height>60</height>
       </size>
      </property>

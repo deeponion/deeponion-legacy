@@ -122,22 +122,22 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
 		QLineEdit {color: #FFFFFF; background: #393947; border: none; selection-background-color: #d7e6ff; font-size: 12px; font-family: Helvetica Neue} \
 		QTabWidget {color:white; background-color: #2B2B37;} \
-		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid red;} \
-		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid red; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
+		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2B2B37;} \
 		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid red;} \
-		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #0099cc;} \
+		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid #393947;} \
+		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
 		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
 		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
 		QMenuBar {background-color: #2A2937;} \
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
 		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
-        QPushButton {font-family:'Helvetica Neue';}");
+        QPushButton {font-family:'Helvetica Neue'; border-color: green}");
 
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");

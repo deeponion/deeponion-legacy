@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>790</width>
+    <width>831</width>
     <height>380</height>
    </rect>
   </property>
@@ -182,8 +182,22 @@
                 <height>40</height>
                </size>
               </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: #393947; border: none;</string>
+              </property>
               <property name="text">
-               <string>PushButton</string>
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset>
+                <normaloff>:/icons/information</normaloff>
+                <normalon>:/icons/information</normalon>:/icons/information</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>32</width>
+                <height>32</height>
+               </size>
               </property>
              </widget>
             </item>
