@@ -65,7 +65,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
     }
 
     if (fromWhere == FromSendMessagesDialog || fromWhere == FromSendCoinsEntry ||
-            fromWhere == FromSignVerifyMessageDialog) {
+            fromWhere == FromSignVerifyMessageDialog || fromWhere == FromSendMessagesEntry) {
         ui->pageTitleLabel->setVisible(false);
     }
 

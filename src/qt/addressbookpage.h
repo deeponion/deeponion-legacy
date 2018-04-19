@@ -36,6 +36,7 @@ public:
 
     enum FromWhere {
         FromSendCoinsEntry,
+        FromSendMessagesEntry,
         FromSendMessagesDialog,
         FromSignVerifyMessageDialog,
         FromBitcoinGui

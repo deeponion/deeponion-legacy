@@ -51,7 +51,7 @@ void SendMessagesEntry::on_addressBookButton_clicked()
     if(!model)
         return;
 
-    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this);
+    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this, AddressBookPage::FromSendMessagesEntry);
 
     dlg.setModel(model->getWalletModel()->getAddressTableModel());
 
