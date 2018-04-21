@@ -46,6 +46,7 @@ void OptionsModel::Init()
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
+    fPrintDebugLog = settings.value("fPrintDebugLog", false).toBool();
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     nReserveBalance = settings.value("nReserveBalance").toLongLong();
     language = settings.value("language", "").toString();
@@ -176,6 +177,8 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language", "");
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
+	case PrintDebugLog:
+	    return QVariant(fPrintDebugLog);
         default:
             return QVariant();
         }
@@ -276,6 +279,11 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             emit coinControlFeaturesChanged(fCoinControlFeatures);
             }
             break;
+	case PrintDebugLog: {
+	    fPrintDebugLog = value.toBool();
+	    settings.setValue("fPrintDebugLog", fPrintDebugLog);
+	    }
+	    break;
         default:
             break;
         }
@@ -318,4 +326,9 @@ int OptionsModel::getDisplayUnit()
 bool OptionsModel::getDisplayAddresses()
 {
     return bDisplayAddresses;
+}
+
+bool OptionsModel::getPrintDebugLog()
+{
+    return fPrintDebugLog;
 }

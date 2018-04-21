@@ -210,6 +210,9 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    // Read fPrintDebugLog and decide wether to start logging
+    fPrintDebugLog = optionsModel.getPrintDebugLog();
+
     QSplashScreen splash(QPixmap(GetBoolArg("-testnet") ? ":/images/splash_testnet" : ":/images/splash"), 0);
 
     if (GetBoolArg("-splash", true) && !GetBoolArg("-min"))
