@@ -12,6 +12,7 @@
 #include "util.h"
 #include "net.h"
 #include "init.h"
+#include "main.h"
 #include "ui_interface.h"
 #include "qtipcserver.h"
 
@@ -62,7 +63,7 @@ static bool ThreadSafeAskFee(int64_t nFeeRequired, const std::string& strCaption
 {
     if(!guiref)
         return false;
-    if(nFeeRequired < MIN_TX_FEE || nFeeRequired <= nTransactionFee || fDaemon)
+    if(nFeeRequired < GetMinTxFee() || nFeeRequired <= nTransactionFee || fDaemon)
         return true;
     bool payFee = false;
 

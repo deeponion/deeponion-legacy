@@ -61,8 +61,7 @@ void EditAddressDialog::setModel(AddressTableModel *model)
 	mapper->addMapping(ui->stealthCB, AddressTableModel::Type);
 	
 	// disable SA related widgets for now
-    // if(model->beforeSaSwitch()) {
-    if(true) {
+    if(model->beforeSaSwitch()) {
     	ui->stealthCB->setEnabled(false);
     	ui->stealthCB->setText("Stealth Address (disabled)");
     }

@@ -517,7 +517,8 @@ void AddressTableModel::emitDataChanged(int idx)
 
 bool AddressTableModel::beforeSaSwitch() const
 {
-	if(wallet->GetBestBlockHeight() < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
+	if((wallet->GetBestBlockHeight() < SWITCH_BLOCK_HARD_FORK && !fTestNet)
+			|| (wallet->GetBestBlockHeight() < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return true;
 	
 	return false;

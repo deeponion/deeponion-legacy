@@ -36,6 +36,7 @@ src/qt/moc_*.cpp
 src/qt/plugins/mrichtexteditor/moc_*
 src/qt/plugins/mrichtexteditor/ui_mrichtextedit.h
 src/qt/forms/ui_*.h
+src/qt/locale/*.qm
 
 src/qt/test/moc*.cpp
 
