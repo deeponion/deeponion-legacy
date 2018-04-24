@@ -210,6 +210,9 @@ private slots:
 
     void updateStakingIcon();
 	void updateOnionIcon();
+
+    void optionsDialogFinished (int);
+    void applyTheme (QString);
 };
 
 #endif

@@ -26,7 +26,7 @@
       <enum>QTabWidget::North</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tabMain">
       <attribute name="title">
@@ -334,6 +334,27 @@
        <string>&amp;Display</string>
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_Display">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3_Display">
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="themeLabel">
+           <property name="text">
+            <string>Theme:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QValueComboBox" name="theme">
+           <property name="toolTip">
+            <string>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_1_Display">
          <item>
