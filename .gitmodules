@@ -5,5 +5,5 @@
 [submodule "tor"]
  	path = tor
  	url = https://git.torproject.org/tor.git
- 	branch = cd929a8c1f6ce162ed88a3598a4bc17deade0051
+ 	branch = c21e252d49e7f4ae7f3e1097a2607a0acda0bf3d
 
