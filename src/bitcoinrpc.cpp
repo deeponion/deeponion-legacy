@@ -245,7 +245,7 @@ Value stop(const Array& params, bool fHelp)
 
 Value uptime(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() > 1){
+    if (fHelp || params.size() > 0){
         throw std::runtime_error(
              "uptime\n"
              "\nReturns the total uptime of the server in seconds.\n");
