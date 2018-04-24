@@ -231,6 +231,7 @@ std::string FormatFullVersion();
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
 void AddTimeData(const CNetAddr& ip, int64_t nTime);
 void runCommand(std::string strCommand);
+int64_t GetStartupTime();
 
 std::string bytesReadable(uint64_t nBytes);
 
