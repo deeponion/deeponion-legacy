@@ -3,5 +3,7 @@
 	url = https://github.com/bitcoin-core/leveldb-old.git
 
 [submodule "tor"]
-	path = tor
-	url = https://github.com/brakmic/tor.git
+ 	path = tor
+ 	url = https://git.torproject.org/tor.git
+ 	branch = cd929a8c1f6ce162ed88a3598a4bc17deade0051
+
