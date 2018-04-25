@@ -115,7 +115,7 @@ int64_t PastDrift(int64_t nTime)
 	if(pindexBest == NULL)
 		return nTime - 2 * 60 * 60;
 	
-	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return nTime - 2 * 60 * 60; 
  
 	return nTime - 15;
@@ -126,7 +126,7 @@ int64_t FutureDrift(int64_t nTime)
 	if(pindexBest == NULL)
 		return nTime + 2 * 60 * 60;
 
-	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return nTime + 2 * 60 * 60; 
 
 	return nTime + 15;
@@ -137,7 +137,7 @@ int64_t GetMinTxFee()
 	if(pindexBest == NULL)
 		return MIN_TX_FEE;
 
-	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return MIN_TX_FEE; 
 
 	return MIN_TX_FEE_NEW;	
@@ -148,7 +148,7 @@ int64_t GetMinRelayTxFee()
 	if(pindexBest == NULL)
 		return MIN_RELAY_TX_FEE;
 
-	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return MIN_RELAY_TX_FEE; 
  
 	return MIN_RELAY_TX_FEE_NEW;	
@@ -719,6 +719,12 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
     
     if (!fTestNet && !tx.IsStandard())
         return error("CTxMemPool::accept() : nonstandard transaction type");
+    
+    if(fTestNet && pindexBest != NULL)
+    {
+    	if(pindexBest->nHeight > SWITCH_BLOCK_HARD_FORK_TESTNET && !tx.IsStandard())
+     		return error("CTxMemPool::accept() : nonstandard transaction type for testnet");
+    }
 
     // Do we already have it?
     uint256 hash = tx.GetHash();
@@ -777,6 +783,12 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
         if (!tx.AreInputsStandard(mapInputs) && !fTestNet)
             return error("CTxMemPool::accept() : nonstandard transaction input");
 
+        if(fTestNet && pindexBest != NULL)
+        {
+        	if(pindexBest->nHeight > SWITCH_BLOCK_HARD_FORK_TESTNET && !tx.AreInputsStandard(mapInputs))
+        		return error("CTxMemPool::accept() : nonstandard transaction input for testnet");
+        }
+        
         // Note: if you modify this code to accept non-standard transactions, then
         // you should add code here to check that the transaction does a
         // reasonable number of ECDSA signature verifications.
