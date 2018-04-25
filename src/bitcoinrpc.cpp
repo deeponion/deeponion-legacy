@@ -251,7 +251,10 @@ Value uptime(const Array& params, bool fHelp)
              "\nReturns the total uptime of the server in seconds.\n");
     }
 
-    return GetTime() - GetStartupTime();
+    Object obj;
+    obj.push_back(Pair("uptime", GetTime() - GetStartupTime()));
+    obj.push_back(Pair("unit", "seconds"));
+    return obj;
 }
 
 
