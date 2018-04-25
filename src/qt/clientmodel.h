@@ -75,7 +75,7 @@ private:
 signals:
     void numConnectionsChanged(int count);
     void networkActiveChanged(bool networkActive);
-    void numBlocksChanged(int count, int countOfPeers);
+    void numBlocksChanged(int count, int countOfPeers, int nBlocksAtStartup);
     void bytesChanged(quint64 totalBytesIn, quint64 totalBytesOut);
 
     //! Asynchronous error notification

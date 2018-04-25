@@ -457,8 +457,8 @@ void BitcoinGUI::setClientModel(ClientModel *clientModel)
         setNumConnections(clientModel->getNumConnections());
         connect(clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
 
-        setNumBlocks(clientModel->getNumBlocks(), clientModel->getNumBlocksOfPeers());
-        connect(clientModel, SIGNAL(numBlocksChanged(int, int)), this, SLOT(setNumBlocks(int, int)));
+        setNumBlocks(clientModel->getNumBlocks(), clientModel->getNumBlocksOfPeers(), clientModel->getNumBlocksAtStartup());
+        connect(clientModel, SIGNAL(numBlocksChanged(int, int, int)), this, SLOT(setNumBlocks(int, int, int)));
 
         // Report errors from network/worker thread
         connect(clientModel, SIGNAL(error(QString, QString, bool)), this, SLOT(error(QString, QString, bool)));
@@ -619,7 +619,7 @@ void BitcoinGUI::setNumConnections(int count)
     }
 }
 
-void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
+void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks, int nBlocksAtStartup)
 {
     // don't show / hide progress bar and its label if we have no connection to the network
     if (!clientModel || clientModel->getNumConnections() == 0)
@@ -636,15 +636,15 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     if (count < nTotalBlocks)
     {
         int nRemainingBlocks = nTotalBlocks - count;
-        float nPercentageDone = count / (nTotalBlocks * 0.01f);
+        float nPercentageDone = (count - nBlocksAtStartup) / ((nTotalBlocks - nBlocksAtStartup) * 0.01f);
 
         if (strStatusBarWarnings.isEmpty())
         {
             progressBarLabel->setText(tr("Synchronizing with network..."));
             progressBarLabel->setVisible(true);
             progressBar->setFormat(tr("~%n block(s) remaining", "", nRemainingBlocks));
-            progressBar->setMaximum(nTotalBlocks);
-            progressBar->setValue(count);
+            progressBar->setMaximum(nTotalBlocks - nBlocksAtStartup);
+            progressBar->setValue(count - nBlocksAtStartup);
             progressBar->setVisible(true);
         }
 
