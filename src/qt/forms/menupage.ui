@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>180</width>
+    <width>192</width>
     <height>704</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>180</width>
+    <width>192</width>
     <height>0</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>180</width>
+    <width>192</width>
     <height>16777215</height>
    </size>
   </property>
@@ -342,13 +342,13 @@
     <widget class="QPushButton" name="pushButton">
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>16777215</height>
       </size>
      </property>
@@ -405,13 +405,13 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>40</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -433,7 +433,7 @@
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
 background-color: #393947
@@ -471,13 +471,13 @@ background-color: #393947
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -493,10 +493,10 @@ background-color: #393947
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
-background-color: #393947;
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -528,13 +528,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -550,10 +550,10 @@ background-color: #393947;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
-background-color: #393947;
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -585,13 +585,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -610,10 +610,10 @@ background-color: #393947;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
-background-color: #393947;
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -645,13 +645,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -667,10 +667,10 @@ background-color: #393947;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
-background-color: #393947;
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -702,13 +702,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -724,10 +724,10 @@ background-color: #393947;
       <string notr="true">QPushButton{
 border:0;
 height: 60px;
-padding-left: 10px;
+padding-left: 15px;
 text-align:left;
 color: white;
-background-color: #393947;
+background-color: #393947
 }</string>
      </property>
      <property name="text">
@@ -762,13 +762,13 @@ background-color: #393947;
      </property>
      <property name="minimumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>180</width>
+       <width>192</width>
        <height>60</height>
       </size>
      </property>
@@ -781,12 +781,14 @@ background-color: #393947;
       </font>
      </property>
      <property name="styleSheet">
-      <string notr="true">border:0;
+      <string notr="true">QPushButton{
+border:0;
 height: 60px;
-padding-left:10px;
+padding-left: 15px;
 text-align:left;
-background-color: #393947;
-</string>
+color: #787878;
+background-color: #393947
+}</string>
      </property>
      <property name="text">
       <string>Export</string>

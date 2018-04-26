@@ -11,7 +11,7 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
     ui(new Ui::EditAddressDialog), mapper(0), mode(mode), model(0)
 {
     ui->setupUi(this);
-
+    setStyleSheet("background-color: #393947");
     GUIUtil::setupAddressWidget(ui->addressEdit, this);
 
     switch(mode)
@@ -26,6 +26,7 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
         break;
     case NewSendingAddress:
         setWindowTitle(tr("New sending address"));
+
 		ui->stealthCB->setVisible(false);
         break;
     case EditReceivingAddress:

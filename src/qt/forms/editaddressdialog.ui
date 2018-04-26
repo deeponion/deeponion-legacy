@@ -31,30 +31,44 @@
      </item>
      <item row="0" column="1">
       <widget class="QLineEdit" name="labelEdit">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>The label associated with this address book entry</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-min-height: 25px;
-max-height: 25px;</string>
+        <string notr="true">background-color: #2b2b37;</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLineEdit" name="addressEdit">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>25</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>The address associated with this address book entry. This can only be modified for sending addresses.</string>
        </property>
        <property name="styleSheet">
-        <string notr="true">
-min-height: 25px;
-max-height: 25px;</string>
+        <string notr="true">background-color: #2b2b37;</string>
        </property>
       </widget>
      </item>
      <item row="2" column="0">
       <widget class="QCheckBox" name="stealthCB">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>30</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">
 min-height: 25px;

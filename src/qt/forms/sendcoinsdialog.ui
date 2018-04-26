@@ -7,8 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>946</width>
-    <height>458</height>
+    <height>512</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Send Coins</string>
@@ -138,6 +144,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #393947; border: none;</string>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -158,18 +167,21 @@
            <number>0</number>
           </property>
           <property name="bottomMargin">
-           <number>20</number>
+           <number>0</number>
           </property>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayoutCoinControl" stretch="0,0,0,0,1">
+           <layout class="QVBoxLayout" name="verticalLayoutCoinControl" stretch="0,0,0,0">
             <property name="spacing">
              <number>0</number>
             </property>
             <property name="leftMargin">
-             <number>10</number>
+             <number>0</number>
             </property>
             <property name="topMargin">
-             <number>10</number>
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>11</number>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayoutCoinControl1">
@@ -184,14 +196,21 @@
                   <verstretch>0</verstretch>
                  </sizepolicy>
                 </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>42</height>
+                 </size>
+                </property>
                 <property name="font">
                  <font>
-                  <weight>75</weight>
-                  <bold>true</bold>
+                  <pointsize>12</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
                  </font>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">font-weight:bold;</string>
+                 <string notr="true">color: #FFFFFF; background-color: #486EBA; padding-left: 10px;</string>
                 </property>
                 <property name="text">
                  <string>Coin Control Features</string>
@@ -205,13 +224,18 @@
               <property name="spacing">
                <number>8</number>
               </property>
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
               <property name="bottomMargin">
                <number>10</number>
               </property>
               <item>
                <widget class="QPushButton" name="pushButtonCoinControl">
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true">QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #2b2b37; color: #e9e8e8; padding: 8px}
+        QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}
+        QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}</string>
                 </property>
                 <property name="text">
                  <string>Inputs...</string>
@@ -289,7 +313,7 @@
               </property>
               <layout class="QHBoxLayout" name="horizontalLayoutCoinControl5">
                <property name="leftMargin">
-                <number>0</number>
+                <number>11</number>
                </property>
                <property name="topMargin">
                 <number>0</number>
@@ -309,7 +333,7 @@
                   <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <layout class="QFormLayout" name="formLayoutCoinControl1">
@@ -317,16 +341,16 @@
                     <number>10</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>14</number>
+                    <number>6</number>
                    </property>
                    <property name="leftMargin">
-                    <number>10</number>
+                    <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>4</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <item row="0" column="0">
                     <widget class="QLabel" name="labelCoinControlQuantityText">
@@ -406,16 +430,16 @@
                     <number>10</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>14</number>
+                    <number>6</number>
                    </property>
                    <property name="leftMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>4</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <item row="0" column="0">
                     <widget class="QLabel" name="labelCoinControlAmountText">
@@ -492,16 +516,16 @@
                     <number>10</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>14</number>
+                    <number>6</number>
                    </property>
                    <property name="leftMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>4</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <item row="0" column="0">
                     <widget class="QLabel" name="labelCoinControlFeeText">
@@ -578,16 +602,16 @@
                     <number>10</number>
                    </property>
                    <property name="verticalSpacing">
-                    <number>14</number>
+                    <number>6</number>
                    </property>
                    <property name="leftMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>4</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <item row="0" column="0">
                     <widget class="QLabel" name="labelCoinControlAfterFeeText">
@@ -671,6 +695,9 @@
               <property name="sizeConstraint">
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
+              <property name="leftMargin">
+               <number>11</number>
+              </property>
               <property name="topMargin">
                <number>5</number>
               </property>
@@ -694,6 +721,15 @@
                   <horstretch>0</horstretch>
                   <verstretch>0</verstretch>
                  </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>32</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: #2b2b37; color: #FFFFFF;padding-left: 5px;</string>
                 </property>
                </widget>
               </item>
@@ -721,23 +757,26 @@
               </item>
              </layout>
             </item>
-            <item>
-             <spacer name="verticalSpacerCoinControl">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>800</width>
-                <height>1</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
          </layout>
         </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
        <item>
         <widget class="QLabel" name="label_2">
@@ -780,7 +819,7 @@
             <x>0</x>
             <y>0</y>
             <width>822</width>
-            <height>69</height>
+            <height>85</height>
            </rect>
           </property>
           <property name="styleSheet">

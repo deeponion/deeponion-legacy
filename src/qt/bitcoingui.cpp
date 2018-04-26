@@ -83,9 +83,9 @@ QString darkTheme = QString("QComboBox {color: white; background-color: #2A2937;
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
         QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
-		QHeaderView::section {color:white; background-color: #2A2937; } \
-		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
-		QLineEdit {color: #FFFFFF; background: #393947; border: none; selection-background-color: #d7e6ff; font-size: 12px; font-family: Helvetica Neue} \
+		QHeaderView::section {color:white; background-color: #F7F7F7; } \
+		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
+		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
 		QTabWidget {color:white; background-color: #2B2B37;} \
 		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -93,8 +93,8 @@ QString darkTheme = QString("QComboBox {color: white; background-color: #2A2937;
 		QDialog {color:white; background-color: #2B2B37;} \
 		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \
-		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid #393947;} \
+		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
 		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
 		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
@@ -102,7 +102,11 @@ QString darkTheme = QString("QComboBox {color: white; background-color: #2A2937;
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
 		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
-        QPushButton {font-family:'Helvetica Neue'; border-color: green}");
+        QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #2b2b37; color: #e9e8e8; padding: 8px}\
+        QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
+        QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
+        QStatusBar::item { border: 0px}\
+        QProgressBar::chunk { background-color:#3dc28b;}");
 
 QString lightTheme = QString("QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
@@ -111,8 +115,8 @@ QString lightTheme = QString("QComboBox {color: white; background-color: #2A2937
         QMainWindow {background-color: #F7F7F7; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
 		QHeaderView::section {color:white; background-color: #2A2937; } \
-		QPlainTextEdit {color: #1b202f; background-color: #d7e6ff;} \
-		QLineEdit {color: #FFFFFF; background: #F7F7F7; border: none; selection-background-color: #d7e6ff; font-size: 12px; font-family: Helvetica Neue} \
+		QPlainTextEdit {color: #2b2b37; background-color: #F7F7F7; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
+		QLineEdit {color: #2b2b37; background: #F7F7F7; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
 		QTabWidget {color:white; background-color: #2B2B37;} \
 		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #F7F7F7;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #F7F7F7; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -307,20 +311,20 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Override style sheet for progress bar for styles that have a segmented progress bar,
     // as they make the text unreadable (workaround for issue #1071)
     // See https://qt-project.org/doc/qt-4.8/gallery.html
-    QString curStyle = qApp->style()->metaObject()->className();
-    if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
-    {
-        progressBar->setStyleSheet("QProgressBar { background-color: #e8e8e8; border: 0px; border-radius: 3px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); border-radius: 3px; margin: 0px; }");
-    }
+//    QString curStyle = qApp->style()->metaObject()->className();
+//    if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
+//    {
+//        progressBar->setStyleSheet("QProgressBar { background-color: #393947; border: none; padding: 1px; text-align: center; }\
+//        QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); margin: 0px; }");
+//    }
 
-    progressBar->setStyleSheet("color: #5EC166; background-color: #1A1A21;");
-    //progressBar->setFrameStyle(QFrame::NoFrame);
-    progressBarLabel->setStyleSheet("color: #5EC166; background-color: #1A1A21;padding-left: 10px;");
+    progressBar->setStyleSheet("color: #486EBA; background-color: #393947;");
+    progressBarLabel->setStyleSheet("color: #3dc28b; padding-left: 10px;  background-color: #1A1A21;");
     progressBarLabel->setFrameStyle(QFrame::NoFrame);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("color: #5EC166; background-color: #1A1A21;");
+    statusBar()->setStyleSheet("background-color: #1A1A21;");
     statusBar()->setMinimumHeight(56);
     statusBar()->setMaximumHeight(56);
 
@@ -500,28 +504,14 @@ void BitcoinGUI::createMenuBar()
 
 void BitcoinGUI::createToolBars()
 {
-	if (1 == 0) {
-//        toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
-//        toolbar->addAction(overviewAction);
-//        toolbar->addAction(sendCoinsAction);
-//        toolbar->addAction(receiveCoinsAction);
-//        toolbar->addAction(historyAction);
-//        toolbar->addAction(addressBookAction);
-//        toolbar->addAction(unlockWalletAction);
-//        toolbar->addAction(lockWalletAction);
-//        toolbar->addAction(messageAction);
-//        toolbar->addAction(exportAction);
-    } else {
-        //------------------ Adding a new look ----------
-        menu = new MenuPage();
-        QDockWidget *dock = new QDockWidget();
-        dock->setStyleSheet("border: 0;");
-        dock->setContentsMargins(0,0,0,0);
-        addDockWidget(Qt::LeftDockWidgetArea, dock);
-        dock->setWidget(menu);
-        dock->setTitleBarWidget(new QWidget());
-        menu->LinkMenu(this);
-    }
+    menu = new MenuPage();
+    QDockWidget *dock = new QDockWidget();
+    dock->setStyleSheet("border: 0;");
+    dock->setContentsMargins(0,0,0,0);
+    addDockWidget(Qt::LeftDockWidgetArea, dock);
+    dock->setWidget(menu);
+    dock->setTitleBarWidget(new QWidget());
+    menu->LinkMenu(this);
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
