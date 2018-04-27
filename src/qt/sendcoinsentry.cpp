@@ -27,7 +27,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
     ui->payTo->setPlaceholderText(tr("Enter a DeepOnion address"));
 #endif
-    ui->addAsNarration->setPlaceholderText(tr("Enter a short note to send with payment (max 24 characters)"));
+    ui->addAsNarration->setPlaceholderText(tr("Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address"));
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
 
@@ -153,6 +153,13 @@ SendCoinsRecipient SendCoinsEntry::getValue()
     {
         rv.typeInd = AddressTableModel::AT_Stealth;
         rv.narration = ui->addAsNarration->text();
+        
+        // limit max 24 characters only
+        if(rv.narration.size() > 24) 
+        {
+        	rv.narration = rv.narration.left(24);
+        }
+        
     } else {
         rv.typeInd = AddressTableModel::AT_Normal;
     }

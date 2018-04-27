@@ -160,7 +160,7 @@
         <bool>true</bool>
        </property>
        <property name="toolTip">
-        <string>Enter a short note to send with payment (max 24 characters)</string>
+        <string>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</string>
        </property>
        <property name="styleSheet">
         <string notr="true"/>
