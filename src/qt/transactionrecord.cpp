@@ -30,13 +30,14 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     int64_t nNet = nCredit - nDebit;
     uint256 hash = wtx.GetHash(), hashPrev = 0;
     std::map<std::string, std::string> mapValue = wtx.mapValue;
-
+    char cbuf[256];
+    
     if (nNet > 0 || wtx.IsCoinBase() || wtx.IsCoinStake())
     {
         //
         // Credit
         //
-        BOOST_FOREACH(const CTxOut& txout, wtx.vout)
+    	INDEX_FOREACH(i, const CTxOut& txout, wtx.vout)
         {
             if(wallet->IsMine(txout))
             {
@@ -56,6 +57,15 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     sub.type = TransactionRecord::RecvFromOther;
                     sub.address = mapValue["from"];
                 }
+                
+                snprintf(cbuf, sizeof(cbuf), "n_%u", i);
+                mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
+                if (mi != wtx.mapValue.end() && !mi->second.empty())
+                {
+                	sub.narration = mi->second;
+                	LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                }
+                
                 if (wtx.IsCoinBase())
                 {
                     // Generated (proof-of-work)
@@ -92,8 +102,17 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             // Payment to self
             int64_t nChange = wtx.GetChange();
 
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "",
-                            -(nDebit - nChange), nCredit - nChange));
+            std::string narration("");
+            mapValue_t::const_iterator mi;
+            for (mi = wtx.mapValue.begin(); mi != wtx.mapValue.end(); ++mi)
+            {
+                if (mi->first.compare(0, 2, "n_") != 0)
+                    continue;
+                narration = mi->second;
+                break;
+            }
+            parts.append(TransactionRecord(hash, nTime, TransactionRecord::SendToSelf, "", narration,
+                                           -(nDebit - nChange), nCredit - nChange));
         }
         else if (fAllFromMe)
         {
@@ -129,6 +148,14 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     sub.address = mapValue["to"];
                 }
 
+                snprintf(cbuf, sizeof(cbuf), "n_%u", nOut);
+                mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
+                if (mi != wtx.mapValue.end() && !mi->second.empty())
+                {
+                	sub.narration = mi->second;
+                	LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+               	}
+
                 int64 nValue = txout.nValue;
 
                 // Dont't show second part of stealth tx with amount zero and no address
@@ -153,7 +180,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             //
             // Mixed debit transaction, can't break down payees
             //
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
+        	parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", "", nNet, 0));
         }
     }
 
