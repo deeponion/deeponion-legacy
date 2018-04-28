@@ -215,10 +215,17 @@ void SendCoinsDialog::on_sendButton_clicked()
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::NarrationTooLong:
+<<<<<<< HEAD
         QMessageBox::warning(this, tr("Send Coins"),
             tr("Error: Narration is too long! Only 24 characters allowed."),
             QMessageBox::Ok, QMessageBox::Ok);
         break;
+=======
+    	QMessageBox::warning(this, tr("Send Coins"),
+    		tr("Error: Narration is too long! Only 24 characters allowed."),
+			QMessageBox::Ok, QMessageBox::Ok);
+    	break;
+>>>>>>> master
     case WalletModel::Aborted: // User aborted, nothing to do
         break;
     case WalletModel::OK:

@@ -8,10 +8,10 @@
 
 // modified BOOST_FOREACH to show indices
 #define INDEX_FOREACH(index, a, b)                           \
-    for (unsigned int index = static_cast<unsigned int>(-1); \
-         index == static_cast<unsigned int>(-1);)            \
-        BOOST_FOREACH (a, b)                                 \
-            if (++index, true)
+	for (unsigned int index = static_cast<unsigned int>(-1); \
+			index == static_cast<unsigned int>(-1);)         \
+		BOOST_FOREACH (a, b)                                 \
+			if (++index, true)
 
 class CWallet;
 class CWalletTx;
@@ -82,20 +82,19 @@ public:
     /** Number of confirmation recommended for accepting a transaction */
     static const int RecommendedNumConfirmations = 5;
 
-    TransactionRecord() : 
+    TransactionRecord(): 
              hash(), time(0), type(Other), address(""), narration(""), debit(0), credit(0), idx(0)
     {
     }
 
-    TransactionRecord(uint256 hash, int64_t time) : 
+    TransactionRecord(uint256 hash, int64_t time): 
             hash(hash), time(time), type(Other), address(""), narration(""), debit(0),
             credit(0), idx(0)
     {
     }
 
     TransactionRecord(uint256 hash, int64_t time,
-                      Type type, const std::string &address, const std::string &narration,
-                       int64_t debit, int64_t credit) : 
+            Type type, const std::string &address, const std::string &narration, int64_t debit, int64_t credit): 
             hash(hash), time(time), type(type), address(address), narration(narration), debit(debit), credit(credit),
                 idx(0)
     {

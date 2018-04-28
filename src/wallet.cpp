@@ -1586,6 +1586,7 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
     // -- CreateTransaction won't place change between value and narr output.
     //    narration output will be for preceding output
     // -- narration will be added to mapValue later in FindStealthTransactions From CommitTransaction
+<<<<<<< HEAD
 
     int nChangePos;
     bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
@@ -1594,6 +1595,16 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
     return rv;
 
     //return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, coinControl);
+=======
+    
+    int nChangePos;
+    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
+    
+    // -- narration will be added to mapValue later in FindStealthTransactions From CommitTransaction
+    return rv;
+    
+    // return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, coinControl);
+>>>>>>> master
 }
 
 
@@ -2907,6 +2918,10 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
 
     // -- shuffle inputs, change output won't mix enough as it must be not fully random for plantext narrations
     std::random_shuffle(vecSend.begin(), vecSend.end());
+<<<<<<< HEAD
+=======
+    
+>>>>>>> master
     int nChangePos;
     bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
     

@@ -220,7 +220,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx)
         {
             snprintf(cbuf, sizeof(cbuf), "n_%d", k);
             if (wtx.mapValue.count(cbuf) && !wtx.mapValue[cbuf].empty())
-                strHTML += "<br><b>" + tr(cbuf) + ":</b> " + GUIUtil::HtmlEscape(wtx.mapValue[cbuf], true) + "<br>";
+            	strHTML += "<br><b>" + tr(cbuf) + ":</b> " + GUIUtil::HtmlEscape(wtx.mapValue[cbuf], true) + "<br>";
         }
 
         strHTML += "<b>" + tr("Transaction ID") + ":</b> " + wtx.GetHash().ToString().c_str() + "<br>";

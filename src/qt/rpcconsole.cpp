@@ -813,7 +813,7 @@ void RPCConsole::banSelectedNode(int bantime)
 {
     if (!clientModel)
         return;
-
+    
     // Get current selected peer address
     QString strNode = GUIUtil::getEntryData(ui->peerWidget, 0, PeerTableModel::Address);
     // Find possible node, ban and remove it

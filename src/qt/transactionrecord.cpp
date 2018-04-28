@@ -37,7 +37,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         //
         // Credit
         //
-        INDEX_FOREACH(i, const CTxOut& txout, wtx.vout)
+    	INDEX_FOREACH(i, const CTxOut& txout, wtx.vout)
         {
             if(wallet->IsMine(txout))
             {
@@ -62,10 +62,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
                 {
-                    sub.narration = mi->second;
-                    LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                	sub.narration = mi->second;
+                	LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
                 }
-
+                
                 if (wtx.IsCoinBase())
                 {
                     // Generated (proof-of-work)
@@ -101,6 +101,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         {
             // Payment to self
             int64_t nChange = wtx.GetChange();
+
             std::string narration("");
             mapValue_t::const_iterator mi;
             for (mi = wtx.mapValue.begin(); mi != wtx.mapValue.end(); ++mi)
@@ -150,10 +151,9 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 mapValue_t::const_iterator mi = wtx.mapValue.find(cbuf);
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
                 {
-                    sub.narration = mi->second;
-                    LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
-                }
-                    
+                	sub.narration = mi->second;
+                	LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+               	}
 
                 int64 nValue = txout.nValue;
 
@@ -179,7 +179,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             //
             // Mixed debit transaction, can't break down payees
             //
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", "", nNet, 0));
+        	parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", "", nNet, 0));
         }
     }
 

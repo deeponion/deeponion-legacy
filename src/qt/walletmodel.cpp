@@ -326,7 +326,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             int pos = it->first;
             if (nChangePos > -1 && it->first >= nChangePos)
                 pos++;
-
+            
             char key[64];
             if (snprintf(key, sizeof(key), "n_%u", pos) < 1)
             {
