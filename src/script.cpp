@@ -1014,12 +1014,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                     // Drop the signature, since there's no way for a signature to sign itself
                     scriptCode.FindAndDelete(CScript(vchSig));
 
-                    bool fSuccess = false;
-                    if(pindexBest->nHeight < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
-                        fSuccess = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
-                            CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
-                    else
-                    	fSuccess = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                    bool fSuccess = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
 
                     popstack(stack);
                     popstack(stack);
@@ -1079,12 +1074,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, co
                         valtype& vchPubKey = stacktop(-ikey);
 
                         // Check signature
-                        bool fOk = false;
-                        if(pindexBest->nHeight < SWITCH_BLOCK_STEALTH_ADDRESS && !fTestNet)
-                            fOk = IsCanonicalSignature(vchSig) && IsCanonicalPubKey(vchPubKey) &&
-                                CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
-                        else
-                        	fOk = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
+                        bool fOk = CheckSig(vchSig, vchPubKey, scriptCode, txTo, nIn, nHashType);
 
                         if (fOk)
                         {

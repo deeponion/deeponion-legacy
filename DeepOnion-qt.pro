@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.6.2.0
+VERSION = 1.6.3.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
@@ -15,6 +15,7 @@ CONFIG += thread static
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 lessThan(QT_MAJOR_VERSION, 5): CONFIG += static
 QMAKE_CXXFLAGS = -fpermissive
+PRE_TARGETDEPS += compiler_TSQM_make_all
 
 greaterThan(QT_MAJOR_VERSION, 4) {
     QT += widgets
@@ -243,6 +244,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/editaddressdialog.h \
     src/qt/bitcoinaddressvalidator.h \
 	src/qt/trafficgraphwidget.h \
+    src/qt/intro.h \
     src/alert.h \
     src/addrman.h \
     src/base58.h \
@@ -366,6 +368,7 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/sendmessagesentry.cpp \
     src/qt/qvalidatedtextedit.cpp \
     src/qt/plugins/mrichtexteditor/mrichtextedit.cpp \
+    src/qt/intro.cpp \
     src/alert.cpp \
     src/version.cpp \
     src/sync.cpp \
@@ -450,6 +453,7 @@ FORMS += \
     src/qt/forms/messagepage.ui \
     src/qt/forms/sendmessagesentry.ui \
     src/qt/forms/sendmessagesdialog.ui \
+    src/qt/forms/intro.ui \
     src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 
 contains(USE_QRCODE, 1) {

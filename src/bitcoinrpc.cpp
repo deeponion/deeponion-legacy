@@ -243,6 +243,19 @@ Value stop(const Array& params, bool fHelp)
     return "DeepOnion server stopping";
 }
 
+Value uptime(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() > 0){
+        throw std::runtime_error(
+             "uptime\n"
+             "\nReturns the total uptime of the server in seconds.\n");
+    }
+
+    Object obj;
+    obj.push_back(Pair("uptime", GetTime() - GetStartupTime()));
+    obj.push_back(Pair("unit", "seconds"));
+    return obj;
+}
 
 
 //
@@ -258,6 +271,7 @@ static const CRPCCommand vRPCCommands[] =
         {"control",           "help",                   &help,                   true,   true },
         {"control",           "stop",                   &stop,                   true,   true },
         {"control",           "getinfo",                &getinfo,                true,   false},
+        {"control",           "uptime",                 &uptime,                 true,   false},
 
         /* P2P networking */
         {"network",           "getconnectioncount",     &getconnectioncount,     true,   false},

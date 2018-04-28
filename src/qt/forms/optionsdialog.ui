@@ -409,6 +409,16 @@
         </widget>
        </item>
        <item>
+        <widget class="QCheckBox" name="printDebugLog">
+         <property name="toolTip">
+          <string>If enabled DeepOnion wallet will print all debug messages to debug.log file.</string>
+         </property>
+         <property name="text">
+          <string>Print debug messages to log file</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <spacer name="verticalSpacer_Display">
          <property name="orientation">
           <enum>Qt::Vertical</enum>

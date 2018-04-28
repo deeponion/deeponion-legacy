@@ -1,6 +1,6 @@
 Open a *Terminal*.
 
-1.  *Clone the github tree to get the source code and checkout the Mac branch*
+1.  *Clone the github tree to get the source code*
 
 ```
 git clone --recursive https://github.com/deeponion/deeponion.git
@@ -8,6 +8,10 @@ cd deeponion
 ```
 
 2.  *Download and install Brew for Mac* (https://brew.sh)
+
+```
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
 
 3.  *Install dependencies with Brew*
 

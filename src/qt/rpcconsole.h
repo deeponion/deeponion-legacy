@@ -10,6 +10,7 @@
 #include <QWidget>
 #include <QDialog>
 #include <QMenu>
+#include <QSettings>
 
 namespace Ui {
     class RPCConsole;
@@ -66,9 +67,15 @@ private slots:
     void showOrHideBanTableIfRequired();
     /** clear the selected node */
     void clearSelectedNode();
+    /** Open external (default) editor with DeepOnion.conf */
+    void showConfEditor();
 
   public slots:
-    void clear();
+    void clear(bool clearHistory = true);
+    void fontBigger();
+    void fontSmaller();
+    void setFontSize(int newSize);
+
     void message(int category, const QString &message, bool html = false);
     /** Set number of connections shown in the UI */
     void setNumConnections(int count);
@@ -90,6 +97,7 @@ private slots:
     void banSelectedNode(int bantime);
     /** Unban a selected node on the Bans tab */
     void unbanSelectedNode();
+
   signals:
     // For RPC command executor
     void stopExecutor();
@@ -106,6 +114,8 @@ private:
   QMenu *peersTableContextMenu;
   QMenu *banTableContextMenu;
   QThread thread;
+  int consoleFontSize;
+  QSettings settings;
 
   void startExecutor();
   void setTrafficGraphRange(int mins);

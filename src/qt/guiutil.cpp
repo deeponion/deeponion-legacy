@@ -43,6 +43,8 @@
 #include "shellapi.h"
 #endif
 
+static fs::detail::utf8_codecvt_facet utf8;
+
 namespace GUIUtil
 {
 
@@ -350,6 +352,15 @@ void openDebugLogfile()
         QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(pathDebug.string())));
 }
 
+void openConfigfile()
+{
+    boost::filesystem::path pathConfig = GetConfigFile();
+
+    /* Open deeponion.conf with the associated application */
+    if (boost::filesystem::exists(pathConfig))
+        QDesktopServices::openUrl(QUrl::fromLocalFile(QString::fromStdString(pathConfig.string())));
+}
+
 ToolTipToRichTextFilter::ToolTipToRichTextFilter(int size_threshold, QObject *parent) : QObject(parent), size_threshold(size_threshold)
 {
 }
@@ -517,6 +528,22 @@ bool GetStartOnSystemStartup() { return false; }
 bool SetStartOnSystemStartup(bool fAutoStart) { return false; }
 
 #endif
+
+void setClipboard(const QString& str)
+{
+    QApplication::clipboard()->setText(str, QClipboard::Clipboard);
+    QApplication::clipboard()->setText(str, QClipboard::Selection);
+}
+
+fs::path qstringToBoostPath(const QString &path)
+{
+    return fs::path(path.toStdString(), utf8);
+}
+
+QString boostPathToQString(const fs::path &path)
+{
+    return QString::fromStdString(path.string(utf8));
+}
 
 HelpMessageBox::HelpMessageBox(QWidget *parent) : QMessageBox(parent)
 {
