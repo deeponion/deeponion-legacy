@@ -1,4 +1,4 @@
-<RCC>
+<RCC version="1.0">
     <qresource prefix="/icons">
         <file alias="address-book">res/icons/address-book.png</file>
         <file alias="quit">res/icons/quit.png</file>
