@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.6.3.0
+VERSION = 1.7.0.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \

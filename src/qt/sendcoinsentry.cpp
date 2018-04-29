@@ -155,6 +155,11 @@ SendCoinsRecipient SendCoinsEntry::getValue()
         rv.typeInd = AddressTableModel::AT_Stealth;
         rv.narration = ui->addAsNarration->text();
         
+        // limit max 24 characters only, this as a safety measure
+        if(rv.narration.size() > 24) 
+        {
+        	rv.narration = rv.narration.left(24);
+        }
     } else {
         rv.typeInd = AddressTableModel::AT_Normal;
     }
