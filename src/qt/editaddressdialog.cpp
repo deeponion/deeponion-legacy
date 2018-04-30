@@ -66,7 +66,6 @@ void EditAddressDialog::setModel(AddressTableModel *model)
     	ui->stealthCB->setText("Stealth Address (disabled)");
     }
     else {
-    	ui->stealthCB->setEnabled(true);
     	ui->stealthCB->setText("Stealth Address");
     }
 }
