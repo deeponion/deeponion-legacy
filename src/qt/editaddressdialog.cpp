@@ -31,13 +31,13 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
     case EditReceivingAddress:
         setWindowTitle(tr("Edit receiving address"));
         ui->addressEdit->setEnabled(false);
-		ui->addressEdit->setVisible(true);
-		ui->stealthCB->setEnabled(false);
-		ui->stealthCB->setVisible(true);
+        ui->addressEdit->setVisible(true);
+        ui->stealthCB->setEnabled(false);
+        ui->stealthCB->setVisible(true);
         break;
     case EditSendingAddress:
         setWindowTitle(tr("Edit sending address"));
-		ui->stealthCB->setVisible(false);
+        ui->stealthCB->setVisible(false);
         break;
     }
 
@@ -66,7 +66,6 @@ void EditAddressDialog::setModel(AddressTableModel *model)
     	ui->stealthCB->setText("Stealth Address (disabled)");
     }
     else {
-    	ui->stealthCB->setEnabled(true);
     	ui->stealthCB->setText("Stealth Address");
     }
 }
