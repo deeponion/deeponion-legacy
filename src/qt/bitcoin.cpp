@@ -127,6 +127,7 @@ int main(int argc, char *argv[])
 #endif
 
     Q_INIT_RESOURCE(bitcoin);
+    Q_INIT_RESOURCE(bitcoin_locale);
     QApplication app(argc, argv);
 
     // Already apply custom stylesheets so they are already visible on the intro screen
