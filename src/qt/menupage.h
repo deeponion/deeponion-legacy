@@ -14,8 +14,6 @@
 #include <QFrame>
 #include "guiutil.h"
 #include "bitcoingui.h"
-//#include "walletview.h"
-
 
 
 namespace Ui {

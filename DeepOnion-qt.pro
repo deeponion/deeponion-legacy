@@ -230,7 +230,8 @@ lessThan(QT_MAJOR_VERSION, 5) {
 # Input
 DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
-    src/qt/menupage.h \
+	src/qt/menupage.h \
+	src/qt/themeadapter.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
     src/qt/optionsdialog.h \
@@ -344,6 +345,7 @@ HEADERS += src/qt/bitcoingui.h \
 SOURCES += src/qt/bitcoin.cpp \
     src/qt/menupage.cpp \
     src/qt/bitcoingui.cpp \
+	src/qt/themeadapter.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
     src/qt/optionsdialog.cpp \

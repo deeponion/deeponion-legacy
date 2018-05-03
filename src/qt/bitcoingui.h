@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
-#include "menupage.h"
 
 class TransactionTableModel;
 class ClientModel;
@@ -30,6 +29,7 @@ class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
 
+class ThemeAdapter;
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
@@ -56,7 +56,7 @@ public:
     */
 	void setMessageModel(MessageModel *messageModel);
 
-    //------------------ Adding new theme ----------
+    //------------------ Adding new menu ----------
     MenuPage *menu;
 
 protected:
@@ -66,6 +66,8 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
+    ThemeAdapter *themeAdapter;
+
     ClientModel *clientModel;
     WalletModel *walletModel;
 
@@ -212,7 +214,7 @@ private slots:
 	void updateOnionIcon();
 
     void optionsDialogFinished (int);
-    void applyTheme (QString);
+    void applyTheme ();
 };
 
 #endif

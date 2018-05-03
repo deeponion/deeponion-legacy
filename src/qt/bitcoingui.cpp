@@ -31,6 +31,8 @@
 #include "wallet.h"
 #include "init.h"
 #include "net.h"
+#include "themeadapter.h"
+#include "menupage.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -76,65 +78,6 @@ extern int64_t nLastCoinStakeSearchInterval;
 extern unsigned int nStakeTargetSpacing;
 double GetPoSKernelPS();
 
-
-QString darkTheme = QString("QComboBox {color: white; background-color: #2A2937;} \
-        QComboBox:hover {background-color: #1b202f;} \
-		QWidget {color:white; background-color: #2B2B37;} \
-		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
-		QHeaderView::section {color:white; background-color: #F7F7F7; } \
-		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QTabWidget {color:white; background-color: #2B2B37;} \
-		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
-		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
-		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QDialog {color:white; background-color: #2B2B37;} \
-		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
-		QToolBar {color:white; background-color: #191921;} \
-		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
-		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
-		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
-		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
-		QMenuBar {background-color: #2A2937;} \
-		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
-		QMenuBar::item {color: white; background-color: #2A2937;} \
-		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
-        QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #2b2b37; color: #e9e8e8; padding: 8px}\
-        QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
-        QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
-        QStatusBar::item { border: 0px}\
-        QProgressBar::chunk { background-color:#3dc28b;}");
-
-QString lightTheme = QString("QComboBox {color: white; background-color: #2A2937;} \
-        QComboBox:hover {background-color: #1b202f;} \
-		QWidget {color:white; background-color: #2B2B37;} \
-		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #F7F7F7; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
-		QHeaderView::section {color:white; background-color: #2A2937; } \
-		QPlainTextEdit {color: #2b2b37; background-color: #F7F7F7; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QLineEdit {color: #2b2b37; background: #F7F7F7; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QTabWidget {color:white; background-color: #2B2B37;} \
-		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #F7F7F7;} \
-		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #F7F7F7; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
-		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QDialog {color:white; background-color: #2B2B37;} \
-		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
-		QToolBar {color:white; background-color: #191921;} \
-		QTreeView { color: white; background-color:#3973ac; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #3973ac; border: 1px solid #F7F7F7;} \
-		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #F7F7F7;} \
-		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
-		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
-		QMenuBar {background-color: #2A2937;} \
-		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
-		QMenuBar::item {color: white; background-color: #2A2937;} \
-		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
-        QPushButton {font-family:'Helvetica Neue'; border-color: green}");
-
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
     clientModel(0),
@@ -171,9 +114,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     setUnifiedTitleAndToolBarOnMac(true);
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
+    themeAdapter = new ThemeAdapter();
 
-    QSettings settings;
-    applyTheme(settings.value("theme", "dark").toString());
+    applyTheme();
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
@@ -1215,17 +1158,10 @@ void BitcoinGUI::optionsDialogFinished (int result)
         return;
     }
 
-    applyTheme(clientModel->getOptionsModel()->getTheme());
+    themeAdapter->changeTheme(clientModel->getOptionsModel()->getTheme());
 }
 
 
-void BitcoinGUI::applyTheme (QString theme) {
-    printf("applyTheme ");
-    if (theme.compare("ligth", Qt::CaseSensitive) == 0) {
-        printf("light\n");
-        qApp->setStyleSheet(lightTheme);
-    } else {
-        printf("dark - default\n");
-        qApp->setStyleSheet(darkTheme);
-    }
+void BitcoinGUI::applyTheme () {
+    qApp->setStyleSheet(themeAdapter->getStyleSheet());
 }
