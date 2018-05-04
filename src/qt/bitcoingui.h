@@ -25,6 +25,7 @@ class QTableView;
 class QAbstractItemModel;
 class QModelIndex;
 class QProgressBar;
+class QDockWidget;
 class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
@@ -56,8 +57,7 @@ public:
     */
 	void setMessageModel(MessageModel *messageModel);
 
-    //------------------ Adding new menu ----------
-    MenuPage *menu;
+    ThemeAdapter* getThemeAdapter();
 
 protected:
     void changeEvent(QEvent *e);
@@ -66,11 +66,16 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
+
     ThemeAdapter *themeAdapter;
+
+    //------------------ Adding new menu ----------
+    MenuPage *menu;
 
     ClientModel *clientModel;
     WalletModel *walletModel;
 
+    QDockWidget *dock;
     QStackedWidget *centralWidget;
 	MessageModel *messageModel;
 	MessagePage *messagePage;

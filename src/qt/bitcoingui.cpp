@@ -447,8 +447,8 @@ void BitcoinGUI::createMenuBar()
 
 void BitcoinGUI::createToolBars()
 {
-    menu = new MenuPage();
-    QDockWidget *dock = new QDockWidget();
+    menu = new MenuPage(NULL, this);
+    dock = new QDockWidget();
     dock->setStyleSheet("border: 0;");
     dock->setContentsMargins(0,0,0,0);
     addDockWidget(Qt::LeftDockWidgetArea, dock);
@@ -1152,6 +1152,10 @@ void BitcoinGUI::updateOnionIcon()
 	}
 }
 
+ThemeAdapter* BitcoinGUI::getThemeAdapter() {
+    return themeAdapter;
+}
+
 void BitcoinGUI::optionsDialogFinished (int result)
 {
     if(result != QDialog::Accepted){
@@ -1159,9 +1163,11 @@ void BitcoinGUI::optionsDialogFinished (int result)
     }
 
     themeAdapter->changeTheme(clientModel->getOptionsModel()->getTheme());
+    applyTheme();
 }
-
 
 void BitcoinGUI::applyTheme () {
     qApp->setStyleSheet(themeAdapter->getStyleSheet());
+    //if (dock != NULL) dock->repaint();
+    //if (centralWidget != NULL) centralWidget->repaint();
 }

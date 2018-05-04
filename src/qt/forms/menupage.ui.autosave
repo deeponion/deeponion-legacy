@@ -320,7 +320,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: green;border-style: none;</string>
+   <string notr="true">border-style: none;</string>
   </property>
   <layout class="QVBoxLayout" name="topLayout">
    <property name="spacing">

@@ -8,6 +8,7 @@
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "bitcoingui.h"
+#include "themeadapter.h"
 
 #include "overviewpage.h"
 
@@ -23,24 +24,25 @@
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
 
-MenuPage::MenuPage(QWidget *parent) :
+MenuPage::MenuPage(QWidget *parent, BitcoinGUI *gui) :
   QWidget(parent),
   ui(new Ui::MenuPage),
   clientModel(0),
-  walletModel(0)
+  walletModel(0),
+  gui(gui)
 {
+    ui->setupUi(this);
+    setStyleSheet(gui->getThemeAdapter()->getMainMenuPageStyle());
 
-   ui->setupUi(this);
-
-   connect(ui->Overview, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->SendCoins, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->ReceiveCoins, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->Transactions, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->AddressBook, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->Messages, SIGNAL(pressed()), this, SLOT(ClickedItem()));
-   connect(ui->Export, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->Overview, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->SendCoins, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->ReceiveCoins, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->Transactions, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->AddressBook, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->Messages, SIGNAL(pressed()), this, SLOT(ClickedItem()));
+    connect(ui->Export, SIGNAL(pressed()), this, SLOT(ClickedItem()));
     //Change style to clicked to Dashboard button
-   ui->Overview->setStyleSheet(selectedButtonStyle);
+    ui->Overview->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
 
 }
 
@@ -59,13 +61,13 @@ void MenuPage::ClickedItem(){
     ui->Messages->setCheckable(false);
     ui->Export->setCheckable(false);
 
-    ui->Overview->setStyleSheet(normalButtonStyle);
-    ui->SendCoins->setStyleSheet(normalButtonStyle);
-    ui->ReceiveCoins->setStyleSheet(normalButtonStyle);
-    ui->Transactions->setStyleSheet(normalButtonStyle);
-    ui->AddressBook->setStyleSheet(normalButtonStyle);
-    ui->Messages ->setStyleSheet(normalButtonStyle);
-    ui->Export->setStyleSheet(deactivatedButtonStyle);
+    ui->Overview->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->SendCoins->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->ReceiveCoins->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->Transactions->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->AddressBook->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->Messages ->setStyleSheet(gui->getThemeAdapter()->getMainMenuNormalButtonStyle());
+    ui->Export->setStyleSheet(gui->getThemeAdapter()->getMainMenuDeactivatedButtonStyle());
 
     int screen = 0;
     QObject *sender = QObject::sender();
@@ -88,31 +90,31 @@ void MenuPage::ClickedItem(){
     switch(screen){
     case 0:
         ui->Overview->setCheckable(true);
-        ui->Overview->setStyleSheet(selectedButtonStyle);
+        ui->Overview->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 1:
         ui->SendCoins->setCheckable(true);
-        ui->SendCoins->setStyleSheet(selectedButtonStyle);
+        ui->SendCoins->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 2:
         ui->ReceiveCoins->setCheckable(true);
-        ui->ReceiveCoins->setStyleSheet(selectedButtonStyle);
+        ui->ReceiveCoins->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 3:
         ui->Transactions->setCheckable(true);
-        ui->Transactions->setStyleSheet(selectedButtonStyle);
+        ui->Transactions->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 4:
         ui->AddressBook->setCheckable(true);
-        ui->AddressBook->setStyleSheet(selectedButtonStyle);
+        ui->AddressBook->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 5:
         ui->Messages->setCheckable(true);
-        ui->Messages->setStyleSheet(selectedButtonStyle);
+        ui->Messages->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     case 6:
         ui->Export->setCheckable(true);
-        ui->Export->setStyleSheet(selectedButtonStyle);
+        ui->Export->setStyleSheet(gui->getThemeAdapter()->getMainMenuSelectedButtonStyle());
         break;
     default:
         break;

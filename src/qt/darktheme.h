@@ -7,7 +7,9 @@
 
 #include <QString>
 
-static const QString DARK_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
+
+
+    static QString DARK_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
 		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
@@ -37,5 +39,11 @@ static const QString DARK_THEME_STYLESHEET = "QComboBox {color: white; backgroun
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QStatusBar::item { border: 0px}\
         QProgressBar::chunk { background-color:#3dc28b;}";
+
+    static QString DT_MAIN_MENU_PAGE_STYLE = "border-style: none; background-color: blue;";
+    static QString DT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393848";
+    static QString DT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
+    static QString DT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #393848";
+
 
 #endif //DEEPONION_DARKTHEME_H

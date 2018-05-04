@@ -28,10 +28,12 @@ class MenuPage : public QWidget
 {
     Q_OBJECT
 public:
-    explicit MenuPage(QWidget *parent = NULL);
+    explicit MenuPage(QWidget *parent = NULL, BitcoinGUI *gui = NULL);
+
     ~MenuPage();
     void LinkMenu(BitcoinGUI *gui);
 //private:
+    BitcoinGUI *gui;
     Ui::MenuPage *ui;
     ClientModel *clientModel;
     WalletModel *walletModel;

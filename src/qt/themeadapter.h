@@ -22,12 +22,13 @@ private:
     QSettings settings;
     QString currentTheme;
 
-    // ------------------- theme components ----------------------------------------
-    QString styleSheet = DARK_THEME_STYLESHEET;
-
 public:
     void changeTheme(QString);
     QString getStyleSheet();
+    QString getMainMenuPageStyle();
+    QString getMainMenuNormalButtonStyle();
+    QString getMainMenuSelectedButtonStyle();
+    QString getMainMenuDeactivatedButtonStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H
