@@ -435,7 +435,8 @@ SOURCES += src/qt/bitcoin.cpp \
     src/hash.cpp
 
 RESOURCES += \
-    src/qt/bitcoin.qrc
+    src/qt/bitcoin.qrc \
+	src/qt/bitcoin_locale.qrc
 
 FORMS += \
     src/qt/forms/coincontroldialog.ui \
