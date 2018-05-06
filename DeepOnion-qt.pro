@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.6.3.0
+VERSION = 1.7.0.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
@@ -435,7 +435,8 @@ SOURCES += src/qt/bitcoin.cpp \
     src/hash.cpp
 
 RESOURCES += \
-    src/qt/bitcoin.qrc
+    src/qt/bitcoin.qrc \
+	src/qt/bitcoin_locale.qrc
 
 FORMS += \
     src/qt/forms/coincontroldialog.ui \
