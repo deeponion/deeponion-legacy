@@ -146,10 +146,17 @@ public:
         bool fEraseUnencryptedKey = true;
 
         if(!Write(std::make_pair(std::string("keymeta"), vchPubKey), keyMeta))
-            return false;
+        {
+        	printf(">> WriteCryptedKey: keymeta failed.\n");
+        	return false;
+        }
 
-        if (!Write(std::make_pair(std::string("ckey"), vchPubKey.Raw()), vchCryptedSecret, false))
-            return false;
+        if (!Write(std::make_pair(std::string("ckey"), vchPubKey.Raw()), vchCryptedSecret, true))
+        {
+        	printf(">> WriteCryptedKey: ckey failed.\n");
+        	return false;
+        }
+
         if (fEraseUnencryptedKey)
         {
             Erase(std::make_pair(std::string("key"), vchPubKey.Raw()));

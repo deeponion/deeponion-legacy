@@ -112,28 +112,12 @@ extern enum Checkpoints::CPMode CheckpointsMode;
 
 int64_t PastDrift(int64_t nTime) 
 { 
-	// if(pindexBest == NULL)
-		return nTime - 2 * 60 * 60;
-	/*
-	// if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-	if(!fTestNet || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-		return nTime - 2 * 60 * 60; 
- 
-	return nTime - 15;
-	*/
+	return nTime - 2 * 60 * 60;
 } 
 
 int64_t FutureDrift(int64_t nTime) 
 { 
-	// if(pindexBest == NULL)
-		return nTime + 2 * 60 * 60;
-/*
-	// if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-	if(!fTestNet || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-		return nTime + 2 * 60 * 60; 
-
-	return nTime + 15;
-	*/
+	return nTime + 2 * 60 * 60;
 }
 
 int64_t GetMinTxFee() 
@@ -141,8 +125,7 @@ int64_t GetMinTxFee()
 	if(pindexBest == NULL)
 		return MIN_TX_FEE;
 
-	// if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-	if(!fTestNet || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return MIN_TX_FEE; 
 
 	return MIN_TX_FEE_NEW;	
@@ -153,8 +136,7 @@ int64_t GetMinRelayTxFee()
 	if(pindexBest == NULL)
 		return MIN_RELAY_TX_FEE;
 
-	// if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
-	if(!fTestNet || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
+	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
 		return MIN_RELAY_TX_FEE; 
  
 	return MIN_RELAY_TX_FEE_NEW;	
@@ -3091,9 +3073,9 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-//         if (pfrom->nVersion < MIN_PROTO_VERSION || 
-//         		(pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet))
-        if (pfrom->nVersion < MIN_PROTO_VERSION) 
+        if (pfrom->nVersion < MIN_PROTO_VERSION || 
+        	(pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet))
+        // if (pfrom->nVersion < MIN_PROTO_VERSION) 
         {
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
             pfrom->fDisconnect = true;

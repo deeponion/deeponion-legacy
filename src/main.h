@@ -38,7 +38,7 @@ static const int64_t MIN_RELAY_TX_FEE_NEW = MIN_TX_FEE_NEW;
 static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
-// static const int SWITCH_BLOCK_HARD_FORK = 530000;
+static const int SWITCH_BLOCK_HARD_FORK = 540000;
 static const int SWITCH_BLOCK_HARD_FORK_TESTNET = 95000;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
