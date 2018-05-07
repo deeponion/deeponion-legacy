@@ -44,6 +44,11 @@ public:
     QString getMessagesSelectedBtnIcon();
     QString getExportNormalBtnIcon();
     QString getExportSelectedBtnIcon();
+
+    QString getQFrameGeneralStyle();
+
+    QString getListAlternateRowsGeneralStyle();
+    QString getListHeaderGeneralStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

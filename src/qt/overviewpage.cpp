@@ -10,6 +10,7 @@
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
 #include "util.h"
+#include "themeadapter.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
@@ -91,7 +92,7 @@ public:
 };
 #include "overviewpage.moc"
 
-OverviewPage::OverviewPage(QWidget *parent) :
+OverviewPage::OverviewPage(QWidget *parent, BitcoinGUI *gui) :
     QWidget(parent),
     ui(new Ui::OverviewPage),
     currentBalance(-1),
@@ -99,9 +100,11 @@ OverviewPage::OverviewPage(QWidget *parent) :
     currentUnconfirmedBalance(-1),
     currentImmatureBalance(-1),
     txdelegate(new TxViewDelegate()),
-    filter(0)
+    filter(0),
+    gui(gui)
 {
     ui->setupUi(this);
+    ui->wallet_summary->setStyleSheet(gui->getThemeAdapter()->getQFrameGeneralStyle());
 
     // Recent transactions
     //ui->listTransactions->setItemDelegate(txdelegate);
@@ -192,7 +195,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setAlternatingRowColors(true);
-        ui->listTransactions->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
+        ui->listTransactions->setStyleSheet(gui->getThemeAdapter()->getListAlternateRowsGeneralStyle());
         ui->listTransactions->setSortingEnabled(true);
         ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
         ui->listTransactions->verticalHeader()->hide();
@@ -206,10 +209,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        ui->listTransactions->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
-                                                                        font-size: 14px; font-family: Helvetica Neue; \
-                                                                        padding-left: 8px; padding-right: 8px; \
-                                                                        padding-top: 14px; padding-bottom: 14px;}");
+        ui->listTransactions->horizontalHeader()->setStyleSheet(gui->getThemeAdapter()->getListHeaderGeneralStyle());
 
 
 
@@ -259,4 +259,10 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
 {
     ui->labelWalletStatus->setVisible(fShow);
     //ui->labelTransactionsStatus->setVisible(fShow);
+}
+
+void OverviewPage::refreshStyle() {
+    ui->wallet_summary->setStyleSheet(gui->getThemeAdapter()->getQFrameGeneralStyle());
+    ui->listTransactions->setStyleSheet(gui->getThemeAdapter()->getListAlternateRowsGeneralStyle());
+    ui->listTransactions->horizontalHeader()->setStyleSheet(gui->getThemeAdapter()->getListHeaderGeneralStyle());
 }

@@ -149,7 +149,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
 
     // Create tabs
-    overviewPage = new OverviewPage();
+    overviewPage = new OverviewPage(NULL, this);
 	messagePage   = new MessagePage(this);
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
@@ -1173,4 +1173,5 @@ void BitcoinGUI::refreshStyle() {
     dock->setStyleSheet(themeAdapter->getDockMainMenuStyle());
     menu->ClickedItem();
     centralWidget->setStyleSheet(themeAdapter->getCentralWidgetStyle());
+    overviewPage->refreshStyle();
 }

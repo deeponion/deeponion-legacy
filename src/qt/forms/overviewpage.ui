@@ -118,7 +118,7 @@
             </size>
            </property>
            <property name="styleSheet">
-            <string notr="true">background-color: #393947;</string>
+            <string notr="true"/>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -285,7 +285,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #898994</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Onion Balance</string>
@@ -305,7 +305,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #ffffff</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>12,850.083746</string>
@@ -330,7 +330,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #898994</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Spendable</string>
@@ -350,7 +350,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #ffffff</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>12,800</string>
@@ -375,7 +375,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #898994</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Staking</string>
@@ -395,7 +395,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #ffffff</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>5,000</string>
@@ -420,7 +420,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #898994</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Unconfirmed</string>
@@ -440,7 +440,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #ffffff</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>1,200</string>
@@ -465,7 +465,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #898994</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>Immature</string>
@@ -485,7 +485,7 @@
                         </font>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">color: #ffffff</string>
+                        <string notr="true"/>
                        </property>
                        <property name="text">
                         <string>3,800</string>

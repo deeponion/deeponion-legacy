@@ -12,7 +12,7 @@
 		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
+		QTableView {color:#565656;} \
 		QHeaderView::section {color:white; background-color: #F7F7F7; } \
 		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
 		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
@@ -22,6 +22,16 @@
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2B2B37;} \
 		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
+        QLabel#labelTotalText {color: #486EBA;}\
+        QLabel#labelTotal {color: #4D4D4D;}\
+        QLabel#labelBalanceText {color: #486EBA;}\
+        QLabel#labelBalance {color: #4D4D4D;}\
+        QLabel#labelStakeText {color: #486EBA;}\
+        QLabel#labelStake {color: #4D4D4D;}\
+        QLabel#labelUnconfirmedText {color: #486EBA;}\
+        QLabel#labelUnconfirmed {color: #4D4D4D;}\
+        QLabel#labelImmatureText {color: #486EBA;}\
+        QLabel#labelImmature {color: #4D4D4D;}\
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
@@ -60,4 +70,13 @@
     static QString LT_MAIN_MENU_ADDRESSBOOK_S_BTN_ICO = ":/icons/NewAddressBookS";
     static QString LT_MAIN_MENU_MESSAGES_S_BTN_ICO = ":/icons/NewMessagesS";
     static QString LT_MAIN_MENU_EXPORT_S_BTN_ICO = ":/icons/NewExportUS";
+
+    static QString LT_QFRAME_GENERAL_STYLE = "background-color: #FFFFFF;";
+    static QString LT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #D8D8D8; background-color: #FFFFFF;\
+            border: none; margin: 0; padding: 0;";
+    static QString LT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}";
+
 #endif //DEEPONION_LIGHTTHEME_H

@@ -179,3 +179,29 @@ QString ThemeAdapter::getExportSelectedBtnIcon() {
         return DT_MAIN_MENU_EXPORT_BTN_ICO;
     }
 }
+
+QString ThemeAdapter::getQFrameGeneralStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QFRAME_GENERAL_STYLE;
+    } else {
+        return DT_QFRAME_GENERAL_STYLE;
+    }
+}
+
+QString getListHeaderAndTextGeneralStyle();
+
+QString ThemeAdapter::getListAlternateRowsGeneralStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_LIST_ALTERNATE_GENERAL_STYLE;
+    } else {
+        return DT_LIST_ALTERNATE_GENERAL_STYLE;
+    }
+}
+
+QString ThemeAdapter::getListHeaderGeneralStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_LIST_HEADER_GENERAL_STYLE;
+    } else {
+        return DT_LIST_HEADER_GENERAL_STYLE;
+    }
+}

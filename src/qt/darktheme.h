@@ -12,7 +12,7 @@
 		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
         QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
+		QTableView {color:white;} \
 		QHeaderView::section {color:white; background-color: #F7F7F7; } \
 		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
 		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
@@ -22,6 +22,16 @@
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2B2B37;} \
 		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
+        QLabel#labelTotalText {color: #898994;}\
+        QLabel#labelTotal {color: #FFFFFF;}\
+        QLabel#labelBalanceText {color: #898994;}\
+        QLabel#labelBalance {color: #FFFFFF;}\
+        QLabel#labelStakeText {color: #898994;}\
+        QLabel#labelStake {color: #FFFFFF;}\
+        QLabel#labelUnconfirmedText {color: #898994;}\
+        QLabel#labelUnconfirmed {color: #FFFFFF;}\
+        QLabel#labelImmatureText {color: #898994;}\
+        QLabel#labelImmature {color: #FFFFFF;}\
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
@@ -52,6 +62,14 @@
     static QString DT_MAIN_MENU_ADDRESSBOOK_BTN_ICO = ":/icons/NewAddressBookS";
     static QString DT_MAIN_MENU_MESSAGES_BTN_ICO = ":/icons/NewMessagesS";
     static QString DT_MAIN_MENU_EXPORT_BTN_ICO = ":/icons/NewExportUS";
+
+    static QString DT_QFRAME_GENERAL_STYLE = "background-color: #393947;";
+    static QString DT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #474757; background-color: #393947;\
+            border: none; margin: 0; padding: 0;";
+    static QString DT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}";
 
 
 #endif //DEEPONION_DARKTHEME_H
