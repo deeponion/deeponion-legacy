@@ -51,3 +51,131 @@ QString ThemeAdapter::getMainMenuDeactivatedButtonStyle() {
         return DT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE;
     }
 }
+
+QString ThemeAdapter::getCentralWidgetStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_CENTRAL_WIDGET_STYLE;
+    } else {
+        return DT_CENTRAL_WIDGET_STYLE;
+    }
+}
+
+QString ThemeAdapter::getDockMainMenuStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_DOCK_MAIN_MENU_STYLE;
+    } else {
+        return DT_DOCK_MAIN_MENU_STYLE;
+    }
+}
+
+QString ThemeAdapter::getOverviewNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_OVERVIEW_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_OVERVIEW_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getOverviewSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_OVERVIEW_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_OVERVIEW_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getSendCoinsNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_SENDCOINS_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_SENDCOINS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getSendCoinsSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_SENDCOINS_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_SENDCOINS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getReceiveCoinsNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_RECEIVECOINS_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_RECEIVECOINS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getReceiveCoinsSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_RECEIVECOINS_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_RECEIVECOINS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getTransactionsNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_TRANSACTIONS_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_TRANSACTIONS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getTransactionsSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_TRANSACTIONS_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_TRANSACTIONS_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getAddressBookNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_ADDRESSBOOK_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_ADDRESSBOOK_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getAddressBookSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_ADDRESSBOOK_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_ADDRESSBOOK_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getMessagesNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_MESSAGES_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_MESSAGES_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getMessagesSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_MESSAGES_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_MESSAGES_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getExportNormalBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_EXPORT_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_EXPORT_BTN_ICO;
+    }
+}
+
+QString ThemeAdapter::getExportSelectedBtnIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_MAIN_MENU_EXPORT_S_BTN_ICO;
+    } else {
+        return DT_MAIN_MENU_EXPORT_BTN_ICO;
+    }
+}

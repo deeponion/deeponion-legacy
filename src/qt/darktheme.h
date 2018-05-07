@@ -7,8 +7,6 @@
 
 #include <QString>
 
-
-
     static QString DARK_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
 		QWidget {color:white; background-color: #2B2B37;} \
@@ -41,9 +39,19 @@
         QProgressBar::chunk { background-color:#3dc28b;}";
 
     static QString DT_MAIN_MENU_PAGE_STYLE = "border-style: none; background-color: blue;";
-    static QString DT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393848";
+    static QString DT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393947";
     static QString DT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
-    static QString DT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #393848";
+    static QString DT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #393947";
+    static QString DT_CENTRAL_WIDGET_STYLE = "background: #2B2B37";
+    static QString DT_DOCK_MAIN_MENU_STYLE = "border: 0; background: #393947";
+
+    static QString DT_MAIN_MENU_OVERVIEW_BTN_ICO = ":/icons/NewOverviewS";
+    static QString DT_MAIN_MENU_SENDCOINS_BTN_ICO = ":/icons/NewSendCoinsS";
+    static QString DT_MAIN_MENU_RECEIVECOINS_BTN_ICO = ":/icons/NewReceiveCoinsS";
+    static QString DT_MAIN_MENU_TRANSACTIONS_BTN_ICO = ":/icons/NewTransactionsS";
+    static QString DT_MAIN_MENU_ADDRESSBOOK_BTN_ICO = ":/icons/NewAddressBookS";
+    static QString DT_MAIN_MENU_MESSAGES_BTN_ICO = ":/icons/NewMessagesS";
+    static QString DT_MAIN_MENU_EXPORT_BTN_ICO = ":/icons/NewExportUS";
 
 
 #endif //DEEPONION_DARKTHEME_H

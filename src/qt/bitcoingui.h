@@ -219,7 +219,7 @@ private slots:
 	void updateOnionIcon();
 
     void optionsDialogFinished (int);
-    void applyTheme ();
+    void refreshStyle();
 };
 
 #endif

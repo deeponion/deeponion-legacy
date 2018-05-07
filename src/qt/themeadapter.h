@@ -8,9 +8,6 @@
 #include <QString>
 #include <QSettings>
 
-#include "darktheme.h"
-#include "lighttheme.h"
-
 
 class ThemeAdapter
 {
@@ -29,6 +26,24 @@ public:
     QString getMainMenuNormalButtonStyle();
     QString getMainMenuSelectedButtonStyle();
     QString getMainMenuDeactivatedButtonStyle();
+
+    QString getCentralWidgetStyle();
+    QString getDockMainMenuStyle();
+
+    QString getOverviewNormalBtnIcon();
+    QString getOverviewSelectedBtnIcon();
+    QString getSendCoinsNormalBtnIcon();
+    QString getSendCoinsSelectedBtnIcon();
+    QString getReceiveCoinsNormalBtnIcon();
+    QString getReceiveCoinsSelectedBtnIcon();
+    QString getTransactionsNormalBtnIcon();
+    QString getTransactionsSelectedBtnIcon();
+    QString getAddressBookNormalBtnIcon();
+    QString getAddressBookSelectedBtnIcon();
+    QString getMessagesNormalBtnIcon();
+    QString getMessagesSelectedBtnIcon();
+    QString getExportNormalBtnIcon();
+    QString getExportSelectedBtnIcon();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

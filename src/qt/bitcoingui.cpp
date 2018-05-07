@@ -116,7 +116,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
     themeAdapter = new ThemeAdapter();
 
-    applyTheme();
+    qApp->setStyleSheet(themeAdapter->getStyleSheet());
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
@@ -171,7 +171,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     //DD adding this to remove the small border that separates left menu and central area
     centralWidget->layout()->setContentsMargins(0,0,0,0);
     layout()->setContentsMargins(0,0,0,0);
-    setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; }");
+    setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; };");
+    centralWidget->setStyleSheet(themeAdapter->getCentralWidgetStyle());
     centralWidget->addWidget(overviewPage);;	
 	centralWidget->addWidget(messagePage);
     centralWidget->addWidget(transactionsPage);
@@ -449,12 +450,13 @@ void BitcoinGUI::createToolBars()
 {
     menu = new MenuPage(NULL, this);
     dock = new QDockWidget();
-    dock->setStyleSheet("border: 0;");
+    dock->setStyleSheet(themeAdapter->getDockMainMenuStyle());
     dock->setContentsMargins(0,0,0,0);
     addDockWidget(Qt::LeftDockWidgetArea, dock);
     dock->setWidget(menu);
     dock->setTitleBarWidget(new QWidget());
     menu->LinkMenu(this);
+    menu->ClickedItem();
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
@@ -1163,11 +1165,12 @@ void BitcoinGUI::optionsDialogFinished (int result)
     }
 
     themeAdapter->changeTheme(clientModel->getOptionsModel()->getTheme());
-    applyTheme();
+    refreshStyle();
 }
 
-void BitcoinGUI::applyTheme () {
+void BitcoinGUI::refreshStyle() {
     qApp->setStyleSheet(themeAdapter->getStyleSheet());
-    //if (dock != NULL) dock->repaint();
-    //if (centralWidget != NULL) centralWidget->repaint();
+    dock->setStyleSheet(themeAdapter->getDockMainMenuStyle());
+    menu->ClickedItem();
+    centralWidget->setStyleSheet(themeAdapter->getCentralWidgetStyle());
 }

@@ -9,19 +9,19 @@
 
     static QString LIGHT_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
-		QWidget {color:white; background-color: #F7F7F7;} \
+		QWidget {color:white; background-color: #2B2B37;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
+        QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white; background-color: transparent; alternate-background-color: rgb(50, 50, 50);} \
 		QHeaderView::section {color:white; background-color: #F7F7F7; } \
-		QPlainTextEdit {color: white; background-color: #F7F7F7; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QLineEdit {color: white; background-color: #F7F7F7; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QTabWidget {color:white; background-color: #F7F7F7;} \
-		QTabWidget::pane {color:white; background-color: #F7F7F7; border: 1px solid #393947;} \
+		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
+		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
+		QTabWidget {color:white; background-color: #2B2B37;} \
+		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QDialog {color:white; background-color: #F7F7F7;} \
-		QLabel {color:white; background-color: #F7F7F7; font-family:'Helvetica Neue';} \
+		QDialog {color:white; background-color: #2B2B37;} \
+		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
 		QToolBar {color:white; background-color: #191921;} \
 		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
@@ -32,7 +32,7 @@
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
 		QMenuBar::item:selected {color: white; font-weight: bold; background-color: #2A2937;}\
-        QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #e9e8e8; padding: 8px}\
+        QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #2b2b37; color: #e9e8e8; padding: 8px}\
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QStatusBar::item { border: 0px}\
@@ -42,5 +42,22 @@
     static QString LT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #486EBA; background-color: #FFFFFF";
     static QString LT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
     static QString LT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #FFFFFF";
+    static QString LT_CENTRAL_WIDGET_STYLE = "background: #F7F7F7";
+    static QString LT_DOCK_MAIN_MENU_STYLE = "border: 0; background: #FFFFFF";
 
+    static QString LT_MAIN_MENU_OVERVIEW_BTN_ICO = ":/icons/overview";
+    static QString LT_MAIN_MENU_SENDCOINS_BTN_ICO = ":/icons/send";
+    static QString LT_MAIN_MENU_RECEIVECOINS_BTN_ICO = ":/icons/receiving_addresses";
+    static QString LT_MAIN_MENU_TRANSACTIONS_BTN_ICO = ":/icons/history";
+    static QString LT_MAIN_MENU_ADDRESSBOOK_BTN_ICO = ":/icons/address-book";
+    static QString LT_MAIN_MENU_MESSAGES_BTN_ICO = ":/icons/messaging";
+    static QString LT_MAIN_MENU_EXPORT_BTN_ICO = ":/icons/export";
+
+    static QString LT_MAIN_MENU_OVERVIEW_S_BTN_ICO = ":/icons/NewOverviewS";
+    static QString LT_MAIN_MENU_SENDCOINS_S_BTN_ICO = ":/icons/NewSendCoinsS";
+    static QString LT_MAIN_MENU_RECEIVECOINS_S_BTN_ICO = ":/icons/NewReceiveCoinsS";
+    static QString LT_MAIN_MENU_TRANSACTIONS_S_BTN_ICO = ":/icons/NewTransactionsS";
+    static QString LT_MAIN_MENU_ADDRESSBOOK_S_BTN_ICO = ":/icons/NewAddressBookS";
+    static QString LT_MAIN_MENU_MESSAGES_S_BTN_ICO = ":/icons/NewMessagesS";
+    static QString LT_MAIN_MENU_EXPORT_S_BTN_ICO = ":/icons/NewExportUS";
 #endif //DEEPONION_LIGHTTHEME_H
