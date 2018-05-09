@@ -1,4 +1,4 @@
-<RCC>
+<!DOCTYPE RCC><RCC version="1.0">
     <qresource prefix="/icons">
         <file alias="address-book">res/icons/new/address-book.png</file>
         <file alias="quit">res/icons/new/quit.png</file>
@@ -46,7 +46,6 @@
         <file alias="toolbar_testnet">res/icons/new/toolbar_testnet.png</file>
         <file alias="tor_active">res/icons/tor.png</file>
         <file alias="tor_inactive">res/icons/tor2.png</file>
-
         <file alias="NewOverviewS">res/icons/new/overview_s.png</file>
         <file alias="NewSendCoinsS">res/icons/new/send_s.png</file>
         <file alias="NewReceiveCoinsS">res/icons/new/receive_s.png</file>
@@ -70,6 +69,8 @@
         <file alias="new_synced">res/icons/new/synced.png</file>
         <file alias="new_notsynced">res/icons/new/notsynced.png</file>
         <file alias="information">res/icons/new/info-circle-white.png</file>
+        <file alias="fontbigger">res/icons/fontbigger.png</file>
+        <file alias="fontsmaller">res/icons/fontsmaller.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/new/spinner-000.png</file>
@@ -121,11 +122,13 @@
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="wallet_logo">res/images/wallet.png</file>
     </qresource>
-
     <qresource prefix="/translations">
         <file alias="en">locale/bitcoin_en.qm</file>
         <file alias="fr">locale/bitcoin_fr.qm</file>
         <file alias="ru">locale/bitcoin_ru.qm</file>
         <file alias="es">locale/bitcoin_es.qm</file>
+     </qresource>
+     <qresource prefix="/css">
+        <file alias="default">res/css/default.css</file>
     </qresource>
 </RCC>

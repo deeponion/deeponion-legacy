@@ -1408,7 +1408,7 @@ bool CWallet::SelectCoinsSimple(int64_t nTargetValue, unsigned int nSpendTime, i
     return true;
 }
 
-bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet, const CCoinControl* coinControl)
+bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> > &vecSend, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet, int32_t &nChangePos, const CCoinControl *coinControl)
 {
     int64 nValue = 0;
     BOOST_FOREACH (const PAIRTYPE(CScript, int64)& s, vecSend)
@@ -1460,12 +1460,12 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 }
 
                 int64 nChange = nValueIn - nValue - nFeeRet;
-                // if sub-cent change is required, the fee must be raised to at least MIN_TX_FEE
+                // if sub-cent change is required, the fee must be raised to at least Min Tx Fee
                 // or until nChange becomes zero
                 // NOTE: this depends on the exact behaviour of GetMinFee
-                if (nFeeRet < MIN_TX_FEE && nChange > 0 && nChange < CENT)
+                if (nFeeRet < GetMinTxFee() && nChange > 0 && nChange < CENT)
                 {
-                    int64 nMoveToFee = min(nChange, MIN_TX_FEE - nFeeRet);
+                    int64 nMoveToFee = min(nChange, GetMinTxFee() - nFeeRet);
                     nChange -= nMoveToFee;
                     nFeeRet += nMoveToFee;
                 }
@@ -1518,6 +1518,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                     };
 
                     wtxNew.vout.insert(position, CTxOut(nChange, scriptChange));
+                    nChangePos = std::distance(wtxNew.vout.begin(), position);
                 }
                 else
                     reservekey.ReturnKey();
@@ -1586,7 +1587,13 @@ bool CWallet::CreateTransaction(CScript scriptPubKey, int64_t nValue, std::strin
     //    narration output will be for preceding output
     // -- narration will be added to mapValue later in FindStealthTransactions From CommitTransaction
     
-    return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, coinControl);
+    int nChangePos;
+    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
+    
+    // -- narration will be added to mapValue later in FindStealthTransactions From CommitTransaction
+    return rv;
+    
+    // return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, coinControl);
 }
 
 
@@ -2887,7 +2894,7 @@ bool CWallet::UpdateStealthAddress(std::string &addr, std::string &label, bool a
     return true;
 }
 
-bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t>& P, std::vector<uint8_t>& narr, std::string& sNarr, CWalletTx& wtxNew, CReserveKey& reservekey, int64& nFeeRet)
+bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std::vector<uint8_t> &P, std::vector<uint8_t> &narr, std::string &sNarr, CWalletTx &wtxNew, CReserveKey &reservekey, int64 &nFeeRet, const CCoinControl *coinControl)
 {
     vector< pair<CScript, int64_t> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
@@ -2901,7 +2908,8 @@ bool CWallet::CreateStealthTransaction(CScript scriptPubKey, int64_t nValue, std
     // -- shuffle inputs, change output won't mix enough as it must be not fully random for plantext narrations
     std::random_shuffle(vecSend.begin(), vecSend.end());
     
-    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet);
+    int nChangePos;
+    bool rv = CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, nChangePos, coinControl);
     
     // -- the change txn is inserted in a random pos, check here to match narr to output
     if (rv && narr.size() > 0)

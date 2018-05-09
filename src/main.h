@@ -33,10 +33,13 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int MAX_INV_SZ = 50000;
 static const int64_t MIN_TX_FEE = 100000;
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
+static const int64_t MIN_TX_FEE_NEW = 10000;
+static const int64_t MIN_RELAY_TX_FEE_NEW = MIN_TX_FEE_NEW;
 static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
-static const int SWITCH_BLOCK_STEALTH_ADDRESS = 460000;
+static const int SWITCH_BLOCK_HARD_FORK = 540000;
+static const int SWITCH_BLOCK_HARD_FORK_TESTNET = 95000;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -50,8 +53,6 @@ static const int fHaveUPnP = false;
 
 static const uint256 hashGenesisBlock("0x000004e29458ef4f2e0abab544737b07344e6ff13718f7c2d12926166db07b5e");
 static const uint256 hashGenesisBlockTestNet("0x0000054e005ba4c0e13aef3de90c6510612259895f2b83db2f6d05e7e86e2b44");
-inline int64_t PastDrift(int64_t nTime) { return nTime - 2 * 60 * 60; } // up to 2 hrs from the past
-inline int64_t FutureDrift(int64_t nTime) { return nTime + 2 * 60 * 60; } // up to 2 hrs from the future
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
@@ -91,6 +92,11 @@ class CReserveKey;
 class CTxDB;
 class CTxIndex;
 
+int64_t PastDrift(int64_t nTime);
+int64_t FutureDrift(int64_t nTime);
+int64_t GetMinTxFee();
+int64_t GetMinRelayTxFee();
+
 void RegisterWallet(CWallet* pwalletIn);
 void UnregisterWallet(CWallet* pwalletIn);
 void SyncWithWallets(const CTransaction& tx, const CBlock* pblock = NULL, bool fUpdate = false, bool fConnect = true);
@@ -125,6 +131,8 @@ void StakeMiner(CWallet *pwallet);
 void ResendWalletTransactions(bool fForce = false);
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
+// get node statistics (currently not implemented)
+bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 
 /** Position on disk for a particular transaction. */
 class CDiskTxPos

@@ -7,10 +7,12 @@
 #include "optionsmodel.h"
 #include "messagemodel.h"
 #include "guiutil.h"
+#include "intro.h"
 #include "guiconstants.h"
 #include "util.h"
 #include "net.h"
 #include "init.h"
+#include "main.h"
 #include "ui_interface.h"
 #include "qtipcserver.h"
 
@@ -61,7 +63,7 @@ static bool ThreadSafeAskFee(int64_t nFeeRequired, const std::string& strCaption
 {
     if(!guiref)
         return false;
-    if(nFeeRequired < MIN_TX_FEE || nFeeRequired <= nTransactionFee || fDaemon)
+    if(nFeeRequired < GetMinTxFee() || nFeeRequired <= nTransactionFee || fDaemon)
         return true;
     bool payFee = false;
 
@@ -125,13 +127,20 @@ int main(int argc, char *argv[])
 #endif
 
     Q_INIT_RESOURCE(bitcoin);
+    Q_INIT_RESOURCE(bitcoin_locale);
     QApplication app(argc, argv);
+
+    // Already apply custom stylesheets so they are already visible on the intro screen
+    qApp->setStyleSheet(GUIUtil::loadStyleSheet());
 
     // Install global event filter that makes sure that long tooltips can be word-wrapped
     app.installEventFilter(new GUIUtil::ToolTipToRichTextFilter(TOOLTIP_WRAP_THRESHOLD, &app));
 
     // Command-line options take precedence:
     ParseParameters(argc, argv);
+
+    if (!Intro::pickDataDirectory())
+        return EXIT_SUCCESS;
 
     // ... then bitcoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
@@ -147,11 +156,9 @@ int main(int argc, char *argv[])
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
     app.setOrganizationName("DeepOnion");
-    //XXX app.setOrganizationDomain("");
-    bool isTestNet = false;
+
     if(GetBoolArg("-testnet")) { // Separate UI settings for testnet
         app.setApplicationName("DeepOnion-Qt-testnet");
-        isTestNet = true;
     }
     else
         app.setApplicationName("DeepOnion-Qt");
@@ -202,6 +209,9 @@ int main(int argc, char *argv[])
         help.showOrPrint();
         return 1;
     }
+
+    // Read fPrintDebugLog and decide wether to start logging
+    fPrintDebugLog = optionsModel.getPrintDebugLog();
 
     QSplashScreen splash(QPixmap(GetBoolArg("-testnet") ? ":/images/splash_testnet" : ":/images/splash"), 0);
 

@@ -82,6 +82,10 @@ bool fNoListen = false;
 bool fLogTimestamps = false;
 CMedianFilter<int64_t> vTimeOffsets(200,0);
 bool fReopenDebugLog = false;
+bool fPrintDebugLog = true;
+
+// Application startup time (used for uptime calculation)
+const int64_t nStartupTime = GetTime();
 
 // Init OpenSSL library multithreading support
 static CCriticalSection** ppmutexOpenSSL;
@@ -209,7 +213,7 @@ inline int OutputDebugStringF(const char* pszFormat, ...)
         ret = vprintf(pszFormat, arg_ptr);
         va_end(arg_ptr);
     }
-    else if (!fPrintToDebugger)
+    else if (!fPrintToDebugger && fPrintDebugLog)
     {
         // print to debug.log
 
@@ -988,12 +992,19 @@ bool WildcardMatch(const string& str, const string& mask)
     return WildcardMatch(str.c_str(), mask.c_str());
 }
 
+std::string bytesReadable(uint64_t nBytes)
+{
+    if (nBytes >= 1024ll * 1024ll * 1024ll * 1024ll)
+        return strprintf("%.2f TB", nBytes / 1024.0 / 1024.0 / 1024.0 / 1024.0);
+    if (nBytes >= 1024 * 1024 * 1024)
+        return strprintf("%.2f GB", nBytes / 1024.0 / 1024.0 / 1024.0);
+    if (nBytes >= 1024 * 1024)
+        return strprintf("%.2f MB", nBytes / 1024.0 / 1024.0);
+    if (nBytes >= 1024)
+        return strprintf("%.2f KB", nBytes / 1024.0);
 
-
-
-
-
-
+    return strprintf("%d B", nBytes);
+};
 
 static std::string FormatException(std::exception* pex, const char* pszThread)
 {
@@ -1170,6 +1181,25 @@ bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest)
     int rc = std::rename(src.string().c_str(), dest.string().c_str());
     return (rc == 0);
 #endif /* WIN32 */
+}
+
+/**
+ * Ignores exceptions thrown by Boost's create_directories if the requested directory exists.
+ * Specifically handles case where path p exists, but it wasn't possible for the user to
+ * write to the parent directory.
+ */
+bool TryCreateDirectories(const fs::path& p)
+{
+    try
+    {
+        return fs::create_directories(p);
+    } catch (const fs::filesystem_error&) {
+        if (!fs::exists(p) || !fs::is_directory(p))
+            throw;
+    }
+
+    // create_directories didn't create the directory, it had to have existed already
+    return false;
 }
 
 void FileCommit(FILE *fileout)
@@ -1377,4 +1407,10 @@ bool NewThread(void(*pfn)(void*), void* parg)
         return false;
     }
     return true;
+}
+
+// Obtain the application startup time (used for uptime calculation)
+int64_t GetStartupTime()
+{
+    return nStartupTime;
 }

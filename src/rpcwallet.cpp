@@ -784,7 +784,8 @@ Value sendmany(const Array& params, bool fHelp)
     // Send
     CReserveKey keyChange(pwalletMain);
     int64 nFeeRequired = 0;
-    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired);
+    int nChangePos;
+    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePos);
     if (!fCreated)
     {
         if (totalAmount + nFeeRequired > pwalletMain->GetBalance())
@@ -2005,6 +2006,39 @@ Value importstealthaddress(const Array& params, bool fHelp)
     return result;
 }
 
+Value exportstealthaddress(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error(
+            "exportstealthaddress <label/address>\n"
+            "Exports the given stealth address.");
+
+    std::string stealth_address_label = params[0].get_str();
+    
+    if (pwalletMain->IsLocked())
+        throw runtime_error("Failed: Wallet must be unlocked.");
+    
+    Object result;
+    
+    std::set<CStealthAddress>::iterator it;
+    for (it = pwalletMain->stealthAddresses.begin(); it != pwalletMain->stealthAddresses.end(); ++it)
+    {
+        if (it->scan_secret.size() < 1)
+            continue; // stealth address is not owned
+        
+        if (stealth_address_label == it->label || stealth_address_label == it->Encoded())
+        {
+            Object objA;
+            objA.push_back(Pair("scan_secret", HexStr(it->scan_secret.begin(), it->scan_secret.end())));
+            objA.push_back(Pair("spend_secret", HexStr(it->spend_secret.begin(), it->spend_secret.end())));
+            objA.push_back(Pair("label", it->label));
+            return objA;
+        } 
+    };
+
+    return result;
+}
+
 Value sendtostealthaddress(const Array &params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 5)
@@ -2154,4 +2188,19 @@ Value scanforstealthtxns(const Array& params, bool fHelp)
     result.push_back(Pair("found", std::string(cbuf)));
 
     return result;
+}
+
+Value getnettotals(const Array &params, bool fHelp)
+{
+    if (fHelp || params.size() > 0)
+        throw runtime_error(
+            "getnettotals\n"
+            "Returns information about network traffic, including bytes in, bytes out,\n"
+            "and current time.");
+
+    Object obj;
+    obj.push_back(Pair("totalbytesrecv", CNode::GetTotalBytesRecv()));
+    obj.push_back(Pair("totalbytessent", CNode::GetTotalBytesSent()));
+    obj.push_back(Pair("timemillis", GetTimeMillis()));
+    return obj;
 }

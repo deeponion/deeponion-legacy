@@ -14,6 +14,7 @@ QT_FORMS_UI = \
   qt/forms/askpassphrasedialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/editaddressdialog.ui \
+  qt/forms/intro.ui \
   qt/forms/messagepage.ui \
   qt/forms/optionsdialog.ui \
   qt/forms/overviewpage.ui \
@@ -32,6 +33,7 @@ QT_MOC_CPP = \
   qt/moc_addressbookpage.cpp \
   qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
+  qt/moc_bantablemodel.cpp \
   qt/moc_bitcoinaddressvalidator.cpp \
   qt/moc_bitcoinamountfield.cpp \
   qt/moc_bitcoingui.cpp \
@@ -42,6 +44,7 @@ QT_MOC_CPP = \
   qt/moc_coincontroltreewidget.cpp \
   qt/moc_editaddressdialog.cpp \
   qt/moc_guiutil.cpp \
+  qt/moc_intro.cpp \
   qt/moc_macdockiconhandler.cpp \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_monitoreddatamapper.cpp \
@@ -55,6 +58,7 @@ QT_MOC_CPP = \
   qt/moc_qvalidatedlineedit.cpp \
   qt/moc_qvalidatedtextedit.cpp \
   qt/moc_qvaluecombobox.cpp \
+  qt/moc_peertablemodel.cpp \
   qt/moc_qrcodedialog.cpp \
   qt/moc_rpcconsole.cpp \
   qt/moc_sendcoinsdialog.cpp \
@@ -67,6 +71,7 @@ QT_MOC_CPP = \
   qt/moc_transactionfilterproxy.cpp \
   qt/moc_transactiontablemodel.cpp \
   qt/moc_transactionview.cpp \
+  qt/moc_trafficgraphwidget.cpp \
   qt/moc_walletmodel.cpp
 
 BITCOIN_MM = \
@@ -74,6 +79,7 @@ BITCOIN_MM = \
   qt/macnotificationhandler.mm
 
 QT_MOC = \
+  qt/intro.moc \
   qt/overviewpage.moc \
   qt/rpcconsole.moc
 
@@ -88,6 +94,7 @@ BITCOIN_QT_H = \
   qt/addressbookpage.h \
   qt/addresstablemodel.h \
   qt/askpassphrasedialog.h \
+  qt/bantablemodel.h \
   qt/bitcoinaddressvalidator.h \
   qt/bitcoinamountfield.h \
   qt/bitcoingui.h \
@@ -99,6 +106,7 @@ BITCOIN_QT_H = \
   qt/editaddressdialog.h \
   qt/guiconstants.h \
   qt/guiutil.h \
+  qt/intro.h \
   qt/macdockiconhandler.h \
   qt/macnotificationhandler.h \
   qt/messagemodel.h \
@@ -114,11 +122,14 @@ BITCOIN_QT_H = \
   qt/qvaluecombobox.h \
   qt/qrcodedialog.h \
   qt/rpcconsole.h \
+  qt/peertablemodel.h \
+  qt/scicon.h \
   qt/sendcoinsdialog.h \
   qt/sendcoinsentry.h \
   qt/sendmessagesdialog.h \
   qt/sendmessagesentry.h \
   qt/signverifymessagedialog.h \
+  qt/trafficgraphwidget.h \
   qt/transactiondesc.h \
   qt/transactiondescdialog.h \
   qt/transactionfilterproxy.h \
@@ -193,6 +204,8 @@ BITCOIN_QT_CPP = \
   qt/notificator.cpp \
   qt/optionsdialog.cpp \
   qt/optionsmodel.cpp \
+  qt/peertablemodel.cpp \
+  qt/bantablemodel.cpp \
   qt/messagemodel.cpp \
   qt/rpcconsole.cpp
 
@@ -201,10 +214,12 @@ BITCOIN_QT_CPP += \
   qt/aboutdialog.cpp \
   qt/addressbookpage.cpp \
   qt/addresstablemodel.cpp \
+  qt/bantablemodel.cpp \
   qt/askpassphrasedialog.cpp \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
   qt/editaddressdialog.cpp \
+  qt/intro.cpp \
   qt/overviewpage.cpp \
   qt/sendcoinsdialog.cpp \
   qt/sendcoinsentry.cpp \
@@ -218,6 +233,8 @@ BITCOIN_QT_CPP += \
   qt/qvaluecombobox.cpp \
   qt/plugins/mrichtexteditor/mrichtextedit.cpp \
   qt/signverifymessagedialog.cpp \
+  qt/trafficgraphwidget.cpp \
+  qt/scicon.cpp \
   qt/transactiondesc.cpp \
   qt/transactiondescdialog.cpp \
   qt/transactionfilterproxy.cpp \
@@ -234,6 +251,9 @@ RES_IMAGES = \
   qt/res/images/splash_testnet.png \
   qt/res/images/wallet.png
 
+RES_CSS = \
+  qt/res/css/default.css
+
 RES_MOVIES = $(wildcard qt/res/movies/update-spinner.mng)
 
 BITCOIN_RC = qt/res/bitcoin-qt.rc
@@ -245,7 +265,7 @@ qt_libbitcoinqt_a_CPPFLAGS = $(BITCOIN_INCLUDES) $(BITCOIN_QT_INCLUDES) \
   $(QT_INCLUDES) $(QT_DBUS_INCLUDES) $(PROTOBUF_CFLAGS) $(QR_CFLAGS)
 
 qt_libbitcoinqt_a_SOURCES = $(BITCOIN_QT_CPP) $(BITCOIN_QT_H) $(QT_FORMS_UI) \
-  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES)
+  $(QT_QRC) $(QT_QRC_LOCALE) $(QT_TS) $(PROTOBUF_PROTO) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES)
 
 nodist_qt_libbitcoinqt_a_SOURCES = $(QT_MOC_CPP) $(QT_MOC) $(PROTOBUF_CC) \
   $(PROTOBUF_H) $(QT_QRC_CPP) $(QT_QRC_LOCALE_CPP)
@@ -320,7 +340,7 @@ $(QT_QRC_LOCALE_CPP): $(QT_QRC_LOCALE) $(QT_QM)
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@
 	@rm $(@D)/temp_$(<F)
 
-$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_MOVIES) $(PROTOBUF_H)
+$(QT_QRC_CPP): $(QT_QRC) $(QT_FORMS_H) $(RES_ICONS) $(RES_IMAGES) $(RES_CSS) $(RES_MOVIES) $(PROTOBUF_H)
 	@test -f $(RCC)
 	$(AM_V_GEN) QT_SELECT=$(QT_SELECT) $(RCC) -name bitcoin $< | \
 	  $(SED) -e '/^\*\*.*Created:/d' -e '/^\*\*.*by:/d' > $@

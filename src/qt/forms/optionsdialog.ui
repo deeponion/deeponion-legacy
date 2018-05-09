@@ -257,6 +257,12 @@
            <property name="toolTip">
             <string>SOCKS version of the proxy (e.g. 5)</string>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>75</width>
+             <height>0</height>
+            </size>
+           </property>
           </widget>
          </item>
          <item>
@@ -420,6 +426,16 @@
          </property>
          <property name="text">
           <string>Display coin &amp;control features (experts only!)</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="printDebugLog">
+         <property name="toolTip">
+          <string>If enabled DeepOnion wallet will print all debug messages to debug.log file.</string>
+         </property>
+         <property name="text">
+          <string>Print debug messages to log file</string>
          </property>
         </widget>
        </item>

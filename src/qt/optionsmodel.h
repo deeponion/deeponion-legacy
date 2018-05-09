@@ -33,6 +33,7 @@ public:
         Language,          // QString
         CoinControlFeatures, // bool
         Theme,             // QString
+        PrintDebugLog,     // bool
         OptionIDRowCount,
     };
 
@@ -53,6 +54,7 @@ public:
     int getDisplayUnit();
     bool getDisplayAddresses();
     bool getCoinControlFeatures();
+    bool getPrintDebugLog();
     QString getLanguage() { return language; }
     QString getTheme() { return theme; }
 
@@ -62,6 +64,7 @@ private:
     bool fMinimizeToTray;
     bool fMinimizeOnClose;
     bool fCoinControlFeatures;
+    bool fPrintDebugLog;
     QString language;
     QString theme;
 
