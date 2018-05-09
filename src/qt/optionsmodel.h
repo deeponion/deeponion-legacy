@@ -32,6 +32,7 @@ public:
         DetachDatabases,   // bool
         Language,          // QString
         CoinControlFeatures, // bool
+        Theme,             // QString
         PrintDebugLog,     // bool
         OptionIDRowCount,
     };
@@ -55,6 +56,7 @@ public:
     bool getCoinControlFeatures();
     bool getPrintDebugLog();
     QString getLanguage() { return language; }
+    QString getTheme() { return theme; }
 
 private:
     int nDisplayUnit;
@@ -64,6 +66,7 @@ private:
     bool fCoinControlFeatures;
     bool fPrintDebugLog;
     QString language;
+    QString theme;
 
 signals:
     void displayUnitChanged(int unit);

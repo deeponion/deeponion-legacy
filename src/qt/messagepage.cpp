@@ -137,6 +137,10 @@ void MessagePage::setModel(MessageModel *model)
 
     ui->tableView->setModel(model->proxyModel);
     ui->tableView->sortByColumn(MessageModel::ReceivedDateTime, Qt::DescendingOrder);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
+
+
 
     ui->listConversation->setModel(model->proxyModel);
     ui->listConversation->setModelColumn(MessageModel::HTML);
@@ -149,6 +153,10 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ToAddress,        320);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::SentDateTime,     170);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ReceivedDateTime, 170);
+    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}");
 
     //ui->messageEdit->setMinimumHeight(100);
 

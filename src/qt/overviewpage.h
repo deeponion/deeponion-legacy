@@ -2,6 +2,7 @@
 #define OVERVIEWPAGE_H
 
 #include <QWidget>
+#include "bitcoingui.h"
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
@@ -20,11 +21,12 @@ class OverviewPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit OverviewPage(QWidget *parent = 0);
+    explicit OverviewPage(QWidget *parent = 0, BitcoinGUI *gui = NULL);
     ~OverviewPage();
 
     void setModel(WalletModel *model);
     void showOutOfSyncWarning(bool fShow);
+    void refreshStyle();
 
 public slots:
     void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance);
@@ -34,6 +36,7 @@ signals:
     void transactionClicked(const QModelIndex &index);
 
 private:
+    BitcoinGUI *gui;
     Ui::OverviewPage *ui;
     WalletModel *model;
     qint64 currentBalance;

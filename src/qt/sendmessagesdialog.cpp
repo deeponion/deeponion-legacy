@@ -1,6 +1,6 @@
 #include "sendmessagesdialog.h"
 #include "ui_sendmessagesdialog.h"
-//#include "init.h"
+//#include "init.h"f
 #include "walletmodel.h"
 #include "messagemodel.h"
 #include "addressbookpage.h"
@@ -113,7 +113,7 @@ void SendMessagesDialog::on_addressBookButton_clicked()
     if(!model)
         return;
 
-    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this);
+    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this, AddressBookPage::FromSendMessagesDialog);
 
     dlg.setModel(model->getWalletModel()->getAddressTableModel());
 
