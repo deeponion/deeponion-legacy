@@ -2372,7 +2372,8 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             return DoS(50, error("CheckBlock() : block timestamp earlier than transaction timestamp"));
 
         // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
-        if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+        if(fCheckSig && ((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
+        		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet)))
             if(!tx.CheckStealthTxNarrSize())
                 return DoS(tx.nDoS, error("CheckBlock() : CheckStealthTxNarrSize failed"));
         }
