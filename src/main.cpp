@@ -667,13 +667,11 @@ bool CTransaction::CheckStealthTxNarrSize() const
         {
             CScript::const_iterator itTxA = txout.scriptPubKey.begin();
             printf("txout scriptPubKey %s\n",  txout.scriptPubKey.ToString().c_str());	   
-			
             if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK) || opCode != OP_RETURN)
             {
                 continue;
             }
-			
-            if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK) || vchEphemPK.size() != 33)
+            else if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK) || vchEphemPK.size() != 33)
             {
                 // -- look for plaintext narrations
                 if (vchEphemPK.size() > 1
@@ -2372,7 +2370,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             return DoS(50, error("CheckBlock() : block timestamp earlier than transaction timestamp"));
 
         // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
-        if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+        if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
             if(!tx.CheckStealthTxNarrSize())
                 return DoS(tx.nDoS, error("CheckBlock() : CheckStealthTxNarrSize failed"));
         }
