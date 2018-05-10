@@ -688,9 +688,11 @@ bool CTransaction::CheckStealthTxNarrSize() const
                             return false;
                     }
                 }
+                /*
                 else if(vchEphemPK.size() > 64){
                     return false;
                 }
+                */
             }  
             else if (txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr) 
                 && opCode == OP_RETURN
