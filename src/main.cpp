@@ -750,14 +750,17 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
         return error("CTxMemPool::accept() : CheckTransaction failed");
     
     // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
-    if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
-    		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+    if(pindexBest != NULL)
     {
-        if(!tx.CheckStealthTxNarrSize()) 
-        {
-            return tx.DoS(100, error("CTxMemPool::accept() : CheckStealthTxNarrSize failed"));
-        }
-	}
+    	if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
+    		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+    	{
+    		if(!tx.CheckStealthTxNarrSize()) 
+    		{
+    			return tx.DoS(100, error("CTxMemPool::accept() : CheckStealthTxNarrSize failed"));
+    		}
+    	}
+    }
 
     // Coinbase is only valid in a block, not as a loose transaction
     if (tx.IsCoinBase())
@@ -3153,13 +3156,21 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PROTO_VERSION || 
-        	(pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet))
-        // if (pfrom->nVersion < MIN_PROTO_VERSION) 
+        if (pfrom->nVersion < MIN_PROTO_VERSION) 
         {
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
             pfrom->fDisconnect = true;
             return false;
+        }
+        
+        if(pindexBest != NULL) 
+        {
+        	if (pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet))
+        	{
+        		printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
+        		pfrom->fDisconnect = true;
+        		return false;
+        	}
         }
 
         if (pfrom->nVersion == 10300)
