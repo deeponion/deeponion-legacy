@@ -748,6 +748,16 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
 
     if (!tx.CheckTransaction())
         return error("CTxMemPool::accept() : CheckTransaction failed");
+    
+    // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
+    if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
+    		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+    {
+        if(!tx.CheckStealthTxNarrSize()) 
+        {
+            return tx.DoS(100, error("CTxMemPool::accept() : CheckStealthTxNarrSize failed"));
+        }
+	}
 
     // Coinbase is only valid in a block, not as a loose transaction
     if (tx.IsCoinBase())
@@ -2374,8 +2384,11 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
         if(fCheckSig && ((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
         		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet)))
-            if(!tx.CheckStealthTxNarrSize())
+            if(!tx.CheckStealthTxNarrSize()) 
+            {
+            	mempool.remove(tx);
                 return DoS(tx.nDoS, error("CheckBlock() : CheckStealthTxNarrSize failed"));
+            }
         }
 
     // Check for duplicate txids. This is caught by ConnectInputs(),
