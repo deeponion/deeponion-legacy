@@ -1,3 +1,12 @@
+.idea
+cmake-build-debug
+CMakeLists.txt
+DeepOnion-qt.pro
+
+src/.idea
+src/CMakeLists.txt
+src/cmake-build-debug/
+
 *.tar.gz
 
 *.exe

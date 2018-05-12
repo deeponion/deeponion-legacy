@@ -17,13 +17,14 @@
 #include "qrcodedialog.h"
 #endif
 
-AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
+AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere fromWhere) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
     optionsModel(0),
     mode(mode),
-    tab(tab)
+    tab(tab),
+    fromWhere(fromWhere)
 {
     ui->setupUi(this);
 
@@ -51,14 +52,21 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     switch(tab)
     {
     case SendingTab:
-        ui->labelExplanation->setVisible(false);
+        ui->pageTitleLabel->setText(tr("Address Book"));
+        ui->frameExplanation->setVisible(false);
         ui->deleteButton->setVisible(true);
         ui->signMessage->setVisible(false);
         break;
     case ReceivingTab:
+        ui->pageTitleLabel->setText(tr("Receive Coins"));
         ui->deleteButton->setVisible(false);
         ui->signMessage->setVisible(true);
         break;
+    }
+
+    if (fromWhere == FromSendMessagesDialog || fromWhere == FromSendCoinsEntry ||
+            fromWhere == FromSignVerifyMessageDialog || fromWhere == FromSendMessagesEntry) {
+        ui->pageTitleLabel->setVisible(false);
     }
 
     // Context menu actions
@@ -130,12 +138,18 @@ void AddressBookPage::setModel(AddressTableModel *model)
     }
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
 
     // Set column widths
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Label, 320);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Interactive);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
+    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
+                                                                        font-size: 14px; font-family: Helvetica Neue; \
+                                                                        padding-left: 8px; padding-right: 8px; \
+                                                                        padding-top: 14px; padding-bottom: 14px;}");
  
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));

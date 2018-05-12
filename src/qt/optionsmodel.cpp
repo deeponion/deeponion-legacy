@@ -50,6 +50,7 @@ void OptionsModel::Init()
     nTransactionFee = settings.value("nTransactionFee").toLongLong();
     nReserveBalance = settings.value("nReserveBalance").toLongLong();
     language = settings.value("language", "").toString();
+    theme = settings.value("theme", "").toString();
 
     // These are shared with core Bitcoin; we want
     // command-line options to override the GUI settings:
@@ -63,6 +64,8 @@ void OptionsModel::Init()
         SoftSetBoolArg("-detachdb", settings.value("detachDB").toBool());
     if (!language.isEmpty())
         SoftSetArg("-lang", language.toStdString());
+    if (!theme.isEmpty())
+        SoftSetArg("-theme", theme.toStdString());
 }
 
 bool OptionsModel::Upgrade()
@@ -177,8 +180,10 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language", "");
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
-	case PrintDebugLog:
-	    return QVariant(fPrintDebugLog);
+        case Theme:
+            return settings.value("theme", "default");
+	      case PrintDebugLog:
+	          return QVariant(fPrintDebugLog);
         default:
             return QVariant();
         }
@@ -279,11 +284,15 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             emit coinControlFeaturesChanged(fCoinControlFeatures);
             }
             break;
-	case PrintDebugLog: {
-	    fPrintDebugLog = value.toBool();
-	    settings.setValue("fPrintDebugLog", fPrintDebugLog);
-	    }
-	    break;
+        case Theme:
+            theme = value.toString();
+            settings.setValue("theme", value);
+            break;
+	      case PrintDebugLog: {
+	          fPrintDebugLog = value.toBool();
+	          settings.setValue("fPrintDebugLog", fPrintDebugLog);
+	          }
+	          break;
         default:
             break;
         }
