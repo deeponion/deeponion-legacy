@@ -40,6 +40,7 @@ static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
 static const int SWITCH_BLOCK_HARD_FORK = 540000;
 static const int SWITCH_BLOCK_HARD_FORK_TESTNET = 95000;
+static const int SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX = 120300;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -690,6 +691,7 @@ public:
                        const CBlockIndex* pindexBlock, bool fBlock, bool fMiner);
     bool ClientConnectInputs();
     bool CheckTransaction() const;
+    bool CheckStealthTxNarrSize() const;
     bool AcceptToMemoryPool(CTxDB& txdb, bool fCheckInputs=true, bool* pfMissingInputs=NULL);
     bool GetCoinAge(CTxDB& txdb, uint64_t& nCoinAge) const;  // DeepOnion: get transaction coin age
 

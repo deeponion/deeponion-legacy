@@ -652,6 +652,64 @@ bool CTransaction::CheckTransaction() const
     return true;
 }
 
+bool CTransaction::CheckStealthTxNarrSize() const
+{ 
+    txnouttype whichType;
+    std::vector<uint8_t> vchEphemPK;
+    std::vector<uint8_t> vchENarr;
+    opcodetype opCode;
+    ec_secret sShared;
+
+    BOOST_FOREACH(const CTxOut& txout, vout)
+    {
+        ::IsStandard(txout.scriptPubKey, whichType);
+        if (whichType == TX_NULL_DATA && txout.nValue == 0)
+        {
+            CScript::const_iterator itTxA = txout.scriptPubKey.begin();
+            printf("txout scriptPubKey %s\n",  txout.scriptPubKey.ToString().c_str());	   
+            if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK) || opCode != OP_RETURN)
+            {
+                continue;
+            }
+            else if (!txout.scriptPubKey.GetOp(itTxA, opCode, vchEphemPK) || vchEphemPK.size() != 33)
+            {
+                // -- look for plaintext narrations
+                if (vchEphemPK.size() > 1
+                    && vchEphemPK[0] == 'n'
+                    && vchEphemPK[1] == 'p')
+                {
+                    if (txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr)
+                        && opCode == OP_RETURN
+                        && txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr)
+                        && vchENarr.size() > 0)
+                    {
+                        std::string sNarr = std::string(vchENarr.begin(), vchENarr.end());
+                        if(sNarr.size() > 24)
+                            return false;
+                    }
+                }
+                /*
+                else if(vchEphemPK.size() > 64){
+                    return false;
+                }
+                */
+            }  
+            else if (txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr) 
+                && opCode == OP_RETURN
+                && txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr)
+                && vchENarr.size() > 0)
+            {
+                if (vchENarr.size() > 64)
+                {
+                    return false;
+                }
+            } 
+        }
+    }
+   
+    return true;
+}
+
 int64 CTransaction::GetMinFee(unsigned int nBlockSize, enum GetMinFee_mode mode, unsigned int nBytes) const
 {
     // Base fee is either Min Tx Fee or Min Relay Tx Fee
@@ -690,6 +748,19 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
 
     if (!tx.CheckTransaction())
         return error("CTxMemPool::accept() : CheckTransaction failed");
+    
+    // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
+    if(pindexBest != NULL)
+    {
+    	if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
+    		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+    	{
+    		if(!tx.CheckStealthTxNarrSize()) 
+    		{
+    			return tx.DoS(100, error("CTxMemPool::accept() : CheckStealthTxNarrSize failed"));
+    		}
+    	}
+    }
 
     // Coinbase is only valid in a block, not as a loose transaction
     if (tx.IsCoinBase())
@@ -2312,6 +2383,18 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         // DeepOnion: check transaction timestamp
         if (GetBlockTime() < (int64_t)tx.nTime)
             return DoS(50, error("CheckBlock() : block timestamp earlier than transaction timestamp"));
+
+        if(fCheckSig && pindexBest != NULL)
+        {
+            // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
+            if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
+                    || (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+                if(!tx.CheckStealthTxNarrSize()) 
+                {
+                    mempool.remove(tx);
+                    return DoS(tx.nDoS, error("CheckBlock() : CheckStealthTxNarrSize failed"));
+                }
+        }
     }
 
     // Check for duplicate txids. This is caught by ConnectInputs(),
@@ -3073,13 +3156,21 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PROTO_VERSION || 
-        	(pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet))
-        // if (pfrom->nVersion < MIN_PROTO_VERSION) 
+        if (pfrom->nVersion < MIN_PROTO_VERSION) 
         {
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
             pfrom->fDisconnect = true;
             return false;
+        }
+        
+        if(pindexBest != NULL) 
+        {
+        	if (pfrom->nVersion < MIN_PROTO_VERSION_AFTER_SWITCH && pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet)
+        	{
+        		printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
+        		pfrom->fDisconnect = true;
+        		return false;
+        	}
         }
 
         if (pfrom->nVersion == 10300)
