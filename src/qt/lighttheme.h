@@ -14,8 +14,8 @@
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:#565656;} \
 		QHeaderView::section {color:white; background-color: #F7F7F7; } \
-		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
-		QLineEdit {color: white; background-color: #2b2b37; border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: Helvetica Neue} \
+		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
+		QLineEdit {color: #2B2B37; background-color: #D8D8D8; padding-left: 5px;  border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
 		QTabWidget {color:white; background-color: #2B2B37;} \
 		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -78,5 +78,6 @@
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
+    static QString LT_QVALIDATED_LINE_EDIT = "QValidatedLineEdit {background-color: #D8D8D8; color: #2B2B37; padding-left: 5px; font-family: 'Helvetica Neue';}";
 
 #endif //DEEPONION_LIGHTTHEME_H

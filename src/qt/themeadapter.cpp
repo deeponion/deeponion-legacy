@@ -205,3 +205,11 @@ QString ThemeAdapter::getListHeaderGeneralStyle() {
         return DT_LIST_HEADER_GENERAL_STYLE;
     }
 }
+
+QString ThemeAdapter::getQValidatedLineEditGeneralStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QVALIDATED_LINE_EDIT;
+    } else {
+        return DT_QVALIDATED_LINE_EDIT;
+    }
+}

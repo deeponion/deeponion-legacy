@@ -49,6 +49,8 @@ public:
 
     QString getListAlternateRowsGeneralStyle();
     QString getListHeaderGeneralStyle();
+
+    QString getQValidatedLineEditGeneralStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H
