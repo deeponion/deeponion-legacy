@@ -92,7 +92,7 @@ public:
 };
 #include "overviewpage.moc"
 
-OverviewPage::OverviewPage(QWidget *parent, BitcoinGUI *gui) :
+OverviewPage::OverviewPage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::OverviewPage),
     currentBalance(-1),
@@ -100,11 +100,10 @@ OverviewPage::OverviewPage(QWidget *parent, BitcoinGUI *gui) :
     currentUnconfirmedBalance(-1),
     currentImmatureBalance(-1),
     txdelegate(new TxViewDelegate()),
-    filter(0),
-    gui(gui)
+    filter(0)
 {
     ui->setupUi(this);
-    ui->wallet_summary->setStyleSheet(gui->getThemeAdapter()->getQFrameGeneralStyle());
+    ui->wallet_summary->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
 
     // Recent transactions
     //ui->listTransactions->setItemDelegate(txdelegate);
@@ -195,7 +194,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setAlternatingRowColors(true);
-        ui->listTransactions->setStyleSheet(gui->getThemeAdapter()->getListAlternateRowsGeneralStyle());
+        ui->listTransactions->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
         ui->listTransactions->setSortingEnabled(true);
         ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
         ui->listTransactions->verticalHeader()->hide();
@@ -209,7 +208,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        ui->listTransactions->horizontalHeader()->setStyleSheet(gui->getThemeAdapter()->getListHeaderGeneralStyle());
+        ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
 
 
 
@@ -262,7 +261,7 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
 }
 
 void OverviewPage::refreshStyle() {
-    ui->wallet_summary->setStyleSheet(gui->getThemeAdapter()->getQFrameGeneralStyle());
-    ui->listTransactions->setStyleSheet(gui->getThemeAdapter()->getListAlternateRowsGeneralStyle());
-    ui->listTransactions->horizontalHeader()->setStyleSheet(gui->getThemeAdapter()->getListHeaderGeneralStyle());
+    ui->wallet_summary->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->listTransactions->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
 }

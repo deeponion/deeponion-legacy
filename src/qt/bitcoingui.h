@@ -57,8 +57,6 @@ public:
     */
 	void setMessageModel(MessageModel *messageModel);
 
-    ThemeAdapter* getThemeAdapter();
-
 protected:
     void changeEvent(QEvent *e);
     void closeEvent(QCloseEvent *event);
@@ -66,8 +64,6 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
-
-    ThemeAdapter *themeAdapter;
 
     //------------------ Adding new menu ----------
     MenuPage *menu;

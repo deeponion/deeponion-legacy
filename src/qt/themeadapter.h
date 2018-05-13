@@ -13,44 +13,40 @@ class ThemeAdapter
 {
 
 public:
-    explicit ThemeAdapter();
+    static void changeTheme(QString);
+    static QString getStyleSheet();
+    static QString getMainMenuNormalButtonStyle();
+    static QString getMainMenuSelectedButtonStyle();
+    static QString getMainMenuDeactivatedButtonStyle();
 
-private:
-    QSettings settings;
-    QString currentTheme;
+    static QString getCentralWidgetStyle();
+    static QString getDockMainMenuStyle();
 
-public:
-    void changeTheme(QString);
-    QString getStyleSheet();
-    QString getMainMenuPageStyle();
-    QString getMainMenuNormalButtonStyle();
-    QString getMainMenuSelectedButtonStyle();
-    QString getMainMenuDeactivatedButtonStyle();
+    static QString getOverviewNormalBtnIcon();
+    static QString getOverviewSelectedBtnIcon();
+    static QString getSendCoinsNormalBtnIcon();
+    static QString getSendCoinsSelectedBtnIcon();
+    static QString getReceiveCoinsNormalBtnIcon();
+    static QString getReceiveCoinsSelectedBtnIcon();
+    static QString getTransactionsNormalBtnIcon();
+    static QString getTransactionsSelectedBtnIcon();
+    static QString getAddressBookNormalBtnIcon();
+    static QString getAddressBookSelectedBtnIcon();
+    static QString getMessagesNormalBtnIcon();
+    static QString getMessagesSelectedBtnIcon();
+    static QString getExportNormalBtnIcon();
+    static QString getExportSelectedBtnIcon();
 
-    QString getCentralWidgetStyle();
-    QString getDockMainMenuStyle();
+    static QString getQFrameGeneralStyle();
+    static QString getQFrameMenuGeneralStyle();
 
-    QString getOverviewNormalBtnIcon();
-    QString getOverviewSelectedBtnIcon();
-    QString getSendCoinsNormalBtnIcon();
-    QString getSendCoinsSelectedBtnIcon();
-    QString getReceiveCoinsNormalBtnIcon();
-    QString getReceiveCoinsSelectedBtnIcon();
-    QString getTransactionsNormalBtnIcon();
-    QString getTransactionsSelectedBtnIcon();
-    QString getAddressBookNormalBtnIcon();
-    QString getAddressBookSelectedBtnIcon();
-    QString getMessagesNormalBtnIcon();
-    QString getMessagesSelectedBtnIcon();
-    QString getExportNormalBtnIcon();
-    QString getExportSelectedBtnIcon();
+    static QString getQListAlternateRowsGeneralStyle();
+    static QString getQListHeaderGeneralStyle();
 
-    QString getQFrameGeneralStyle();
+    static QString getQLabelGeneralStyle();
+    static QString getQLineEditGeneralStyle();
 
-    QString getListAlternateRowsGeneralStyle();
-    QString getListHeaderGeneralStyle();
-
-    QString getQValidatedLineEditGeneralStyle();
+    static QString getIconTextButtonStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

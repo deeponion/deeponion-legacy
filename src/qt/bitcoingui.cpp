@@ -116,9 +116,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-    themeAdapter = new ThemeAdapter();
-
-    qApp->setStyleSheet(themeAdapter->getStyleSheet());
+    qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
@@ -151,8 +149,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 #endif
 
     // Create tabs
-    overviewPage = new OverviewPage(NULL, this);
-	  messagePage   = new MessagePage(this);
+    overviewPage = new OverviewPage(NULL);
+    messagePage   = new MessagePage(this);
     transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
     vbox->setContentsMargins(0,0,0,0);
@@ -174,9 +172,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     centralWidget->layout()->setContentsMargins(0,0,0,0);
     layout()->setContentsMargins(0,0,0,0);
     setStyleSheet("QMainWindow::separator{ width: 0px; height: 0px; };");
-    centralWidget->setStyleSheet(themeAdapter->getCentralWidgetStyle());
+    centralWidget->setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
     centralWidget->addWidget(overviewPage);;	
-	  centralWidget->addWidget(messagePage);
+    centralWidget->addWidget(messagePage);
     centralWidget->addWidget(transactionsPage);
     centralWidget->addWidget(addressBookPage);
     centralWidget->addWidget(receiveCoinsPage);
@@ -458,7 +456,7 @@ void BitcoinGUI::createToolBars()
 {
     menu = new MenuPage(NULL, this);
     dock = new QDockWidget();
-    dock->setStyleSheet(themeAdapter->getDockMainMenuStyle());
+    dock->setStyleSheet(ThemeAdapter::getDockMainMenuStyle());
     dock->setContentsMargins(0,0,0,0);
     addDockWidget(Qt::LeftDockWidgetArea, dock);
     dock->setWidget(menu);
@@ -1164,24 +1162,21 @@ void BitcoinGUI::updateOnionIcon()
 	}
 }
 
-ThemeAdapter* BitcoinGUI::getThemeAdapter() {
-    return themeAdapter;
-}
-
 void BitcoinGUI::optionsDialogFinished (int result)
 {
     if(result != QDialog::Accepted){
         return;
     }
 
-    themeAdapter->changeTheme(clientModel->getOptionsModel()->getTheme());
+    ThemeAdapter::changeTheme(clientModel->getOptionsModel()->getTheme());
     refreshStyle();
 }
 
 void BitcoinGUI::refreshStyle() {
-    qApp->setStyleSheet(themeAdapter->getStyleSheet());
-    dock->setStyleSheet(themeAdapter->getDockMainMenuStyle());
+    qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
+    dock->setStyleSheet(ThemeAdapter::getDockMainMenuStyle());
     menu->ClickedItem();
-    centralWidget->setStyleSheet(themeAdapter->getCentralWidgetStyle());
+    centralWidget->setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
     overviewPage->refreshStyle();
+    sendCoinsPage->refreshStyle();
 }

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>946</width>
-    <height>512</height>
+    <height>533</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -133,7 +133,7 @@
        <item>
         <widget class="QFrame" name="frameCoinControl">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
@@ -151,7 +151,7 @@
           <enum>QFrame::StyledPanel</enum>
          </property>
          <property name="frameShadow">
-          <enum>QFrame::Sunken</enum>
+          <enum>QFrame::Raised</enum>
          </property>
          <layout class="QVBoxLayout" name="verticalLayoutCoinControl2">
           <property name="spacing">
@@ -245,12 +245,7 @@
               <item>
                <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
                 <property name="styleSheet">
-                 <string notr="true">QLabel {
-        background-color: transparent;
-        color: #000000;
-        font-weight: normal;
-}
-</string>
+                 <string notr="true"/>
                 </property>
                 <property name="text">
                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#e6e6e6;&quot;&gt;automatically selected&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -819,7 +814,7 @@
             <x>0</x>
             <y>0</y>
             <width>822</width>
-            <height>85</height>
+            <height>105</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -863,9 +858,12 @@
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="frame">
-         <property name="styleSheet">
-          <string notr="true">background-color: #22222B; padding: 8px;</string>
+        <widget class="QFrame" name="frameMenu">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
          </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>

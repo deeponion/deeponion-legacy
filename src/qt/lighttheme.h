@@ -46,9 +46,9 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QStatusBar::item { border: 0px}\
-        QProgressBar::chunk { background-color:#3dc28b;}";
+        QProgressBar::chunk { background-color:#3dc28b;}\
+        QScrollBar:horizontal {border: 2px solid grey;background: #486EBA; color: white; height: 15px;margin: 0px 20px 0 20px;}";
 
-    static QString LT_MAIN_MENU_PAGE_STYLE = "border-style: none; background-color: #FFFFFF";
     static QString LT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #486EBA; background-color: #FFFFFF";
     static QString LT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
     static QString LT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #FFFFFF";
@@ -72,12 +72,15 @@
     static QString LT_MAIN_MENU_EXPORT_S_BTN_ICO = ":/icons/NewExportUS";
 
     static QString LT_QFRAME_GENERAL_STYLE = "background-color: #FFFFFF;";
+    static QString LT_QFRAME_MENU_GENERAL_STYLE = "background-color: #D8D8D8; padding: 8px;";
+    static QString LT_QLABEL_GENERAL_STYLE = "color: #486EBA";
     static QString LT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #D8D8D8; background-color: #FFFFFF;\
             border: none; margin: 0; padding: 0;";
     static QString LT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
-    static QString LT_QVALIDATED_LINE_EDIT = "QValidatedLineEdit {background-color: #D8D8D8; color: #2B2B37; padding-left: 5px; font-family: 'Helvetica Neue';}";
+    static QString LT_LINE_EDIT = "background-color: #D8D8D8; color: #2B2B37; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+    static QString LT_ICON_TEXT_BUTTON_STYLE = "color: #486EBA; border: none;";
 
 #endif //DEEPONION_LIGHTTHEME_H

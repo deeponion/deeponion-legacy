@@ -21,7 +21,7 @@ class OverviewPage : public QWidget
     Q_OBJECT
 
 public:
-    explicit OverviewPage(QWidget *parent = 0, BitcoinGUI *gui = NULL);
+    explicit OverviewPage(QWidget *parent = 0);
     ~OverviewPage();
 
     void setModel(WalletModel *model);
@@ -36,7 +36,6 @@ signals:
     void transactionClicked(const QModelIndex &index);
 
 private:
-    BitcoinGUI *gui;
     Ui::OverviewPage *ui;
     WalletModel *model;
     qint64 currentBalance;

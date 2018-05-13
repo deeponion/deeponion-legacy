@@ -46,9 +46,9 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QStatusBar::item { border: 0px}\
-        QProgressBar::chunk { background-color:#3dc28b;}";
+        QProgressBar::chunk { background-color:#3dc28b;}\
+        QScrollBar:vertical {border: 2px solid grey;background: #32CC99;height: 15px;margin: 0px 20px 0 20px;}";
 
-    static QString DT_MAIN_MENU_PAGE_STYLE = "border-style: none; background-color: blue;";
     static QString DT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393947";
     static QString DT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
     static QString DT_MAIN_MENU_DEACTIVATED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #393947";
@@ -64,6 +64,8 @@
     static QString DT_MAIN_MENU_EXPORT_BTN_ICO = ":/icons/NewExportUS";
 
     static QString DT_QFRAME_GENERAL_STYLE = "background-color: #393947;";
+    static QString DT_QFRAME_MENU_GENERAL_STYLE = "background-color: #22222B; padding: 8px;";
+    static QString DT_QLABEL_GENERAL_STYLE = "color: #FFFFFF";
     static QString DT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #474757; background-color: #393947;\
             border: none; margin: 0; padding: 0;";
     static QString DT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
@@ -71,6 +73,7 @@
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
 
-    static QString DT_QVALIDATED_LINE_EDIT = "QValidatedLineEdit {background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue';}";
+    static QString DT_LINE_EDIT = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+    static QString DT_ICON_TEXT_BUTTON_STYLE = "color: #FFFFFF; border: none;";
 
 #endif //DEEPONION_DARKTHEME_H

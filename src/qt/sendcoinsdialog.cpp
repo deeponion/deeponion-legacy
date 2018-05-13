@@ -15,6 +15,7 @@
 
 #include "coincontrol.h"
 #include "coincontroldialog.h"
+#include "themeadapter.h"
 
 #include <QMessageBox>
 #include <QLocale>
@@ -77,6 +78,12 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     ui->labelCoinControlLowOutput->addAction(clipboardLowOutputAction);
     ui->labelCoinControlChange->addAction(clipboardChangeAction);
 
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameMenuGeneralStyle());
+    ui->labelBalance->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->label->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->addButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+
     fNewRecipientAllowed = true;
 }
 
@@ -103,6 +110,11 @@ void SendCoinsDialog::setModel(WalletModel *model)
         connect(model->getOptionsModel(), SIGNAL(coinControlFeaturesChanged(bool)), this, SLOT(coinControlFeatureChanged(bool)));
         connect(model->getOptionsModel(), SIGNAL(transactionFeeChanged(qint64)), this, SLOT(coinControlUpdateLabels()));
         ui->frameCoinControl->setVisible(model->getOptionsModel()->getCoinControlFeatures());
+        ui->frameCoinControl->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+        ui->labelCoinControlAutomaticallySelected->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+        ui->checkBoxCoinControlChange->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+        ui->lineEditCoinControlChange->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+
         coinControlUpdateLabels();
     }
 }
@@ -522,4 +534,19 @@ void SendCoinsDialog::coinControlUpdateLabels()
         ui->widgetCoinControl->hide();
         ui->labelCoinControlInsuffFunds->hide();
     }
+}
+
+void SendCoinsDialog::refreshStyle() {
+
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameMenuGeneralStyle());
+    ui->labelBalance->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->label->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->addButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+
+    ui->frameCoinControl->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->labelCoinControlAutomaticallySelected->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->checkBoxCoinControlChange->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->lineEditCoinControlChange->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    clear();
 }
