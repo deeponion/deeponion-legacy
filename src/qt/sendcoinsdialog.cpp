@@ -78,7 +78,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     ui->labelCoinControlLowOutput->addAction(clipboardLowOutputAction);
     ui->labelCoinControlChange->addAction(clipboardChangeAction);
 
-    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameMenuGeneralStyle());
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
     ui->labelBalance->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->label->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
@@ -538,7 +538,7 @@ void SendCoinsDialog::coinControlUpdateLabels()
 
 void SendCoinsDialog::refreshStyle() {
 
-    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameMenuGeneralStyle());
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
     ui->labelBalance->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->label->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());

@@ -52,6 +52,7 @@ public:
 public slots:
     void done(int retval);
     void exportClicked();
+    void refreshStyle();
 
 private:
     Ui::AddressBookPage *ui;

@@ -7,6 +7,7 @@
 #include "editaddressdialog.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+#include "themeadapter.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -37,6 +38,12 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
 #ifndef USE_QRCODE
     ui->showQRCode->setVisible(false);
 #endif
+    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
+    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
 
     switch(mode)
     {
@@ -139,17 +146,14 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
+    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
 
     // Set column widths
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Label, 320);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Interactive);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
-    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
-                                                                        font-size: 14px; font-family: Helvetica Neue; \
-                                                                        padding-left: 8px; padding-right: 8px; \
-                                                                        padding-top: 14px; padding-bottom: 14px;}");
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
  
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -385,4 +389,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int
         ui->tableView->selectRow(idx.row());
         newAddressToSelect.clear();
     }
+}
+
+void AddressBookPage::refreshStyle() {
+    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
+    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+
+    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
 }

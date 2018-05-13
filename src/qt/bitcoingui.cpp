@@ -1179,4 +1179,8 @@ void BitcoinGUI::refreshStyle() {
     centralWidget->setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
+    receiveCoinsPage->refreshStyle();
+    addressBookPage->refreshStyle();
+    transactionView->refreshStyle();
+    messagePage->refreshStyle();
 }

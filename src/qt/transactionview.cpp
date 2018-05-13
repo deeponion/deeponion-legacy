@@ -11,6 +11,7 @@
 #include "editaddressdialog.h"
 #include "optionsmodel.h"
 #include "guiutil.h"
+#include "themeadapter.h"
 
 #include <QScrollBar>
 #include <QComboBox>
@@ -68,9 +69,7 @@ TransactionView::TransactionView(QWidget *parent) :
     dateWidget->addItem(tr("Last month"), LastMonth);
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
-    dateWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue; \
-                                      padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none; \
-                                      QComboBox::drop-down {border: none}");
+    dateWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
 
     hlayout->addWidget(dateWidget);
     hlayout->insertSpacing(1, 8);
@@ -90,23 +89,24 @@ TransactionView::TransactionView(QWidget *parent) :
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
-    typeWidget->setStyleSheet("background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: Helvetica Neue; \
-                                      padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;");
+    typeWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
 
     hlayout->addWidget(typeWidget);
     hlayout->insertSpacing(3, 8);
 
-    QFrame *frameForAddress = new QFrame();
+    frameForAddress = new QFrame();
     frameForAddress->setFixedHeight(44);
     frameForAddress->setFixedWidth(378);
     frameForAddress->setStyleSheet("background-color: #393947; padding-left: 5px");
     QHBoxLayout *hlayoutFrameForAddress = new QHBoxLayout();
     hlayoutFrameForAddress->setContentsMargins(0,0,0,0);
     frameForAddress->setLayout(hlayoutFrameForAddress);
+    frameForAddress->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
 
 
 
     addressWidget = new QLineEdit(this);
+    addressWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
@@ -115,15 +115,18 @@ TransactionView::TransactionView(QWidget *parent) :
     hlayoutFrameForAddress->addWidget(addressWidget);
 
 
-    QFrame *frameForAmount = new QFrame();
+    frameForAmount = new QFrame();
     frameForAmount->setFixedHeight(44);
     frameForAmount->setFixedWidth(117);
     frameForAmount->setStyleSheet("background-color: #393947; padding-left: 5px");
     QHBoxLayout *hlayoutFrameForAmount = new QHBoxLayout();
     hlayoutFrameForAmount->setContentsMargins(0,0,0,0);
     frameForAmount->setLayout(hlayoutFrameForAmount);
+    frameForAmount->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
 
     amountWidget = new QLineEdit(this);
+    amountWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
     amountWidget->setPlaceholderText(tr("Min amount"));
@@ -225,9 +228,7 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
-        transactionView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
-                    //QScrollBar:vertical {border: none;background-color: #474757;width: 10px;margin: 25px 0 0px 0;} \
-                    //QScrollBar::handle:vertical{border-radius: 4px; border: none; background-color: rgba(193, 193, 193, 75%); min-height: 25px;}");
+        transactionView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
@@ -243,10 +244,7 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         transactionView->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        transactionView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
-                                                                        font-size: 14px; font-family: Helvetica Neue; \
-                                                                        padding-left: 8px; padding-right: 8px; \
-                                                                        padding-top: 14px; padding-bottom: 14px;}");
+        transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
     }
 }
 
@@ -497,4 +495,16 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
     transactionView->scrollTo(targetIdx);
     transactionView->setCurrentIndex(targetIdx);
     transactionView->setFocus();
+}
+
+void TransactionView::refreshStyle()
+{
+    transactionView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    dateWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
+    typeWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
+    frameForAmount->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    frameForAddress->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    amountWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    addressWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
 }

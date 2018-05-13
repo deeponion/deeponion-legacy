@@ -189,11 +189,11 @@ static QString ThemeAdapter::getQFrameGeneralStyle() {
     }
 }
 
-static QString ThemeAdapter::getQFrameMenuGeneralStyle() {
+static QString ThemeAdapter::getQFrameSecondaryMenuGeneralStyle() {
     if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
-        return LT_QFRAME_MENU_GENERAL_STYLE;
+        return LT_QFRAME_SECONDARY_MENU_GENERAL_STYLE;
     } else {
-        return DT_QFRAME_MENU_GENERAL_STYLE;
+        return DT_QFRAME_SECONDARY_MENU_GENERAL_STYLE;
     }
 }
 
@@ -234,5 +234,29 @@ static QString ThemeAdapter::getIconTextButtonStyle() {
         return LT_ICON_TEXT_BUTTON_STYLE;
     } else {
         return DT_ICON_TEXT_BUTTON_STYLE;
+    }
+}
+
+static QString ThemeAdapter::getInformationIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_INFORMATION_ICO;
+    } else {
+        return DT_INFORMATION_ICO;
+    }
+}
+
+static QString ThemeAdapter::getInformationBtnStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_INFORMATION_BTN_STYLE;
+    } else {
+        return DT_INFORMATION_BTN_STYLE;
+    }
+}
+
+static QString ThemeAdapter::getQComboboxTransactionsFilteringStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE;
+    } else {
+        return DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE;
     }
 }

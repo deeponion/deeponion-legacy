@@ -7,6 +7,7 @@
 #include "bitcoingui.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+#include "themeadapter.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -111,6 +112,13 @@ MessagePage::MessagePage(QWidget *parent) :
     ui->listConversation->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listConversation->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listConversation->setAttribute(Qt::WA_MacShowFocusRect, false);
+
+    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
+    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
 }
 
 MessagePage::~MessagePage()
@@ -138,7 +146,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->setModel(model->proxyModel);
     ui->tableView->sortByColumn(MessageModel::ReceivedDateTime, Qt::DescendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet("alternate-background-color: #474757; background-color: #393947; border: none; margin: 0; padding: 0;");
+    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
 
 
 
@@ -153,10 +161,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ToAddress,        320);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::SentDateTime,     170);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ReceivedDateTime, 170);
-    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
-                                                                        font-size: 14px; font-family: Helvetica Neue; \
-                                                                        padding-left: 8px; padding-right: 8px; \
-                                                                        padding-top: 14px; padding-bottom: 14px;}");
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
 
     //ui->messageEdit->setMinimumHeight(100);
 
@@ -435,3 +440,13 @@ void MessagePage::contextualMenu(const QPoint &point)
     }
 }
 
+void MessagePage::refreshStyle() {
+    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
+    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+}

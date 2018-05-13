@@ -69,6 +69,7 @@
         <file alias="new_synced">res/icons/new/synced.png</file>
         <file alias="new_notsynced">res/icons/new/notsynced.png</file>
         <file alias="information">res/icons/new/info-circle-white.png</file>
+        <file alias="information-blue">res/icons/new/info-circle-blue.png</file>
         <file alias="fontbigger">res/icons/fontbigger.png</file>
         <file alias="fontsmaller">res/icons/fontsmaller.png</file>
     </qresource>

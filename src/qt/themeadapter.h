@@ -38,7 +38,7 @@ public:
     static QString getExportSelectedBtnIcon();
 
     static QString getQFrameGeneralStyle();
-    static QString getQFrameMenuGeneralStyle();
+    static QString getQFrameSecondaryMenuGeneralStyle();
 
     static QString getQListAlternateRowsGeneralStyle();
     static QString getQListHeaderGeneralStyle();
@@ -47,6 +47,11 @@ public:
     static QString getQLineEditGeneralStyle();
 
     static QString getIconTextButtonStyle();
+
+    static QString getInformationIcon();
+    static QString getInformationBtnStyle();
+
+    static QString getQComboboxTransactionsFilteringStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

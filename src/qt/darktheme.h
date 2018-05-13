@@ -21,7 +21,7 @@
 		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
 		QDialog {color:white; background-color: #2B2B37;} \
-		QLabel {color:white; background-color: #2B2B37; font-family:'Helvetica Neue';} \
+		QLabel {color:#FFFFFF; background-color: #2B2B37; font-family:'Helvetica Neue';} \
         QLabel#labelTotalText {color: #898994;}\
         QLabel#labelTotal {color: #FFFFFF;}\
         QLabel#labelBalanceText {color: #898994;}\
@@ -64,7 +64,7 @@
     static QString DT_MAIN_MENU_EXPORT_BTN_ICO = ":/icons/NewExportUS";
 
     static QString DT_QFRAME_GENERAL_STYLE = "background-color: #393947;";
-    static QString DT_QFRAME_MENU_GENERAL_STYLE = "background-color: #22222B; padding: 8px;";
+    static QString DT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #22222B; padding: 8px;";
     static QString DT_QLABEL_GENERAL_STYLE = "color: #FFFFFF";
     static QString DT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #474757; background-color: #393947;\
             border: none; margin: 0; padding: 0;";
@@ -75,5 +75,12 @@
 
     static QString DT_LINE_EDIT = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
     static QString DT_ICON_TEXT_BUTTON_STYLE = "color: #FFFFFF; border: none;";
+
+    static QString DT_INFORMATION_ICO = ":/icons/information";
+    static QString DT_INFORMATION_BTN_STYLE = "background-color: #393947; border: none";
+
+    static QString DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
+                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;\
+                                        QComboBox::drop-down {border: none}";
 
 #endif //DEEPONION_DARKTHEME_H
