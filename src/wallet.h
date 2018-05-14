@@ -189,6 +189,8 @@ public:
     int ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate = false);
     int ScanForWalletTransaction(const uint256& hashTx);
     int GetBestBlockHeight();
+    bool ScanBlockchainForHash();
+    
     void ReacceptWalletTransactions();
     void ResendWalletTransactions(bool fForce = false);
     int64_t GetBalance() const;

@@ -3,6 +3,7 @@
 
 #include "clientmodel.h"
 #include "bitcoinrpc.h"
+#include "blockchaindialog.h"
 #include "guiutil.h"
 #include "bantablemodel.h"
 #include "peertablemodel.h"
@@ -617,6 +618,12 @@ void RPCConsole::on_tabWidget_currentChanged(int index)
 void RPCConsole::on_openDebugLogfileButton_clicked()
 {
     GUIUtil::openDebugLogfile();
+}
+
+void RPCConsole::on_showMeDetailsButton_clicked()
+{
+    BlockchainDialog dlg;
+    dlg.exec();
 }
 
 void RPCConsole::scrollToEnd()

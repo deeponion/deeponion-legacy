@@ -3284,3 +3284,39 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     
     return true;
 }
+
+bool CWallet::ScanBlockchainForHash()
+{
+	printf(">> calling ScanBlockchainForHash ...\n");
+	CBlockIndex* pindex = pindexGenesisBlock;
+	int count = 0;
+
+	unsigned char hash11[SHA256_DIGEST_LENGTH];
+	SHA256_CTX sha256;
+	SHA256_Init(&sha256);
+
+    while (pindex && count != 500000)
+    {
+    	CBlock block;
+    	block.ReadFromDisk(pindex, true);
+    	uint256 bhash = block.GetHash();
+    	std::string strHash = bhash.ToString();
+    	SHA256_Update(&sha256, strHash.c_str(), strHash.size());
+
+    	pindex = pindex->pnext;
+    	++count;
+    } // while (pindex)
+
+	SHA256_Final(hash11, &sha256);
+
+	std::stringstream ss;
+	for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+	{
+		ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash11[i];
+	}
+	std::string hash0 = ss.str();
+
+	printf(">> blockchain hash at 500000: %s\n", hash0.c_str());
+	return true;
+}
+
