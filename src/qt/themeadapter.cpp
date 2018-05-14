@@ -268,3 +268,11 @@ static QString ThemeAdapter::getQComboboxDateRangeStyle() {
         return DT_QCOMBOBOX_DATE_RANGE_STYLE;
     }
 }
+
+static QString ThemeAdapter::getQToolButtonStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QTOOL_BTN_STYLE;
+    } else {
+        return DT_QTOOL_BTN_STYLE;
+    }
+}

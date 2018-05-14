@@ -114,6 +114,7 @@ void SendCoinsDialog::setModel(WalletModel *model)
         ui->labelCoinControlAutomaticallySelected->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
         ui->checkBoxCoinControlChange->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
         ui->lineEditCoinControlChange->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+        ui->pushButtonCoinControl->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
 
         coinControlUpdateLabels();
     }
@@ -548,5 +549,7 @@ void SendCoinsDialog::refreshStyle() {
     ui->labelCoinControlAutomaticallySelected->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->checkBoxCoinControlChange->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->lineEditCoinControlChange->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->pushButtonCoinControl->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+
     clear();
 }

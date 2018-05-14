@@ -53,6 +53,8 @@ public:
 
     static QString getQComboboxTransactionsFilteringStyle();
     static QString getQComboboxDateRangeStyle();
+
+    static QString getQToolButtonStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

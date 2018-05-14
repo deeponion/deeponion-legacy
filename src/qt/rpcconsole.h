@@ -41,6 +41,7 @@ public:
         CMD_REPLY,
         CMD_ERROR
     };
+    void refreshStyle();
 
 protected:
     virtual bool eventFilter(QObject* obj, QEvent *event);

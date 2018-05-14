@@ -11,13 +11,14 @@
         QComboBox:hover {background-color: #1b202f;} \
 		QWidget {color:white; background-color: #393947;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #2b2b37; border:none;font-family:'Helvetica Neue';} \
+        QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white;} \
-		QHeaderView::section {color:white; background-color: #F7F7F7; } \
+		QHeaderView::section {color:white; background-color: #474757; } \
 		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
-		QLineEdit {color: #FFFFFF; background-color: #2b2b37; padding-left: 5px;  border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
+        QTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
+		QLineEdit {background-color: #2b2b37; color: #FFFFFF; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
         QTabWidget {color:white; background-color: #393947;} \
-		QTabWidget::pane {color:white; background-color: #393947; border: 1px solid #393947;} \
+		QTabWidget::pane {color:white; background-color: #393947; border: 1px solid #2b2b37;} \
 		QTabBar::tab {color:white; background-color: #474757; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QTabBar::tab:selected, QTabBar::tab:hover {color:white; background-color: #7272a3; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
 		QDialog {color:white; background-color: #393947;} \
@@ -36,7 +37,7 @@
 		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
-		QToolButton {color:white; background-color: #393947; padding: 3px;} \
+		QToolButton {color:white; background-color: #393947; padding: 3px; border: none;} \
 		QDialogButtonBox {color:white; background-color: #393947; padding: 3px;} \
 		QMenuBar {background-color: #2A2937;} \
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
@@ -83,5 +84,6 @@
                                         QComboBox::drop-down {border: none}";
     static QString DT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
+    static QString DT_QTOOL_BTN_STYLE = "{color:white; background-color: #393947; padding: 3px; border: none;}";
 
 #endif //DEEPONION_DARKTHEME_H

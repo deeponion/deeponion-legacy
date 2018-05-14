@@ -1186,4 +1186,5 @@ void BitcoinGUI::refreshStyle() {
     transactionView->refreshStyle();
     messagePage->refreshStyle();
     signVerifyMessageDialog->refreshStyle();
+    rpcConsole->refreshStyle();
 }

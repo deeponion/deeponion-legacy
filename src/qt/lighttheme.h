@@ -17,9 +17,10 @@
         QMenuBar::item:selected {color: #2A2937; font-weight: bold; background-color: #F7F7F7;}\
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:#565656;} \
-		QHeaderView::section {color:white; background-color: #F7F7F7; } \
+		QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
 		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
-		QLineEdit {color: #2B2B37; background-color: #D8D8D8; padding-left: 5px;  border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
+        QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
+		QLineEdit { background-color: #D8D8D8; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
 		QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
 		QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
 		QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -37,10 +38,10 @@
         QLabel#labelImmatureText {color: #486EBA;}\
         QLabel#labelImmature {color: #4D4D4D;}\
         QToolBar {color:white; background-color: #191921;}\
-		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
-		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
-		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
-		QToolButton {color:#2A2937; background-color: #F7F7F7; padding: 3px;} \
+		QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
+		QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;} \
+		QToolButton {color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;} \
 		QDialogButtonBox {color:#2A2937; background-color: #F7F7F7; padding: 3px;} \
 		QToolTip {color: #2A2937; border: 0px; background-color: #F7F7F7; opacity: 225;} \
         QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px}\
@@ -81,7 +82,7 @@
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
-    static QString LT_LINE_EDIT = "background-color: #D8D8D8; color: #2B2B37; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+    static QString LT_LINE_EDIT = "background-color: #D8D8D8; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
     static QString LT_ICON_TEXT_BUTTON_STYLE = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);} ";
 
     static QString LT_INFORMATION_ICO = ":/icons/information-blue";
@@ -92,6 +93,9 @@
                                         QComboBox::drop-down {border: none}";
     static QString LT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
+    static QString LT_QTOOL_BTN_STYLE = "{color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;}";
+
+
 
 
 #endif //DEEPONION_LIGHTTHEME_H

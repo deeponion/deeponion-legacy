@@ -8,6 +8,7 @@
 #include "peertablemodel.h"
 #include <QSignalMapper>
 #include "scicon.h"
+#include "themeadapter.h"
 
 #include "main.h"
 #include "util.h"
@@ -242,6 +243,11 @@ RPCConsole::RPCConsole(QWidget *parent) : QDialog(parent),
 
     ui->detailWidget->hide();
     ui->peerHeading->setText(tr("Select a peer to view detailed information."));
+
+    ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+
 
     clear();
 }
@@ -877,4 +883,10 @@ void RPCConsole::on_showCLOptionsButton_clicked()
 {
     GUIUtil::HelpMessageBox help;
     help.exec();
+}
+
+void RPCConsole::refreshStyle() {
+    ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
 }

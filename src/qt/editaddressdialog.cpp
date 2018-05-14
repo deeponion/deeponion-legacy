@@ -2,6 +2,7 @@
 #include "ui_editaddressdialog.h"
 #include "addresstablemodel.h"
 #include "guiutil.h"
+#include "themeadapter.h"
 
 #include <QDataWidgetMapper>
 #include <QMessageBox>
@@ -11,7 +12,9 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
     ui(new Ui::EditAddressDialog), mapper(0), mode(mode), model(0)
 {
     ui->setupUi(this);
-    setStyleSheet("background-color: #393947");
+    setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->labelEdit->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->addressEdit->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     GUIUtil::setupAddressWidget(ui->addressEdit, this);
 
     switch(mode)
