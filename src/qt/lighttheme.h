@@ -13,6 +13,7 @@
 		QMenu {color: #2A2937; background-color: #F7F7F7; border-color: #F7F7F7;} \
         QMenuBar {color: #2A2937; background-color: #F7F7F7;} \
         QMenuBar::item {color: #2A2937; background-color: #F7F7F7;} \
+        QMenuBar::item:hover {color: #2A2940; background-color: #F9F9F9;} \
         QMenuBar::item:selected {color: #2A2937; font-weight: bold; background-color: #F7F7F7;}\
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:#565656;} \
@@ -21,8 +22,8 @@
 		QLineEdit {color: #2B2B37; background-color: #D8D8D8; padding-left: 5px;  border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
 		QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
 		QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
-		QTabBar::tab {color: #2A2937; background-color: #F7F7F7; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
-		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #D8D8D8; color: #2A2937} \
+		QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #F7F7F7; color: #2A2937} \
 		QDialog {color:#2A2937; background-color: #F7F7F7;} \
 		QLabel {color:#2A2937; background-color: #F7F7F7; font-family:'Helvetica Neue';} \
         QLabel#labelTotalText {color: #486EBA;}\
@@ -81,7 +82,7 @@
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
     static QString LT_LINE_EDIT = "background-color: #D8D8D8; color: #2B2B37; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
-    static QString LT_ICON_TEXT_BUTTON_STYLE = "color: #486EBA; border: none;";
+    static QString LT_ICON_TEXT_BUTTON_STYLE = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);} ";
 
     static QString LT_INFORMATION_ICO = ":/icons/information-blue";
     static QString LT_INFORMATION_BTN_STYLE = "background-color: #FFFFFF; border: none";
@@ -89,6 +90,8 @@
     static QString LT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
                                         padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;\
                                         QComboBox::drop-down {border: none}";
+    static QString LT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
+                                        border: none; QComboBox::drop-down {border: none}";
 
 
 #endif //DEEPONION_LIGHTTHEME_H

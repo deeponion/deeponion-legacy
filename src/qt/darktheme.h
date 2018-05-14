@@ -9,19 +9,19 @@
 
     static QString DARK_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
         QComboBox:hover {background-color: #1b202f;} \
-		QWidget {color:white; background-color: #2B2B37;} \
+		QWidget {color:white; background-color: #393947;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
-        QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
+        QMainWindow {background-color: #2b2b37; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:white;} \
 		QHeaderView::section {color:white; background-color: #F7F7F7; } \
 		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
 		QLineEdit {color: #FFFFFF; background-color: #2b2b37; padding-left: 5px;  border: none; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
-        QTabWidget {color:white; background-color: #2B2B37;} \
-		QTabWidget::pane {color:white; background-color: #2B2B37; border: 1px solid #393947;} \
-		QTabBar::tab {color:white; background-color: #2A2937; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
-		QTabBar::tab:selected, QTabBar::tab:hover {background-color: #1b202f;} \
-		QDialog {color:white; background-color: #2B2B37;} \
-		QLabel {color:#FFFFFF; background-color: #2B2B37; font-family:'Helvetica Neue';} \
+        QTabWidget {color:white; background-color: #393947;} \
+		QTabWidget::pane {color:white; background-color: #393947; border: 1px solid #393947;} \
+		QTabBar::tab {color:white; background-color: #474757; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QTabBar::tab:selected, QTabBar::tab:hover {color:white; background-color: #7272a3; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
+		QDialog {color:white; background-color: #393947;} \
+		QLabel {color:#FFFFFF; background-color: #393947; font-family:'Helvetica Neue';} \
         QLabel#labelTotalText {color: #898994;}\
         QLabel#labelTotal {color: #FFFFFF;}\
         QLabel#labelBalanceText {color: #898994;}\
@@ -36,8 +36,8 @@
 		QTreeView { color: white; background-color:#393947; alternate-background-color: #538cc6;} \
 		QTreeView::item {color: white; background-color: #393947; border: 1px solid #393947;} \
 		QTreeView::item:hover {color: white; background-color: #79a6d2; border: 1px solid #393947;} \
-		QToolButton {color:white; background-color: #1b202f; padding: 3px;} \
-		QDialogButtonBox {color:white; background-color: #1b202f; padding: 3px;} \
+		QToolButton {color:white; background-color: #393947; padding: 3px;} \
+		QDialogButtonBox {color:white; background-color: #393947; padding: 3px;} \
 		QMenuBar {background-color: #2A2937;} \
 		QToolTip {color: white; border: 0px; background-color: #2A2937; opacity: 225;} \
 		QMenuBar::item {color: white; background-color: #2A2937;} \
@@ -72,9 +72,8 @@
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
-
     static QString DT_LINE_EDIT = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
-    static QString DT_ICON_TEXT_BUTTON_STYLE = "color: #FFFFFF; border: none;";
+    static QString DT_ICON_TEXT_BUTTON_STYLE = "QPushButton, QPushButton:hover {color: #FFFFFF; border: none; background-color: rgba(255, 255, 255, 0);}";
 
     static QString DT_INFORMATION_ICO = ":/icons/information";
     static QString DT_INFORMATION_BTN_STYLE = "background-color: #393947; border: none";
@@ -82,5 +81,7 @@
     static QString DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
                                         padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;\
                                         QComboBox::drop-down {border: none}";
+    static QString DT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
+                                        border: none; QComboBox::drop-down {border: none}";
 
 #endif //DEEPONION_DARKTHEME_H

@@ -445,14 +445,15 @@ void TransactionView::showDetails()
 QWidget *TransactionView::createDateRangeWidget()
 {
     dateRangeWidget = new QFrame();
-    dateRangeWidget->setFrameStyle(QFrame::Panel | QFrame::Raised);
-    dateRangeWidget->setContentsMargins(1,1,1,1);
+    dateRangeWidget->setFrameStyle(QFrame::Panel);
+    dateRangeWidget->setStyleSheet("border: none; padding-top: 5px; padding-bottom: 5px; padding-left: 6px;");
     QHBoxLayout *layout = new QHBoxLayout(dateRangeWidget);
     layout->setContentsMargins(0,0,0,0);
-    layout->addSpacing(23);
-    layout->addWidget(new QLabel(tr("Range:")));
+    layout->addSpacing(28);
+    //layout->addWidget(new QLabel(tr("Range:")));
 
     dateFrom = new QDateTimeEdit(this);
+    dateFrom->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
     dateFrom->setDisplayFormat("dd/MM/yy");
     dateFrom->setCalendarPopup(true);
     dateFrom->setMinimumWidth(100);
@@ -461,6 +462,7 @@ QWidget *TransactionView::createDateRangeWidget()
     layout->addWidget(new QLabel(tr("to")));
 
     dateTo = new QDateTimeEdit(this);
+    dateTo->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
     dateTo->setDisplayFormat("dd/MM/yy");
     dateTo->setCalendarPopup(true);
     dateTo->setMinimumWidth(100);
@@ -507,4 +509,6 @@ void TransactionView::refreshStyle()
     frameForAddress->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
     amountWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     addressWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    dateFrom->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
+    dateTo->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
 }

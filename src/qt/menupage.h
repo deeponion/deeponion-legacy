@@ -41,6 +41,7 @@ public:
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
     QFrame *frameBlocks;
+    void ClickedItemAfterThemeChanged(int);
 
 public Q_SLOTS:
     void ClickedItem();

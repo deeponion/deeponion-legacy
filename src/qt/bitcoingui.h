@@ -122,6 +122,7 @@ private:
     QMovie *syncIconMovie;
     int spinnerFrame;
     int prevBlocks;
+    int currentScreen;
 
     /** Create the main UI actions. */
     void createActions();
@@ -131,6 +132,7 @@ private:
     void createToolBars();
     /** Create system tray (notification) icon */
     void createTrayIcon();
+
 
 public slots:
     /** Set number of connections shown in the UI */

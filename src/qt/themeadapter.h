@@ -52,6 +52,7 @@ public:
     static QString getInformationBtnStyle();
 
     static QString getQComboboxTransactionsFilteringStyle();
+    static QString getQComboboxDateRangeStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

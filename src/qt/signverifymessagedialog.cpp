@@ -9,6 +9,7 @@
 #include "optionsmodel.h"
 #include "walletmodel.h"
 #include "wallet.h"
+#include "themeadapter.h"
 
 #include <string>
 #include <vector>
@@ -43,6 +44,15 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
     ui->signatureOut_SM->setFont(GUIUtil::bitcoinAddressFont());
     ui->signatureIn_VM->setFont(GUIUtil::bitcoinAddressFont());
+
+    ui->addressIn_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->signatureOut_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->addressIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->signatureIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->verifyMessageButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
 }
 
 SignVerifyMessageDialog::~SignVerifyMessageDialog()
@@ -271,4 +281,15 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
         }
     }
     return QDialog::eventFilter(object, event);
+}
+
+void SignVerifyMessageDialog::refreshStyle() {
+    ui->addressIn_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->signatureOut_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->addressIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->signatureIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->verifyMessageButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
 }

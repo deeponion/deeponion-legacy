@@ -118,6 +118,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
 
+    currentScreen = 0;
+
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
     setAcceptDrops(true);
@@ -885,18 +887,18 @@ void BitcoinGUI::incomingMessage(const QModelIndex &parent, int start, int end)
 
 void BitcoinGUI::gotoOverviewPage()
 {
+    currentScreen = 0;
     overviewAction->setChecked(true);
     centralWidget->setCurrentWidget(overviewPage);
-
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
 void BitcoinGUI::gotoMessagePage()
 {
+    currentScreen = 5;
     messageAction->setChecked(true);
     centralWidget->setCurrentWidget(messagePage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), messagePage, SLOT(exportClicked()));
@@ -904,9 +906,9 @@ void BitcoinGUI::gotoMessagePage()
 
 void BitcoinGUI::gotoHistoryPage()
 {
+    currentScreen = 3;
     historyAction->setChecked(true);
     centralWidget->setCurrentWidget(transactionsPage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
@@ -914,9 +916,9 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoAddressBookPage()
 {
+    currentScreen = 4;
     addressBookAction->setChecked(true);
     centralWidget->setCurrentWidget(addressBookPage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
@@ -924,9 +926,9 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
+    currentScreen = 2;
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
-
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
@@ -934,9 +936,9 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
+    currentScreen = 1;
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
-
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
@@ -1175,7 +1177,7 @@ void BitcoinGUI::optionsDialogFinished (int result)
 void BitcoinGUI::refreshStyle() {
     qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
     dock->setStyleSheet(ThemeAdapter::getDockMainMenuStyle());
-    menu->ClickedItem();
+    menu->ClickedItemAfterThemeChanged(currentScreen);
     centralWidget->setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
@@ -1183,4 +1185,5 @@ void BitcoinGUI::refreshStyle() {
     addressBookPage->refreshStyle();
     transactionView->refreshStyle();
     messagePage->refreshStyle();
+    signVerifyMessageDialog->refreshStyle();
 }

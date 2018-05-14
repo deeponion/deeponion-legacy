@@ -260,3 +260,11 @@ static QString ThemeAdapter::getQComboboxTransactionsFilteringStyle() {
         return DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE;
     }
 }
+
+static QString ThemeAdapter::getQComboboxDateRangeStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QCOMBOBOX_DATE_RANGE_STYLE;
+    } else {
+        return DT_QCOMBOBOX_DATE_RANGE_STYLE;
+    }
+}
