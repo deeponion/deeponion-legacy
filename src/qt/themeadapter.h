@@ -8,11 +8,16 @@
 #include <QString>
 #include <QSettings>
 
+//struct Theme {
+//    QString THEME_STYLESHEET;
+//};
+
 
 class ThemeAdapter
 {
-
 public:
+    static void initThemes();
+    static QString getStyleSheetNew();
     static void changeTheme(QString);
     static QString getStyleSheet();
     static QString getMainMenuNormalButtonStyle();
@@ -55,6 +60,7 @@ public:
     static QString getQComboboxDateRangeStyle();
 
     static QString getQToolButtonStyle();
+    static QString getQPushButtonStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

@@ -7,6 +7,7 @@
 #include "optionsmodel.h"
 #include "sendmessagesentry.h"
 //#include "guiutil.h"
+#include "themeadapter.h"
 
 #include <QMessageBox>
 #include <QLocale>
@@ -37,6 +38,10 @@ SendMessagesDialog::SendMessagesDialog(Mode mode, Type type, QWidget *parent) :
         ui->addressFrom->setPlaceholderText(tr("Enter an address"));
  #endif
     addEntry();
+    ui->addButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->sendButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->closeButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
@@ -336,4 +341,12 @@ void SendMessagesDialog::pasteEntry(const SendMessagesRecipient &rv)
         entry = addEntry();
 
     entry->setValue(rv);
+}
+
+void SendMessagesDialog::refreshStyle() {
+    ui->addButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->clearButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->sendButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->closeButton->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    clear();
 }

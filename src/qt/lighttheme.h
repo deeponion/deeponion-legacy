@@ -7,10 +7,11 @@
 
 #include <QString>
 
-    static QString LIGHT_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;} \
-        QComboBox:hover {background-color: #FFFFFF; color: #2A2937} \
+    static QString LIGHT_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937; height: 26px;} \
+        QComboBox:hover {background-color: #FFFFFF; color: #2A2937;  height: 26px;} \
 		QWidget {color: #2A2937; background-color: #F7F7F7;} \
 		QMenu {color: #2A2937; background-color: #F7F7F7; border-color: #F7F7F7;} \
+        QMenu::item:selected{background-color: #6b6b6b;}\
         QMenuBar {color: #2A2937; background-color: #F7F7F7;} \
         QMenuBar::item {color: #2A2937; background-color: #F7F7F7;} \
         QMenuBar::item:hover {color: #2A2940; background-color: #F9F9F9;} \
@@ -18,9 +19,10 @@
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
 		QTableView {color:#565656;} \
 		QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
-		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
-        QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #d7e6ff; font-size: 13px; font-family: 'Helvetica Neue';} \
-		QLineEdit { background-color: #D8D8D8; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
+        QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
+		QLineEdit { background-color: #D8D8D8; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+        QLineEdit:hover {border: 1px solid gray; background-color: #D8D8D8; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
 		QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
 		QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
 		QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -89,13 +91,15 @@
     static QString LT_INFORMATION_BTN_STYLE = "background-color: #FFFFFF; border: none";
 
     static QString LT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
-                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;\
+                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px;\
                                         QComboBox::drop-down {border: none}";
     static QString LT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
     static QString LT_QTOOL_BTN_STYLE = "{color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;}";
 
-
+    static QString LT_QPUSH_BTN_STYLE = "QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px}\
+        QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
+        QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}";
 
 
 #endif //DEEPONION_LIGHTTHEME_H

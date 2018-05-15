@@ -13,8 +13,9 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
 {
     ui->setupUi(this);
     setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->labelEdit->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->addressEdit->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->labelEdit->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->addressEdit->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+
     GUIUtil::setupAddressWidget(ui->addressEdit, this);
 
     switch(mode)

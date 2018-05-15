@@ -38,6 +38,14 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
 #ifndef USE_QRCODE
     ui->showQRCode->setVisible(false);
 #endif
+
+    if (fromWhere == FromSendCoinsEntry ||
+            fromWhere == FromSendMessagesEntry ||
+            fromWhere == FromSignVerifyMessageDialog ||
+            fromWhere == FromSendMessagesDialog) {
+        setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
+    }
+
     ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
     ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
     ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());

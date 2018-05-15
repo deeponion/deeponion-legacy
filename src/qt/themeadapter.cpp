@@ -13,6 +13,20 @@
 static QString currentTheme;
 static bool currentThemeInitiated = false;
 
+//static Theme *darkTheme = new Theme();
+//static Theme *lightTheme = new Theme();
+//static Theme *currentThemeStruct;
+//
+//static void ThemeAdapter::initThemes() {
+//    darkTheme->THEME_STYLESHEET = DARK_THEME_STYLESHEET;
+//    lightTheme->THEME_STYLESHEET = LIGHT_THEME_STYLESHEET;
+//    currentThemeStruct = darkTheme;
+//}
+//
+//static QString ThemeAdapter::getStyleSheetNew() {
+//    currentThemeStruct->THEME_STYLESHEET;
+//}
+
 static void ThemeAdapter::changeTheme(QString newTheme) {
     currentTheme = newTheme;
 }
@@ -276,3 +290,12 @@ static QString ThemeAdapter::getQToolButtonStyle() {
         return DT_QTOOL_BTN_STYLE;
     }
 }
+
+static QString ThemeAdapter::getQPushButtonStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_QPUSH_BTN_STYLE;
+    } else {
+        return DT_QPUSH_BTN_STYLE;
+    }
+}
+

@@ -116,6 +116,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+    //ThemeAdapter::initThemes();
     qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
 
     currentScreen = 0;
