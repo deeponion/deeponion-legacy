@@ -240,7 +240,19 @@ public:
     {
         return Write(std::string("minversion"), nVersion);
     }
+    
+    bool WriteWatchOnly(const CScript& dest)
+    {
+        nWalletDBUpdated++;
+        return Write(std::make_pair(std::string("watchs"), dest), '1');
+    }
 
+    bool EraseWatchOnly(const CScript& dest)
+    {
+        nWalletDBUpdated++;
+        return Erase(std::make_pair(std::string("watchs"), dest));
+    }
+    
     bool ReadAccount(const std::string& strAccount, CAccount& account);
     bool WriteAccount(const std::string& strAccount, const CAccount& account);
 private:

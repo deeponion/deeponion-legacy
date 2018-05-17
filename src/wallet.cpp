@@ -3284,3 +3284,34 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     
     return true;
 }
+
+
+bool CWallet::AddWatchOnly(const CScript& dest)
+{
+    if (!CCryptoKeyStore::AddWatchOnly(dest))
+        return false;
+    nTimeFirstKey = 1; // No birthday information for watch-only keys.
+    NotifyWatchonlyChanged(true);
+    if (!fFileBacked)
+        return true;
+    return CWalletDB(strWalletFile).WriteWatchOnly(dest);
+}
+
+bool CWallet::RemoveWatchOnly(const CScript& dest)
+{
+    LOCK(cs_wallet);
+    if (!CCryptoKeyStore::RemoveWatchOnly(dest))
+        return false;
+    if (!HaveWatchOnly())
+        NotifyWatchonlyChanged(false);
+    if (fFileBacked)
+        if (!CWalletDB(strWalletFile).EraseWatchOnly(dest))
+            return false;
+
+    return true;
+}
+
+bool CWallet::LoadWatchOnly(const CScript& dest)
+{
+    return CCryptoKeyStore::AddWatchOnly(dest);
+}

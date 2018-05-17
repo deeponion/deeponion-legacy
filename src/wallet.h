@@ -216,6 +216,14 @@ public:
     bool SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, std::string& sError, bool fAskFee=false);
     bool FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNarr);
 
+
+    //! Adds a watch-only address to the store, and saves it to disk.
+    bool AddWatchOnly(const CScript& dest);
+    bool RemoveWatchOnly(const CScript& dest);
+    //! Adds a watch-only address to the store, without saving it to disk (used by LoadWallet)
+    bool LoadWatchOnly(const CScript& dest);
+
+
     bool NewKeyPool();
     bool TopUpKeyPool(unsigned int nSize = 0);
     int64_t AddReserveKey(const CKeyPool& keypool);
@@ -344,6 +352,10 @@ public:
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void (CWallet *wallet, const uint256 &hashTx, ChangeType status)> NotifyTransactionChanged;
+    
+    
+    /** Watch-only address added */
+    boost::signals2::signal<void(bool fHaveWatchOnly)> NotifyWatchonlyChanged;
 };
 
 /** A key allocated from the key pool. */
