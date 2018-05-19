@@ -21,9 +21,9 @@ unsigned int nStakeSplitAge = 20 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
 
 int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 543950;
-int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 521681;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 523352;
 std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "db2b4c6d31844020af9ef4eb9253692efd65f35be85859f73ab7e4b41436eabe";
-std::string CWallet::LAST_REGISTERED_BTC_TX = "b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "ba839a3a2d7c9e5a80cc891195e0518c37cded079c6ea8a8ce826b002d4c954e";
 
 //////////////////////////////////////////////////////////////////////////////
 //
