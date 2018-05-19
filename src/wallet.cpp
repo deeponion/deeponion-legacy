@@ -20,6 +20,11 @@ extern unsigned int nStakeMaxAge;
 unsigned int nStakeSplitAge = 20 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
 
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 543950;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 521681;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "db2b4c6d31844020af9ef4eb9253692efd65f35be85859f73ab7e4b41436eabe";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73";
+
 //////////////////////////////////////////////////////////////////////////////
 //
 // mapWallet
@@ -3285,28 +3290,36 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     return true;
 }
 
-bool CWallet::ScanBlockchainForHash()
+
+void CWallet::ScanBlockchainForHash()
 {
 	printf(">> calling ScanBlockchainForHash ...\n");
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
+	// long txcount = 0;
 
 	unsigned char hash11[SHA256_DIGEST_LENGTH];
 	SHA256_CTX sha256;
 	SHA256_Init(&sha256);
 
-    while (pindex && count != 500000)
-    {
-    	CBlock block;
-    	block.ReadFromDisk(pindex, true);
-    	uint256 bhash = block.GetHash();
-    	std::string strHash = bhash.ToString();
-    	SHA256_Update(&sha256, strHash.c_str(), strHash.size());
+	{
+		LOCK(cs_wallet);
+		while (pindex && count != LAST_REGISTERED_BLOCK_HEIGHT)
+		{
+			CBlock block;
+			block.ReadFromDisk(pindex, true);
+			// txcount += (long)block.vtx.size();
+			uint256 bhash = block.GetHash();
+			std::string strHash = bhash.ToString();
+			SHA256_Update(&sha256, strHash.c_str(), strHash.size());
 
-    	pindex = pindex->pnext;
-    	++count;
-    } // while (pindex)
+			pindex = pindex->pnext;
+			++count;
+		} // while (pindex)
+	}
 
+    // printf(">> block height = %d, tx count = %ld\n", count, txcount);
+    
 	SHA256_Final(hash11, &sha256);
 
 	std::stringstream ss;
@@ -3316,7 +3329,14 @@ bool CWallet::ScanBlockchainForHash()
 	}
 	std::string hash0 = ss.str();
 
-	printf(">> blockchain hash at 500000: %s\n", hash0.c_str());
-	return true;
+	if(count != LAST_REGISTERED_BLOCK_HEIGHT)
+		blockchainStatus = -1;
+	else if(hash0 == LAST_REGISTERED_BLOCKCHAIN_HASH)
+		blockchainStatus = 1;
+	else
+		blockchainStatus = 0;
+		
+	printf(">> blockchain hash at %d: %s\n", LAST_REGISTERED_BLOCK_HEIGHT, hash0.c_str());
+	printf(">> blockchainStatus = %d\n", blockchainStatus);
 }
 

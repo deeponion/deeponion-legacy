@@ -132,7 +132,12 @@ public:
     void lockCoin(COutPoint& output);
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
-    CWallet * getWallet();
+    void updateBlockchainStatus();
+    QString getBlockchainStatusText();
+    QString getBlockchainStatusDetailsText();
+    QString getBlockchainTextStylesheet();
+    bool needUpdateBlockchainStatusUI();
+    CWallet* getWallet();
 
 private:
     CWallet *wallet;

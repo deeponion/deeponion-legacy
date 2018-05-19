@@ -16,7 +16,9 @@
 namespace Ui {
     class RPCConsole;
 }
+
 class ClientModel;
+class WalletModel;
 class CNodeCombinedStats;
 
 QT_BEGIN_NAMESPACE
@@ -34,6 +36,8 @@ public:
     ~RPCConsole();
 
     void setClientModel(ClientModel *model);
+    void setModel(WalletModel *model);
+    void updateBlockchainStatus();
 
     enum MessageClass {
         MC_ERROR,
@@ -110,6 +114,7 @@ private:
   static QString FormatBytes(quint64 bytes);
   Ui::RPCConsole *ui;
   ClientModel *clientModel;
+  WalletModel *walletModel;
   QStringList history;
   int historyPtr;
   QCompleter *autoCompleter;

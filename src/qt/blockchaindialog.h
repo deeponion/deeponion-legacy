@@ -7,6 +7,8 @@ namespace Ui {
     class BlockchainDialog;
 }
 
+class WalletModel;
+
 /** "About" dialog box */
 class BlockchainDialog : public QDialog
 {
@@ -15,6 +17,7 @@ class BlockchainDialog : public QDialog
 public:
     explicit BlockchainDialog(QWidget *parent = 0);
     ~BlockchainDialog();
+    void setLabelText(WalletModel* walletModel);
 
 private:
     Ui::BlockchainDialog *ui;
