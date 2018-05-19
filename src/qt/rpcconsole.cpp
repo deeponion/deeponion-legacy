@@ -426,7 +426,6 @@ void RPCConsole::setClientModel(ClientModel *model)
 
 void RPCConsole::setModel(WalletModel *model)
 {
-	printf(">> RPCConsole::setModel(WalletModel *model)\n");
     walletModel = model;
     if(model)
     {
