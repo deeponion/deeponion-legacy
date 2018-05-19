@@ -1,4 +1,4 @@
-// Copyright (c) 2012-2017 The DeepOnion developers
+// Copyright (c) 2017-2018 The DeepOnion developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
