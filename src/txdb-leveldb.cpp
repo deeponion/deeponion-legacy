@@ -19,6 +19,7 @@
 #include "txdb.h"
 #include "util.h"
 #include "main.h"
+#include "ui_interface.h"
 
 using namespace std;
 using namespace boost;
@@ -444,15 +445,19 @@ bool CTxDB::LoadBlockIndex()
     // Verify blocks in the best chain
     int nCheckLevel = GetArg("-checklevel", 1);
     int nCheckDepth = GetArg( "-checkblocks", 2500);
-    if (nCheckDepth == 0)
-        nCheckDepth = 1000000000; // suffices until the year 19000
-    if (nCheckDepth > nBestHeight)
+    if (nCheckDepth <= 0 || nCheckDepth > nBestHeight)
         nCheckDepth = nBestHeight;
     printf("Verifying last %i blocks at level %i\n", nCheckDepth, nCheckLevel);
     CBlockIndex* pindexFork = NULL;
     map<pair<unsigned int, unsigned int>, CBlockIndex*> mapBlockPos;
     for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
     {
+        // Display verify progress on splash screen to show application
+        // activity to users, not an unresponsive screen with unknown status
+        if(nCheckDepth != 0 && nCheckDepth % 100 == 0){
+            uiInterface.InitMessage("Verifying latest blocks: " + to_string((int)((pindexBest->nHeight - pindex->nHeight) / (nCheckDepth * 0.01f))) + "%");
+        }
+		
         if (fRequestShutdown || pindex->nHeight < nBestHeight-nCheckDepth)
             break;
         CBlock block;

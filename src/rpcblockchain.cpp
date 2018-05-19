@@ -1,5 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2017-2018 The DeepOnion Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -99,7 +100,10 @@ Value getnetworkhashps(const Array& params, bool fHelp)
                             "getnetworkhashps\n"
                             "Returns a exponential moving estimate of the current network hashrate (Mhash/s)");
     
-    return GetPoWMHashPS();
+    Object obj;
+    obj.push_back(Pair("pow_networkhashps", GetPoWMHashPS()));
+    obj.push_back(Pair("pos_networkhashps", GetPoSKernelPS()));
+    return obj;
 }
 
 Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool fPrintTransactionDetail)
@@ -161,7 +165,9 @@ Value getbestblockhash(const Array& params, bool fHelp)
             "getbestblockhash\n"
             "Returns the hash of the best block in the longest block chain.");
 
-    return hashBestChain.GetHex();
+    Object obj;
+    obj.push_back(Pair("bestblockhash", hashBestChain.GetHex()));
+    return obj;
 }
 
 Value getblockcount(const Array& params, bool fHelp)
@@ -171,7 +177,9 @@ Value getblockcount(const Array& params, bool fHelp)
             "getblockcount\n"
             "Returns the number of blocks in the longest block chain.");
 
-    return nBestHeight;
+    Object obj;
+    obj.push_back(Pair("blockcount", nBestHeight));
+    return obj;
 }
 
 
@@ -232,7 +240,10 @@ Value getblockhash(const Array& params, bool fHelp)
         throw runtime_error("Block number out of range.");
 
     CBlockIndex* pblockindex = FindBlockByHeight(nHeight);
-    return pblockindex->phashBlock->GetHex();
+    
+    Object obj;
+    obj.push_back(Pair("blockhash", pblockindex->phashBlock->GetHex()));
+    return obj;
 }
 
 Value getblock(const Array& params, bool fHelp)
