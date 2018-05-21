@@ -1,6 +1,6 @@
 ### UNIX BUILD NOTES
 
-*The following are commands needed to build on ubuntu/debian from scratch (use sudo if you are not root). It is verified with ubuntu 16.04 and 17.04*
+*The following are commands needed to build on ubuntu/debian from scratch (use sudo if you are not root). It is verified with ubuntu 16.04 and 17.04.
 
 #### Libraries 
 
@@ -43,12 +43,22 @@ Build with autotools:
     
 #### Issues
 
-**Debian 9**
+**Ubuntu 18.04**
 
-It has been reported that under Debian 9 the installation of *libssl1.1-dev* leads to compilation errors. 
+For ECDSA_SIG related errors, change the key.h file for the [Raspberry Pi branch](https://github.com/deeponion/deeponion/blob/raspberry/src/key.h) version then re-build:
 
-If you experience such issues, put *libssl1.0-dev* into your install list.
+    sudo apt install curl
+    cd ~/deeponion/src
+    sudo rm key.h
+    curl -o key.h https://raw.githubusercontent.com/deeponion/deeponion/raspberry/src/key.h
+    cd .. && make
 
 **Ubuntu 14.04**
 
 If you have problems with boost libraries visit [this link](https://github.com/deeponion/deeponion/issues/63#issuecomment-365329304) for a possible solution.
+
+**Debian 9**
+
+It has been reported that under Debian 9 the installation of *libssl1.1-dev* leads to compilation errors. 
+
+If you experience such issues, put *libssl1.0-dev* into your install list, or see [seperate build instructions](https://github.com/deeponion/deeponion/blob/raspberry/doc/build-debian-9.md).
