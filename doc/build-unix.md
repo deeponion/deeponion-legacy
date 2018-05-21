@@ -50,7 +50,7 @@ For ECDSA_SIG related errors, change the key.h file for the [Raspberry Pi branch
     sudo apt install curl
     cd ~/deeponion/src
     sudo rm key.h
-    wget curl -o key.h https://raw.githubusercontent.com/deeponion/deeponion/raspberry/src/key.h
+    curl -o key.h https://raw.githubusercontent.com/deeponion/deeponion/raspberry/src/key.h
     cd .. && make
 
 **Ubuntu 14.04**
