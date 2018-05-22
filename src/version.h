@@ -31,7 +31,7 @@ static const int DATABASE_VERSION = 70508;
 //
 
 static const int PROTOCOL_VERSION = 80012;
-static const int MIN_PROTO_VERSION = 80011;
+static const int MIN_PROTO_VERSION = 80012;
 
 // nTime field added to CAddress, starting with this version;
 // if possible, avoid requesting addresses nodes older than this
