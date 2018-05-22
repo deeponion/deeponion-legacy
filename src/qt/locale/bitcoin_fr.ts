@@ -41,7 +41,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
         <source>Address Book</source>
-        <translation>Répertoire d&apos;adresses</translation>
+        <translation>Carnet d&apos;adresses</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -81,7 +81,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+11"/>
         <source>Sign a message to prove you own a DeepOnion address</source>
-        <translation>Signer un message afin de valider l&apos;identité de votre adresse DeepOnion</translation>
+        <translation>Signer un message afin de prouver la possession de votre adresse DeepOnion</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -96,7 +96,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-14"/>
         <source>Verify a message to ensure it was signed with a specified DeepOnion address</source>
-        <translation>Vérifier un message pour s&apos;assurer qu&apos;il vient d&apos;un adresse DeepOnion spécifique.</translation>
+        <translation>Vérifier un message pour s&apos;assurer qu&apos;il vient d&apos;une adresse DeepOnion spécifique.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -121,7 +121,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+250"/>
         <source>Export Address Book Data</source>
-        <translation>Exporter votre répertoire d&apos;adresses</translation>
+        <translation>Exporter votre carnet d&apos;adresses</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -413,12 +413,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message numerus="yes">
         <location line="+259"/>
         <source>~%n block(s) remaining</source>
-        <translation><numerusform>~%n blocks restants</numerusform><numerusform>~%n blocs restants</numerusform></translation>
+        <translation><numerusform>~%n blocs restants</numerusform><numerusform>~%n blocs restants</numerusform></translation>
     </message>
     <message>
         <location line="+6"/>
         <source>Downloaded %1 of %2 blocks of transaction history (%3% done).</source>
-        <translation>Téléchargement des blocks de l&apos;historique des transactions : 1% sur 2% (%3% effectués).</translation>
+        <translation>Téléchargement des blocs de l&apos;historique des transactions : 1% sur 2% (%3% effectués).</translation>
     </message>
     <message>
         <location line="-256"/>
@@ -438,7 +438,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+18"/>
         <source>Export the data in the current tab to a file</source>
-        <translation>Export des données de l&apos;onglet courant vers un fichier</translation>
+        <translation>Exporter des données de l&apos;onglet courant vers un fichier</translation>
     </message>
     <message>
         <location line="-14"/>
@@ -625,7 +625,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+10"/>
         <source>Last received block was generated %1.</source>
-        <translation>Le dernier block reçu à été généré %1.</translation>
+        <translation>Le dernier bloc reçu à été généré %1.</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -695,7 +695,7 @@ Adresse : %4
     <message>
         <location line="+3"/>
         <source>Backup Failed</source>
-        <translation>Echec de la sauvegarde</translation>
+        <translation>Échec de la sauvegarde</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -776,7 +776,7 @@ Adresse : %4
     <message>
         <location line="+35"/>
         <source>Low Output:</source>
-        <translation>Sortie faible</translation>
+        <translation>Sortie faible :</translation>
     </message>
     <message>
         <location filename="../coincontroldialog.cpp" line="+551"/>
@@ -806,7 +806,7 @@ Adresse : %4
     <message>
         <location line="+16"/>
         <source>List mode</source>
-        <translation>Mode liste</translation>
+        <translation>Lister les modes</translation>
     </message>
     <message>
         <location line="+45"/>
@@ -937,7 +937,7 @@ Adresse : %4
     <message>
         <location line="+155"/>
         <source>DUST</source>
-        <translation>DUST</translation>
+        <translation>POUSSIÈRE</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -964,7 +964,7 @@ Ceux-ci Peuvent varier de +/- 1 Byte par entrée.</translation>
 This label turns red, if the priority is smaller than &quot;medium&quot;.
 
  This means a fee of at least %1 per kb is required.</source>
-        <translation>Les transactions avec une priorité haute ont plus de chances d&apos;être traitées en un block.
+        <translation>Les transactions avec une priorité haute ont plus de chances d&apos;être traitées en un bloc.
 
 L&apos;étiquette passe au rouge si votre priorité est plus basse que la &quot;moyenne&quot;.
 
@@ -981,7 +981,7 @@ Cela implique que des frais d&apos;un minimum de %1 par kb sont requis</translat
 
 Cela implique que des frais à hauteur de %2 seront nécessaire 
 
-Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent en tant que DUST.</translation>
+Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent en tant que POUSSIÈRES.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1093,7 +1093,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+2"/>
         <source>Usage:</source>
-        <translation>Utilisation:</translation>
+        <translation>Utilisation :</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1135,8 +1135,8 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
     <message>
         <location line="+6"/>
-        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
-        <translation>Frais de transaction optionnels par kB permettant d&apos;assurer la rapidité de traitement de votre transaction. La plupart des transactions sont de 1 kB. Frais de  0.01 recommandés.</translation>
+        <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.001 recommended.</source>
+        <translation>Frais de transaction optionnels par kB permettant d&apos;assurer la rapidité de traitement de votre transaction. La plupart des transactions sont de 1 kB. Frais de  0.001 recommandés.</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1146,7 +1146,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+31"/>
         <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
-        <translation>Montants réservés ne participant pas au &quot;staking&quot; pouvant être utilisés pour dépensés à tout moment.</translation>
+        <translation>Montants réservés ne participant pas au &quot;staking&quot; pouvant être utilisés pour être dépensés à tout moment.</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1166,7 +1166,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+7"/>
         <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
-        <translation>Détacher la base des block et adresses à la fermeture. Vous pourrez les utiliser dans un autre dossier mais cela ralenti la fermeture. Le portefeuille est lui toujours détaché.</translation>
+        <translation>Détacher la base des blocs et adresses à la fermeture. Vous pourrez les utiliser dans un autre dossier mais cela ralenti la fermeture. Le portefeuille est lui toujours détaché.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1201,7 +1201,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+9"/>
         <source>Proxy &amp;IP:</source>
-        <translation>&amp;IP du serveur Proxy mandataire :</translation>
+        <translation>&amp;IP du serveur proxy mandataire :</translation>
     </message>
     <message>
         <location line="+19"/>
@@ -1216,7 +1216,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+19"/>
         <source>Port of the proxy (e.g. 9050)</source>
-        <translation>Port du serveur Proxy mandataire (par ex. 9050)</translation>
+        <translation>Port du serveur proxy mandataire (par ex. 9050)</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -1333,7 +1333,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+29"/>
         <source>The supplied proxy address is invalid.</source>
-        <translation>L&apos;adresse de serveur mandataire -proxy- fournie est invalide.</translation>
+        <translation>L&apos;adresse de serveur proxy mandataire fournie est invalide.</translation>
     </message>
 </context>
 <context>
@@ -1431,17 +1431,17 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+56"/>
         <source>Amount:</source>
-        <translation>Montant:</translation>
+        <translation>Montant :</translation>
     </message>
     <message>
         <location line="-44"/>
         <source>Label:</source>
-        <translation>Étiquette:</translation>
+        <translation>Étiquette :</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>Message:</source>
-        <translation>Message:</translation>
+        <translation>Message :</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1658,7 +1658,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+77"/>
         <source>Quantity:</source>
-        <translation>Quantité:</translation>
+        <translation>Quantité :</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -1669,12 +1669,12 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-19"/>
         <source>Bytes:</source>
-        <translation>Octets:</translation>
+        <translation>Octets :</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Amount:</source>
-        <translation>Montant:</translation>
+        <translation>Montant :</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -1687,17 +1687,17 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-191"/>
         <source>Priority:</source>
-        <translation>Priorité:</translation>
+        <translation>Priorité :</translation>
     </message>
     <message>
         <location line="+19"/>
         <source>medium</source>
-        <translation>medium</translation>
+        <translation>moyenne</translation>
     </message>
     <message>
         <location line="+32"/>
         <source>Fee:</source>
-        <translation>Frais:</translation>
+        <translation>Frais :</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -1712,7 +1712,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+32"/>
         <source>After Fee:</source>
-        <translation>Après frais:</translation>
+        <translation>Après frais :</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -1732,7 +1732,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+3"/>
         <source>Add &amp;Recipient</source>
-        <translation>Ajouter un &amp;Destinataire</translation>
+        <translation>Ajouter un &amp;destinataire</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1747,7 +1747,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+28"/>
         <source>Balance:</source>
-        <translation>Solde:</translation>
+        <translation>Solde :</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -1857,17 +1857,17 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+5"/>
         <source>Error: Transaction creation failed.</source>
-        <translation>Erreur: Echec lors de la création de la transaction</translation>
+        <translation>Erreur : échec lors de la création de la transaction</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Erreur: La transaction a été rejetée. Cela peut se produire si une quantité d&apos;argent de votre portefeuille a déjà été dépensée, comme dans le cas où une copie du fichier wallet.dat aurait été utilisée afin d&apos;effectuer des dépenses, à la place du fichier courant.</translation>
+        <translation>Erreur : la transaction a été rejetée. Cela peut se produire si une quantité d&apos;argent de votre portefeuille a déjà été dépensée, comme dans le cas où une copie du fichier wallet.dat aurait été utilisée afin d&apos;effectuer des dépenses, à la place du fichier courant.</translation>
     </message>
     <message>
         <location line="+251"/>
         <source>WARNING: Invalid DeepOnion address</source>
-        <translation>AVERTISSEMENT: Adresse DeepOnion Invalide</translation>
+        <translation>AVERTISSEMENT : adresse DeepOnion invalide</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1877,7 +1877,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+4"/>
         <source>WARNING: unknown change address</source>
-        <translation>AVERTISSEMENT: Adresse DeepOnion Invalide</translation>
+        <translation>AVERTISSEMENT : adresse DeepOnion invalide</translation>
     </message>
 </context>
 <context>
@@ -1890,12 +1890,12 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+15"/>
         <source>A&amp;mount:</source>
-        <translation>&amp;Montant:</translation>
+        <translation>&amp;Montant :</translation>
     </message>
     <message>
         <location line="+13"/>
         <source>Pay &amp;To:</source>
-        <translation>&amp;Payer à:</translation>
+        <translation>&amp;Payer à :</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -2134,7 +2134,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message numerus="yes">
         <location line="-2"/>
         <source>Open for %n block(s)</source>
-        <translation><numerusform>Ouvert pour %n bloc</numerusform><numerusform>Ouvert pour %n blocks</numerusform></translation>
+        <translation><numerusform>Ouvert pour %n bloc</numerusform><numerusform>Ouvert pour %n blocs</numerusform></translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2217,7 +2217,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message numerus="yes">
         <location line="-102"/>
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>arrive à maturité dans %n bloc de plus</numerusform><numerusform>arrive à maturité dans %n blocks supplémentaires</numerusform></translation>
+        <translation><numerusform>arrive à maturité dans %n bloc de plus</numerusform><numerusform>arrive à maturité dans %n blocs supplémentaires</numerusform></translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2260,7 +2260,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 110 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Les pièces de monnaie générées nécessitent une maturation de 510 blocks avant de pouvoir être utilisées. Lors de la génération d&apos;un blokc, celui-ci est diffusé sur le réseau afin d&apos;être ajouté à la chaîne de blocks. En cas d&apos;échec, son état passera en &quot;non accepté&quot; et celui-ci ne pourra pas être dépensé. Cela peut occasionnellement se produire, lorsqu&apos;un noeud différent génère un block à quelques secondes d&apos;intervalle du vôtre.</translation>
+        <translation>Les pièces de monnaie générées nécessitent une maturation de 110 blocs avant de pouvoir être utilisées. Lors de la génération d&apos;un blokc, celui-ci est diffusé sur le réseau afin d&apos;être ajouté à la chaîne de blocs. En cas d&apos;échec, son état passera en &quot;non accepté&quot; et celui-ci ne pourra pas être dépensé. Cela peut occasionnellement se produire, lorsqu&apos;un noeud différent génère un bloc à quelques secondes d&apos;intervalle du vôtre.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2605,7 +2605,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+100"/>
         <source>Range:</source>
-        <translation>Intervalle:</translation>
+        <translation>Intervalle :</translation>
     </message>
     <message>
         <location line="+8"/>
@@ -2631,7 +2631,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+1"/>
         <source>Usage:</source>
-        <translation>Utilisation:</translation>
+        <translation>Utilisation :</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2651,17 +2651,17 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+2"/>
         <source>Options:</source>
-        <translation>Options:</translation>
+        <translation>Options :</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Specify configuration file (default: DeepOnion.conf)</source>
-        <translation>Spécifier le fichier de configuration (par défaut: DeepOnion.conf)</translation>
+        <translation>Spécifier le fichier de configuration (par défaut : DeepOnion.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Specify pid file (default: DeepOniond.pid)</source>
-        <translation>Spécifier le fichier pid (par défaut: DeepOniond.pid)</translation>
+        <translation>Spécifier le fichier pid (par défaut : DeepOniond.pid)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2686,7 +2686,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+6"/>
         <source>Listen for connections on &lt;port&gt; (default: 15714 or testnet: 25714)</source>
-        <translation>Écouter les connexions sur le &lt;port&gt; (par défault: 15714 ou testnet: 25714)</translation>
+        <translation>Écouter les connexions sur le &lt;port&gt; (par défaut : 15714 ou testnet : 25714)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2711,7 +2711,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+2"/>
         <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation>Placer vos monnaies en staking, afin de soutenir le réseau et obtenir des intérêts (par défault: 1)</translation>
+        <translation>Placer vos monnaies en staking, afin de soutenir le réseau et obtenir des intérêts (par défault : 1)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2731,12 +2731,12 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+51"/>
         <source>Detach block and address databases. Increases shutdown time (default: 0)</source>
-        <translation>Détacher la base de donnée des blocks et adresses. Augmente le temps de fermeture (default: 0)</translation>
+        <translation>Détacher la base de donnée des blocs et adresses. Augmente le temps de fermeture (défaut : 0)</translation>
     </message>
     <message>
         <location line="+109"/>
         <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Erreur: La transaction a été rejetée. Cela peut se produire si une quantité d&apos;argent de votre portefeuille a déjà été dépensée, comme dans le cas où une copie du fichier wallet.dat aurait été utilisée afin d&apos;effectuer des dépenses, à la place du fichier courant.</translation>
+        <translation>Erreur : La transaction a été rejetée. Cela peut se produire si une quantité d&apos;argent de votre portefeuille a déjà été dépensée, comme dans le cas où une copie du fichier wallet.dat aurait été utilisée afin d&apos;effectuer des dépenses, à la place du fichier courant.</translation>
     </message>
     <message>
         <location line="-5"/>
@@ -2746,7 +2746,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-87"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Écouter les connexions JSON-RPC sur le &lt;port&gt; (default: 15715 or testnet: 25715)</translation>
+        <translation>Écouter les connexions JSON-RPC sur le &lt;port&gt; (défaut : 15715 or testnet : 25715)</translation>
     </message>
     <message>
         <location line="-11"/>
@@ -2756,22 +2756,22 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+101"/>
         <source>Error: Transaction creation failed  </source>
-        <translation>Erreur: La création de cette transaction à échouée</translation>
+        <translation>Erreur : La création de cette transaction a échouée</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Error: Wallet locked, unable to create transaction  </source>
-        <translation>Erreur: Portefeuille verrouillé, impossible d&apos;effectuer cette transaction</translation>
+        <translation>Erreur : Portefeuille verrouillé, impossible d&apos;effectuer cette transaction</translation>
     </message>
     <message>
         <location line="-8"/>
         <source>Importing blockchain data file.</source>
-        <translation>Import en cours du fichier de chaîne de blocs</translation>
+        <translation>Importation en cours du fichier de chaîne de blocs</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Importing bootstrap blockchain data file.</source>
-        <translation>Import en masse du fichier de chaîne bloc</translation>
+        <translation>Importation en masse du fichier de chaîne blocs</translation>
     </message>
     <message>
         <location line="-88"/>
@@ -2811,7 +2811,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+61"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong DeepOnion will not work properly.</source>
-        <translation>Avertissement: Veuillez vérifier la date et l&apos;heure de votre ordinateur. DeepOnion ne pourra pas fonctionner correctement si l&apos;horloge est réglée de façon incorrecte</translation>
+        <translation>Avertissement : Veuillez vérifier la date et l&apos;heure de votre ordinateur. DeepOnion ne pourra pas fonctionner correctement si l&apos;horloge est réglée de façon incorrecte</translation>
     </message>
     <message>
         <location line="-31"/>
@@ -2831,7 +2831,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+4"/>
         <source>Block creation options:</source>
-        <translation>Options de création de bloc:</translation>
+        <translation>Options de création de bloc :</translation>
     </message>
     <message>
         <location line="-62"/>
@@ -2841,7 +2841,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+4"/>
         <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Découvrir sa propre adresse IP (par défaut: 1 lors de l&apos;écoute et si aucun -externalip)</translation>
+        <translation>Découvrir sa propre adresse IP (par défaut : 1 lors de l&apos;écoute et si aucun -externalip)</translation>
     </message>
     <message>
         <location line="+94"/>
@@ -2851,17 +2851,17 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-90"/>
         <source>Find peers using DNS lookup (default: 1)</source>
-        <translation>Trouvez des peers utilisant DNS lookup (default: 1)</translation>
+        <translation>Trouvez des peers utilisant DNS lookup (défaut : 1)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Sync checkpoints policy (default: strict)</source>
-        <translation>Politique de synchronisation des checkpoints (default: strict)</translation>
+        <translation>Politique de synchronisation des checkpoints (défaut : strict)</translation>
     </message>
     <message>
         <location line="+83"/>
         <source>Invalid -tor address: &apos;%s&apos;</source>
-        <translation>Adresse -tor invalide: &apos;%s&apos;</translation>
+        <translation>Adresse -tor invalide : &apos;%s&apos;</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2906,7 +2906,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-74"/>
         <source>Select the version of socks proxy to use (4-5, default: 5)</source>
-        <translation>Sélectionner la version du proxy socks à utiliser (4-5, par défaut: 5)</translation>
+        <translation>Sélectionner la version du proxy socks à utiliser (4-5, par défaut : 5)</translation>
     </message>
     <message>
         <location line="+41"/>
@@ -2921,7 +2921,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+28"/>
         <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Fixer la taille maximale d&apos;un block en bytes (default: 250000)</translation>
+        <translation>Fixer la taille maximale d&apos;un bloc en bytes (défaut : 250000)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2931,34 +2931,33 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="-29"/>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Réduire le fichier debug.log lors du démarrage du client (par défaut : 1 lorsque -debug n&apos;est pas présente)</translation>
+        <translation>Réduire le fichier debug.log lors du démarrage du client (par défaut : 1 lorsque -debug n&apos;est pas présent)</translation>
     </message>
     <message>
         <location line="-42"/>
         <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Spécifier le délai d&apos;expiration de la connexion en millisecondes (par défaut: 5000)</translation>
+        <translation>Spécifier le délai d&apos;expiration de la connexion en millisecondes (par défaut : 5000)</translation>
     </message>
     <message>
         <location line="+109"/>
-        <source>Unable to sign checkpoint, wrong checkpointkey?
-</source>
+        <source>Unable to sign checkpoint, wrong checkpointkey?</source>
         <translation>Impossible de &quot;signer&quot; le checkpoint, mauvaise clef de checkpoint?
 </translation>
     </message>
     <message>
         <location line="-80"/>
         <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Utiliser l&apos;UPnP pour rediriger le port d&apos;écoute (par défaut: 0)</translation>
+        <translation>Utiliser l&apos;UPnP pour rediriger le port d&apos;écoute (par défaut : 0)</translation>
     </message>
     <message>
         <location line="-1"/>
         <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Utiliser l&apos;UPnP pour rediriger le port d&apos;écoute (par défaut: 1 lors de l&apos;écoute)</translation>
+        <translation>Utiliser l&apos;UPnP pour rediriger le port d&apos;écoute (par défaut : 1 lors de l&apos;écoute)</translation>
     </message>
     <message>
         <location line="-25"/>
         <source>Use proxy to reach tor hidden services (default: same as -proxy)</source>
-        <translation>Utiliser un proxy pour atteindre les services cachés (par défaut: équivalent à -proxy)</translation>
+        <translation>Utiliser un proxy pour atteindre les services cachés (par défaut : équivalent à -proxy)</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -2978,7 +2977,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     <message>
         <location line="+1"/>
         <source>Warning: Disk space is low!</source>
-        <translation>Avertissement: Espace disque faible!</translation>
+        <translation>Avertissement : Espace disque faible!</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -3014,7 +3013,7 @@ Il est recommandé d&apos;utiliser le mot de passe aléatoire suivant:
 rpcuser=DeepOnionrpc
 rpcpassword=%s
 (il n&apos;est pas nécessaire de retenir ce mot de passe)
-Le nom d&apos;utilisateur et le mot de passe doivent IMPERATIVEMENT être différents.
+Le nom d&apos;utilisateur et le mot de passe doivent IMPÉRATIVEMENT être différents.
 Si le fichier n&apos;existe pas, il est nécessaire de le créer, avec les droit de lecture au propriétaire seulement.
 Il est également recommandé d&apos;utiliser l&apos;option alertnotify afin d&apos;être notifié des problèmes;
 par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@foo.com
@@ -3022,18 +3021,18 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     </message>
     <message>
         <location line="+51"/>
-        <source>Find peers using internet relay chat (default: 0)</source>
-        <translation>Find peers using internet relay chat (default: 1) {0)?}</translation>
+        <source>Find peers using IRC (default: 0)</source>
+        <translation>Trouver des peers utilisant IRC (défaut : 1) {0)?}</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Sync time with other nodes. Disable if time on your system is precise e.g. syncing with NTP (default: 1)</source>
-        <translation>Synchronisation de l&apos;horloge avec d&apos;autres noeuds. Désactiver si votre serveur est déjà synchronisé avec le protocole NTP (défaut: 1)</translation>
+        <translation>Synchronisation de l&apos;horloge avec d&apos;autres noeuds. Désactiver si votre serveur est déjà synchronisé avec le protocole NTP (défaut : 1)</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>When creating transactions, ignore inputs with value less than this (default: 0.01)</source>
-        <translation>Lors de la création de transactions, ignore les entrées dont la valeur sont inférieures (défaut: 0.01)</translation>
+        <translation>Lors de la création de transactions, ignore les entrées dont la valeur sont inférieures (défaut : 0.01)</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3058,12 +3057,12 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     <message>
         <location line="+3"/>
         <source>Require a confirmations for change (default: 0)</source>
-        <translation>Nécessite a confirmations pour modification (défaut: 0)</translation>
+        <translation>Nécessite une confirmation pour être modifié (défaut : 0)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enforce transaction scripts to use canonical PUSH operators (default: 1)</source>
-        <translation>Force les scripts de transaction à utiliser des opérateurs PUSH canoniques (défaut: 1)</translation>
+        <translation>Force les scripts de transaction à utiliser des opérateurs PUSH canoniques (défaut : 1)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3088,7 +3087,7 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     <message>
         <location line="+2"/>
         <source>How many blocks to check at startup (default: 2500, 0 = all)</source>
-        <translation>Nombre de blocs à vérifier loes du démarrage (défaut: 2500, 0 = tous)</translation>
+        <translation>Nombre de blocs à vérifier lors du démarrage (défaut: 2500, 0 = tous)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3118,17 +3117,17 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     <message>
         <location line="+1"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Algorithmes de  chiffrements acceptés (défaut: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+        <translation>Algorithmes de chiffrements acceptés (défaut : TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
         <location line="+53"/>
         <source>Error: Wallet unlocked for staking only, unable to create transaction.</source>
-        <translation>Erreur: Portefeuille déverrouillé uniquement pour &quot;staking&quot; , impossible d&apos;effectuer cette transaction</translation>
+        <translation>Erreur : Portefeuille déverrouillé uniquement pour &quot;staking&quot; , impossible d&apos;effectuer cette transaction</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>WARNING: Invalid checkpoint found! Displayed transactions may not be correct! You may need to upgrade, or notify developers.</source>
-        <translation>AVERTISSEMENT: point de contrôle invalide! Les transactions affichées peuvent être incorrectes! Il est peut-être nécessaire d&apos;effectuer une mise à jour, ou d&apos;avertir les développeurs du projet.</translation>
+        <translation>AVERTISSEMENT : point de contrôle invalide ! Les transactions affichées peuvent être incorrectes ! Il est peut-être nécessaire d&apos;effectuer une mise à jour, ou d&apos;avertir les développeurs du projet.</translation>
     </message>
     <message>
         <location line="-158"/>
@@ -3138,12 +3137,12 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     <message>
         <location line="+95"/>
         <source>Wallet %s resides outside data directory %s.</source>
-        <translation>Le portefeuille %s réside en dehors répertoire de données %s</translation>
+        <translation>Le portefeuille %s réside en dehors du répertoire de données %s</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Cannot obtain a lock on data directory %s.  DeepOnion is probably already running.</source>
-        <translation>Echec lors de la tentative de verrouillage des données du répertoire %s. L&apos;application DeepOnion est probablement déjà en cours d&apos;exécution</translation>
+        <translation>Échec lors de la tentative de vérrouillage des données du répertoire %s. L&apos;application DeepOnion est probablement déjà en cours d&apos;exécution</translation>
     </message>
     <message>
         <location line="-98"/>
@@ -3178,17 +3177,17 @@ par exemple: alertnotify=echo %%s | mail -s &quot;Alerte DeepOnion&quot; admin@f
     <message>
         <location line="+2"/>
         <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Erreur lors du chargement de wallet.dat: portefeuille corrompu</translation>
+        <translation>Erreur lors du chargement de wallet.dat : portefeuille corrompu</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>Error loading wallet.dat: Wallet requires newer version of DeepOnion</source>
-        <translation>Erreur de chargement du fichier wallet.dat: le portefeuille nécessite une version plus récente de l&apos;application DeepOnion</translation>
+        <translation>Erreur de chargement du fichier wallet.dat : le portefeuille nécessite une version plus récente de l&apos;application DeepOnion</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>Wallet needed to be rewritten: restart DeepOnion to complete</source>
-        <translation>Le portefeuille nécessite d&apos;être réédité : Merci de relancer l&apos;application DeepOnion</translation>
+        <source>Wallet needed to be rewritten. Restart DeepOnion to complete</source>
+        <translation>Le portefeuille nécessite d&apos;être réédité. Merci de relancer l&apos;application DeepOnion</translation>
     </message>
     <message>
         <location line="+1"/>
