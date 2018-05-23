@@ -647,12 +647,12 @@ QString WalletModel::getBlockchainStatusText()
 	if(blockchainStatus == -1)
 		text = QString("The DeepOnoion blockchain is not fully sychronized.");
 	else if(blockchainStatus == 0)
-		text = QString("The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block ")
+		text = QString("The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block ")
 			+ QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
 			+ QString("So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.");
 	else
-		text = QString("The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain ")
-			+ QString("the most secure immuatble database in the world) up to Block ") 
+		text = QString("The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain ")
+			+ QString("the most secure immutable database in the world) up to Block ") 
 			+ QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(".");
 	
 	return text;
@@ -686,7 +686,7 @@ QString WalletModel::getBlockchainTextStylesheet()
 	QString stylesheet;
 	
 	if(blockchainStatus == -1)
-		stylesheet = "QLabel {font-weight: bold; color: blue;}";
+		stylesheet = "QLabel {font-weight: bold; color: white;}";
 	else if(blockchainStatus == 0)
 		stylesheet = "QLabel {font-weight: bold; color: red;}";
 	else
