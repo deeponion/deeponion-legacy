@@ -454,8 +454,8 @@ bool CTxDB::LoadBlockIndex()
     {
         // Display verify progress on splash screen to show application
         // activity to users, not an unresponsive screen with unknown status
-        if(nCheckDepth != 0 && nCheckDepth % 100 == 0){
-            uiInterface.InitMessage("Verifying latest blocks: " + to_string((int)((pindexBest->nHeight - pindex->nHeight) / (nCheckDepth * 0.01f))) + "%");
+        if(nCheckDepth != 0 && nCheckDepth % 5000 == 0){
+            uiInterface.InitMessage("Verifying latest blocks: " + to_string(100 * (pindexBest->nHeight - pindex->nHeight) / nCheckDepth) + "%");
         }
 		
         if (fRequestShutdown || pindex->nHeight < nBestHeight-nCheckDepth)
