@@ -19,7 +19,6 @@
 #include "txdb.h"
 #include "util.h"
 #include "main.h"
-#include "ui_interface.h"
 
 using namespace std;
 using namespace boost;
@@ -451,13 +450,7 @@ bool CTxDB::LoadBlockIndex()
     CBlockIndex* pindexFork = NULL;
     map<pair<unsigned int, unsigned int>, CBlockIndex*> mapBlockPos;
     for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
-    {
-        // Display verify progress on splash screen to show application
-        // activity to users, not an unresponsive screen with unknown status
-        if(nCheckDepth != 0 && nCheckDepth % 5000 == 0){
-            uiInterface.InitMessage("Verifying latest blocks: " + to_string(100 * (pindexBest->nHeight - pindex->nHeight) / nCheckDepth) + "%");
-        }
-		
+    {		
         if (fRequestShutdown || pindex->nHeight < nBestHeight-nCheckDepth)
             break;
         CBlock block;
