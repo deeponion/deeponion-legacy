@@ -868,7 +868,7 @@ bool AppInit2()
 
     printf("Checking blockchain hash...\n");
     uiInterface.InitMessage(_("Checking blockchain hash..."));
-    pwalletMain->ScanBlockchainForHash();
+    pwalletMain->ScanBlockchainForHash(true);
     
     // ********************************************************* Step 10: load peers
 
