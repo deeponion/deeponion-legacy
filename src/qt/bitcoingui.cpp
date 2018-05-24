@@ -33,6 +33,8 @@
 #include "net.h"
 #include "themeadapter.h"
 #include "menupage.h"
+#include "thememanager.h"
+#include "theme.h"
 
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
@@ -116,8 +118,9 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     QApplication::setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-    //ThemeAdapter::initThemes();
-    qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
+    themeManagerx = new ThemeManager();
+
+    qApp->setStyleSheet(themeManagerx->getCurrent()->getStyleSheet());
 
     currentScreen = 0;
 
@@ -1170,13 +1173,13 @@ void BitcoinGUI::optionsDialogFinished (int result)
     if(result != QDialog::Accepted){
         return;
     }
-
+    themeManagerx->switchTheme(clientModel->getOptionsModel()->getTheme());
     ThemeAdapter::changeTheme(clientModel->getOptionsModel()->getTheme());
     refreshStyle();
 }
 
 void BitcoinGUI::refreshStyle() {
-    qApp->setStyleSheet(ThemeAdapter::getStyleSheet());
+    qApp->setStyleSheet(themeManagerx->getCurrent()->getStyleSheet());
     dock->setStyleSheet(ThemeAdapter::getDockMainMenuStyle());
     menu->ClickedItemAfterThemeChanged(currentScreen);
     centralWidget->setStyleSheet(ThemeAdapter::getCentralWidgetStyle());

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
+#include "thememanager.h"
 
 class TransactionTableModel;
 class ClientModel;
@@ -56,6 +57,8 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
+
+    ThemeManager *themeManagerx;
 
 protected:
     void changeEvent(QEvent *e);

@@ -299,3 +299,10 @@ static QString ThemeAdapter::getQPushButtonStyle() {
     }
 }
 
+static QString ThemeAdapter::getAboutImage() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_ABOUT_IMG;
+    } else {
+        return DT_ABOUT_IMG;
+    }
+}

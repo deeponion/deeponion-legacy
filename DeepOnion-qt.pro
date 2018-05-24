@@ -233,6 +233,8 @@ DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
 	src/qt/menupage.h \
 	src/qt/themeadapter.h \
+	src/qt/theme.h \
+	src/qt/thememanager.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
 	src/qt/bantablemodel.h \
@@ -352,6 +354,8 @@ SOURCES += src/qt/bitcoin.cpp \
     src/qt/menupage.cpp \
     src/qt/bitcoingui.cpp \
 	src/qt/themeadapter.cpp \
+	src/qt/theme.cpp \
+	src/qt/thememanager.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
 	src/qt/bantablemodel.cpp \

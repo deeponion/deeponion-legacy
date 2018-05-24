@@ -101,5 +101,7 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}";
 
+    static QString LT_ABOUT_IMG = ":/images/about_light";
+
 
 #endif //DEEPONION_LIGHTTHEME_H

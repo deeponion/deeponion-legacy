@@ -92,4 +92,6 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}";
 
+    static QString DT_ABOUT_IMG = ":/images/about_dark";
+
 #endif //DEEPONION_DARKTHEME_H

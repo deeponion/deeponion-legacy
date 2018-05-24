@@ -119,6 +119,8 @@
 
     <qresource prefix="/images">
         <file alias="about_new">res/images/about.png</file>
+        <file alias="about_dark">res/images/white-wallet-logo.png</file>
+        <file alias="about_light">res/images/colored-wallet-logo.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="wallet_logo">res/images/wallet.png</file>
