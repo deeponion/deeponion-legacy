@@ -13,12 +13,14 @@
 #include <leveldb/cache.h>
 #include <leveldb/filter_policy.h>
 #include <leveldb/helpers/memenv/memenv.h>
+#include <boost/lexical_cast.hpp>
 
 #include "kernel.h"
 #include "checkpoints.h"
 #include "txdb.h"
 #include "util.h"
 #include "main.h"
+#include "ui_interface.h"
 
 using namespace std;
 using namespace boost;
@@ -326,6 +328,9 @@ static CBlockIndex *InsertBlockIndex(uint256 hash)
 
 bool CTxDB::LoadBlockIndex()
 {
+	int estimatedMaxBlock = 600000;
+	int count = 0;
+	
     if (mapBlockIndex.size() > 0) {
         // Already loaded once in this session. It can happen during migration
         // from BDB.
@@ -391,6 +396,14 @@ bool CTxDB::LoadBlockIndex()
             setStakeSeen.insert(make_pair(pindexNew->prevoutStake, pindexNew->nStakeTime));
 
         iterator->Next();
+        ++count;
+		if(count % 5000 == 0)
+		{
+			int pc = 100 * count / estimatedMaxBlock;
+			if(pc > 100) pc = 100;
+			std::string percentage = boost::lexical_cast<std::string>(pc);
+			uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
+		}
     }
     delete iterator;
 
@@ -444,15 +457,13 @@ bool CTxDB::LoadBlockIndex()
     // Verify blocks in the best chain
     int nCheckLevel = GetArg("-checklevel", 1);
     int nCheckDepth = GetArg( "-checkblocks", 2500);
-    if (nCheckDepth == 0)
-        nCheckDepth = 1000000000; // suffices until the year 19000
-    if (nCheckDepth > nBestHeight)
+    if (nCheckDepth <= 0 || nCheckDepth > nBestHeight)
         nCheckDepth = nBestHeight;
     printf("Verifying last %i blocks at level %i\n", nCheckDepth, nCheckLevel);
     CBlockIndex* pindexFork = NULL;
     map<pair<unsigned int, unsigned int>, CBlockIndex*> mapBlockPos;
     for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
-    {
+    {		
         if (fRequestShutdown || pindex->nHeight < nBestHeight-nCheckDepth)
             break;
         CBlock block;

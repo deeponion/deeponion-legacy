@@ -1,3 +1,7 @@
+// Copyright (c) 2017-2018 The DeepOnion developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "guiutil.h"
 #include "bitcoinaddressvalidator.h"
 #include "walletmodel.h"

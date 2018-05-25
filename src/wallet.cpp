@@ -13,12 +13,18 @@
 #include "coincontrol.h" 
 #include "smessage.h"
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/lexical_cast.hpp>
 
 using namespace std;
 extern unsigned int nStakeMaxAge;
 
 unsigned int nStakeSplitAge = 20 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
+
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 543950;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 523352;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "db2b4c6d31844020af9ef4eb9253692efd65f35be85859f73ab7e4b41436eabe";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "ba839a3a2d7c9e5a80cc891195e0518c37cded079c6ea8a8ce826b002d4c954e";
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -3284,3 +3290,67 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     
     return true;
 }
+
+
+void CWallet::ScanBlockchainForHash(bool bDisplay)
+{
+	printf(">> calling ScanBlockchainForHash ...\n");
+	CBlockIndex* pindex = pindexGenesisBlock;
+	int count = 0;
+	int maxBlock = 550000;
+	if(pindexBest != NULL)
+	{
+		maxBlock = pindexBest->nHeight;
+	}
+
+	unsigned char hash11[SHA256_DIGEST_LENGTH];
+	SHA256_CTX sha256;
+	SHA256_Init(&sha256);
+
+	{
+		LOCK(cs_wallet);
+		while (pindex && count != LAST_REGISTERED_BLOCK_HEIGHT)
+		{
+			CBlock block;
+			block.ReadFromDisk(pindex, true);
+			// txcount += (long)block.vtx.size();
+			uint256 bhash = block.GetHash();
+			std::string strHash = bhash.ToString();
+			SHA256_Update(&sha256, strHash.c_str(), strHash.size());
+
+			pindex = pindex->pnext;
+			++count;
+			
+			if(bDisplay)
+			{
+				if(count % 5000 == 0)
+				{
+					std::string percentage = boost::lexical_cast<std::string>(100 * count / maxBlock);
+					uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
+				}
+			}
+		} // while (pindex)
+	}
+
+    // printf(">> block height = %d, tx count = %ld\n", count, txcount);
+    
+	SHA256_Final(hash11, &sha256);
+
+	std::stringstream ss;
+	for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+	{
+		ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash11[i];
+	}
+	std::string hash0 = ss.str();
+
+	if(count != LAST_REGISTERED_BLOCK_HEIGHT)
+		blockchainStatus = -1;
+	else if(hash0 == LAST_REGISTERED_BLOCKCHAIN_HASH)
+		blockchainStatus = 1;
+	else
+		blockchainStatus = 0;
+		
+	printf(">> blockchain hash at %d: %s\n", LAST_REGISTERED_BLOCK_HEIGHT, hash0.c_str());
+	printf(">> blockchainStatus = %d\n", blockchainStatus);
+}
+
