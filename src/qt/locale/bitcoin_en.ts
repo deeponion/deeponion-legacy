@@ -3345,7 +3345,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
 <context>
     <name>BlockchainDialog</name>
     <message>
-        <location filename="../blockchaindialog.ui" line="+38"/>
+        <location filename="../forms/blockchaindialog.ui" line="+38"/>
         <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height 523,000. The matched hash is 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, which is registered at Bitcoin blockchain at Block 521,681, with txid b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73.</source>
         <translation>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height 523,000. The matched hash is 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, which is registered at Bitcoin blockchain at Block 521,681, with txid b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73.</translation>
     </message>
