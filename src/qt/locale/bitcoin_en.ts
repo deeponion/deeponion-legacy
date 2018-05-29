@@ -1,3 +1,7 @@
+# Message to translators: 
+# Please keep the format the same. If there is an extra space or random brackets, it's for a good reason. Thanks!
+# Last updated: May 27th 2018
+
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
@@ -3335,6 +3339,114 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <translation>You must set rpcpassword=&lt;password&gt; in the configuration file:
 %s
 If the file does not exist, create it with owner-readable-only file permissions.</translation>
+    </message>
+</context>
+# 27/05/2018 Updates start here; BlockchainDialog and WalletModel (Bitcoin Blockchain Verification)
+<context>
+    <name>BlockchainDialog</name>
+    <message>
+        <location filename="../forms/blockchaindialog.ui" line="+38"/>
+        <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height 523,000. The matched hash is 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, which is registered at Bitcoin blockchain at Block 521,681, with txid b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73.</source>
+        <translation>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height 523,000. The matched hash is 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, which is registered at Bitcoin blockchain at Block 521,681, with txid b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73.</translation>
+    </message>
+    <message>
+        <location line="+51"/>
+        <source>DeepOnion blockchain is already a very secure immutable database, as it is guaranteed by close to 1000 nodes in the network. However, to further guarantee that everything in the DeepOnion blockchain is immutable, we periodically register the DeepOnion blockchain hash in the Bitcoin blockchain. Bitcoin blockchain is the most secure immutable database in the world, with over 10,000 nodes running in about 100 different countries.</source>    
+        <translation>DeepOnion blockchain is already a very secure immutable database, as it is guaranteed by close to 1000 nodes in the network. However, to further guarantee that everything in the DeepOnion blockchain is immutable, we periodically register the DeepOnion blockchain hash in the Bitcoin blockchain. Bitcoin blockchain is the most secure immutable database in the world, with over 10,000 nodes running in about 100 different countries.</translation>
+    </message>
+    <message>   
+        <location line="+51"/>
+        <source>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure immutable database and check its authencity later at any time by Deepvault.</source>
+        <translation>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure immutable database and check its authencity later at any time by Deepvault.</translation>    
+    </message>
+     <message>
+        <location line="+51"/>
+        <source>If your blockchain is not matched, then it mean you are on a forked chain, you need to resynchronize with the DeepOnion network in order to be on the right blockchain (this protects your DeepOnion assets too).</source>
+        <translation>If your blockchain is not matched, then it mean you are on a forked chain, you need to resynchronize with the DeepOnion network in order to be on the right blockchain (this protects your DeepOnion assets too).</translation>
+    </message>  
+</context>
+<context>
+    <name>WalletModel</name>
+    <message>
+        <location filename="../walletmodel.cpp" line="+648"/>
+        <source>The DeepOnoion blockchain is not fully sychronized..</source>
+        <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
+    </message>
+        <message>
+        <location line="+650"/>
+        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
+        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
+    </message>
+     <message>
+        <location line="+651"/>
+        <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
+        <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
+    </message>
+         <message>
+        <location line="+652"/>
+        <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
+        <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
+    </message>
+       </message>
+         <message>
+        <location line="+654"/>
+        <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
+        <translation>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </translation>
+    </message>
+    <message>
+        <location line="+655"/>
+        <source>the most secure immuatble database in the world) up to Block </source>
+        <translation>the most secure immuatble database in the world) up to Block </translation>
+    </message>
+    <message>
+        <location line="+667"/>
+        <source>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </source>
+        <translation>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </translation>
+    </message>
+    <message>
+        <location line="+668"/>
+        <source>Please wait until it is fully synchronized and check back.</source>
+        <translation>Please wait until it is fully synchronized and check back.</translation>
+    </message>
+    <message>
+        <location line="+670"/>
+        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
+        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
+    </message>
+    <message>
+        <location line="+671"/>
+        <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
+        <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
+    </message>
+    <message>
+        <location line="+672"/>
+        <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
+        <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
+    </message>
+    <message>
+        <location line="+674"/>
+        <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </source>
+        <translation>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </translation>
+    </message>
+    <message>
+        <location line="+675"/>
+        <source>. The matched hash is </source>
+        <translation>. The matched hash is </translation>
+    </message>
+    <message>
+        <location line="+676"/>
+        <source>, which is registered at Bitcoin blockchain at Block </source>
+        <translation>, which is registered at Bitcoin blockchain at Block </translation>
+    </message>
+    <message>
+        <location line="+677"/>
+        <source>, with txid </source>
+        <translation>, with txid </translation>
+    </message>
+    <message>
+        <location line="+678"/>
+        <source>.</source>
+        <translation>.</translation>
     </message>
 </context>
 </TS>
