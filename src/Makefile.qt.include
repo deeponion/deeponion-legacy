@@ -12,7 +12,7 @@ QT_FORMS_UI = \
   qt/forms/aboutdialog.ui \
   qt/forms/addressbookpage.ui \
   qt/forms/askpassphrasedialog.ui \
-  qt/forms/blockchaindialog.ui \  
+  qt/forms/blockchaindialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/intro.ui \
