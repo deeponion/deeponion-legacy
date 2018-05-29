@@ -1,7 +1,3 @@
-# Message to translators: 
-# Please keep the format the same. If there is an extra space or random brackets, it's for a good reason. Thanks!
-# Last updated: May 27th 2018
-
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
 <TS version="2.1" language="en">
@@ -3341,7 +3337,6 @@ If the file does not exist, create it with owner-readable-only file permissions.
 If the file does not exist, create it with owner-readable-only file permissions.</translation>
     </message>
 </context>
-# 27/05/2018 Updates start here; BlockchainDialog and WalletModel (Bitcoin Blockchain Verification)
 <context>
     <name>BlockchainDialog</name>
     <message>
@@ -3369,7 +3364,7 @@ If the file does not exist, create it with owner-readable-only file permissions.
     <name>WalletModel</name>
     <message>
         <location filename="../walletmodel.cpp" line="+648"/>
-        <source>The DeepOnoion blockchain is not fully sychronized..</source>
+        <source>The DeepOnoion blockchain is not fully sychronized.</source>
         <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
     </message>
         <message>
@@ -3382,13 +3377,12 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
         <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
     </message>
-         <message>
+    <message>
         <location line="+652"/>
         <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
         <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
     </message>
-       </message>
-         <message>
+    <message>
         <location line="+654"/>
         <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
         <translation>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </translation>
