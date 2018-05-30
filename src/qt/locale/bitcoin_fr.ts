@@ -3337,13 +3337,13 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     </message>
     <message>   
         <location line="+51"/>
-        <source>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure immutable database and check its authencity later at any time by Deepvault.</source>
-        <translation>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure immutable database and check its authencity later at any time by Deepvault.</translation>    
+        <source>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure immutable database and check its authencity later at any time by DeepVault.</source>
+        <translation>Quand le portefeuille DeepOnion démarre, il compare automatiquement le hash de la blockchain avec le dernier point de sauvegarde enregistré sur la Bitcoin blockchain. Quand les hashs correspondent, cela signifie que la DeepOnion blockchain (jusqu'au dernier point de sauvegarde) est authentique en conséquence tous les hashs des fichiers enregistrés sur DeepVault sont aussi garantie par la Bitcoin blockchain! Ainsi avec des frais moins importants, vous pouvez enregistrer vos fichiers dans la base de donnée immuable et la plus sécurisé du monde et vérifiers leurs authenticités à n'importe quel moment avec DeepVault.</translation>    
     </message>
      <message>
         <location line="+51"/>
         <source>If your blockchain is not matched, then it mean you are on a forked chain, you need to resynchronize with the DeepOnion network in order to be on the right blockchain (this protects your DeepOnion assets too).</source>
-        <translation>If your blockchain is not matched, then it mean you are on a forked chain, you need to resynchronize with the DeepOnion network in order to be on the right blockchain (this protects your DeepOnion assets too).</translation>
+        <translation>Si votre blockchain ne correspond pas, cela signifie que vous êtes sur une &quot;forked chain&quot;, vous devez synchroniser à nouveau le réseau DeepOnion pour pouvoir être sur la bonne blockchain (cela protège également vos actifs).</translation>
     </message>  
 </context>
 <context>
@@ -3351,78 +3351,78 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     <message>
         <location filename="../walletmodel.cpp" line="+648"/>
         <source>The DeepOnoion blockchain is not fully sychronized..</source>
-        <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
+        <translation>La DeepOnion blockchain n'est pas entièrement synchronisée...</translation>
     </message>
         <message>
         <location line="+650"/>
         <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
+        <translation>La DeepOnion blockchain est synchronisée mais le hash ne correspond pas au dernier point de sauvegarde de celui-ci au bloc </translation>
     </message>
      <message>
         <location line="+651"/>
         <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
-        <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
+        <translation> (qui est enregistrée et garantie par la Bitcoin blockchain). </translation>
     </message>
          <message>
         <location line="+652"/>
         <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
-        <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
+        <translation>Il semblerait que vous êtes sur une &quot;forked chain&quot;, s&apos;il vous plaît synchroniser à nouveau avec des pairs officiels sur https://deeponion.org.</translation>
     </message>
        </message>
          <message>
         <location line="+654"/>
         <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
-        <translation>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </translation>
+        <translation>La DeepOnion blockchain est entiérement synchronisée. Elle est authentique! Ceci est garantie par le Bitcoin blockchain </translation>
     </message>
     <message>
         <location line="+655"/>
         <source>the most secure immuatble database in the world) up to Block </source>
-        <translation>the most secure immuatble database in the world) up to Block </translation>
+        <translation>(la base de donnée immuable la plus sécurisée au monde) jusqu&apos;au Bloc </translation>
     </message>
     <message>
         <location line="+667"/>
         <source>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </source>
-        <translation>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </translation>
+        <translation>Nous ne pouvons pas vérifier la DeepOnion blockchain tant qu&apos;elle n&apos;est pas totalement synchronisée. </translation>
     </message>
     <message>
         <location line="+668"/>
         <source>Please wait until it is fully synchronized and check back.</source>
-        <translation>Please wait until it is fully synchronized and check back.</translation>
+        <translation>S&aposil vous plaît attender la fin de la synchronisation est vérifié à nouveau...</translation>
     </message>
     <message>
         <location line="+670"/>
         <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
+        <translation>La DeepOnion blockchain est synchronisée mais le hash ne correspond pas au dernier point de sauvegarde au Bloc </translation>
     </message>
     <message>
         <location line="+671"/>
         <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
-        <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
+        <translation> (qui est enregistrée et garantie par la Bitcoin blockchain). </translation>
     </message>
     <message>
         <location line="+672"/>
         <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
-        <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
+        <translation>Il semblerait que vous êtes sur une &quot;forked chain&quot;, s&apos;il vous plaît synchroniser à nouveau avec des pairs officiels sur https://deeponion.org.</translation>
     </message>
     <message>
         <location line="+674"/>
         <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </source>
-        <translation>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </translation>
+        <translation>L'actuelle DeepOnion blockchain que vous utilisez a un hash correpondant à celui enregistré sur la Bitcoin blockchain au bloc </translation>
     </message>
     <message>
         <location line="+675"/>
         <source>. The matched hash is </source>
-        <translation>. The matched hash is </translation>
+        <translation>. Le hash correspond est </translation>
     </message>
     <message>
         <location line="+676"/>
         <source>, which is registered at Bitcoin blockchain at Block </source>
-        <translation>, which is registered at Bitcoin blockchain at Block </translation>
+        <translation>, qui est enregistrée par la Bitcoin blockchain au Bloc </translation>
     </message>
     <message>
         <location line="+677"/>
         <source>, with txid </source>
-        <translation>, with txid </translation>
+        <translation>, avec le txID </translation>
     </message>
     <message>
         <location line="+678"/>
