@@ -3387,7 +3387,7 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     <message>
         <location line="+668"/>
         <source>Please wait until it is fully synchronized and check back.</source>
-        <translation>S&aposil vous plaît attender la fin de la synchronisation est vérifié à nouveau...</translation>
+        <translation>S&apos;il vous plaît attender la fin de la synchronisation est vérifié à nouveau...</translation>
     </message>
     <message>
         <location line="+670"/>
