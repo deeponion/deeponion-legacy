@@ -245,7 +245,13 @@ RPCConsole::RPCConsole(QWidget *parent) : QDialog(parent),
     ui->peerHeading->setText(tr("Select a peer to view detailed information."));
 
     ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    QIcon icon1;
+    icon1.addFile(ThemeAdapter::getFontSmallerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    ui->fontSmallerButton->setIcon(icon1);
     ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    QIcon icon2;
+    icon2.addFile(ThemeAdapter::getFontBiggerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    ui->fontBiggerButton->setIcon(icon2);
     ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
 
 
@@ -887,6 +893,12 @@ void RPCConsole::on_showCLOptionsButton_clicked()
 
 void RPCConsole::refreshStyle() {
     ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    QIcon icon1;
+    icon1.addFile(ThemeAdapter::getFontSmallerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    ui->fontSmallerButton->setIcon(icon1);
     ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    QIcon icon2;
+    icon2.addFile(ThemeAdapter::getFontBiggerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    ui->fontBiggerButton->setIcon(icon2);
     ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
 }

@@ -63,6 +63,11 @@ public:
     static QString getQPushButtonStyle();
 
     static QString getAboutImage();
+
+    static QString getFontBiggerIcon();
+    static QString getFontSmallerIcon();
+
+    static QString getTreeWidgetStyle();
 };
 
 #endif //DEEPONION_THEMEADAPTER_H

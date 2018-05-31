@@ -7,15 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>542</width>
-    <height>369</height>
+    <height>417</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>About DeepOnion</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
@@ -26,7 +25,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../bitcoin.qrc">:/images/about_new</pixmap>
+        <pixmap>:/images/about_new</pixmap>
        </property>
       </widget>
      </item>

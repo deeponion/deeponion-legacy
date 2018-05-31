@@ -189,7 +189,7 @@
                <string/>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="../bitcoin.qrc">
                 <normaloff>:/icons/information</normaloff>
                 <normalon>:/icons/information</normalon>:/icons/information</iconset>
               </property>
@@ -289,6 +289,9 @@
          </property>
          <property name="toolTip">
           <string>Double-click to edit address or label</string>
+         </property>
+         <property name="verticalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOn</enum>
          </property>
          <property name="tabKeyNavigation">
           <bool>false</bool>

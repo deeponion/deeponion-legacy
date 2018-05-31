@@ -21,8 +21,8 @@
 		QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
 		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
         QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
-		QLineEdit { background-color: #D8D8D8; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
-        QLineEdit:hover {border: 1px solid gray; background-color: #D8D8D8; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+		QLineEdit { background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
+        QLineEdit:hover {border: 0px solid d3d3d3; background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
 		QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
 		QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
 		QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -76,15 +76,15 @@
     static QString LT_MAIN_MENU_EXPORT_S_BTN_ICO = ":/icons/NewExportUS";
 
     static QString LT_QFRAME_GENERAL_STYLE = "background-color: #FFFFFF;";
-    static QString LT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #D8D8D8; padding: 8px;";
+    static QString LT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #DFE9F7; padding: 8px;";
     static QString LT_QLABEL_GENERAL_STYLE = "color: #486EBA";
     static QString LT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #D8D8D8; background-color: #FFFFFF;\
-            border: none; margin: 0; padding: 0;";
+            border: 0px; margin: 0; padding: 0;";
     static QString LT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
                                                                         padding-top: 14px; padding-bottom: 14px;}";
-    static QString LT_LINE_EDIT = "background-color: #D8D8D8; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+    static QString LT_LINE_EDIT = "background-color: #F7F7F7; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
     static QString LT_ICON_TEXT_BUTTON_STYLE = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);} ";
 
     static QString LT_INFORMATION_ICO = ":/icons/information-blue";
@@ -102,6 +102,13 @@
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}";
 
     static QString LT_ABOUT_IMG = ":/images/about_light";
+
+    static QString LT_FONTBIGGER_ICO = ":/icons/fontbigger_light";
+    static QString LT_FONTSMALLER_ICO = ":/icons/fontsmaller_light";
+
+    static QString LT_TREE_WIDGET = "QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
+		QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
+		QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;}";
 
 
 #endif //DEEPONION_LIGHTTHEME_H

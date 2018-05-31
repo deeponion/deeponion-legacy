@@ -70,8 +70,10 @@
         <file alias="new_notsynced">res/icons/new/notsynced.png</file>
         <file alias="information">res/icons/new/info-circle-white.png</file>
         <file alias="information-blue">res/icons/new/info-circle-blue.png</file>
-        <file alias="fontbigger">res/icons/fontbigger.png</file>
-        <file alias="fontsmaller">res/icons/fontsmaller.png</file>
+        <file alias="fontbigger_dark">res/icons/white-fontbigger.png</file>
+        <file alias="fontsmaller_dark">res/icons/white-fontsmaller.png</file>
+        <file alias="fontbigger_light">res/icons/blue-fontbigger.png</file>
+        <file alias="fontsmaller_light">res/icons/blue-fontsmaller.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/new/spinner-000.png</file>

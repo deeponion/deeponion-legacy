@@ -226,6 +226,7 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionProxyModel->setSortRole(Qt::EditRole);
 
+        transactionView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
         transactionView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());

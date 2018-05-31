@@ -244,11 +244,16 @@
               </item>
               <item>
                <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
+                <property name="font">
+                 <font>
+                  <kerning>true</kerning>
+                 </font>
+                </property>
                 <property name="styleSheet">
-                 <string notr="true"/>
+                 <string notr="true">color: red;</string>
                 </property>
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#e6e6e6;&quot;&gt;automatically selected&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>automatically selected</string>
                 </property>
                 <property name="margin">
                  <number>5</number>

@@ -306,3 +306,27 @@ static QString ThemeAdapter::getAboutImage() {
         return DT_ABOUT_IMG;
     }
 }
+
+static QString ThemeAdapter::getFontBiggerIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_FONTBIGGER_ICO;
+    } else {
+        return DT_FONTBIGGER_ICO;
+    }
+}
+
+static QString ThemeAdapter::getFontSmallerIcon() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_FONTSMALLER_ICO;
+    } else {
+        return DT_FONTSMALLER_ICO;
+    }
+}
+
+static QString ThemeAdapter::getTreeWidgetStyle() {
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        return LT_TREE_WIDGET;
+    } else {
+        return DT_TREE_WIDGET;
+    }
+}
