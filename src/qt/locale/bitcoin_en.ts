@@ -1160,13 +1160,18 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Pay transaction &amp;fee</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+85"/>
         <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
         <translation></translation>
     </message>
     <message>
         <location line="+100"/>
         <source>Reserve</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location line="+106"/>
+        <source>reserveBalance</source>
         <translation></translation>
     </message>
     <message>
@@ -1220,6 +1225,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Proxy &amp;IP:</translation>
     </message>
     <message>
+        <location line="+199"/>
+        <source>proxyIp:</source>
+        <translation>proxyIp</translation>
+    </message>
+    <message>
         <location line="+212"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
         <translation>IP address of the proxy (e.g. 127.0.0.1)</translation>
@@ -1230,6 +1240,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>&amp;Port:</translation>
     </message>
     <message>
+        <location line="+225"/>
+        <source>proxyPort</source>
+        <translation>proxyPort</translation>
+    </message>
+    <message>
         <location line="+238"/>
         <source>Port of the proxy (e.g. 9050)</source>
         <translation>Port of the proxy (e.g. 9050)</translation>
@@ -1238,6 +1253,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+245"/>
         <source>SOCKS &amp;Version:</source>
         <translation>SOCKS &amp;Version:</translation>
+    </message>
+    <message>
+        <location line="+251"/>
+        <source>socksVersion</source>
+        <translation>socksVersion</translation>
     </message>
     <message>
         <location line="+258"/>
@@ -1280,6 +1300,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>User Interface &amp;language:</translation>
     </message>
     <message>
+        <location line="+354"/>
+        <source>lang</source>
+        <translation>lang</translation>
+    </message>
+    <message>
         <location line="+361"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
         <translation>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</translation>
@@ -1288,6 +1313,11 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+372"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
+    </message>
+    <message>
+        <location line="+372"/>
+        <source>unit</source>
+        <translation>unit</translation>
     </message>
     <message>
         <location line="+385"/>
@@ -1313,6 +1343,16 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+407"/>
         <source>Display coin &amp;control features (experts only!)</source>
         <translation></translation>
+    </message>
+    <message>
+        <location line="+414"/>
+        <source>If enabled DeepOnion wallet will print all debug messages to debug.log file.</source>
+        <translation>If enabled DeepOnion wallet will print all debug messages to debug.log file.</translation>
+    </message>
+    <message>
+        <location line="+417"/>
+        <source>Print debug messages to log file</source>
+        <translation>Print debug messages to log file</translation>
     </message>
     <message>
         <location line="+488"/>
