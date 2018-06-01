@@ -725,7 +725,7 @@ bool AppInit2()
         printf("Shutdown requested. Exiting.\n");
         return false;
     }
-    printf(" block index %15" PRId64 "ms\n", GetTimeMillis() - nStart);
+    printf("Block index %15" PRId64 "ms\n", GetTimeMillis() - nStart);
 
     if (GetBoolArg("-printblockindex") || GetBoolArg("-printblocktree"))
     {
@@ -868,7 +868,7 @@ bool AppInit2()
 
     printf("Checking blockchain hash...\n");
     uiInterface.InitMessage(_("Checking blockchain hash..."));
-    pwalletMain->ScanBlockchainForHash();
+    pwalletMain->ScanBlockchainForHash(true);
     
     // ********************************************************* Step 10: load peers
 

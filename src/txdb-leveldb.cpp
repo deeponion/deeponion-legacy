@@ -13,6 +13,7 @@
 #include <leveldb/cache.h>
 #include <leveldb/filter_policy.h>
 #include <leveldb/helpers/memenv/memenv.h>
+#include <boost/lexical_cast.hpp>
 
 #include "kernel.h"
 #include "checkpoints.h"
@@ -327,6 +328,9 @@ static CBlockIndex *InsertBlockIndex(uint256 hash)
 
 bool CTxDB::LoadBlockIndex()
 {
+	int estimatedMaxBlock = 600000;
+	int count = 0;
+	
     if (mapBlockIndex.size() > 0) {
         // Already loaded once in this session. It can happen during migration
         // from BDB.
@@ -392,6 +396,14 @@ bool CTxDB::LoadBlockIndex()
             setStakeSeen.insert(make_pair(pindexNew->prevoutStake, pindexNew->nStakeTime));
 
         iterator->Next();
+        ++count;
+		if(count % 5000 == 0)
+		{
+			int pc = 100 * count / estimatedMaxBlock;
+			if(pc > 100) pc = 100;
+			std::string percentage = boost::lexical_cast<std::string>(pc);
+			uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
+		}
     }
     delete iterator;
 
@@ -451,13 +463,7 @@ bool CTxDB::LoadBlockIndex()
     CBlockIndex* pindexFork = NULL;
     map<pair<unsigned int, unsigned int>, CBlockIndex*> mapBlockPos;
     for (CBlockIndex* pindex = pindexBest; pindex && pindex->pprev; pindex = pindex->pprev)
-    {
-        // Display verify progress on splash screen to show application
-        // activity to users, not an unresponsive screen with unknown status
-        if(nCheckDepth != 0 && nCheckDepth % 100 == 0){
-            uiInterface.InitMessage("Verifying latest blocks: " + to_string((int)((pindexBest->nHeight - pindex->nHeight) / (nCheckDepth * 0.01f))) + "%");
-        }
-		
+    {		
         if (fRequestShutdown || pindex->nHeight < nBestHeight-nCheckDepth)
             break;
         CBlock block;

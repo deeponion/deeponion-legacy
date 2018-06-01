@@ -13,6 +13,7 @@
 #include "coincontrol.h" 
 #include "smessage.h"
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/lexical_cast.hpp>
 
 using namespace std;
 extern unsigned int nStakeMaxAge;
@@ -3291,12 +3292,16 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
 }
 
 
-void CWallet::ScanBlockchainForHash()
+void CWallet::ScanBlockchainForHash(bool bDisplay)
 {
 	printf(">> calling ScanBlockchainForHash ...\n");
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
-	// long txcount = 0;
+	int maxBlock = 550000;
+	if(pindexBest != NULL)
+	{
+		maxBlock = pindexBest->nHeight;
+	}
 
 	unsigned char hash11[SHA256_DIGEST_LENGTH];
 	SHA256_CTX sha256;
@@ -3315,6 +3320,15 @@ void CWallet::ScanBlockchainForHash()
 
 			pindex = pindex->pnext;
 			++count;
+			
+			if(bDisplay)
+			{
+				if(count % 5000 == 0)
+				{
+					std::string percentage = boost::lexical_cast<std::string>(100 * count / maxBlock);
+					uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
+				}
+			}
 		} // while (pindex)
 	}
 
