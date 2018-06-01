@@ -1533,7 +1533,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/rpcconsole.ui" line="+364"/>
         <source>Client name</source>
         <translation>Client name</translation>
     </message>
@@ -1552,22 +1552,22 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>N/A</translation>
     </message>
     <message>
-        <location line="-217"/>
+        <location line="-325"/>
         <source>Client version</source>
         <translation>Client version</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-27"/>
         <source>&amp;Information</source>
         <translation>&amp;Information</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+289"/>
         <source>Using OpenSSL version</source>
         <translation>Using OpenSSL version</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+282"/>
         <source>Startup time</source>
         <translation>Startup time</translation>
     </message>
@@ -1577,12 +1577,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Network</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+192"/>
         <source>Number of connections</source>
         <translation>Number of connections</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+255"/>
         <source>On testnet</source>
         <translation>On testnet</translation>
     </message>
@@ -1592,17 +1592,17 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Block chain</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+216"/>
         <source>Current number of blocks</source>
         <translation>Current number of blocks</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+262"/>
         <source>Estimated total blocks</source>
         <translation>Estimated total blocks</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+199"/>
         <source>Last block time</source>
         <translation>Last block time</translation>
     </message>
@@ -1612,54 +1612,209 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+81"/>
         <source>Command-line options</source>
         <translation>Command-line options</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+62"/>
         <source>Show the DeepOnion-Qt help message to get a list with possible DeepOnion command-line options.</source>
         <translation>Show the DeepOnion-Qt help message to get a list with possible DeepOnion command-line options.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+65"/>
         <source>&amp;Show</source>
         <translation>&amp;Show</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+557"/>
         <source>&amp;Console</source>
         <translation>&amp;Console</translation>
     </message>
     <message>
-        <location line="-260"/>
+        <location line="+606"/>
+        <source>Decrease font size</source>
+        <translation>Decrease font size</translation>
+    </message>
+    <message>
+        <location line="+638"/>
+        <source>Increase font size</source>
+        <translation>Increase font size</translation>
+    </message>
+    <message>
+        <location line="+494"/>
         <source>Build date</source>
         <translation>Build date</translation>
     </message>
     <message>
-        <location line="-104"/>
+        <location line="+14"/>
         <source>DeepOnion - Debug window</source>
         <translation>DeepOnion - Debug window</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+302"/>
         <source>DeepOnion Core</source>
         <translation>DeepOnion Core</translation>
     </message>
     <message>
-        <location line="+279"/>
+        <location line="+419"/>
         <source>Debug log file</source>
         <translation>Debug log file</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+455"/>
+        <source>Show More Details</source>
+        <translation>Show More Details</translation>
+    </message>
+    <message>
+        <location line="+49"/>
         <source>Open the DeepOnion debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>Open the DeepOnion debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
-        <location line="+102"/>
+        <location line="+693"/>
         <source>Clear console</source>
         <translation>Clear console</translation>
+    </message>
+    <message>
+        <location line="+670"/>
+        <source>Network traffic</source>
+        <translation>Network traffic</translation>
+    </message>
+    <message>
+        <location line="+745"/>
+        <source>Clear</source>
+        <translation>Clear</translation>
+    </message>
+    <message>
+        <location line="+761"/>
+        <source>Totals</source>
+        <translation>Totals</translation>
+    </message>
+    <message>
+        <location line="+825"/>
+        <source>In:</source>
+        <translation>In:</translation>
+    </message>
+    <message>
+        <location line="+905"/>
+        <source>Out:</source>
+        <translation>Out:</translation>
+    </message>
+    <message>
+        <location line="+946"/>
+        <source>Peers</source>
+        <translation>Peers</translation>
+    </message>
+   <message>
+        <location line="+999"/>
+        <source>Banned peers</source>
+        <translation>Banned peers</translation>
+    </message>
+    <message>
+        <location line="+1059"/>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Select a peer to view detailed information.</translation>
+    </message>
+    <message>
+        <location line="+1084"/>
+        <source>Whitelisted</source>
+        <translation>Whitelisted</translation>
+    </message>
+    <message>
+        <location line="+1087"/>
+        <source>Direction</source>
+        <translation>Direction</translation>
+    </message>
+    <message>
+        <location line="+1130"/>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <location line="+1153"/>
+        <source>User Agent</source>
+        <translation>User Agent</translation>
+    </message>
+    <message>
+        <location line="+1176"/>
+        <source>Services</source>
+        <translation>Services</translation>
+    </message>
+    <message>
+        <location line="+1199"/>
+        <source>Starting Block</source>
+        <translation>Starting Block</translation>
+    </message>
+    <message>
+        <location line="+1222"/>
+        <source>Synced Headers</source>
+        <translation>Synced Headers</translation>
+    </message>
+    <message>
+        <location line="+1245"/>
+        <source>Synced Blocks</source>
+        <translation>Synced Blocks</translation>
+    </message>
+    <message>
+        <location line="+1291"/>
+        <source>Connection Times</source>
+        <translation>Connection Time</translation>
+    </message>
+    <message>
+        <location line="+1314"/>
+        <source>Last Send</source>
+        <translation>Last Send</translation>
+    </message>
+    <message>
+        <location line="+1360"/>
+        <source>Sent</source>
+        <translation>Sent</translation>
+    </message>
+    <message>
+        <location line="+1383"/>
+        <source>Received</source>
+        <translation>Received</translation>
+    </message>
+    <message>
+        <location line="+1406"/>
+        <source>Ping Time</source>
+        <translation>Ping Time</translation>
+    </message>
+    <message>
+        <location line="+1429"/>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>The duration of a currently outstanding ping.</translation>
+    </message>
+    <message>
+        <location line="+1432"/>
+        <source>Ping Wait</source>
+        <translation>Ping Wait</translation>
+    </message>
+    <message>
+        <location line="+1478"/>
+        <source>Time Offset</source>
+        <translation>Time Offset</translation>
+    </message>
+    <message>
+        <location line="+1455"/>
+        <source>Min Ping</source>
+        <translation>Min Ping</translation>
+    </message>
+    <message>
+        <location line="+1337"/>
+        <source>Last Receive</source>
+        <translation>Last Receive</translation>
+    </message>
+    <message>
+        <location line="+1268"/>
+        <source>Ban Score</source>
+        <translation>Ban Score</translation>
+    </message>
+    <message>
+        <location line="+387"/>
+        <source>The DeepOnoion blockchain is not fully sychronized.</source>
+        <translationThe DeepOnoion blockchain is not fully sychronized.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
