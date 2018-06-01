@@ -3681,4 +3681,67 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <translation>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</translation>
     </message>
 </context>
+<context>
+    <name>SendCoinsEntry</name>
+    <message>
+        <location filename="../forms/sendcoinsentry.ui" line="+14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Pay &amp;To:</source>
+        <translation>Pay &amp;To:</translation>
+    </message>
+    <message>
+        <location line="+47"/>
+        <source>The address to send the payment to</source>
+        <translation>The address to send the payment to</translation>
+    </message>
+    <message>
+        <location line="+60"/>
+        <source>Choose address from address book</source>
+        <translation>Choose address from address book</translation>
+    </message>
+    <message>
+        <location line="+77"/>
+        <source>Paste address from clipboard</source>
+        <translation>Paste address from clipboard</translation>
+    </message>
+    <message>
+        <location line="+94"/>
+        <source>Remove this recipient</source>
+        <translation>Remove this recipient</translation>
+    </message>
+    <message>
+        <location line="+110"/>
+        <source>&amp;Label:</source>
+        <translation>&amp;Label:</translation>
+    </message>
+    <message>
+        <location line="+131"/>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Enter a label for this address to add it to your address book</translation>
+    </message>
+    <message>
+        <location line="+143"/>
+        <source>&amp;Narration:</source>
+        <translation>&amp;Narration:</translation>
+    </message>
+    <message>
+        <location line="+164"/>
+        <source>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</source>
+        <translation>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</translation>
+    </message>
+    <message>
+        <location line="+164"/>
+        <source>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</source>
+        <translation>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</translation>
+    </message>
+    <message>
+        <location line="+176"/>
+        <source>A&amp;mount:</source>
+        <translation>A&amp;mount:</translation>
+    </message>
+</context>
 </TS>
