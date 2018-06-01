@@ -1170,11 +1170,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation></translation>
     </message>
     <message>
-        <location line="+106"/>
-        <source>reserveBalance</source>
-        <translation></translation>
-    </message>
-    <message>
         <location line="+131"/>
         <source>Automatically start DeepOnion after logging in to the system.</source>
         <translation>Automatically start DeepOnion after logging in to the system.</translation>
@@ -1225,11 +1220,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Proxy &amp;IP:</translation>
     </message>
     <message>
-        <location line="+199"/>
-        <source>proxyIp:</source>
-        <translation>proxyIp</translation>
-    </message>
-    <message>
         <location line="+212"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
         <translation>IP address of the proxy (e.g. 127.0.0.1)</translation>
@@ -1240,11 +1230,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>&amp;Port:</translation>
     </message>
     <message>
-        <location line="+225"/>
-        <source>proxyPort</source>
-        <translation>proxyPort</translation>
-    </message>
-    <message>
         <location line="+238"/>
         <source>Port of the proxy (e.g. 9050)</source>
         <translation>Port of the proxy (e.g. 9050)</translation>
@@ -1253,11 +1238,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+245"/>
         <source>SOCKS &amp;Version:</source>
         <translation>SOCKS &amp;Version:</translation>
-    </message>
-    <message>
-        <location line="+251"/>
-        <source>socksVersion</source>
-        <translation>socksVersion</translation>
     </message>
     <message>
         <location line="+258"/>
@@ -1300,11 +1280,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>User Interface &amp;language:</translation>
     </message>
     <message>
-        <location line="+354"/>
-        <source>lang</source>
-        <translation>lang</translation>
-    </message>
-    <message>
         <location line="+361"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
         <translation>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</translation>
@@ -1313,11 +1288,6 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+372"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
-    </message>
-    <message>
-        <location line="+372"/>
-        <source>unit</source>
-        <translation>unit</translation>
     </message>
     <message>
         <location line="+385"/>
