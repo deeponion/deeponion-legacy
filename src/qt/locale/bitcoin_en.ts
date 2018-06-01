@@ -1145,17 +1145,17 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Options</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+33"/>
         <source>&amp;Main</source>
         <translation>&amp;Main</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+39"/>
         <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
         <translation>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+54"/>
         <source>Pay transaction &amp;fee</source>
         <translation>Pay transaction &amp;fee</translation>
     </message>
@@ -1165,167 +1165,167 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+100"/>
         <source>Reserve</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+131"/>
         <source>Automatically start DeepOnion after logging in to the system.</source>
         <translation>Automatically start DeepOnion after logging in to the system.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+134"/>
         <source>&amp;Start DeepOnion on system login</source>
         <translation>&amp;Start DeepOnion on system login</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+141"/>
         <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
         <translation>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+144"/>
         <source>&amp;Detach databases at shutdown</source>
         <translation>&amp;Detach databases at shutdown</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+165"/>
         <source>&amp;Network</source>
         <translation>&amp;Network</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+171"/>
         <source>Automatically open the DeepOnion client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Automatically open the DeepOnion client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+174"/>
         <source>Map port using &amp;UPnP</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+181"/>
         <source>Connect to the DeepOnion network through a SOCKS proxy (e.g. when connecting through Tor).</source>
         <translation>Connect to the DeepOnion network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+184"/>
         <source>&amp;Connect through SOCKS proxy:</source>
         <translation>&amp;Connect through SOCKS proxy:</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+193"/>
         <source>Proxy &amp;IP:</source>
         <translation>Proxy &amp;IP:</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+212"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
         <translation>IP address of the proxy (e.g. 127.0.0.1)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+219"/>
         <source>&amp;Port:</source>
         <translation>&amp;Port:</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+238"/>
         <source>Port of the proxy (e.g. 9050)</source>
         <translation>Port of the proxy (e.g. 9050)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+245"/>
         <source>SOCKS &amp;Version:</source>
         <translation>SOCKS &amp;Version:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+258"/>
         <source>SOCKS version of the proxy (e.g. 5)</source>
         <translation>SOCKS version of the proxy (e.g. 5)</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+300"/>
         <source>&amp;Window</source>
         <translation>&amp;Window</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+306"/>
         <source>Show only a tray icon after minimizing the window.</source>
         <translation>Show only a tray icon after minimizing the window.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+309"/>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
         <translation>&amp;Minimize to the tray instead of the taskbar</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+316"/>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
         <translation>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+319"/>
         <source>M&amp;inimize on close</source>
         <translation>M&amp;inimize on close</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+340"/>
         <source>&amp;Display</source>
         <translation>&amp;Display</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+348"/>
         <source>User Interface &amp;language:</source>
         <translation>User Interface &amp;language:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+361"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
         <translation>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+372"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+385"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Choose the default subdivision unit to show in the interface and when sending coins.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+394"/>
         <source>Whether to show DeepOnion addresses in the transaction list or not.</source>
         <translation>Whether to show DeepOnion addresses in the transaction list or not.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+397"/>
         <source>&amp;Display addresses in transaction list</source>
         <translation>&amp;Display addresses in transaction list</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+404"/>
         <source>Whether to show coin control features or not.</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+407"/>
         <source>Display coin &amp;control features (experts only!)</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+488"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+495"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+505"/>
         <source>&amp;Apply</source>
         <translation>&amp;Apply</translation>
     </message>
@@ -3441,6 +3441,49 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <location line="+678"/>
         <source>.</source>
         <translation>.</translation>
+    </message>
+</context>
+<context>
+    <name>windowTitle</name>
+    <message>
+        <location filename="../forms/intro.ui" line="+14"/>
+        <source>Welcome to DeepOnion</source>
+        <translation>Welcome to DeepOnion</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</source>
+        <translation>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</translation>
+    </message>
+        <message>
+        <location line="+81"/>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>As this is the first time the program is launched, you can choose where %1 will store its data.</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</source>
+        <translation>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</translation>
+    </message>
+    <message>
+        <location line="+94"/>
+        <source>&amp;Use the default data directory</source>
+        <translation>&amp;Use the default data directory</translation>
+    </message>
+    <message>
+        <location line="+101"/>
+        <source>Use a &amp;custom data directory:</source>
+        <translation>Use a &amp;custom data directory:</translation>
+    </message>
+    <message>
+        <location line="+234"/>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</translation>
+    </message>
+    <message>
+        <location line="+244"/>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</translation>
     </message>
 </context>
 </TS>
