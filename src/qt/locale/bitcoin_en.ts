@@ -1784,7 +1784,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+387"/>
         <source>The DeepOnoion blockchain is not fully sychronized.</source>
-        <translationThe DeepOnoion blockchain is not fully sychronized.</translation>
+        <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
