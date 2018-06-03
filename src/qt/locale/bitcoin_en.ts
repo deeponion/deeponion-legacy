@@ -1145,187 +1145,197 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Options</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+33"/>
         <source>&amp;Main</source>
         <translation>&amp;Main</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+39"/>
         <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
         <translation>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+54"/>
         <source>Pay transaction &amp;fee</source>
         <translation>Pay transaction &amp;fee</translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+85"/>
         <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+15"/>
+        <location line="+100"/>
         <source>Reserve</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+31"/>
+        <location line="+131"/>
         <source>Automatically start DeepOnion after logging in to the system.</source>
         <translation>Automatically start DeepOnion after logging in to the system.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+134"/>
         <source>&amp;Start DeepOnion on system login</source>
         <translation>&amp;Start DeepOnion on system login</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+141"/>
         <source>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</source>
         <translation>Detach block and address databases at shutdown. This means they can be moved to another data directory, but it slows down shutdown. The wallet is always detached.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+144"/>
         <source>&amp;Detach databases at shutdown</source>
         <translation>&amp;Detach databases at shutdown</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+165"/>
         <source>&amp;Network</source>
         <translation>&amp;Network</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+171"/>
         <source>Automatically open the DeepOnion client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Automatically open the DeepOnion client port on the router. This only works when your router supports UPnP and it is enabled.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+174"/>
         <source>Map port using &amp;UPnP</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+181"/>
         <source>Connect to the DeepOnion network through a SOCKS proxy (e.g. when connecting through Tor).</source>
         <translation>Connect to the DeepOnion network through a SOCKS proxy (e.g. when connecting through Tor).</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+184"/>
         <source>&amp;Connect through SOCKS proxy:</source>
         <translation>&amp;Connect through SOCKS proxy:</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+193"/>
         <source>Proxy &amp;IP:</source>
         <translation>Proxy &amp;IP:</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+212"/>
         <source>IP address of the proxy (e.g. 127.0.0.1)</source>
         <translation>IP address of the proxy (e.g. 127.0.0.1)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+219"/>
         <source>&amp;Port:</source>
         <translation>&amp;Port:</translation>
     </message>
     <message>
-        <location line="+19"/>
+        <location line="+238"/>
         <source>Port of the proxy (e.g. 9050)</source>
         <translation>Port of the proxy (e.g. 9050)</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+245"/>
         <source>SOCKS &amp;Version:</source>
         <translation>SOCKS &amp;Version:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+258"/>
         <source>SOCKS version of the proxy (e.g. 5)</source>
         <translation>SOCKS version of the proxy (e.g. 5)</translation>
     </message>
     <message>
-        <location line="+36"/>
+        <location line="+300"/>
         <source>&amp;Window</source>
         <translation>&amp;Window</translation>
     </message>
     <message>
-        <location line="+6"/>
+        <location line="+306"/>
         <source>Show only a tray icon after minimizing the window.</source>
         <translation>Show only a tray icon after minimizing the window.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+309"/>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
         <translation>&amp;Minimize to the tray instead of the taskbar</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+316"/>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
         <translation>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+319"/>
         <source>M&amp;inimize on close</source>
         <translation>M&amp;inimize on close</translation>
     </message>
     <message>
-        <location line="+21"/>
+        <location line="+340"/>
         <source>&amp;Display</source>
         <translation>&amp;Display</translation>
     </message>
     <message>
-        <location line="+8"/>
+        <location line="+348"/>
         <source>User Interface &amp;language:</source>
         <translation>User Interface &amp;language:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+361"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
         <translation>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</translation>
     </message>
     <message>
-        <location line="+11"/>
+        <location line="+372"/>
         <source>&amp;Unit to show amounts in:</source>
         <translation>&amp;Unit to show amounts in:</translation>
     </message>
     <message>
-        <location line="+13"/>
+        <location line="+385"/>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
         <translation>Choose the default subdivision unit to show in the interface and when sending coins.</translation>
     </message>
     <message>
-        <location line="+9"/>
+        <location line="+394"/>
         <source>Whether to show DeepOnion addresses in the transaction list or not.</source>
         <translation>Whether to show DeepOnion addresses in the transaction list or not.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+397"/>
         <source>&amp;Display addresses in transaction list</source>
         <translation>&amp;Display addresses in transaction list</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+404"/>
         <source>Whether to show coin control features or not.</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+407"/>
         <source>Display coin &amp;control features (experts only!)</source>
         <translation></translation>
     </message>
     <message>
-        <location line="+71"/>
+        <location line="+414"/>
+        <source>If enabled DeepOnion wallet will print all debug messages to debug.log file.</source>
+        <translation>If enabled DeepOnion wallet will print all debug messages to debug.log file.</translation>
+    </message>
+    <message>
+        <location line="+417"/>
+        <source>Print debug messages to log file</source>
+        <translation>Print debug messages to log file</translation>
+    </message>
+    <message>
+        <location line="+488"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+495"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Cancel</translation>
     </message>
     <message>
-        <location line="+10"/>
+        <location line="+505"/>
         <source>&amp;Apply</source>
         <translation>&amp;Apply</translation>
     </message>
@@ -1493,7 +1503,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
 <context>
     <name>RPCConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/rpcconsole.ui" line="+364"/>
         <source>Client name</source>
         <translation>Client name</translation>
     </message>
@@ -1512,22 +1522,22 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>N/A</translation>
     </message>
     <message>
-        <location line="-217"/>
+        <location line="-325"/>
         <source>Client version</source>
         <translation>Client version</translation>
     </message>
     <message>
-        <location line="-45"/>
+        <location line="-27"/>
         <source>&amp;Information</source>
         <translation>&amp;Information</translation>
     </message>
     <message>
-        <location line="+68"/>
+        <location line="+289"/>
         <source>Using OpenSSL version</source>
         <translation>Using OpenSSL version</translation>
     </message>
     <message>
-        <location line="+49"/>
+        <location line="+282"/>
         <source>Startup time</source>
         <translation>Startup time</translation>
     </message>
@@ -1537,12 +1547,12 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Network</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+192"/>
         <source>Number of connections</source>
         <translation>Number of connections</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+255"/>
         <source>On testnet</source>
         <translation>On testnet</translation>
     </message>
@@ -1552,17 +1562,17 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Block chain</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+216"/>
         <source>Current number of blocks</source>
         <translation>Current number of blocks</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+262"/>
         <source>Estimated total blocks</source>
         <translation>Estimated total blocks</translation>
     </message>
     <message>
-        <location line="+23"/>
+        <location line="+199"/>
         <source>Last block time</source>
         <translation>Last block time</translation>
     </message>
@@ -1572,54 +1582,209 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location line="+16"/>
+        <location line="+81"/>
         <source>Command-line options</source>
         <translation>Command-line options</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+62"/>
         <source>Show the DeepOnion-Qt help message to get a list with possible DeepOnion command-line options.</source>
         <translation>Show the DeepOnion-Qt help message to get a list with possible DeepOnion command-line options.</translation>
     </message>
     <message>
-        <location line="+3"/>
+        <location line="+65"/>
         <source>&amp;Show</source>
         <translation>&amp;Show</translation>
     </message>
     <message>
-        <location line="+24"/>
+        <location line="+557"/>
         <source>&amp;Console</source>
         <translation>&amp;Console</translation>
     </message>
     <message>
-        <location line="-260"/>
+        <location line="+606"/>
+        <source>Decrease font size</source>
+        <translation>Decrease font size</translation>
+    </message>
+    <message>
+        <location line="+638"/>
+        <source>Increase font size</source>
+        <translation>Increase font size</translation>
+    </message>
+    <message>
+        <location line="+494"/>
         <source>Build date</source>
         <translation>Build date</translation>
     </message>
     <message>
-        <location line="-104"/>
+        <location line="+14"/>
         <source>DeepOnion - Debug window</source>
         <translation>DeepOnion - Debug window</translation>
     </message>
     <message>
-        <location line="+25"/>
+        <location line="+302"/>
         <source>DeepOnion Core</source>
         <translation>DeepOnion Core</translation>
     </message>
     <message>
-        <location line="+279"/>
+        <location line="+419"/>
         <source>Debug log file</source>
         <translation>Debug log file</translation>
     </message>
     <message>
-        <location line="+7"/>
+        <location line="+455"/>
+        <source>Show More Details</source>
+        <translation>Show More Details</translation>
+    </message>
+    <message>
+        <location line="+49"/>
         <source>Open the DeepOnion debug log file from the current data directory. This can take a few seconds for large log files.</source>
         <translation>Open the DeepOnion debug log file from the current data directory. This can take a few seconds for large log files.</translation>
     </message>
     <message>
-        <location line="+102"/>
+        <location line="+693"/>
         <source>Clear console</source>
         <translation>Clear console</translation>
+    </message>
+    <message>
+        <location line="+670"/>
+        <source>Network traffic</source>
+        <translation>Network traffic</translation>
+    </message>
+    <message>
+        <location line="+745"/>
+        <source>Clear</source>
+        <translation>Clear</translation>
+    </message>
+    <message>
+        <location line="+761"/>
+        <source>Totals</source>
+        <translation>Totals</translation>
+    </message>
+    <message>
+        <location line="+825"/>
+        <source>In:</source>
+        <translation>In:</translation>
+    </message>
+    <message>
+        <location line="+905"/>
+        <source>Out:</source>
+        <translation>Out:</translation>
+    </message>
+    <message>
+        <location line="+946"/>
+        <source>Peers</source>
+        <translation>Peers</translation>
+    </message>
+   <message>
+        <location line="+999"/>
+        <source>Banned peers</source>
+        <translation>Banned peers</translation>
+    </message>
+    <message>
+        <location line="+1059"/>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Select a peer to view detailed information.</translation>
+    </message>
+    <message>
+        <location line="+1084"/>
+        <source>Whitelisted</source>
+        <translation>Whitelisted</translation>
+    </message>
+    <message>
+        <location line="+1087"/>
+        <source>Direction</source>
+        <translation>Direction</translation>
+    </message>
+    <message>
+        <location line="+1130"/>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <location line="+1153"/>
+        <source>User Agent</source>
+        <translation>User Agent</translation>
+    </message>
+    <message>
+        <location line="+1176"/>
+        <source>Services</source>
+        <translation>Services</translation>
+    </message>
+    <message>
+        <location line="+1199"/>
+        <source>Starting Block</source>
+        <translation>Starting Block</translation>
+    </message>
+    <message>
+        <location line="+1222"/>
+        <source>Synced Headers</source>
+        <translation>Synced Headers</translation>
+    </message>
+    <message>
+        <location line="+1245"/>
+        <source>Synced Blocks</source>
+        <translation>Synced Blocks</translation>
+    </message>
+    <message>
+        <location line="+1291"/>
+        <source>Connection Times</source>
+        <translation>Connection Time</translation>
+    </message>
+    <message>
+        <location line="+1314"/>
+        <source>Last Send</source>
+        <translation>Last Send</translation>
+    </message>
+    <message>
+        <location line="+1360"/>
+        <source>Sent</source>
+        <translation>Sent</translation>
+    </message>
+    <message>
+        <location line="+1383"/>
+        <source>Received</source>
+        <translation>Received</translation>
+    </message>
+    <message>
+        <location line="+1406"/>
+        <source>Ping Time</source>
+        <translation>Ping Time</translation>
+    </message>
+    <message>
+        <location line="+1429"/>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>The duration of a currently outstanding ping.</translation>
+    </message>
+    <message>
+        <location line="+1432"/>
+        <source>Ping Wait</source>
+        <translation>Ping Wait</translation>
+    </message>
+    <message>
+        <location line="+1478"/>
+        <source>Time Offset</source>
+        <translation>Time Offset</translation>
+    </message>
+    <message>
+        <location line="+1455"/>
+        <source>Min Ping</source>
+        <translation>Min Ping</translation>
+    </message>
+    <message>
+        <location line="+1337"/>
+        <source>Last Receive</source>
+        <translation>Last Receive</translation>
+    </message>
+    <message>
+        <location line="+1268"/>
+        <source>Ban Score</source>
+        <translation>Ban Score</translation>
+    </message>
+    <message>
+        <location line="+387"/>
+        <source>The DeepOnoion blockchain is not fully sychronized.</source>
+        <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
     </message>
     <message>
         <location filename="../rpcconsole.cpp" line="-33"/>
@@ -3426,6 +3591,112 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <location line="+678"/>
         <source>.</source>
         <translation>.</translation>
+    </message>
+</context>
+<context>
+    <name>windowTitle</name>
+    <message>
+        <location filename="../forms/intro.ui" line="+14"/>
+        <source>Welcome to DeepOnion</source>
+        <translation>Welcome to DeepOnion</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</source>
+        <translation>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</translation>
+    </message>
+        <message>
+        <location line="+81"/>
+        <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
+        <translation>As this is the first time the program is launched, you can choose where %1 will store its data.</translation>
+    </message>
+    <message>
+        <location line="+52"/>
+        <source>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</source>
+        <translation>Welcome to DeepOnion - Anonymous Cryptocurrency and Untraceable Payments</translation>
+    </message>
+    <message>
+        <location line="+94"/>
+        <source>&amp;Use the default data directory</source>
+        <translation>&amp;Use the default data directory</translation>
+    </message>
+    <message>
+        <location line="+101"/>
+        <source>Use a &amp;custom data directory:</source>
+        <translation>Use a &amp;custom data directory:</translation>
+    </message>
+    <message>
+        <location line="+234"/>
+        <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
+        <translation>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</translation>
+    </message>
+    <message>
+        <location line="+244"/>
+        <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
+        <translation>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</translation>
+    </message>
+</context>
+<context>
+    <name>SendCoinsEntry</name>
+    <message>
+        <location filename="../forms/sendcoinsentry.ui" line="+14"/>
+        <source>Form</source>
+        <translation>Form</translation>
+    </message>
+    <message>
+        <location line="+29"/>
+        <source>Pay &amp;To:</source>
+        <translation>Pay &amp;To:</translation>
+    </message>
+    <message>
+        <location line="+47"/>
+        <source>The address to send the payment to</source>
+        <translation>The address to send the payment to</translation>
+    </message>
+    <message>
+        <location line="+60"/>
+        <source>Choose address from address book</source>
+        <translation>Choose address from address book</translation>
+    </message>
+    <message>
+        <location line="+77"/>
+        <source>Paste address from clipboard</source>
+        <translation>Paste address from clipboard</translation>
+    </message>
+    <message>
+        <location line="+94"/>
+        <source>Remove this recipient</source>
+        <translation>Remove this recipient</translation>
+    </message>
+    <message>
+        <location line="+110"/>
+        <source>&amp;Label:</source>
+        <translation>&amp;Label:</translation>
+    </message>
+    <message>
+        <location line="+131"/>
+        <source>Enter a label for this address to add it to your address book</source>
+        <translation>Enter a label for this address to add it to your address book</translation>
+    </message>
+    <message>
+        <location line="+143"/>
+        <source>&amp;Narration:</source>
+        <translation>&amp;Narration:</translation>
+    </message>
+    <message>
+        <location line="+164"/>
+        <source>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</source>
+        <translation>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</translation>
+    </message>
+    <message>
+        <location line="+164"/>
+        <source>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</source>
+        <translation>Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address</translation>
+    </message>
+    <message>
+        <location line="+176"/>
+        <source>A&amp;mount:</source>
+        <translation>A&amp;mount:</translation>
     </message>
 </context>
 </TS>
