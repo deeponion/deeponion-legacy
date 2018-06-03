@@ -3364,8 +3364,7 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
         <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
         <translation>Il semblerait que vous êtes sur une &quot;forked chain&quot;, s&apos;il vous plaît synchroniser à nouveau avec des pairs officiels sur https://deeponion.org.</translation>
     </message>
-       </message>
-         <message>
+    <message>
         <location line="+654"/>
         <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
         <translation>La DeepOnion blockchain est entiérement synchronisée. Elle est authentique! Ceci est garantie par le Bitcoin blockchain </translation>
@@ -3384,21 +3383,6 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
         <location line="+668"/>
         <source>Please wait until it is fully synchronized and check back.</source>
         <translation>S&apos;il vous plaît attender la fin de la synchronisation est vérifié à nouveau...</translation>
-    </message>
-    <message>
-        <location line="+670"/>
-        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>La DeepOnion blockchain est synchronisée mais le hash ne correspond pas au dernier point de sauvegarde au Bloc </translation>
-    </message>
-    <message>
-        <location line="+671"/>
-        <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
-        <translation> (qui est enregistrée et garantie par la Bitcoin blockchain). </translation>
-    </message>
-    <message>
-        <location line="+672"/>
-        <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
-        <translation>Il semblerait que vous êtes sur une &quot;forked chain&quot;, s&apos;il vous plaît synchroniser à nouveau avec des pairs officiels sur https://deeponion.org.</translation>
     </message>
     <message>
         <location line="+674"/>

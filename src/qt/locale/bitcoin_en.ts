@@ -3403,21 +3403,6 @@ If the file does not exist, create it with owner-readable-only file permissions.
         <translation>Please wait until it is fully synchronized and check back.</translation>
     </message>
     <message>
-        <location line="+670"/>
-        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
-    </message>
-    <message>
-        <location line="+671"/>
-        <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
-        <translation> (which is registered and guaranteed by the Bitcoin blockchain). </translation>
-    </message>
-    <message>
-        <location line="+672"/>
-        <source>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</source>
-        <translation>So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.</translation>
-    </message>
-    <message>
         <location line="+674"/>
         <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </source>
         <translation>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </translation>
