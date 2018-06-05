@@ -99,7 +99,7 @@ These are the first lines of that file modified:
     class CAccount;
     class CAccountingEntry;
 
-Another option (untested) could be exceute `./configure` with the following flags:
+Another option (untested) could be execute `./configure` with the following flags:
 
     ./configure --with-incompatible-bdb CXXFLAGS=“-DBOOST_NO_CXX11_SCOPED_ENUMS”
 
