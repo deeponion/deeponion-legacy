@@ -8,7 +8,7 @@ QT_TS = \
   qt/locale/bitcoin_ru.ts \
   qt/locale/bitcoin_es.ts \
   qt/locale/bitcoin_de.ts \
-  qt/locale/bitcoin_zh-CN.ts \  
+  qt/locale/bitcoin_zh-CN.ts
   
 QT_FORMS_UI = \
   qt/forms/aboutdialog.ui \
