@@ -3318,17 +3318,17 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     <message>
         <location filename="../forms/blockchaindialog.ui" line="+38"/>
         <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height 523,000. The matched hash is 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, which is registered at Bitcoin blockchain at Block 521,681, with txid b8678ba1e6497cf7141636d3b373cfd1316c69054fdcf05a2cdca1dee4c17f73.</source>
-        <translation>Die aktuelle DeepOnion Blockchain die Sie verwenden, entspricht dem in der Bitcoin Blockchain registrierten Hashwert auf der Höhe von 523.000. Der übereinstimmende Hashwert ist 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, welcher in der Bitcoin Blockchain registriert ist auf Block 521,681, mit der TxID b8678ba1e6497cf7141636d3b373cfd1316c69054fdcfdcf05a2cdca1dee4c17f73.</translation>
+        <translation>Die aktuelle DeepOnion-Blockchain die Sie verwenden, entspricht dem in der Bitcoin-Blockchain registrierten Hashwert auf der Höhe von 523.000. Der übereinstimmende Hashwert ist 99c0ec9462c28d7fa2c4beaf8af92b98a45692f2bec88d3af0837f4798fcff16, welcher in der Bitcoin-Blockchain registriert ist auf Block 521,681, mit der TxID b8678ba1e6497cf7141636d3b373cfd1316c69054fdcfdcf05a2cdca1dee4c17f73.</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>The DeepOnion blockchain is already a very secure and immutable database, as it is guaranteed by close to 1000 nodes in the network. However, to further guarantee that everything in the DeepOnion blockchain is immutable, we periodically register the DeepOnion blockchain hash in the Bitcoin blockchain. The Bitcoin blockchain is the most secure and immutable database in the world, with over 10,000 nodes running in about 100 different countries.</source>    
-        <translation>Die DeepOnion Blockchain ist bereits eine sehr sichere und unveränderliche Datenbank, da sie durch fast 1000 Nodes im Netzwerk gewährleistet ist. Um jedoch weiterhin zu gewährleisten, dass alles in der DeepOnion Blockchain unveränderlich ist, registrieren wir in regelmäßigen Abständen den DeepOnion Blockchainhash in der Bitcoin Blockchain. Die Bitcoin Blockchain ist die sicherste und unveränderlichste Datenbank der Welt, mit über 10.000 Nodes in etwa 100 verschiedenen Ländern.</translation>
+        <translation>Die DeepOnion-Blockchain ist bereits eine sehr sichere und unveränderliche Datenbank, da sie durch fast 1000 Nodes im Netzwerk gewährleistet ist. Um jedoch weiterhin zu gewährleisten, dass alles in der DeepOnion-Blockchain unveränderlich ist, registrieren wir in regelmäßigen Abständen den DeepOnion-Blockchainhash in der Bitcoin-Blockchain. Die Bitcoin-Blockchain ist die sicherste und unveränderlichste Datenbank der Welt, mit über 10.000 Nodes in etwa 100 verschiedenen Ländern.</translation>
     </message>
     <message>   
         <location line="+51"/>
         <source>When the DeepOnion wallet starts, it automatically verifies its blockchain hash up to the latest checkpoint where it is registered in the Bitcoin blockchain. When the hash matches, it means that the DeepOnion blockchain (up to the latest checkpoint) is authentic and thus all the file hashes registered by DeepVault is also guaranteed by Bitcoin blockchain! Thus with a much lower cost, you can register your file with the world most secure and immutable database and check its authencity later at any time by DeepVault.</source>
-        <translation>Wenn das DeepOnion Wallet startet, überprüft es automatisch seinen Blockchain-Hash bis zum letzten Checkpoint, an dem es in der Bitcoin Blockchain registriert ist. Wenn der Hash übereinstimmt, bedeutet das, dass die DeepOnion Blockchain (bis zum letzten Checkpoint) authentisch ist und somit alle von DeepVault registrierten Datei-Hashes auch von Bitcoin Blockchain garantiert werden! So können Sie Ihre Datei mit wesentlich geringeren Kosten auf der sichersten und unveränderlichsten Datenbank der Welt registrieren und ihre Authentizität später jederzeit durch DeepVault überprüfen.</translation>    
+        <translation>Wenn das DeepOnion Wallet startet, überprüft es automatisch seinen Blockchain-Hash bis zum letzten Checkpoint, an dem es in der Bitcoin Blockchain registriert ist. Wenn der Hash übereinstimmt, bedeutet das, dass die DeepOnion Blockchain (bis zum letzten Checkpoint) authentisch ist und somit alle von DeepVault registrierten Datei-Hashes auch von Bitcoin-Blockchain garantiert werden! So können Sie Ihre Datei mit wesentlich geringeren Kosten auf der sichersten und unveränderlichsten Datenbank der Welt registrieren und ihre Authentizität später jederzeit durch DeepVault überprüfen.</translation>    
     </message>
      <message>
         <location line="+51"/>
@@ -3340,18 +3340,18 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     <name>WalletModel</name>
     <message>
         <location filename="../walletmodel.cpp" line="+648"/>
-        <source>The DeepOnoion blockchain is not fully sychronized.</source>
-        <translation>Die DeepOnoion Blockchain ist nicht vollständig synchronisiert.</translation>
+        <source>The DeepOnion blockchain is not fully sychronized.</source>
+        <translation>Die DeepOnion-Blockchain ist nicht vollständig synchronisiert.</translation>
     </message>
         <message>
         <location line="+650"/>
-        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>Die DeepOnoion Blockchain ist synchronisiert, entspricht jedoch nicht dem letzten Checkpoint-Hashwert bei Block </translation>
+        <source>The DeepOnion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
+        <translation>Die DeepOnion-Blockchain ist synchronisiert, entspricht jedoch nicht dem letzten Checkpoint-Hashwert bei Block </translation>
     </message>
      <message>
         <location line="+651"/>
         <source> (which is registered and guaranteed by the Bitcoin blockchain). </source>
-        <translation> (die von der Bitcoin-Blockkette registriert und garantiert wird). </translation>
+        <translation> (die von der Bitcoin-Blockchain registriert und garantiert wird). </translation>
     </message>
     <message>
         <location line="+652"/>
@@ -3361,7 +3361,7 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     <message>
         <location line="+654"/>
         <source>The DeepOnion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
-        <translation>Die DeepOnoion Blockchain ist vollständig synchronisiert. Sie ist authentisch! Sie wird durch die Bitcoin Blockchain bestätigt, </translation>
+        <translation>Die DeepOnion-Blockchain ist vollständig synchronisiert. Sie ist authentisch! Sie wird durch die Bitcoin Blockchain bestätigt, </translation>
     </message>
     <message>
         <location line="+655"/>
@@ -3370,8 +3370,8 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     </message>
     <message>
         <location line="+667"/>
-        <source>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </source>
-        <translation>Wir können die DeepOnoion Blockchain nicht überprüfen, da sie noch nicht vollständig synchronisiert ist. </translation>
+        <source>We can't verify the DeepOnion blockchain as it is not fully sychronized yet. </source>
+        <translation>Wir können die DeepOnion-Blockchain nicht überprüfen, da sie noch nicht vollständig synchronisiert ist. </translation>
     </message>
     <message>
         <location line="+668"/>
@@ -3381,7 +3381,7 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     <message>
         <location line="+674"/>
         <source>The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height </source>
-        <translation>Die aktuelle DeepOnion Blockchain, die Sie verwenden, entspricht dem in der Bitcoin Blockchain registriertem Hashwert auf der Höhe von </translation>
+        <translation>Die aktuelle DeepOnion-Blockchain, die Sie verwenden, entspricht dem in der Bitcoin-Blockchain registriertem Hashwert auf der Höhe von </translation>
     </message>
     <message>
         <location line="+675"/>
@@ -3391,7 +3391,7 @@ Wenn die Datei nicht existiert, erstellen Sie diese mit nur für den Besitzer le
     <message>
         <location line="+676"/>
         <source>, which is registered at Bitcoin blockchain at Block </source>
-        <translation>, welcher in der Bitcoin Blockchain registriert ist auf Block </translation>
+        <translation>, welcher in der Bitcoin-Blockchain registriert ist auf Block </translation>
     </message>
     <message>
         <location line="+677"/>
