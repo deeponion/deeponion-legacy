@@ -146,7 +146,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->setModel(model->proxyModel);
     ui->tableView->sortByColumn(MessageModel::ReceivedDateTime, Qt::DescendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
 
 
 
@@ -161,7 +161,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ToAddress,        320);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::SentDateTime,     170);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ReceivedDateTime, 170);
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
 
     //ui->messageEdit->setMinimumHeight(100);
 
@@ -446,7 +446,7 @@ void MessagePage::refreshStyle() {
     ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
     ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
     ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
 }

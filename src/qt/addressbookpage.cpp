@@ -154,14 +154,14 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
 
     // Set column widths
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Label, 320);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Interactive);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
  
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -407,6 +407,6 @@ void AddressBookPage::refreshStyle() {
     ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
     ui->secondaryMenuFrame->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
 
-    ui->tableView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
 }

@@ -17,7 +17,6 @@
         QMenuBar::item:hover {color: #2A2940; background-color: #F9F9F9;} \
         QMenuBar::item:selected {color: #2A2937; font-weight: bold; background-color: #F7F7F7;}\
         QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:#565656;} \
 		QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
 		QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
         QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
@@ -50,8 +49,7 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
         QStatusBar::item { border: 0px}\
-        QProgressBar::chunk { background-color:#3dc28b;}\
-        QScrollBar:horizontal {border: 2px solid grey;background: #486EBA; color: white; height: 15px;margin: 0px 20px 0 20px;}";
+        QProgressBar::chunk { background-color:#3dc28b;}";
 
     static QString LT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #486EBA; background-color: #FFFFFF";
     static QString LT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
@@ -78,8 +76,16 @@
     static QString LT_QFRAME_GENERAL_STYLE = "background-color: #FFFFFF;";
     static QString LT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #DFE9F7; padding: 8px;";
     static QString LT_QLABEL_GENERAL_STYLE = "color: #486EBA";
-    static QString LT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #D8D8D8; background-color: #FFFFFF;\
-            border: 0px; margin: 0; padding: 0;";
+//    static QString LT_TABLE_GENERAL_STYLE = "QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
+//        QScrollBar:vertical {border: 1px solid #474758; background-color: #474758; width: 25px; margin: 25px 0 0px 0;} \
+//        QScrollBar::handle:vertical{border-radius: 2px; border: 1px solid #C1C1C1; background-color: #C1C1C1; min-height: 25px;};";
+
+    static QString LT_TABLE_GENERAL_STYLE = "QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
+            QScrollBar:vertical {border: 1px solid #FFFFFF; background: rgba(255, 255, 255, 0%); width: 24px; margin: 5px 5px 5px 5px;} \
+            QScrollBar::handle:vertical {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; } \
+            QScrollBar::add-line:vertical { background: #D8D8D8; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;} \
+            QScrollBar::sub-line:vertical { background: #D8D8D8; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
+
     static QString LT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \

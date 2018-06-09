@@ -32,8 +32,8 @@
 #include <QDateTimeEdit>
 
 TransactionView::TransactionView(QWidget *parent) :
-    QWidget(parent), model(0), transactionProxyModel(0),
-    transactionView(0)
+        QWidget(parent), model(0), transactionProxyModel(0),
+        transactionView(0)
 {
 
     //Adding the Page Title QLabel
@@ -83,9 +83,9 @@ TransactionView::TransactionView(QWidget *parent) :
 
     typeWidget->addItem(tr("All"), TransactionFilterProxy::ALL_TYPES);
     typeWidget->addItem(tr("Received with"), TransactionFilterProxy::TYPE(TransactionRecord::RecvWithAddress) |
-                                        TransactionFilterProxy::TYPE(TransactionRecord::RecvFromOther));
+                                             TransactionFilterProxy::TYPE(TransactionRecord::RecvFromOther));
     typeWidget->addItem(tr("Sent to"), TransactionFilterProxy::TYPE(TransactionRecord::SendToAddress) |
-                                  TransactionFilterProxy::TYPE(TransactionRecord::SendToOther));
+                                       TransactionFilterProxy::TYPE(TransactionRecord::SendToOther));
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
@@ -153,28 +153,35 @@ TransactionView::TransactionView(QWidget *parent) :
     vlayout->addWidget(pageTitleLabel);
     vlayout->insertSpacing(1,40);
 
-        QHBoxLayout *hlayout1 = new QHBoxLayout();
-        hlayout1->setContentsMargins(0,0,0,0);
-        hlayout1->setSpacing(0);
-        hlayout1->insertSpacing(0, 60);
-            QVBoxLayout *vlayout1 = new QVBoxLayout();
-            vlayout1->setContentsMargins(0,0,0,0);
-            vlayout1->setSpacing(0);
-            vlayout1->addLayout(hlayout);
-            vlayout1->addWidget(createDateRangeWidget());
-            vlayout1->insertSpacing(2, 20);
-            vlayout1->addWidget(view);
+    QHBoxLayout *hlayout1 = new QHBoxLayout();
+    hlayout1->setContentsMargins(0,0,0,0);
+    hlayout1->setSpacing(0);
+    hlayout1->insertSpacing(0, 60);
+    QVBoxLayout *vlayout1 = new QVBoxLayout();
+    vlayout1->setContentsMargins(0,0,0,0);
+    vlayout1->setSpacing(0);
+    vlayout1->addLayout(hlayout);
+    vlayout1->addWidget(createDateRangeWidget());
+    vlayout1->insertSpacing(2, 20);
+    vlayout1->addWidget(view);
 
-        hlayout1->addLayout(vlayout1);
-        hlayout1->addSpacing(60);
+    hlayout1->addLayout(vlayout1);
+    hlayout1->addSpacing(60);
 
     vlayout->addLayout(hlayout1);
     vlayout->addSpacing(20);
     vlayout->setSpacing(0);
-    int width = view->verticalScrollBar()->sizeHint().width();
 
     // Always show scroll bar
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    int width = view->verticalScrollBar()->sizeHint().width();
+    // Cover scroll bar width with spacing
+#ifdef Q_OS_MAC
+    hlayout->addSpacing(width+2);
+#else
+    hlayout->addSpacing(width);
+#endif
+
     view->setTabKeyNavigation(false);
     view->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -226,10 +233,9 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionProxyModel->setSortRole(Qt::EditRole);
 
-        transactionView->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
-        transactionView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+        transactionView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
@@ -243,9 +249,9 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->horizontalHeader()->resizeSection(
                 TransactionTableModel::Type, 120);
         transactionView->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
-        transactionView->horizontalHeader()->resizeSection(
-                TransactionTableModel::Amount, 100);
-        transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+        //transactionView->horizontalHeader()->resizeSection(
+        //        TransactionTableModel::Amount, 100);
+        transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
     }
 }
 
@@ -257,43 +263,43 @@ void TransactionView::chooseDate(int idx)
     dateRangeWidget->setVisible(false);
     switch(dateWidget->itemData(idx).toInt())
     {
-    case All:
-        transactionProxyModel->setDateRange(
-                TransactionFilterProxy::MIN_DATE,
-                TransactionFilterProxy::MAX_DATE);
-        break;
-    case Today:
-        transactionProxyModel->setDateRange(
-                QDateTime(current),
-                TransactionFilterProxy::MAX_DATE);
-        break;
-    case ThisWeek: {
-        // Find last Monday
-        QDate startOfWeek = current.addDays(-(current.dayOfWeek()-1));
-        transactionProxyModel->setDateRange(
-                QDateTime(startOfWeek),
-                TransactionFilterProxy::MAX_DATE);
+        case All:
+            transactionProxyModel->setDateRange(
+                    TransactionFilterProxy::MIN_DATE,
+                    TransactionFilterProxy::MAX_DATE);
+            break;
+        case Today:
+            transactionProxyModel->setDateRange(
+                    QDateTime(current),
+                    TransactionFilterProxy::MAX_DATE);
+            break;
+        case ThisWeek: {
+            // Find last Monday
+            QDate startOfWeek = current.addDays(-(current.dayOfWeek()-1));
+            transactionProxyModel->setDateRange(
+                    QDateTime(startOfWeek),
+                    TransactionFilterProxy::MAX_DATE);
 
         } break;
-    case ThisMonth:
-        transactionProxyModel->setDateRange(
-                QDateTime(QDate(current.year(), current.month(), 1)),
-                TransactionFilterProxy::MAX_DATE);
-        break;
-    case LastMonth:
-        transactionProxyModel->setDateRange(
-                QDateTime(QDate(current.year(), current.month()-1, 1)),
-                QDateTime(QDate(current.year(), current.month(), 1)));
-        break;
-    case ThisYear:
-        transactionProxyModel->setDateRange(
-                QDateTime(QDate(current.year(), 1, 1)),
-                TransactionFilterProxy::MAX_DATE);
-        break;
-    case Range:
-        dateRangeWidget->setVisible(true);
-        dateRangeChanged();
-        break;
+        case ThisMonth:
+            transactionProxyModel->setDateRange(
+                    QDateTime(QDate(current.year(), current.month(), 1)),
+                    TransactionFilterProxy::MAX_DATE);
+            break;
+        case LastMonth:
+            transactionProxyModel->setDateRange(
+                    QDateTime(QDate(current.year(), current.month()-1, 1)),
+                    QDateTime(QDate(current.year(), current.month(), 1)));
+            break;
+        case ThisYear:
+            transactionProxyModel->setDateRange(
+                    QDateTime(QDate(current.year(), 1, 1)),
+                    TransactionFilterProxy::MAX_DATE);
+            break;
+        case Range:
+            dateRangeWidget->setVisible(true);
+            dateRangeChanged();
+            break;
     }
 }
 
@@ -302,7 +308,7 @@ void TransactionView::chooseType(int idx)
     if(!transactionProxyModel)
         return;
     transactionProxyModel->setTypeFilter(
-        typeWidget->itemData(idx).toInt());
+            typeWidget->itemData(idx).toInt());
 }
 
 void TransactionView::changedPrefix(const QString &prefix)
@@ -412,8 +418,8 @@ void TransactionView::editLabel()
             QString type = modelIdx.data(AddressTableModel::TypeRole).toString();
 
             EditAddressDialog dlg(type==AddressTableModel::Receive
-                                         ? EditAddressDialog::EditReceivingAddress
-                                         : EditAddressDialog::EditSendingAddress,
+                                  ? EditAddressDialog::EditReceivingAddress
+                                  : EditAddressDialog::EditSendingAddress,
                                   this);
             dlg.setModel(addressBook);
             dlg.loadRow(idx);
@@ -502,8 +508,8 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
 
 void TransactionView::refreshStyle()
 {
-    transactionView->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
-    transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    transactionView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
     dateWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
     typeWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
     frameForAmount->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());

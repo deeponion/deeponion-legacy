@@ -211,15 +211,15 @@ static QString ThemeAdapter::getQFrameSecondaryMenuGeneralStyle() {
     }
 }
 
-static QString ThemeAdapter::getQListAlternateRowsGeneralStyle() {
+static QString ThemeAdapter::getQTableGeneralStyle() {
     if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
-        return LT_LIST_ALTERNATE_GENERAL_STYLE;
+        return LT_TABLE_GENERAL_STYLE;
     } else {
-        return DT_LIST_ALTERNATE_GENERAL_STYLE;
+        return DT_TABLE_GENERAL_STYLE;
     }
 }
 
-static QString ThemeAdapter::getQListHeaderGeneralStyle() {
+static QString ThemeAdapter::getQTableHeaderGeneralStyle() {
     if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
         return LT_LIST_HEADER_GENERAL_STYLE;
     } else {

@@ -194,7 +194,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setAlternatingRowColors(true);
-        ui->listTransactions->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
+        ui->listTransactions->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
         ui->listTransactions->setSortingEnabled(true);
         ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
         ui->listTransactions->verticalHeader()->hide();
@@ -208,7 +208,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+        ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
 
 
 
@@ -262,6 +262,6 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
 
 void OverviewPage::refreshStyle() {
     ui->wallet_summary->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->listTransactions->setStyleSheet(ThemeAdapter::getQListAlternateRowsGeneralStyle());
-    ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQListHeaderGeneralStyle());
+    ui->listTransactions->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
 }

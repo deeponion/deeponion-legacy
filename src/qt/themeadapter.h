@@ -45,8 +45,8 @@ public:
     static QString getQFrameGeneralStyle();
     static QString getQFrameSecondaryMenuGeneralStyle();
 
-    static QString getQListAlternateRowsGeneralStyle();
-    static QString getQListHeaderGeneralStyle();
+    static QString getQTableGeneralStyle();
+    static QString getQTableHeaderGeneralStyle();
 
     static QString getQLabelGeneralStyle();
     static QString getQLineEditGeneralStyle();

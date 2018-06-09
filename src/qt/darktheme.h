@@ -7,13 +7,10 @@
 
 #include <QString>
 
-    static QString DARK_THEME_STYLESHEET = "QComboBox {color: white; background-color: #2A2937;  height: 26px;} \
-        QComboBox:hover {background-color: #1b202f; height: 26px;} \
-		QWidget {color:white; background-color: #393947;} \
+    static QString DARK_THEME_STYLESHEET = "QWidget {color:white; background-color: #393947;} \
 		QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
         QMenu::item:selected {background-color: #1C1B15;}\
         QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
-		QTableView {color:white;} \
 		QHeaderView::section {color:white; background-color: #474757; } \
 		QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
         QTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
@@ -49,8 +46,7 @@
         QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #22222b; color: #e9e8e8}\
         QStatusBar::item { border: 0px}\
-        QProgressBar::chunk { background-color:#3dc28b;}\
-        QScrollBar:vertical {border: 2px solid grey; background: red; height: 15px; margin: 0px 20px 0 20px;}";
+        QProgressBar::chunk { background-color:#3dc28b;}";
 
     static QString DT_MAIN_MENU_NORMAL_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393947";
     static QString DT_MAIN_MENU_SELECTED_BUTTON_STYLE = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
@@ -69,8 +65,12 @@
     static QString DT_QFRAME_GENERAL_STYLE = "background-color: #393947;";
     static QString DT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #22222B; padding: 8px;";
     static QString DT_QLABEL_GENERAL_STYLE = "color: #FFFFFF";
-    static QString DT_LIST_ALTERNATE_GENERAL_STYLE = "alternate-background-color: #474757; background-color: #393947;\
-            border: 0px; margin: 0; padding: 0;";
+    static QString DT_TABLE_GENERAL_STYLE = "QTableView {color: #D5D5D9; alternate-background-color: #474758; background-color: #393848;} \
+            QScrollBar:vertical {border: 1px solid #2B2B37; background: #2B2B37; width: 24px; margin: 5px 5px 5px 5px;} \
+            QScrollBar::handle:vertical {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; } \
+            QScrollBar::add-line:vertical { background: #474758; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;} \
+            QScrollBar::sub-line:vertical { background: #474758; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
+
     static QString DT_LIST_HEADER_GENERAL_STYLE = "QHeaderView::section {background-color: #486EBA; color: #FFFFFF; border: none; \
                                                                         font-size: 14px; font-family: Helvetica Neue; \
                                                                         padding-left: 8px; padding-right: 8px; \
@@ -81,10 +81,11 @@
     static QString DT_INFORMATION_ICO = ":/icons/information";
     static QString DT_INFORMATION_BTN_STYLE = "background-color: #393947; border: none";
 
-    static QString DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
-                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none;\
-                                        QComboBox::drop-down {border: none}";
-    static QString DT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 12px; font-family: 'Helvetica Neue';\
+    static QString DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "QComboBox { background-color: #393947; color: #FFFFFF; font-size: 14px; font-family: 'Helvetica Neue';\
+                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none; }\
+                                        QComboBox::drop-down {border: none; background: #486EBA; width: 30px;}\
+                                        QComboBox::down-arrow { width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent; border-top: 20px solid red;}";
+    static QString DT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 14px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
     static QString DT_QTOOL_BTN_STYLE = "{color:white; background-color: #393947; padding: 3px; border: none;}";
 
