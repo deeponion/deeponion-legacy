@@ -76,9 +76,6 @@
     static QString LT_QFRAME_GENERAL_STYLE = "background-color: #FFFFFF;";
     static QString LT_QFRAME_SECONDARY_MENU_GENERAL_STYLE = "background-color: #DFE9F7; padding: 8px;";
     static QString LT_QLABEL_GENERAL_STYLE = "color: #486EBA";
-//    static QString LT_TABLE_GENERAL_STYLE = "QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
-//        QScrollBar:vertical {border: 1px solid #474758; background-color: #474758; width: 25px; margin: 25px 0 0px 0;} \
-//        QScrollBar::handle:vertical{border-radius: 2px; border: 1px solid #C1C1C1; background-color: #C1C1C1; min-height: 25px;};";
 
     static QString LT_TABLE_GENERAL_STYLE = "QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
             QScrollBar:vertical {border: 1px solid #FFFFFF; background: rgba(255, 255, 255, 0%); width: 24px; margin: 5px 5px 5px 5px;} \
@@ -96,9 +93,10 @@
     static QString LT_INFORMATION_ICO = ":/icons/information-blue";
     static QString LT_INFORMATION_BTN_STYLE = "background-color: #FFFFFF; border: none";
 
-    static QString LT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
-                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px;\
-                                        QComboBox::drop-down {border: none}";
+     static QString LT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "QComboBox { background-color: #FFFFFF; color: #486EBA; font-size: 14px; font-family: 'Helvetica Neue';\
+                                        padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none; }\
+                                        QComboBox::drop-down {border: none; background: #486EBA; width: 30px;}\
+                                        QComboBox::down-arrow { width: 14px; height: 14px; image: url(:/icons/arrow_down_white);}";
     static QString LT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
     static QString LT_QTOOL_BTN_STYLE = "{color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;}";

@@ -74,6 +74,8 @@
         <file alias="fontsmaller_dark">res/icons/white-fontsmaller.png</file>
         <file alias="fontbigger_light">res/icons/blue-fontbigger.png</file>
         <file alias="fontsmaller_light">res/icons/blue-fontsmaller.png</file>
+        <file alias="arrow_down_blue">res/icons/new/arrowdown-blue.png</file>
+        <file alias="arrow_down_white">res/icons/new/arrowdown-white.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/new/spinner-000.png</file>

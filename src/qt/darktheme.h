@@ -84,7 +84,7 @@
     static QString DT_QCOMBOBOX_TRANSACTIONS_FILTERING_STYLE = "QComboBox { background-color: #393947; color: #FFFFFF; font-size: 14px; font-family: 'Helvetica Neue';\
                                         padding-left: 8px; padding-top: 14px; padding-bottom: 14px; border: none; }\
                                         QComboBox::drop-down {border: none; background: #486EBA; width: 30px;}\
-                                        QComboBox::down-arrow { width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent; border-top: 20px solid red;}";
+                                        QComboBox::down-arrow { width: 14px; height: 14px; image: url(:/icons/arrow_down_white);}";
     static QString DT_QCOMBOBOX_DATE_RANGE_STYLE = "background-color: #393947; color: #FFFFFF; font-size: 14px; font-family: 'Helvetica Neue';\
                                         border: none; QComboBox::drop-down {border: none}";
     static QString DT_QTOOL_BTN_STYLE = "{color:white; background-color: #393947; padding: 3px; border: none;}";
