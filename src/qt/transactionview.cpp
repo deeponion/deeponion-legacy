@@ -11,7 +11,7 @@
 #include "editaddressdialog.h"
 #include "optionsmodel.h"
 #include "guiutil.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <QScrollBar>
 #include <QComboBox>
@@ -30,6 +30,8 @@
 #include <QLabel>
 #include <QFont>
 #include <QDateTimeEdit>
+
+extern ThemeManager *themeManager;
 
 TransactionView::TransactionView(QWidget *parent) :
         QWidget(parent), model(0), transactionProxyModel(0),
@@ -69,7 +71,7 @@ TransactionView::TransactionView(QWidget *parent) :
     dateWidget->addItem(tr("Last month"), LastMonth);
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
-    dateWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
+    dateWidget->setStyleSheet(themeManager->getCurrent()->getQComboboxTransactionsFilteringStyle());
 
     hlayout->addWidget(dateWidget);
     hlayout->insertSpacing(1, 8);
@@ -89,7 +91,7 @@ TransactionView::TransactionView(QWidget *parent) :
     typeWidget->addItem(tr("To yourself"), TransactionFilterProxy::TYPE(TransactionRecord::SendToSelf));
     typeWidget->addItem(tr("Mined"), TransactionFilterProxy::TYPE(TransactionRecord::Generated));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
-    typeWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
+    typeWidget->setStyleSheet(themeManager->getCurrent()->getQComboboxTransactionsFilteringStyle());
 
     hlayout->addWidget(typeWidget);
     hlayout->insertSpacing(3, 8);
@@ -101,12 +103,12 @@ TransactionView::TransactionView(QWidget *parent) :
     QHBoxLayout *hlayoutFrameForAddress = new QHBoxLayout();
     hlayoutFrameForAddress->setContentsMargins(0,0,0,0);
     frameForAddress->setLayout(hlayoutFrameForAddress);
-    frameForAddress->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    frameForAddress->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
 
 
 
     addressWidget = new QLineEdit(this);
-    addressWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    addressWidget->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
@@ -122,10 +124,10 @@ TransactionView::TransactionView(QWidget *parent) :
     QHBoxLayout *hlayoutFrameForAmount = new QHBoxLayout();
     hlayoutFrameForAmount->setContentsMargins(0,0,0,0);
     frameForAmount->setLayout(hlayoutFrameForAmount);
-    frameForAmount->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    frameForAmount->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
 
     amountWidget = new QLineEdit(this);
-    amountWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    amountWidget->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
 
 #if QT_VERSION >= 0x040700
     /* Do not move this to the XML file, Qt before 4.7 will choke on it */
@@ -235,7 +237,7 @@ void TransactionView::setModel(WalletModel *model)
 
         transactionView->setModel(transactionProxyModel);
         transactionView->setAlternatingRowColors(true);
-        transactionView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+        transactionView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
         transactionView->setSelectionBehavior(QAbstractItemView::SelectRows);
         transactionView->setSelectionMode(QAbstractItemView::ExtendedSelection);
         transactionView->setSortingEnabled(true);
@@ -251,7 +253,7 @@ void TransactionView::setModel(WalletModel *model)
         transactionView->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         //transactionView->horizontalHeader()->resizeSection(
         //        TransactionTableModel::Amount, 100);
-        transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+        transactionView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
     }
 }
 
@@ -460,7 +462,7 @@ QWidget *TransactionView::createDateRangeWidget()
     //layout->addWidget(new QLabel(tr("Range:")));
 
     dateFrom = new QDateTimeEdit(this);
-    dateFrom->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
+    dateFrom->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
     dateFrom->setDisplayFormat("dd/MM/yy");
     dateFrom->setCalendarPopup(true);
     dateFrom->setMinimumWidth(100);
@@ -469,7 +471,7 @@ QWidget *TransactionView::createDateRangeWidget()
     layout->addWidget(new QLabel(tr("to")));
 
     dateTo = new QDateTimeEdit(this);
-    dateTo->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
+    dateTo->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
     dateTo->setDisplayFormat("dd/MM/yy");
     dateTo->setCalendarPopup(true);
     dateTo->setMinimumWidth(100);
@@ -508,14 +510,14 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
 
 void TransactionView::refreshStyle()
 {
-    transactionView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
-    transactionView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
-    dateWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
-    typeWidget->setStyleSheet(ThemeAdapter::getQComboboxTransactionsFilteringStyle());
-    frameForAmount->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    frameForAddress->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    amountWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    addressWidget->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    dateFrom->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
-    dateTo->setStyleSheet(ThemeAdapter::getQComboboxDateRangeStyle());
+    transactionView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    transactionView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
+    dateWidget->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
+    typeWidget->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
+    frameForAmount->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    frameForAddress->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    amountWidget->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    addressWidget->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    dateFrom->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
+    dateTo->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());
 }

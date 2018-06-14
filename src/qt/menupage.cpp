@@ -8,7 +8,7 @@
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "bitcoingui.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include "overviewpage.h"
 
@@ -23,6 +23,8 @@
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
+
+extern ThemeManager *themeManager;
 
 MenuPage::MenuPage(QWidget *parent, BitcoinGUI *gui) :
   QWidget(parent),
@@ -41,7 +43,7 @@ MenuPage::MenuPage(QWidget *parent, BitcoinGUI *gui) :
     connect(ui->Messages, SIGNAL(pressed()), this, SLOT(ClickedItem()));
     connect(ui->Export, SIGNAL(pressed()), this, SLOT(ClickedItem()));
     //Change style to clicked to Dashboard button
-    ui->Overview->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
+    ui->Overview->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
 
 }
 
@@ -60,21 +62,21 @@ void MenuPage::ClickedItem(){
     ui->Messages->setCheckable(false);
     ui->Export->setCheckable(false);
 
-    ui->Overview->setIcon(QIcon(ThemeAdapter::getOverviewNormalBtnIcon()));
-    ui->SendCoins->setIcon(QIcon(ThemeAdapter::getSendCoinsNormalBtnIcon()));
-    ui->ReceiveCoins->setIcon(QIcon(ThemeAdapter::getReceiveCoinsNormalBtnIcon()));
-    ui->Transactions->setIcon(QIcon(ThemeAdapter::getTransactionsNormalBtnIcon()));
-    ui->AddressBook->setIcon(QIcon(ThemeAdapter::getAddressBookNormalBtnIcon()));
-    ui->Messages->setIcon(QIcon(ThemeAdapter::getMessagesNormalBtnIcon()));
-    ui->Export->setIcon(QIcon(ThemeAdapter::getExportNormalBtnIcon()));
+    ui->Overview->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewNormalBtnIco()));
+    ui->SendCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsNormalBtnIco()));
+    ui->ReceiveCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsNormalBtnIco()));
+    ui->Transactions->setIcon(QIcon(themeManager->getCurrent()->getMainMenuTransactionsNormalBtnIco()));
+    ui->AddressBook->setIcon(QIcon(themeManager->getCurrent()->getMainMenuAddressBookNormalBtnIco()));
+    ui->Messages->setIcon(QIcon(themeManager->getCurrent()->getMainMenuMessagesNormalBtnIco()));
+    ui->Export->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportNormalBtnIco()));
 
-    ui->Overview->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->SendCoins->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->ReceiveCoins->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Transactions->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->AddressBook->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Messages ->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Export->setStyleSheet(ThemeAdapter::getMainMenuDeactivatedButtonStyle());
+    ui->Overview->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->SendCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->ReceiveCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Transactions->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->AddressBook->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Messages ->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Export->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
 
     int screen = 0;
     QObject *sender = QObject::sender();
@@ -97,38 +99,38 @@ void MenuPage::ClickedItem(){
     switch(screen){
     case 0:
             ui->Overview->setCheckable(true);
-            ui->Overview->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Overview->setIcon(QIcon(ThemeAdapter::getOverviewSelectedBtnIcon()));
+            ui->Overview->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Overview->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewSelectedBtnIco()));
         break;
     case 1:
             ui->SendCoins->setCheckable(true);
-            ui->SendCoins->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->SendCoins->setIcon(QIcon(ThemeAdapter::getSendCoinsSelectedBtnIcon()));
+            ui->SendCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->SendCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsSelectedBtnIco()));
         break;
     case 2:
             ui->ReceiveCoins->setCheckable(true);
-            ui->ReceiveCoins->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->ReceiveCoins->setIcon(QIcon(ThemeAdapter::getReceiveCoinsSelectedBtnIcon()));
+            ui->ReceiveCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->ReceiveCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsSelectedBtnIco()));
         break;
     case 3:
             ui->Transactions->setCheckable(true);
-            ui->Transactions->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Transactions->setIcon(QIcon(ThemeAdapter::getTransactionsSelectedBtnIcon()));
+            ui->Transactions->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Transactions->setIcon(QIcon(themeManager->getCurrent()->getMainMenuTransactionsSelectedBtnIco()));
         break;
     case 4:
             ui->AddressBook->setCheckable(true);
-            ui->AddressBook->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->AddressBook->setIcon(QIcon(ThemeAdapter::getAddressBookSelectedBtnIcon()));
+            ui->AddressBook->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->AddressBook->setIcon(QIcon(themeManager->getCurrent()->getMainMenuAddressBookSelectedBtnIco()));
         break;
     case 5:
             ui->Messages->setCheckable(true);
-            ui->Messages->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Messages->setIcon(QIcon(ThemeAdapter::getMessagesSelectedBtnIcon()));
+            ui->Messages->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Messages->setIcon(QIcon(themeManager->getCurrent()->getMainMenuMessagesSelectedBtnIco()));
         break;
     case 6:
             ui->Export->setCheckable(true);
-            ui->Export->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Export->setIcon(QIcon(ThemeAdapter::getExportSelectedBtnIcon()));
+            ui->Export->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Export->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportSelectedBtnIco()));
         break;
     default:
         break;
@@ -147,59 +149,59 @@ void MenuPage::ClickedItemAfterThemeChanged(int sender){
     ui->Messages->setCheckable(false);
     ui->Export->setCheckable(false);
 
-    ui->Overview->setIcon(QIcon(ThemeAdapter::getOverviewNormalBtnIcon()));
-    ui->SendCoins->setIcon(QIcon(ThemeAdapter::getSendCoinsNormalBtnIcon()));
-    ui->ReceiveCoins->setIcon(QIcon(ThemeAdapter::getReceiveCoinsNormalBtnIcon()));
-    ui->Transactions->setIcon(QIcon(ThemeAdapter::getTransactionsNormalBtnIcon()));
-    ui->AddressBook->setIcon(QIcon(ThemeAdapter::getAddressBookNormalBtnIcon()));
-    ui->Messages->setIcon(QIcon(ThemeAdapter::getMessagesNormalBtnIcon()));
-    ui->Export->setIcon(QIcon(ThemeAdapter::getExportNormalBtnIcon()));
+    ui->Overview->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewNormalBtnIco()));
+    ui->SendCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsNormalBtnIco()));
+    ui->ReceiveCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsNormalBtnIco()));
+    ui->Transactions->setIcon(QIcon(themeManager->getCurrent()->getMainMenuTransactionsNormalBtnIco()));
+    ui->AddressBook->setIcon(QIcon(themeManager->getCurrent()->getMainMenuAddressBookNormalBtnIco()));
+    ui->Messages->setIcon(QIcon(themeManager->getCurrent()->getMainMenuMessagesNormalBtnIco()));
+    ui->Export->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportNormalBtnIco()));
 
-    ui->Overview->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->SendCoins->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->ReceiveCoins->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Transactions->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->AddressBook->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Messages ->setStyleSheet(ThemeAdapter::getMainMenuNormalButtonStyle());
-    ui->Export->setStyleSheet(ThemeAdapter::getMainMenuDeactivatedButtonStyle());
+    ui->Overview->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->SendCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->ReceiveCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Transactions->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->AddressBook->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Messages ->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
+    ui->Export->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
 
     int screen = sender;
 
     switch(screen){
         case 0:
             ui->Overview->setCheckable(true);
-            ui->Overview->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Overview->setIcon(QIcon(ThemeAdapter::getOverviewSelectedBtnIcon()));
+            ui->Overview->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Overview->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewSelectedBtnIco()));
             break;
         case 1:
             ui->SendCoins->setCheckable(true);
-            ui->SendCoins->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->SendCoins->setIcon(QIcon(ThemeAdapter::getSendCoinsSelectedBtnIcon()));
+            ui->SendCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->SendCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsSelectedBtnIco()));
             break;
         case 2:
             ui->ReceiveCoins->setCheckable(true);
-            ui->ReceiveCoins->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->ReceiveCoins->setIcon(QIcon(ThemeAdapter::getReceiveCoinsSelectedBtnIcon()));
+            ui->ReceiveCoins->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->ReceiveCoins->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsSelectedBtnIco()));
             break;
         case 3:
             ui->Transactions->setCheckable(true);
-            ui->Transactions->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Transactions->setIcon(QIcon(ThemeAdapter::getTransactionsSelectedBtnIcon()));
+            ui->Transactions->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Transactions->setIcon(QIcon(themeManager->getCurrent()->getMainMenuTransactionsSelectedBtnIco()));
             break;
         case 4:
             ui->AddressBook->setCheckable(true);
-            ui->AddressBook->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->AddressBook->setIcon(QIcon(ThemeAdapter::getAddressBookSelectedBtnIcon()));
+            ui->AddressBook->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->AddressBook->setIcon(QIcon(themeManager->getCurrent()->getMainMenuAddressBookSelectedBtnIco()));
             break;
         case 5:
             ui->Messages->setCheckable(true);
-            ui->Messages->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Messages->setIcon(QIcon(ThemeAdapter::getMessagesSelectedBtnIcon()));
+            ui->Messages->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Messages->setIcon(QIcon(themeManager->getCurrent()->getMainMenuMessagesSelectedBtnIco()));
             break;
         case 6:
             ui->Export->setCheckable(true);
-            ui->Export->setStyleSheet(ThemeAdapter::getMainMenuSelectedButtonStyle());
-            ui->Export->setIcon(QIcon(ThemeAdapter::getExportSelectedBtnIcon()));
+            ui->Export->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
+            ui->Export->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportSelectedBtnIco()));
             break;
         default:
             break;

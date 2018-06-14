@@ -12,6 +12,7 @@
 class ThemeManager {
 public:
     ThemeManager();
+    void applyCurrentTheme();
     Theme* getCurrent();
     void switchTheme(QString newType);
 private:

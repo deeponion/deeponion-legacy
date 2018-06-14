@@ -8,6 +8,7 @@
 #include "wallet.h"
 #include "anonymize.h"
 
+
 extern CWallet* pwalletMain;
 extern std::string strWalletFileName;
 void StartShutdown();

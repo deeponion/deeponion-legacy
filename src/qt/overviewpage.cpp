@@ -10,13 +10,15 @@
 #include "guiconstants.h"
 #include "askpassphrasedialog.h"
 #include "util.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 6
+
+extern ThemeManager *themeManager;
 
 class TxViewDelegate : public QAbstractItemDelegate
 {
@@ -103,7 +105,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     filter(0)
 {
     ui->setupUi(this);
-    ui->wallet_summary->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    ui->wallet_summary->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
 
     // Recent transactions
     //ui->listTransactions->setItemDelegate(txdelegate);
@@ -194,7 +196,7 @@ void OverviewPage::setModel(WalletModel *model)
 
         ui->listTransactions->setModel(filter);
         ui->listTransactions->setAlternatingRowColors(true);
-        ui->listTransactions->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+        ui->listTransactions->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
         ui->listTransactions->setSortingEnabled(true);
         ui->listTransactions->sortByColumn(TransactionTableModel::Status, Qt::DescendingOrder);
         ui->listTransactions->verticalHeader()->hide();
@@ -208,7 +210,7 @@ void OverviewPage::setModel(WalletModel *model)
         ui->listTransactions->horizontalHeader()->setSectionResizeMode(TransactionTableModel::ToAddress, QHeaderView::Stretch);
         ui->listTransactions->horizontalHeader()->resizeSection(
                 TransactionTableModel::Amount, 100);
-        ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+        ui->listTransactions->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 
 
 
@@ -261,7 +263,7 @@ void OverviewPage::showOutOfSyncWarning(bool fShow)
 }
 
 void OverviewPage::refreshStyle() {
-    ui->wallet_summary->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->listTransactions->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
-    ui->listTransactions->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+    ui->wallet_summary->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->listTransactions->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    ui->listTransactions->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 }

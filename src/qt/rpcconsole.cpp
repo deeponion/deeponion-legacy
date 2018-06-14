@@ -8,7 +8,7 @@
 #include "peertablemodel.h"
 #include <QSignalMapper>
 #include "scicon.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include "main.h"
 #include "util.h"
@@ -56,6 +56,8 @@ const struct {
     {"misc", ":/icons/tx_inout"},
     {NULL, NULL}
 };
+
+extern ThemeManager *themeManager;
 
 /* Object for executing console RPC commands in a separate thread.
 */
@@ -244,15 +246,15 @@ RPCConsole::RPCConsole(QWidget *parent) : QDialog(parent),
     ui->detailWidget->hide();
     ui->peerHeading->setText(tr("Select a peer to view detailed information."));
 
-    ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontSmallerButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
     QIcon icon1;
-    icon1.addFile(ThemeAdapter::getFontSmallerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(themeManager->getCurrent()->getFontSmallerIco(), QSize(), QIcon::Normal, QIcon::Off);
     ui->fontSmallerButton->setIcon(icon1);
-    ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontBiggerButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
     QIcon icon2;
-    icon2.addFile(ThemeAdapter::getFontBiggerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(themeManager->getCurrent()->getFontBiggerIco(), QSize(), QIcon::Normal, QIcon::Off);
     ui->fontBiggerButton->setIcon(icon2);
-    ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->clearButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
 
 
     clear();
@@ -892,13 +894,13 @@ void RPCConsole::on_showCLOptionsButton_clicked()
 }
 
 void RPCConsole::refreshStyle() {
-    ui->fontSmallerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontSmallerButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
     QIcon icon1;
-    icon1.addFile(ThemeAdapter::getFontSmallerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    icon1.addFile(themeManager->getCurrent()->getFontSmallerIco(), QSize(), QIcon::Normal, QIcon::Off);
     ui->fontSmallerButton->setIcon(icon1);
-    ui->fontBiggerButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->fontBiggerButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
     QIcon icon2;
-    icon2.addFile(ThemeAdapter::getFontBiggerIcon(), QSize(), QIcon::Normal, QIcon::Off);
+    icon2.addFile(themeManager->getCurrent()->getFontBiggerIco(), QSize(), QIcon::Normal, QIcon::Off);
     ui->fontBiggerButton->setIcon(icon2);
-    ui->clearButton->setStyleSheet(ThemeAdapter::getQToolButtonStyle());
+    ui->clearButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
 }

@@ -9,12 +9,14 @@
 #include "optionsmodel.h"
 #include "walletmodel.h"
 #include "wallet.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <string>
 #include <vector>
 
 #include <QClipboard>
+
+extern ThemeManager *themeManager;
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
@@ -45,14 +47,14 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     ui->signatureOut_SM->setFont(GUIUtil::bitcoinAddressFont());
     ui->signatureIn_VM->setFont(GUIUtil::bitcoinAddressFont());
 
-    ui->addressIn_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->signatureOut_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->addressIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->signatureIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->verifyMessageButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->clearButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->signMessageButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->clearButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->addressIn_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureOut_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addressIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->verifyMessageButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
 }
 
 SignVerifyMessageDialog::~SignVerifyMessageDialog()
@@ -284,12 +286,12 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
 }
 
 void SignVerifyMessageDialog::refreshStyle() {
-    ui->addressIn_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->signatureOut_SM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->addressIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->signatureIn_VM->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->verifyMessageButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->clearButton_VM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->signMessageButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
-    ui->clearButton_SM->setStyleSheet(ThemeAdapter::getIconTextButtonStyle());
+    ui->addressIn_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureOut_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addressIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->verifyMessageButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
 }

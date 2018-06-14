@@ -4,19 +4,35 @@
 
 #include "thememanager.h"
 #include <QString>
+#include <QSettings>
 
 ThemeManager::ThemeManager()
 {
-    // default use dark
+
+    // Dark Theme
     Theme* t = new Theme();
     t->init(0);
     allThemes[0] = t;
-    current = t;
-    currentType = 0;
 
+
+    // Light Theme
     t = new Theme();
     t->init(1);
     allThemes[1] = t;
+
+}
+
+void ThemeManager::applyCurrentTheme() {
+    QSettings settings;
+    QString currentTheme = settings.value("theme", "dark").toString();
+
+    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
+        current = allThemes[1];
+        currentType = 1;
+    } else {
+        current = allThemes[0];
+        currentType = 0;
+    }
 }
 
 void ThemeManager::switchTheme(QString newTypeS)

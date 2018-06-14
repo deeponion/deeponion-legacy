@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 #include <QSystemTrayIcon>
-#include "thememanager.h"
 
 class TransactionTableModel;
 class ClientModel;
@@ -31,7 +30,7 @@ class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
 
-class ThemeAdapter;
+
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.
@@ -57,8 +56,6 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
-
-    ThemeManager *themeManagerx;
 
 protected:
     void changeEvent(QEvent *e);

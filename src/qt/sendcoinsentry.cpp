@@ -8,10 +8,12 @@
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "stealth.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <QApplication>
 #include <QClipboard>
+
+extern ThemeManager *themeManager;
 
 SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     QFrame(parent),
@@ -28,20 +30,20 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
     ui->payTo->setPlaceholderText(tr("Enter a DeepOnion address"));
 #endif
-    setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
+    setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
 
     ui->addAsNarration->setPlaceholderText(tr("Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address"));
     ui->addAsNarration->setMaxLength(24);
 
-    ui->addAsNarration->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->payTo->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->addAsLabel->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
-    ui->payAmount->setStyleSheet(ThemeAdapter::getQLineEditGeneralStyle());
+    ui->addAsNarration->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->payTo->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addAsLabel->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->payAmount->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
 
-    ui->label_5->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->label_2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->label_4->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->label->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
+    ui->label_5->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label_2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label_4->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
 
 
 

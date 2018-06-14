@@ -7,7 +7,7 @@
 #include "editaddressdialog.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -17,6 +17,7 @@
 #ifdef USE_QRCODE
 #include "qrcodedialog.h"
 #endif
+extern ThemeManager *themeManager;
 
 AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere fromWhere) :
     QDialog(parent),
@@ -43,15 +44,15 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
             fromWhere == FromSendMessagesEntry ||
             fromWhere == FromSignVerifyMessageDialog ||
             fromWhere == FromSendMessagesDialog) {
-        setStyleSheet(ThemeAdapter::getCentralWidgetStyle());
+        setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
     }
 
-    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
-    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
-    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->secondaryMenuFrame->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 
     switch(mode)
     {
@@ -154,14 +155,14 @@ void AddressBookPage::setModel(AddressTableModel *model)
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
 
     // Set column widths
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Label, 320);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Interactive);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
  
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -400,13 +401,13 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int
 }
 
 void AddressBookPage::refreshStyle() {
-    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
-    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
-    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->secondaryMenuFrame->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 
-    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 }

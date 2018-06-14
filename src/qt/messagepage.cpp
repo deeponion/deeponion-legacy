@@ -7,7 +7,7 @@
 #include "bitcoingui.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
-#include "themeadapter.h"
+#include "thememanager.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -22,6 +22,8 @@
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
+
+extern ThemeManager *themeManager;
 
 class MessageViewDelegate : public QStyledItemDelegate
 {
@@ -113,12 +115,12 @@ MessagePage::MessagePage(QWidget *parent) :
     ui->listConversation->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listConversation->setAttribute(Qt::WA_MacShowFocusRect, false);
 
-    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
-    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
-    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 }
 
 MessagePage::~MessagePage()
@@ -146,7 +148,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->setModel(model->proxyModel);
     ui->tableView->sortByColumn(MessageModel::ReceivedDateTime, Qt::DescendingOrder);
     ui->tableView->setAlternatingRowColors(true);
-    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
 
 
 
@@ -161,7 +163,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ToAddress,        320);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::SentDateTime,     170);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ReceivedDateTime, 170);
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 
     //ui->messageEdit->setMinimumHeight(100);
 
@@ -441,12 +443,12 @@ void MessagePage::contextualMenu(const QPoint &point)
 }
 
 void MessagePage::refreshStyle() {
-    ui->frameExplanation->setStyleSheet(ThemeAdapter::getQFrameGeneralStyle());
-    ui->informationPushButton->setIcon(QIcon(ThemeAdapter::getInformationIcon()));
-    ui->informationPushButton->setStyleSheet(ThemeAdapter::getInformationBtnStyle());
-    ui->labelExplanation1->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->labelExplanation2->setStyleSheet(ThemeAdapter::getQLabelGeneralStyle());
-    ui->tableView->setStyleSheet(ThemeAdapter::getQTableGeneralStyle());
-    ui->tableView->horizontalHeader()->setStyleSheet(ThemeAdapter::getQTableHeaderGeneralStyle());
-    ui->frameMenu->setStyleSheet(ThemeAdapter::getQFrameSecondaryMenuGeneralStyle());
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
+    ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 }
