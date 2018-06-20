@@ -57,6 +57,8 @@ For ECDSA_SIG related errors, change the key.h file for the [Raspberry Pi branch
 
 If you have problems with boost libraries visit [this link](https://github.com/deeponion/deeponion/issues/63#issuecomment-365329304) for a possible solution.
 
+Another tested solution is the one for Debian 8. See below for more details. 
+
 **Debian 9**
 
 It has been reported that under Debian 9 the installation of *libssl1.1-dev* leads to compilation errors.
