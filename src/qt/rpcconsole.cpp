@@ -1,8 +1,14 @@
+// Copyright (c) 2018 The DeepOnion Developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "rpcconsole.h"
 #include "ui_rpcconsole.h"
 
 #include "clientmodel.h"
+#include "walletmodel.h"
 #include "bitcoinrpc.h"
+#include "blockchaindialog.h"
 #include "guiutil.h"
 #include "bantablemodel.h"
 #include "peertablemodel.h"
@@ -35,6 +41,8 @@
 
 // TODO: make it possible to filter out categories (esp debug messages when implemented)
 // TODO: receive errors and debug messages through ClientModel
+
+extern int blockchainStatus;
 
 const int CONSOLE_SCROLLBACK = 50;
 const int CONSOLE_HISTORY = 50;
@@ -402,7 +410,7 @@ void RPCConsole::setClientModel(ClientModel *model)
         ui->startupTime->setText(model->formatClientStartupTime());
 
         ui->isTestNet->setChecked(model->isTestNet());
-
+        
         setNumBlocks(model->getNumBlocks(), model->getNumBlocksOfPeers());
 
         //Setup autocomplete and attach it
@@ -426,6 +434,17 @@ void RPCConsole::setClientModel(ClientModel *model)
         // Make sure we clean up the executor thread
         Q_EMIT stopExecutor();
         thread.wait();
+    }
+}
+
+
+void RPCConsole::setModel(WalletModel *model)
+{
+    walletModel = model;
+    if(model)
+    {
+    	ui->labelBlockchainInfo->setText(model->getBlockchainStatusText());
+    	ui->labelBlockchainInfo->setStyleSheet(model->getBlockchainTextStylesheet());
     }
 }
 
@@ -633,6 +652,13 @@ void RPCConsole::on_openDebugLogfileButton_clicked()
     GUIUtil::openDebugLogfile();
 }
 
+void RPCConsole::on_showMeDetailsButton_clicked()
+{
+    BlockchainDialog dlg;
+    dlg.setLabelText(walletModel);
+    dlg.exec();
+}
+
 void RPCConsole::scrollToEnd()
 {
     QScrollBar *scrollbar = ui->messagesWidget->verticalScrollBar();
@@ -670,6 +696,7 @@ void RPCConsole::showOrHideBanTableIfRequired()
     ui->banlistWidget->setVisible(visible);
     ui->banHeading->setVisible(visible);
 }
+
 void RPCConsole::clearSelectedNode()
 {
     ui->peerWidget->selectionModel()->clearSelection();
@@ -893,6 +920,7 @@ void RPCConsole::on_showCLOptionsButton_clicked()
     help.exec();
 }
 
+
 void RPCConsole::refreshStyle() {
     ui->fontSmallerButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
     QIcon icon1;
@@ -904,3 +932,18 @@ void RPCConsole::refreshStyle() {
     ui->fontBiggerButton->setIcon(icon2);
     ui->clearButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
 }
+
+
+void RPCConsole::updateBlockchainStatus()
+{
+    if(walletModel) {
+    	walletModel->updateBlockchainStatus();
+    }
+    
+    if(walletModel->needUpdateBlockchainStatusUI())
+    {
+    	ui->labelBlockchainInfo->setStyleSheet(walletModel->getBlockchainTextStylesheet());
+    	ui->labelBlockchainInfo->setText(walletModel->getBlockchainStatusText());
+    }
+}
+

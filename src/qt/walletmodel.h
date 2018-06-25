@@ -1,3 +1,7 @@
+// Copyright (c) 2018 The DeepOnion Developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef WALLETMODEL_H
 #define WALLETMODEL_H
 
@@ -128,7 +132,12 @@ public:
     void lockCoin(COutPoint& output);
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
-    CWallet * getWallet();
+    void updateBlockchainStatus();
+    QString getBlockchainStatusText();
+    QString getBlockchainStatusDetailsText();
+    QString getBlockchainTextStylesheet();
+    bool needUpdateBlockchainStatusUI();
+    CWallet* getWallet();
 
 private:
     CWallet *wallet;

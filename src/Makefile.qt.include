@@ -6,12 +6,15 @@ QT_TS = \
   qt/locale/bitcoin_en.ts \
   qt/locale/bitcoin_fr.ts \
   qt/locale/bitcoin_ru.ts \
-  qt/locale/bitcoin_es.ts
+  qt/locale/bitcoin_es.ts \
+  qt/locale/bitcoin_de.ts \
+  qt/locale/bitcoin_zh-CN.ts
   
 QT_FORMS_UI = \
   qt/forms/aboutdialog.ui \
   qt/forms/addressbookpage.ui \
   qt/forms/askpassphrasedialog.ui \
+  qt/forms/blockchaindialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/intro.ui \
@@ -38,6 +41,7 @@ QT_MOC_CPP = \
   qt/moc_bitcoinamountfield.cpp \
   qt/moc_bitcoingui.cpp \
   qt/moc_bitcoinunits.cpp \
+  qt/moc_blockchaindialog.cpp \
   qt/moc_clientmodel.cpp \
   qt/moc_csvmodelwriter.cpp \
   qt/moc_coincontroldialog.cpp \
@@ -99,6 +103,7 @@ BITCOIN_QT_H = \
   qt/bitcoinamountfield.h \
   qt/bitcoingui.h \
   qt/bitcoinunits.h \
+  qt/blockchaindialog.h \
   qt/clientmodel.h \
   qt/coincontroldialog.h \
   qt/coincontroltreewidget.h \
@@ -216,6 +221,7 @@ BITCOIN_QT_CPP += \
   qt/addresstablemodel.cpp \
   qt/bantablemodel.cpp \
   qt/askpassphrasedialog.cpp \
+  qt/blockchaindialog.cpp \
   qt/coincontroldialog.cpp \
   qt/coincontroltreewidget.cpp \
   qt/editaddressdialog.cpp \

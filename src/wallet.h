@@ -23,6 +23,8 @@
 
 extern bool fWalletUnlockStakingOnly;
 extern bool fConfChange;
+extern int blockchainStatus;
+extern int blockchainStatusLast;
 class CAccountingEntry;
 class CWalletTx;
 class CReserveKey;
@@ -105,6 +107,11 @@ public:
     typedef std::map<unsigned int, CMasterKey> MasterKeyMap;
     MasterKeyMap mapMasterKeys;
     unsigned int nMasterKeyMaxID;
+    
+    static int LAST_REGISTERED_BLOCK_HEIGHT;
+    static int LAST_REGISTERED_BTC_BLOCK_HEIGHT;
+    static std::string LAST_REGISTERED_BLOCKCHAIN_HASH;
+    static std::string LAST_REGISTERED_BTC_TX;
 
     CWallet()
     {
@@ -189,6 +196,8 @@ public:
     int ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate = false);
     int ScanForWalletTransaction(const uint256& hashTx);
     int GetBestBlockHeight();
+    void ScanBlockchainForHash(bool bDisplay = false);
+    
     void ReacceptWalletTransactions();
     void ResendWalletTransactions(bool fForce = false);
     int64_t GetBalance() const;

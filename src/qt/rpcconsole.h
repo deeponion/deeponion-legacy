@@ -2,6 +2,7 @@
 // Copyright (c) 2018 The DeepOnion developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef RPCCONSOLE_H
 #define RPCCONSOLE_H
 #include "net.h"
@@ -15,7 +16,9 @@
 namespace Ui {
     class RPCConsole;
 }
+
 class ClientModel;
+class WalletModel;
 class CNodeCombinedStats;
 
 QT_BEGIN_NAMESPACE
@@ -33,6 +36,8 @@ public:
     ~RPCConsole();
 
     void setClientModel(ClientModel *model);
+    void setModel(WalletModel *model);
+    void updateBlockchainStatus();
 
     enum MessageClass {
         MC_ERROR,
@@ -51,6 +56,8 @@ private slots:
     void on_tabWidget_currentChanged(int index);
     /** open the debug.log from the current datadir */
     void on_openDebugLogfileButton_clicked();
+    /** open the blockchain info page */
+    void on_showMeDetailsButton_clicked();
     /** display messagebox with program parameters (same as bitcoin-qt --help) */
     void on_showCLOptionsButton_clicked();
     /** change the time range of the network traffic graph */
@@ -108,6 +115,7 @@ private:
   static QString FormatBytes(quint64 bytes);
   Ui::RPCConsole *ui;
   ClientModel *clientModel;
+  WalletModel *walletModel;
   QStringList history;
   int historyPtr;
   QCompleter *autoCompleter;
