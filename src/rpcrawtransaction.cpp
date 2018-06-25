@@ -256,6 +256,15 @@ Value createrawtransaction(const Array& params, bool fHelp)
     set<CBitcoinAddress> setAddress;
     BOOST_FOREACH(const Pair& s, sendTo)
     {
+        ///!!!
+        if (s.name_ == "data") {
+            std::vector<unsigned char> data = ParseHexV( s.value_,"Data");
+
+            CTxOut out(0, CScript() << OP_RETURN << data);
+            rawTx.vout.push_back(out);
+            continue;
+        }
+
         CBitcoinAddress address(s.name_);
         if (!address.IsValid())
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, string("Invalid DeepOnion address: ")+s.name_);
@@ -270,6 +279,7 @@ Value createrawtransaction(const Array& params, bool fHelp)
 
         CTxOut out(nAmount, scriptPubKey);
         rawTx.vout.push_back(out);
+
     }
 
     CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
