@@ -16,6 +16,7 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
+class MenuPage;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -24,9 +25,11 @@ class QTableView;
 class QAbstractItemModel;
 class QModelIndex;
 class QProgressBar;
+class QDockWidget;
 class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
+
 
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
@@ -61,9 +64,14 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
+
+    //------------------ Adding new menu ----------
+    MenuPage *menu;
+
     ClientModel *clientModel;
     WalletModel *walletModel;
 
+    QDockWidget *dock;
     QStackedWidget *centralWidget;
 	MessageModel *messageModel;
 	MessagePage *messagePage;
@@ -112,15 +120,19 @@ private:
     RPCConsole *rpcConsole;
 
     QMovie *syncIconMovie;
+    int spinnerFrame;
+    int prevBlocks;
+    int currentScreen;
 
     /** Create the main UI actions. */
     void createActions();
     /** Create the menu bar and sub-menus. */
     void createMenuBar();
     /** Create the toolbars */
-    void createToolBars(QToolBar* toolbar);
+    void createToolBars();
     /** Create system tray (notification) icon */
     void createTrayIcon();
+
 
 public slots:
     /** Set number of connections shown in the UI */
@@ -204,6 +216,9 @@ private slots:
 
     void updateStakingIcon();
 	void updateOnionIcon();
+
+    void optionsDialogFinished (int);
+    void refreshStyle();
 };
 
 #endif

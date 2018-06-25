@@ -12,9 +12,12 @@
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "stealth.h"
+#include "thememanager.h"
 
 #include <QApplication>
 #include <QClipboard>
+
+extern ThemeManager *themeManager;
 
 SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     QFrame(parent),
@@ -31,8 +34,23 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->addAsLabel->setPlaceholderText(tr("Enter a label for this address to add it to your address book"));
     ui->payTo->setPlaceholderText(tr("Enter a DeepOnion address"));
 #endif
+    setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+
     ui->addAsNarration->setPlaceholderText(tr("Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address"));
     ui->addAsNarration->setMaxLength(24);
+
+    ui->addAsNarration->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->payTo->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addAsLabel->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->payAmount->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+
+    ui->label_5->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label_2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label_4->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->label->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+
+
+
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
 
@@ -54,7 +72,7 @@ void SendCoinsEntry::on_addressBookButton_clicked()
 {
     if(!model)
         return;
-    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this);
+    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this, AddressBookPage::FromSendCoinsEntry);
     dlg.setModel(model->getAddressTableModel());
     if(dlg.exec())
     {

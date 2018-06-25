@@ -11,6 +11,7 @@
 #include "addresstablemodel.h"
 #include "optionsmodel.h"
 #include "coincontrol.h"
+#include "thememanager.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -28,6 +29,7 @@
 using namespace std;
 QList<qint64> CoinControlDialog::payAmounts;
 CCoinControl* CoinControlDialog::coinControl = new CCoinControl();
+extern ThemeManager *themeManager;
 
 CoinControlDialog::CoinControlDialog(QWidget *parent) :
     QDialog(parent),
@@ -100,6 +102,7 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
 
     // click on header
     ui->treeWidget->header()->setSectionsClickable(true);
+    ui->treeWidget->setStyleSheet(themeManager->getCurrent()->getQTreeWidget());
     connect(ui->treeWidget->header(), SIGNAL(sectionClicked(int)), this, SLOT(headerSectionClicked(int)));
 
     // ok button

@@ -11,6 +11,7 @@
 #include "editaddressdialog.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+#include "thememanager.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -20,14 +21,16 @@
 #ifdef USE_QRCODE
 #include "qrcodedialog.h"
 #endif
+extern ThemeManager *themeManager;
 
-AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
+AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere fromWhere) :
     QDialog(parent),
     ui(new Ui::AddressBookPage),
     model(0),
     optionsModel(0),
     mode(mode),
-    tab(tab)
+    tab(tab),
+    fromWhere(fromWhere)
 {
     ui->setupUi(this);
 
@@ -40,6 +43,20 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
 #ifndef USE_QRCODE
     ui->showQRCode->setVisible(false);
 #endif
+
+    if (fromWhere == FromSendCoinsEntry ||
+            fromWhere == FromSendMessagesEntry ||
+            fromWhere == FromSignVerifyMessageDialog ||
+            fromWhere == FromSendMessagesDialog) {
+        setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
+    }
+
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 
     switch(mode)
     {
@@ -55,14 +72,21 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     switch(tab)
     {
     case SendingTab:
-        ui->labelExplanation->setVisible(false);
+        ui->pageTitleLabel->setText(tr("Address Book"));
+        ui->frameExplanation->setVisible(false);
         ui->deleteButton->setVisible(true);
         ui->signMessage->setVisible(false);
         break;
     case ReceivingTab:
+        ui->pageTitleLabel->setText(tr("Receive Coins"));
         ui->deleteButton->setVisible(false);
         ui->signMessage->setVisible(true);
         break;
+    }
+
+    if (fromWhere == FromSendMessagesDialog || fromWhere == FromSendCoinsEntry ||
+            fromWhere == FromSignVerifyMessageDialog || fromWhere == FromSendMessagesEntry) {
+        ui->pageTitleLabel->setVisible(false);
     }
 
     // Context menu actions
@@ -134,12 +158,15 @@ void AddressBookPage::setModel(AddressTableModel *model)
     }
     ui->tableView->setModel(proxyModel);
     ui->tableView->sortByColumn(0, Qt::AscendingOrder);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
 
     // Set column widths
     ui->tableView->horizontalHeader()->resizeSection(
             AddressTableModel::Label, 320);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Label, QHeaderView::Interactive);
     ui->tableView->horizontalHeader()->setSectionResizeMode(AddressTableModel::Address, QHeaderView::Stretch);
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
  
     connect(ui->tableView->selectionModel(), SIGNAL(selectionChanged(QItemSelection,QItemSelection)),
             this, SLOT(selectionChanged()));
@@ -375,4 +402,16 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int
         ui->tableView->selectRow(idx.row());
         newAddressToSelect.clear();
     }
+}
+
+void AddressBookPage::refreshStyle() {
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->secondaryMenuFrame->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
+
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 }

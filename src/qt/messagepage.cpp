@@ -7,6 +7,7 @@
 #include "bitcoingui.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+#include "thememanager.h"
 
 #include <QSortFilterProxyModel>
 #include <QClipboard>
@@ -21,6 +22,8 @@
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3
+
+extern ThemeManager *themeManager;
 
 class MessageViewDelegate : public QStyledItemDelegate
 {
@@ -111,6 +114,13 @@ MessagePage::MessagePage(QWidget *parent) :
     ui->listConversation->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
     ui->listConversation->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listConversation->setAttribute(Qt::WA_MacShowFocusRect, false);
+
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
 }
 
 MessagePage::~MessagePage()
@@ -137,6 +147,10 @@ void MessagePage::setModel(MessageModel *model)
 
     ui->tableView->setModel(model->proxyModel);
     ui->tableView->sortByColumn(MessageModel::ReceivedDateTime, Qt::DescendingOrder);
+    ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+
+
 
     ui->listConversation->setModel(model->proxyModel);
     ui->listConversation->setModelColumn(MessageModel::HTML);
@@ -149,6 +163,7 @@ void MessagePage::setModel(MessageModel *model)
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ToAddress,        320);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::SentDateTime,     170);
     ui->tableView->horizontalHeader()->resizeSection(MessageModel::ReceivedDateTime, 170);
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 
     //ui->messageEdit->setMinimumHeight(100);
 
@@ -427,3 +442,13 @@ void MessagePage::contextualMenu(const QPoint &point)
     }
 }
 
+void MessagePage::refreshStyle() {
+    ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
+    ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
+    ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
+    ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
+    ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
+    ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
+}

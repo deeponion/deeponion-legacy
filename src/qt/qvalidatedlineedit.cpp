@@ -1,6 +1,9 @@
 #include "qvalidatedlineedit.h"
 
 #include "guiconstants.h"
+#include "thememanager.h"
+
+extern ThemeManager *themeManager;
 
 QValidatedLineEdit::QValidatedLineEdit(QWidget *parent) :
     QLineEdit(parent), valid(true)
@@ -17,7 +20,7 @@ void QValidatedLineEdit::setValid(bool valid)
 
     if(valid)
     {
-        setStyleSheet("");
+        setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     }
     else
     {

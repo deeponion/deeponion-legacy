@@ -28,10 +28,10 @@ win32 {
     LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lcrypt32
     LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
     LIBS += -lboost_system-mgw49-mt-s-1_57 -lboost_filesystem-mgw49-mt-s-1_57 -lboost_program_options-mgw49-mt-s-1_57 -lboost_thread-mgw49-mt-s-1_57
-    LIBS += -L"C:/deps/MinGW/msys/1.0/local/lib"
-    LIBS += -L"C:/deps/libcommuni-3.2.0/lib"
+    LIBS += -L"C:/bin/mingwX/msys/1.0/local/lib"
+    LIBS += -L"C:/deps/libcommuni/lib"
 
-    INCLUDEPATH += "C:/deps/MinGW/msys/1.0/local/include"
+    INCLUDEPATH += "C:/bin/mingwX/msys/1.0/local/include"
 
 BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57
 BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
@@ -231,6 +231,10 @@ lessThan(QT_MAJOR_VERSION, 5) {
 # Input
 DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
+	src/qt/menupage.h \
+	src/qt/global.h \
+	src/qt/theme.h \
+	src/qt/thememanager.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
 	src/qt/bantablemodel.h \
@@ -348,7 +352,11 @@ HEADERS += src/qt/bitcoingui.h \
     src/xxhash/xxhash.h
 
 SOURCES += src/qt/bitcoin.cpp \
+    src/qt/menupage.cpp \
     src/qt/bitcoingui.cpp \
+	src/qt/global.cpp \
+	src/qt/theme.cpp \
+	src/qt/thememanager.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
 	src/qt/bantablemodel.cpp \
@@ -442,6 +450,7 @@ RESOURCES += \
 
 FORMS += \
     src/qt/forms/coincontroldialog.ui \
+	src/qt/forms/menupage.ui \
     src/qt/forms/sendcoinsdialog.ui \
     src/qt/forms/addressbookpage.ui \
     src/qt/forms/signverifymessagedialog.ui \

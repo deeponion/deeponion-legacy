@@ -6,15 +6,21 @@
 #include "ui_editaddressdialog.h"
 #include "addresstablemodel.h"
 #include "guiutil.h"
+#include "thememanager.h"
 
 #include <QDataWidgetMapper>
 #include <QMessageBox>
+
+extern ThemeManager *themeManager;
 
 EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::EditAddressDialog), mapper(0), mode(mode), model(0)
 {
     ui->setupUi(this);
+    setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->labelEdit->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addressEdit->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
 
     GUIUtil::setupAddressWidget(ui->addressEdit, this);
 
@@ -30,6 +36,7 @@ EditAddressDialog::EditAddressDialog(Mode mode, QWidget *parent) :
         break;
     case NewSendingAddress:
         setWindowTitle(tr("New sending address"));
+
 		ui->stealthCB->setVisible(false);
         break;
     case EditReceivingAddress:

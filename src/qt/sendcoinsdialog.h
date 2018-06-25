@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QString>
+#include "bitcoingui.h"
 
 namespace Ui {
     class SendCoinsDialog;
@@ -32,6 +33,7 @@ public:
 
     void pasteEntry(const SendCoinsRecipient &rv);
     bool handleURI(const QString &uri);
+    void refreshStyle();
 
 public slots:
     void clear();

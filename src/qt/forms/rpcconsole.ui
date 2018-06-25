@@ -20,7 +20,7 @@
    <item>
     <widget class="QTabWidget" name="tabWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tab_info">
       <attribute name="title">
@@ -595,7 +595,7 @@
           <widget class="QLineEdit" name="lineEdit"/>
          </item>
          <item>
-          <widget class="QPushButton" name="fontSmallerButton">
+          <widget class="QToolButton" name="fontSmallerButton">
            <property name="maximumSize">
             <size>
              <width>24</width>
@@ -618,16 +618,10 @@
              <height>16</height>
             </size>
            </property>
-           <property name="autoDefault">
-            <bool>false</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="fontBiggerButton">
+          <widget class="QToolButton" name="fontBiggerButton">
            <property name="maximumSize">
             <size>
              <width>24</width>
@@ -650,16 +644,10 @@
              <height>16</height>
             </size>
            </property>
-           <property name="autoDefault">
-            <bool>false</bool>
-           </property>
-           <property name="flat">
-            <bool>true</bool>
-           </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="clearButton">
+          <widget class="QToolButton" name="clearButton">
            <property name="maximumSize">
             <size>
              <width>24</width>
@@ -678,9 +666,6 @@
            </property>
            <property name="shortcut">
             <string notr="true">Ctrl+L</string>
-           </property>
-           <property name="autoDefault">
-            <bool>false</bool>
            </property>
           </widget>
          </item>
