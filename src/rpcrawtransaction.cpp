@@ -256,7 +256,6 @@ Value createrawtransaction(const Array& params, bool fHelp)
     set<CBitcoinAddress> setAddress;
     BOOST_FOREACH(const Pair& s, sendTo)
     {
-        ///!!!
         if (s.name_ == "data") {
             std::vector<unsigned char> data = ParseHexV( s.value_,"Data");
 
