@@ -31,6 +31,20 @@ class QUrl;
 QT_END_NAMESPACE
 
 
+enum Screen_Name
+{
+    SCREEN_OVERVIEW = 0,
+	SCREEN_SENDCOINS = 1,
+	SCREEN_RECEIVECOINS = 2,
+	SCREEN_TRANSACTIONS = 3,
+	SCREEN_ADDRESSBOOK = 4,
+	SCREEN_MESSAGES = 5,
+	SCREEN_EXPORT = 6,
+	SCREEN_UNLOCKWALLET = 7,
+	SCREEN_DEEPVAULT = 8
+};
+
+
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
   wallet models to give the user an up-to-date view of the current core state.

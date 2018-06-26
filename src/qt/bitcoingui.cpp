@@ -126,7 +126,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     themeManager->applyCurrentTheme();
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
 
-    currentScreen = 0;
+    currentScreen = SCREEN_OVERVIEW;
 
     QFontDatabase::addApplicationFont(":/fonts/HelveticaNeue");
     // Accept D&D of URIs
@@ -896,7 +896,7 @@ void BitcoinGUI::incomingMessage(const QModelIndex &parent, int start, int end)
 
 void BitcoinGUI::gotoOverviewPage()
 {
-    currentScreen = 0;
+    currentScreen = SCREEN_OVERVIEW;
     overviewAction->setChecked(true);
     centralWidget->setCurrentWidget(overviewPage);
     exportAction->setEnabled(false);
@@ -905,7 +905,7 @@ void BitcoinGUI::gotoOverviewPage()
 
 void BitcoinGUI::gotoMessagePage()
 {
-    currentScreen = 5;
+    currentScreen = SCREEN_MESSAGES;
     messageAction->setChecked(true);
     centralWidget->setCurrentWidget(messagePage);
     exportAction->setEnabled(true);
@@ -915,7 +915,7 @@ void BitcoinGUI::gotoMessagePage()
 
 void BitcoinGUI::gotoHistoryPage()
 {
-    currentScreen = 3;
+    currentScreen = SCREEN_TRANSACTIONS;
     historyAction->setChecked(true);
     centralWidget->setCurrentWidget(transactionsPage);
     exportAction->setEnabled(true);
@@ -925,7 +925,7 @@ void BitcoinGUI::gotoHistoryPage()
 
 void BitcoinGUI::gotoAddressBookPage()
 {
-    currentScreen = 4;
+    currentScreen = SCREEN_ADDRESSBOOK;
     addressBookAction->setChecked(true);
     centralWidget->setCurrentWidget(addressBookPage);
     exportAction->setEnabled(true);
@@ -935,7 +935,7 @@ void BitcoinGUI::gotoAddressBookPage()
 
 void BitcoinGUI::gotoReceiveCoinsPage()
 {
-    currentScreen = 2;
+    currentScreen = SCREEN_RECEIVECOINS;
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
     exportAction->setEnabled(true);
@@ -945,7 +945,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 
 void BitcoinGUI::gotoSendCoinsPage()
 {
-    currentScreen = 1;
+    currentScreen = SCREEN_SENDCOINS;
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
     exportAction->setEnabled(false);
