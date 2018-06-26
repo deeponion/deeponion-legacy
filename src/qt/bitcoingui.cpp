@@ -155,7 +155,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
        the whole component it resides on not being paintable
      */
 #ifdef Q_OS_MAC
-    toolbar->setStyleSheet("QToolBar { background-color: transparent; border: 0px solid black; padding: 3px; }");
+//    toolbar->setStyleSheet("QToolBar { background-color: transparent; border: 0px solid black; padding: 3px; }");
 #endif
 
     // Create tabs
