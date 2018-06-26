@@ -78,11 +78,12 @@
 
 #include <iostream>
 
-extern ThemeManager *themeManager;
 extern CWallet *pwalletMain;
 extern int64_t nLastCoinStakeSearchInterval;
 extern unsigned int nStakeTargetSpacing;
 double GetPoSKernelPS();
+
+ThemeManager *themeManager = new ThemeManager();
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
