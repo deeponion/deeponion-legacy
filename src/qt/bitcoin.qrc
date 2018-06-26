@@ -129,13 +129,7 @@
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="wallet_logo">res/images/wallet.png</file>
     </qresource>
-    <qresource prefix="/translations">
-        <file alias="en">locale/bitcoin_en.qm</file>
-        <file alias="fr">locale/bitcoin_fr.qm</file>
-        <file alias="ru">locale/bitcoin_ru.qm</file>
-        <file alias="es">locale/bitcoin_es.qm</file>
-     </qresource>
-     <qresource prefix="/css">
+    <qresource prefix="/css">
         <file alias="default">res/css/default.css</file>
     </qresource>
 </RCC>
