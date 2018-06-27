@@ -18,7 +18,6 @@ QT_FORMS_UI = \
   qt/forms/coincontroldialog.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/intro.ui \
-  qt/forms/menupage.ui \
   qt/forms/messagepage.ui \
   qt/forms/optionsdialog.ui \
   qt/forms/overviewpage.ui \
@@ -53,8 +52,6 @@ QT_MOC_CPP = \
   qt/moc_macdockiconhandler.cpp \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_monitoreddatamapper.cpp \
-  qt/moc_menupage.cpp \
-  qt/moc_messagepage.cpp \
   qt/moc_messagemodel.cpp \
   qt/plugins/mrichtexteditor/moc_mrichtextedit.cpp \
   qt/moc_notificator.cpp \
@@ -116,7 +113,6 @@ BITCOIN_QT_H = \
   qt/intro.h \
   qt/macdockiconhandler.h \
   qt/macnotificationhandler.h \
-  qt/menupage.h \
   qt/messagemodel.h \
   qt/messagepage.h \
   qt/monitoreddatamapper.h \

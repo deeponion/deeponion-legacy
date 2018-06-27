@@ -16,7 +16,6 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
-class MenuPage;
 
 QT_BEGIN_NAMESPACE
 class QLabel;
@@ -25,7 +24,6 @@ class QTableView;
 class QAbstractItemModel;
 class QModelIndex;
 class QProgressBar;
-class QDockWidget;
 class QStackedWidget;
 class QUrl;
 QT_END_NAMESPACE
@@ -70,6 +68,7 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
+    void updateWindowStyle(int screen);
 
 protected:
     void changeEvent(QEvent *e);
@@ -78,14 +77,9 @@ protected:
     void dropEvent(QDropEvent *event);
 
 private:
-
-    //------------------ Adding new menu ----------
-    MenuPage *menu;
-
     ClientModel *clientModel;
     WalletModel *walletModel;
 
-    QDockWidget *dock;
     QStackedWidget *centralWidget;
 	MessageModel *messageModel;
 	MessagePage *messagePage;
@@ -103,6 +97,7 @@ private:
     QLabel *labelBlocksIcon;
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
+    QToolBar *toolbar;
 
     QMenuBar *appMenuBar;
     QAction *overviewAction;

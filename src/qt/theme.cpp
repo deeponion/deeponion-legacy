@@ -6,7 +6,9 @@
 
 void Theme::init(int type) {
     switch (type) {
-        case 0:
+    
+        case ORIGINAL_DARK:
+        	
             themeStyleSheet = "QWidget {color:white; background-color: #393947;} \
                                 QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
                                 QMenu::item:selected {background-color: #1C1B15;}\
@@ -32,7 +34,10 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #FFFFFF;}\
                                 QLabel#labelImmatureText {color: #898994;}\
                                 QLabel#labelImmature {color: #FFFFFF;}\
-                                QToolBar {color:white; background-color: #191921;} \
+                                QToolBar {color:white; background-color: #191921; width: 192px;} \
+                                QToolBar QToolButton {width:180px; height:40px; font-family:'Helvetica Neue'; font-size:12px; border:1px solid #65676b; background-color:#2b2b37; color:#e9e8e8; padding:8px;} \
+                                QToolBar QToolButton:hover {background-color: #001100; color: #e9e8e8;} \
+                                QToolBar QToolButton:pressed {background-color: #110000; color: #e9e8e8;} \
                                 QTreeView { color: #FFFFFF; background-color:#393947; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #FFFFFF; background-color: #393947; border: 1px solid #393947;} \
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;} \
@@ -56,11 +61,12 @@ void Theme::init(int type) {
                                 QScrollBar::handle:horizontal {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; }\
                                 QScrollBar::add-line:horizontal { background: #474758; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;}\
                                 QScrollBar::sub-line:horizontal { background: #474758; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
-            mainMenuNormalButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #393947";
-            mainMenuSelectedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
-            mainMenuDeactivatedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #393947";
+            
+            mainMenuNormalButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:white; background-color: #393947";
+            mainMenuSelectedButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:white; background-color: #486EBA";
+            mainMenuDeactivatedButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:#787878; background-color: #393947";
             centralWidgetStyle = "background: #2B2B37";
-            dockMainMenuStyle = "border: 0; background: #393947";
+             
             mainMenuOverviewNormalBtnIco = ":/icons/NewOverviewS";
             mainMenuSendcoinsNormalBtnIco = ":/icons/NewSendCoinsS";
             mainMenuReceiveCoinsNormalBtnIco = ":/icons/NewReceiveCoinsS";
@@ -68,6 +74,9 @@ void Theme::init(int type) {
             mainMenuAddressBookNormalBtnIco = ":/icons/NewAddressBookS";
             mainMenuMessagesNormalBtnIco = ":/icons/NewMessagesS";
             mainMenuExportNormalBtnIco = ":/icons/NewExportUS";
+            mainMenuUnlockWalletNormalBtnIco = ":/icons/new_lock_open_s";
+            mainMenuLockWalletNormalBtnIco = ":/icons/new_lock_closed_s";
+            
             mainMenuOverviewSelectedBtnIco = ":/icons/NewOverviewS";
             mainMenuSendcoinsSelectedBtnIco = ":/icons/NewSendCoinsS";
             mainMenuReceiveCoinsSelectedBtnIco = ":/icons/NewReceiveCoinsS";
@@ -75,6 +84,9 @@ void Theme::init(int type) {
             mainMenuAddressBookSelectedBtnIco = ":/icons/NewAddressBookS";
             mainMenuMessagesSelectedBtnIco = ":/icons/NewMessagesS";
             mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
+            mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open_s";
+            mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed_s";
+            
             qFrameGeneralStyle = "background-color: #393947;";
             qFrameSecondaryMenuGeneralStyle = "background-color: #22222B; padding: 8px;";
             qLabelGeneralStyle = "color: #FFFFFF";
@@ -108,7 +120,8 @@ void Theme::init(int type) {
                                 QTreeView::item {color: #FFFFFF; background-color: #393947; border: 1px solid #393947;} \
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;}";
             break;
-        case 1:
+            
+        case ORIGINAL_LIGHT:
             themeStyleSheet = "QComboBox {color: white; background-color: #2A2937; height: 26px;} \
                                 QComboBox:hover {background-color: #FFFFFF; color: #2A2937;  height: 26px;} \
                                 QWidget {color: #2A2937; background-color: #F7F7F7;} \
@@ -140,16 +153,19 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #4D4D4D;}\
                                 QLabel#labelImmatureText {color: #486EBA;}\
                                 QLabel#labelImmature {color: #4D4D4D;}\
-                                QToolBar {color:white; background-color: #191921;}\
+                                QToolBar {color:white; background-color: #191921; width: 192px;}\
+                                QToolBar QToolButton {width: 180px; height: 40px; font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px;} \
+                                QToolBar QToolButton:hover {background-color: #001100; color: #e9e8e8;} \
+                                QToolBar QToolButton:pressed {background-color: #110000; color: #e9e8e8;} \
                                 QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
                                 QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;} \
                                 QToolButton {color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;} \
                                 QDialogButtonBox {color:#2A2937; background-color: #F7F7F7; padding: 3px;} \
                                 QToolTip {color: #2A2937; border: 0px; background-color: #F7F7F7; opacity: 225;} \
-                                QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px}\
-                                QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
-                                QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
+                                QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px;}\
+                                QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA;}\
+                                QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA;}\
                                 QStatusBar::item { border: 0px}\
                                 QProgressBar::chunk { background-color:#3dc28b;}\
                                 QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
@@ -161,11 +177,12 @@ void Theme::init(int type) {
                                 QScrollBar::handle:horizontal {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; } \
                                 QScrollBar::add-line:horizontal { background: #D8D8D8; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;} \
                                 QScrollBar::sub-line:horizontal { background: #D8D8D8; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
-            mainMenuNormalButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #486EBA; background-color: #FFFFFF";
-            mainMenuSelectedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: white;background-color: #486EBA";
+
+            mainMenuNormalButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF";
+            mainMenuSelectedButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA";
             mainMenuDeactivatedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #FFFFFF";
             centralWidgetStyle = "background: #F7F7F7";
-            dockMainMenuStyle = "border: 0; background: #FFFFFF";
+
             mainMenuOverviewNormalBtnIco = ":/icons/overview";
             mainMenuSendcoinsNormalBtnIco = ":/icons/send";
             mainMenuReceiveCoinsNormalBtnIco = ":/icons/receiving_addresses";
@@ -173,13 +190,19 @@ void Theme::init(int type) {
             mainMenuAddressBookNormalBtnIco = ":/icons/address-book";
             mainMenuMessagesNormalBtnIco = ":/icons/messaging";
             mainMenuExportNormalBtnIco = ":/icons/export";
-            mainMenuOverviewSelectedBtnIco = ":/icons/NewOverviewS";
-            mainMenuSendcoinsSelectedBtnIco = ":/icons/NewSendCoinsS";
-            mainMenuReceiveCoinsSelectedBtnIco = ":/icons/NewReceiveCoinsS";
-            mainMenuTransactionsSelectedBtnIco = ":/icons/NewTransactionsS";
-            mainMenuAddressBookSelectedBtnIco = ":/icons/NewAddressBookS";
-            mainMenuMessagesSelectedBtnIco = ":/icons/NewMessagesS";
-            mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
+            mainMenuUnlockWalletNormalBtnIco = ":/icons/new_lock_open";
+            mainMenuLockWalletNormalBtnIco = ":/icons/new_lock_closed";
+            
+            mainMenuOverviewSelectedBtnIco = ":/icons/overview";
+            mainMenuSendcoinsSelectedBtnIco = ":/icons/send";
+            mainMenuReceiveCoinsSelectedBtnIco = ":/icons/receiving_addresses";
+            mainMenuTransactionsSelectedBtnIco = ":/icons/history";
+            mainMenuAddressBookSelectedBtnIco = ":/icons/address-book";
+            mainMenuMessagesSelectedBtnIco = ":/icons/messaging";
+            mainMenuExportSelectedBtnIco = ":/icons/export";
+            mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open";
+            mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed";
+            
             qFrameGeneralStyle = "background-color: #FFFFFF;";
             qFrameSecondaryMenuGeneralStyle = "background-color: #DFE9F7; padding: 8px;";
             qLabelGeneralStyle = "color: #486EBA";
@@ -216,150 +239,166 @@ void Theme::init(int type) {
     }
 }
 
-const QString &Theme::getStyleSheet() const {
+const QString Theme::getStyleSheet() const {
     return themeStyleSheet;
 }
 
-const QString &Theme::getMainMenuNormalButtonStyle() const {
+const QString Theme::getMainMenuNormalButtonStyle() const {
     return mainMenuNormalButtonStyle;
 }
 
-const QString &Theme::getMainMenuSelectedButtonStyle() const {
+const QString Theme::getMainMenuSelectedButtonStyle() const {
     return mainMenuSelectedButtonStyle;
 }
 
-const QString &Theme::getMainMenuDeactivatedButtonStyle() const {
+const QString Theme::getMainMenuDeactivatedButtonStyle() const {
     return mainMenuDeactivatedButtonStyle;
 }
 
-const QString &Theme::getCentralWidgetStyle() const {
+const QString Theme::getCentralWidgetStyle() const {
     return centralWidgetStyle;
 }
 
-const QString &Theme::getDockMainMenuStyle() const {
-    return dockMainMenuStyle;
-}
-
-const QString &Theme::getQFrameGeneralStyle() const {
+const QString Theme::getQFrameGeneralStyle() const {
     return qFrameGeneralStyle;
 }
 
-const QString &Theme::getQFrameSecondaryMenuGeneralStyle() const {
+const QString Theme::getQFrameSecondaryMenuGeneralStyle() const {
     return qFrameSecondaryMenuGeneralStyle;
 }
 
-const QString &Theme::getQLabelGeneralStyle() const {
+const QString Theme::getQLabelGeneralStyle() const {
     return qLabelGeneralStyle;
 }
 
-const QString &Theme::getQTableGeneralStyle() const {
+const QString Theme::getQTableGeneralStyle() const {
     return qTableGeneralStyle;
 }
 
-const QString &Theme::getQListHeaderGeneralStyle() const {
+const QString Theme::getQListHeaderGeneralStyle() const {
     return qListHeaderGeneralStyle;
 }
 
-const QString &Theme::getQLineEdit() const {
+const QString Theme::getQLineEdit() const {
     return qLineEdit;
 }
 
-const QString &Theme::getIconTextButtonStyle() const {
+const QString Theme::getIconTextButtonStyle() const {
     return iconTextButtonStyle;
 }
 
-const QString &Theme::getInformationIco() const {
+const QString Theme::getInformationIco() const {
     return informationIco;
 }
 
-const QString &Theme::getInformationBtnStyle() const {
+const QString Theme::getInformationBtnStyle() const {
     return informationBtnStyle;
 }
 
-const QString &Theme::getQComboboxTransactionsFilteringStyle() const {
+const QString Theme::getQComboboxTransactionsFilteringStyle() const {
     return qComboboxTransactionsFilteringStyle;
 }
 
-const QString &Theme::getQComboboxDateRangeStyle() const {
+const QString Theme::getQComboboxDateRangeStyle() const {
     return qComboboxDateRangeStyle;
 }
 
-const QString &Theme::getQToolBtnStyle() const {
+const QString Theme::getQToolBtnStyle() const {
     return qToolBtnStyle;
 }
 
-const QString &Theme::getQPushBtnStyle() const {
+const QString Theme::getQPushBtnStyle() const {
     return qPushBtnStyle;
 }
 
-const QString &Theme::getAboutImg() const {
+const QString Theme::getAboutImg() const {
     return aboutImg;
 }
 
-const QString &Theme::getFontBiggerIco() const {
+const QString Theme::getFontBiggerIco() const {
     return fontBiggerIco;
 }
 
-const QString &Theme::getFontSmallerIco() const {
+const QString Theme::getFontSmallerIco() const {
     return fontSmallerIco;
 }
 
-const QString &Theme::getQTreeWidget() const {
+const QString Theme::getQTreeWidget() const {
     return qTreeWidget;
 }
 
-const QString &Theme::getMainMenuOverviewNormalBtnIco() const {
+
+const QString Theme::getMainMenuOverviewNormalBtnIco() const {
     return mainMenuOverviewNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuSendcoinsNormalBtnIco() const {
+const QString Theme::getMainMenuSendcoinsNormalBtnIco() const {
     return mainMenuSendcoinsNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuReceiveCoinsNormalBtnIco() const {
+const QString Theme::getMainMenuReceiveCoinsNormalBtnIco() const {
     return mainMenuReceiveCoinsNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuTransactionsNormalBtnIco() const {
+const QString Theme::getMainMenuTransactionsNormalBtnIco() const {
     return mainMenuTransactionsNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuAddressBookNormalBtnIco() const {
+const QString Theme::getMainMenuAddressBookNormalBtnIco() const {
     return mainMenuAddressBookNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuMessagesNormalBtnIco() const {
+const QString Theme::getMainMenuMessagesNormalBtnIco() const {
     return mainMenuMessagesNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuExportNormalBtnIco() const {
+const QString Theme::getMainMenuExportNormalBtnIco() const {
     return mainMenuExportNormalBtnIco;
 }
 
-const QString &Theme::getMainMenuOverviewSelectedBtnIco() const {
+const QString Theme::getMainMenuUnlockWalletNormalBtnIco() const {
+    return mainMenuUnlockWalletNormalBtnIco;
+}
+
+const QString Theme::getMainMenuLockWalletNormalBtnIco() const {
+    return mainMenuLockWalletNormalBtnIco;
+}
+
+
+const QString Theme::getMainMenuOverviewSelectedBtnIco() const {
     return mainMenuOverviewSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuSendcoinsSelectedBtnIco() const {
+const QString Theme::getMainMenuSendcoinsSelectedBtnIco() const {
     return mainMenuSendcoinsSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuReceiveCoinsSelectedBtnIco() const {
+const QString Theme::getMainMenuReceiveCoinsSelectedBtnIco() const {
     return mainMenuReceiveCoinsSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuTransactionsSelectedBtnIco() const {
+const QString Theme::getMainMenuTransactionsSelectedBtnIco() const {
     return mainMenuTransactionsSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuAddressBookSelectedBtnIco() const {
+const QString Theme::getMainMenuAddressBookSelectedBtnIco() const {
     return mainMenuAddressBookSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuMessagesSelectedBtnIco() const {
+const QString Theme::getMainMenuMessagesSelectedBtnIco() const {
     return mainMenuMessagesSelectedBtnIco;
 }
 
-const QString &Theme::getMainMenuExportSelectedBtnIco() const {
+const QString Theme::getMainMenuExportSelectedBtnIco() const {
     return mainMenuExportSelectedBtnIco;
 }
+
+const QString Theme::getMainMenuUnlockWalletSelectedBtnIco() const {
+    return mainMenuUnlockWalletSelectedBtnIco;
+}
+
+const QString Theme::getMainMenuLockWalletSelectedBtnIco() const {
+    return mainMenuLockWalletSelectedBtnIco;
+}
+
+

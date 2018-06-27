@@ -402,7 +402,7 @@ bool CTxDB::LoadBlockIndex()
 			int pc = 100 * count / estimatedMaxBlock;
 			if(pc > 100) pc = 100;
 			std::string percentage = boost::lexical_cast<std::string>(pc);
-			uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
+			uiInterface.InitMessage("Loading block index: " + percentage + "%");
 		}
     }
     delete iterator;
