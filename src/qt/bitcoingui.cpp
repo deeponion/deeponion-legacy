@@ -324,7 +324,7 @@ void BitcoinGUI::createActions()
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
     overviewAction->setToolTip(tr("Show general overview of wallet"));
     overviewAction->setCheckable(true);
-    overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));   
+    overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
     messageAction = new QAction(QIcon(":/icons/messaging"), tr("&Messages"), this);
@@ -478,22 +478,8 @@ void BitcoinGUI::createToolBars()
     toolbar->addAction(lockWalletAction);
     toolbar->addAction(messageAction);
     toolbar->addAction(exportAction);
-    
-    toolbar->setStyleSheet("QToolBar QToolButton {font-family:'Helvetica Neue'; font-size:12px;}");
-    
-    /*
-    toolbar->widgetForAction(overviewAction)->setObjectName("Overview");
-    toolbar->widgetForAction(sendCoinsAction)->setObjectName("SendCoins");
-    toolbar->widgetForAction(receiveCoinsAction)->setObjectName("ReceiveCoins");
-    toolbar->widgetForAction(historyAction)->setObjectName("Transactions");
-    toolbar->widgetForAction(addressBookAction)->setObjectName("AddressBook");
-    toolbar->widgetForAction(unlockWalletAction)->setObjectName("UnlockWallet");
-    toolbar->widgetForAction(lockWalletAction)->setObjectName("LockWallet");
-    toolbar->widgetForAction(messageAction)->setObjectName("Message");
-    toolbar->widgetForAction(exportAction)->setObjectName("Export");
-    */
-    // toolbar->setStyleSheet(
-    //         "QToolButton#Overview { background:blue } QToolButton#SendCoin { background:blue }");
+
+    toolbar->setStyleSheet("QToolButton {font-family:'Helvetica'; font-size:16px;}");
 }
 
 void BitcoinGUI::setClientModel(ClientModel *clientModel)
