@@ -53,6 +53,7 @@ QT_MOC_CPP = \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_monitoreddatamapper.cpp \
   qt/moc_messagemodel.cpp \
+  qt/moc_messagepage.cpp \
   qt/plugins/mrichtexteditor/moc_mrichtextedit.cpp \
   qt/moc_notificator.cpp \
   qt/moc_optionsdialog.cpp \
@@ -213,8 +214,6 @@ BITCOIN_QT_CPP = \
   qt/peertablemodel.cpp \
   qt/bantablemodel.cpp \
   qt/messagemodel.cpp \
-  qt/theme.cpp \
-  qt/thememanager.cpp \
   qt/rpcconsole.cpp
 
 if ENABLE_WALLET
@@ -234,7 +233,6 @@ BITCOIN_QT_CPP += \
   qt/sendcoinsentry.cpp \
   qt/sendmessagesdialog.cpp \
   qt/sendmessagesentry.cpp \
-  qt/menupage.cpp \
   qt/messagepage.cpp \
   qt/qtipcserver.cpp \
   qt/qrcodedialog.cpp \
@@ -243,6 +241,8 @@ BITCOIN_QT_CPP += \
   qt/qvaluecombobox.cpp \
   qt/plugins/mrichtexteditor/mrichtextedit.cpp \
   qt/signverifymessagedialog.cpp \
+  qt/theme.cpp \
+  qt/thememanager.cpp \
   qt/trafficgraphwidget.cpp \
   qt/scicon.cpp \
   qt/transactiondesc.cpp \
