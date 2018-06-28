@@ -138,11 +138,23 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     createMenuBar();
 
     // Create the toolbars
+    QToolBar *fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
+    fakeToolbarForBlueLine->setFixedHeight(59);
+    fakeToolbarForBlueLine->setMovable(false);
+    fakeToolbarForBlueLine->setStyleSheet("background: #486EBA; border: 0px;");
+    addToolBar(Qt::LeftToolBarArea, fakeToolbarForBlueLine);
+
+    QToolBar *fakeToolbarForSpacing = addToolBar(tr("Fake toolbar for spacing"));
+    fakeToolbarForSpacing->setFixedHeight(40);
+    fakeToolbarForSpacing->setMovable(false);
+    addToolBar(Qt::LeftToolBarArea, fakeToolbarForSpacing);
+
 	toolbar = addToolBar(tr("Tabs toolbar"));
     // QToolBar *toolbar = QtGui.QToolBar(this);
     addToolBar(Qt::LeftToolBarArea, toolbar);
-	toolbar->setOrientation(Qt::Vertical);
-	createToolBars();
+    toolbar->setOrientation(Qt::Vertical);
+    toolbar->setFixedWidth(180);
+    createToolBars();
 
     // Create the tray icon (or setup the dock icon)
     createTrayIcon();
@@ -321,37 +333,37 @@ void BitcoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
-    overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
+    overviewAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuOverviewNormalBtnIco()), tr("&Overview"), this);
     overviewAction->setToolTip(tr("Show general overview of wallet"));
     overviewAction->setCheckable(true);
     overviewAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_1));
     tabGroup->addAction(overviewAction);
 
-    messageAction = new QAction(QIcon(":/icons/messaging"), tr("&Messages"), this);
+    messageAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuMessagesNormalBtnIco()), tr("&Messages"), this);
     messageAction->setToolTip(tr("View and Send Encrypted messages"));
     messageAction->setCheckable(true);
     messageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     tabGroup->addAction(messageAction);
 
-    sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
+    sendCoinsAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsNormalBtnIco()), tr("&Send coins"), this);
     sendCoinsAction->setToolTip(tr("Send coins to a DeepOnion address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
 
-    receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive coins"), this);
+    receiveCoinsAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsNormalBtnIco()), tr("&Receive coins"), this);
     receiveCoinsAction->setToolTip(tr("Show the list of addresses for receiving payments"));
     receiveCoinsAction->setCheckable(true);
     receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
     tabGroup->addAction(receiveCoinsAction);
 
-    historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
+    historyAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuTransactionsNormalBtnIco()), tr("&Transactions"), this);
     historyAction->setToolTip(tr("Browse transaction history"));
     historyAction->setCheckable(true);
     historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
     tabGroup->addAction(historyAction);
 
-    addressBookAction = new QAction(QIcon(":/icons/address-book"), tr("&Address Book"), this);
+    addressBookAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuAddressBookNormalBtnIco()), tr("&Address Book"), this);
     addressBookAction->setToolTip(tr("Edit the list of stored addresses and labels"));
     addressBookAction->setCheckable(true);
     addressBookAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
@@ -397,14 +409,14 @@ void BitcoinGUI::createActions()
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
     changePassphraseAction = new QAction(QIcon(":/icons/key"), tr("&Change Passphrase..."), this);
     changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
-    unlockWalletAction = new QAction(QIcon(":/icons/new_lock_open"), tr("&Unlock Wallet..."), this);
+    unlockWalletAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuUnlockWalletNormalBtnIco()), tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
-    lockWalletAction = new QAction(QIcon(":/icons/new_lock_closed"), tr("&Lock Wallet"), this);
+    lockWalletAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuLockWalletNormalBtnIco()), tr("&Lock Wallet"), this);
     lockWalletAction->setToolTip(tr("Lock wallet"));
     signMessageAction = new QAction(QIcon(":/icons/edit"), tr("Sign &message..."), this);
     verifyMessageAction = new QAction(QIcon(":/icons/transaction_0"), tr("&Verify message..."), this);
 
-    exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
+    exportAction = new QAction(QIcon(themeManager->getCurrent()->getMainMenuExportNormalBtnIco()), tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
     openRPCConsoleAction = new QAction(QIcon(":/icons/debugwindow"), tr("&Debug window"), this);
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
@@ -468,7 +480,6 @@ void BitcoinGUI::createToolBars()
 {
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->setMovable(false);
-    
     toolbar->addAction(overviewAction);
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
@@ -921,6 +932,7 @@ void BitcoinGUI::gotoOverviewPage()
 {
     currentScreen = SCREEN_OVERVIEW;
     overviewAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(overviewPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -930,6 +942,7 @@ void BitcoinGUI::gotoMessagePage()
 {
     currentScreen = SCREEN_MESSAGES;
     messageAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(messagePage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -940,6 +953,7 @@ void BitcoinGUI::gotoHistoryPage()
 {
     currentScreen = SCREEN_TRANSACTIONS;
     historyAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(transactionsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -950,6 +964,7 @@ void BitcoinGUI::gotoAddressBookPage()
 {
     currentScreen = SCREEN_ADDRESSBOOK;
     addressBookAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(addressBookPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -960,6 +975,7 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 {
     currentScreen = SCREEN_RECEIVECOINS;
     receiveCoinsAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(receiveCoinsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -970,6 +986,7 @@ void BitcoinGUI::gotoSendCoinsPage()
 {
     currentScreen = SCREEN_SENDCOINS;
     sendCoinsAction->setChecked(true);
+    updateWindowStyle(currentScreen);
     centralWidget->setCurrentWidget(sendCoinsPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

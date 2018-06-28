@@ -57,6 +57,8 @@
         <file alias="DeepOnionLogoWithTextWhite">res/icons/new/deepOnionLogoWithTextWhite.png</file>
         <file alias="new_lock_closed">res/icons/new/lock_closed.png</file>
         <file alias="new_lock_open">res/icons/new/lock_open.png</file>
+        <file alias="new_lock_closed_s">res/icons/new/lock_closed_s.png</file>
+        <file alias="new_lock_open_s">res/icons/new/lock_open_s.png</file>
         <file alias="new_staking_off">res/icons/new/staking_off.png</file>
         <file alias="new_staking_on">res/icons/new/staking_on.png</file>
         <file alias="new_tor_active">res/icons/new/tor.png</file>
