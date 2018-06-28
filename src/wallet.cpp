@@ -3297,7 +3297,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 	printf(">> calling ScanBlockchainForHash ...\n");
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
-	int maxBlock = 550000;
+	int maxBlock = 700000;
 	if(pindexBest != NULL)
 	{
 		maxBlock = pindexBest->nHeight;

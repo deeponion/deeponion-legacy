@@ -3,12 +3,14 @@
 
 #include "guiconstants.h"
 #include "walletmodel.h"
+#include "thememanager.h"
 
 #include <QMessageBox>
 #include <QPushButton>
 #include <QKeyEvent>
 
 extern bool fWalletUnlockStakingOnly;
+extern ThemeManager *themeManager;
 
 AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
     QDialog(parent),
@@ -21,6 +23,10 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
     ui->passEdit1->setMaxLength(MAX_PASSPHRASE_SIZE);
     ui->passEdit2->setMaxLength(MAX_PASSPHRASE_SIZE);
     ui->passEdit3->setMaxLength(MAX_PASSPHRASE_SIZE);
+    
+    ui->passEdit1->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->passEdit2->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->passEdit3->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     
     // Setup Caps Lock detection.
     ui->passEdit1->installEventFilter(this);

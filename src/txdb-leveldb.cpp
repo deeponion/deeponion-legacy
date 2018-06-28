@@ -328,7 +328,7 @@ static CBlockIndex *InsertBlockIndex(uint256 hash)
 
 bool CTxDB::LoadBlockIndex()
 {
-	int estimatedMaxBlock = 600000;
+	int estimatedMaxBlock = 700000;
 	int count = 0;
 	
     if (mapBlockIndex.size() > 0) {

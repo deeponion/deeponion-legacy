@@ -155,6 +155,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     toolbar->setOrientation(Qt::Vertical);
     toolbar->setFixedWidth(180);
     createToolBars();
+    
+    setContextMenuPolicy(Qt::NoContextMenu);
 
     // Create the tray icon (or setup the dock icon)
     createTrayIcon();

@@ -35,7 +35,6 @@ void Theme::init(int type) {
                                 QLabel#labelImmature {color: #FFFFFF;}\
                                 QToolBar {color:white; background-color: #393947; width: 180px; border: 0px;} \
                                 QToolBar QToolButton {width: 180px; border:0; height:40px; text-align:left; color:white; background-color: #393947} \
-                                QToolBar QToolButton:hover {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
                                 QToolBar QToolButton:pressed {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
                                 QToolBar QToolButton:checked {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
                                 QTreeView { color: #FFFFFF; background-color:#393947; alternate-background-color: #538cc6;} \
@@ -135,7 +134,7 @@ void Theme::init(int type) {
                                 QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
                                 QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
                                 QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
-                                QLineEdit { background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
+                                QLineEdit {background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
                                 QLineEdit:hover {border: 0px solid d3d3d3; background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
                                 QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
                                 QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
@@ -155,7 +154,6 @@ void Theme::init(int type) {
                                 QLabel#labelImmature {color: #4D4D4D;}\
                                 QToolBar {color:white; background-color: #ffffff; width: 180px; border: 0px;}\
                                 QToolBar QToolButton {width: 180px; border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF} \
-                                QToolBar QToolButton:hover {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
                                 QToolBar QToolButton:pressed {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
                                 QToolBar QToolButton:checked {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
                                 QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
@@ -216,7 +214,7 @@ void Theme::init(int type) {
                                 font-size: 14px; font-family: Helvetica Neue; \
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
-            qLineEdit = "background-color: #F7F7F7; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+            qLineEdit = "background-color: #F7F7F7; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);}";
             informationIco = ":/icons/information-blue";
             informationBtnStyle = "background-color: #FFFFFF; border: none";
