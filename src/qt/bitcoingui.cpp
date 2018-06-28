@@ -479,7 +479,9 @@ void BitcoinGUI::createMenuBar()
 void BitcoinGUI::createToolBars()
 {
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+    toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
     toolbar->setMovable(false);
+    
     toolbar->addAction(overviewAction);
     toolbar->addAction(sendCoinsAction);
     toolbar->addAction(receiveCoinsAction);
