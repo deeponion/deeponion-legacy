@@ -6,11 +6,10 @@
 
 void Theme::init(int type) {
     switch (type) {
-    
+
         case ORIGINAL_DARK:
         	
-            themeStyleSheet = "QWidget {color:white; background-color: #393947;} \
-                                QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
+            themeStyleSheet = "QMenu {color: white; background-color: #2A2937; border-color: #2A2937;} \
                                 QMenu::item:selected {background-color: #1C1B15;}\
                                 QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
                                 QHeaderView::section {color:white; background-color: #474757; } \
@@ -34,10 +33,11 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #FFFFFF;}\
                                 QLabel#labelImmatureText {color: #898994;}\
                                 QLabel#labelImmature {color: #FFFFFF;}\
-                                QToolBar {color:white; background-color: #191921; width: 192px;} \
-                                QToolBar QToolButton {width:180px; height:40px; font-family:'Helvetica Neue'; font-size:12px; border:1px solid #65676b; background-color:#2b2b37; color:#e9e8e8; padding:8px;} \
-                                QToolBar QToolButton:hover {background-color: #001100; color: #e9e8e8;} \
-                                QToolBar QToolButton:pressed {background-color: #110000; color: #e9e8e8;} \
+                                QToolBar {color:white; background-color: #393947; width: 180px; border: 0px;} \
+                                QToolBar QToolButton {width: 180px; border:0; height:40px; text-align:left; color:white; background-color: #393947} \
+                                QToolBar QToolButton:hover {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar QToolButton:pressed {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar QToolButton:checked {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
                                 QTreeView { color: #FFFFFF; background-color:#393947; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #FFFFFF; background-color: #393947; border: 1px solid #393947;} \
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;} \
@@ -153,10 +153,11 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #4D4D4D;}\
                                 QLabel#labelImmatureText {color: #486EBA;}\
                                 QLabel#labelImmature {color: #4D4D4D;}\
-                                QToolBar {color:white; background-color: #191921; width: 192px;}\
-                                QToolBar QToolButton {width: 180px; height: 40px; font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px;} \
-                                QToolBar QToolButton:hover {background-color: #001100; color: #e9e8e8;} \
-                                QToolBar QToolButton:pressed {background-color: #110000; color: #e9e8e8;} \
+                                QToolBar {color:white; background-color: #ffffff; width: 180px; border: 0px;}\
+                                QToolBar QToolButton {width: 180px; border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF} \
+                                QToolBar QToolButton:hover {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar QToolButton:pressed {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar QToolButton:checked {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
                                 QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
                                 QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;} \
@@ -193,13 +194,13 @@ void Theme::init(int type) {
             mainMenuUnlockWalletNormalBtnIco = ":/icons/new_lock_open";
             mainMenuLockWalletNormalBtnIco = ":/icons/new_lock_closed";
             
-            mainMenuOverviewSelectedBtnIco = ":/icons/overview";
-            mainMenuSendcoinsSelectedBtnIco = ":/icons/send";
-            mainMenuReceiveCoinsSelectedBtnIco = ":/icons/receiving_addresses";
-            mainMenuTransactionsSelectedBtnIco = ":/icons/history";
-            mainMenuAddressBookSelectedBtnIco = ":/icons/address-book";
-            mainMenuMessagesSelectedBtnIco = ":/icons/messaging";
-            mainMenuExportSelectedBtnIco = ":/icons/export";
+            mainMenuOverviewSelectedBtnIco = ":/icons/NewOverviewS";
+            mainMenuSendcoinsSelectedBtnIco = ":/icons/NewSendCoinsS";
+            mainMenuReceiveCoinsSelectedBtnIco = ":/icons/NewReceiveCoinsS";
+            mainMenuTransactionsSelectedBtnIco = ":/icons/NewTransactionsS";
+            mainMenuAddressBookSelectedBtnIco = ":/icons/NewAddressBookS";
+            mainMenuMessagesSelectedBtnIco = ":/icons/NewMessagesS";
+            mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
             mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open";
             mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed";
             
