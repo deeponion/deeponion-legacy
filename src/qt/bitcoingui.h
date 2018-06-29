@@ -26,6 +26,7 @@ class QModelIndex;
 class QProgressBar;
 class QStackedWidget;
 class QUrl;
+class QFrame;
 QT_END_NAMESPACE
 
 
@@ -97,6 +98,8 @@ private:
     QLabel *labelBlocksIcon;
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
+    QFrame *frameBlocks;
+
     QToolBar *toolbar;
 
     QMenuBar *appMenuBar;
@@ -132,6 +135,7 @@ private:
     int spinnerFrame;
     int prevBlocks;
     int currentScreen;
+
 
     /** Create the main UI actions. */
     void createActions();

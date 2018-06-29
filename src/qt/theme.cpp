@@ -118,30 +118,32 @@ void Theme::init(int type) {
             qTreeWidget = "QTreeView { color: #FFFFFF; background-color:#393947; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #FFFFFF; background-color: #393947; border: 1px solid #393947;} \
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;}";
+            statusBarBackgroundColor = "background-color: #1A1A21;";
+            progressBarStyle = "color: #3dc28b; padding-left: 10px;  background-color: #1A1A21;";
             break;
             
         case ORIGINAL_LIGHT:
             themeStyleSheet = "QComboBox {color: white; background-color: #2A2937; height: 26px;} \
                                 QComboBox:hover {background-color: #FFFFFF; color: #2A2937;  height: 26px;} \
-                                QWidget {color: #2A2937; background-color: #F7F7F7;} \
-                                QMenu {color: #2A2937; background-color: #F7F7F7; border-color: #F7F7F7;} \
+                                QWidget {color: #2A2937; background-color: #bdc9db;} \
+                                QMenu {color: #2A2937; background-color: #bdc9db; border-color: #bdc9db;} \
                                 QMenu::item:selected{background-color: #6b6b6b;}\
-                                QMenuBar {color: #2A2937; background-color: #F7F7F7;} \
-                                QMenuBar::item {color: #2A2937; background-color: #F7F7F7;} \
+                                QMenuBar {color: #2A2937; background-color: #bdc9db;} \
+                                QMenuBar::item {color: #2A2937; background-color: #bdc9db;} \
                                 QMenuBar::item:hover {color: #2A2940; background-color: #F9F9F9;} \
-                                QMenuBar::item:selected {color: #2A2937; font-weight: bold; background-color: #F7F7F7;}\
+                                QMenuBar::item:selected {color: #2A2937; font-weight: bold; background-color: #bdc9db;}\
                                 QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
                                 QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
                                 QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
                                 QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
-                                QLineEdit {background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
-                                QLineEdit:hover {border: 0px solid d3d3d3; background-color: #F7F7F7; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
-                                QTabWidget {color:#2A2937; background-color: #F7F7F7;} \
-                                QTabWidget::pane {color:#2A2937; background-color: #F7F7F7; border: 1px solid #393947;} \
+                                QLineEdit {background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
+                                QLineEdit:hover {border: 0px solid d3d3d3; background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+                                QTabWidget {color:#2A2937; background-color: #bdc9db;} \
+                                QTabWidget::pane {color:#2A2937; background-color: #bdc9db; border: 1px solid #393947;} \
                                 QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
-                                QTabBar::tab:selected, QTabBar::tab:hover {background-color: #F7F7F7; color: #2A2937} \
-                                QDialog {color:#2A2937; background-color: #F7F7F7;} \
-                                QLabel {color:#2A2937; background-color: #F7F7F7; font-family:'Helvetica Neue';} \
+                                QTabBar::tab:selected, QTabBar::tab:hover {background-color: #bdc9db; color: #2A2937} \
+                                QDialog {color:#2A2937; background-color: #bdc9db;} \
+                                QLabel {color:#2A2937; background-color: #bdc9db; font-family:'Helvetica Neue';} \
                                 QLabel#labelTotalText {color: #486EBA;}\
                                 QLabel#labelTotal {color: #4D4D4D;}\
                                 QLabel#labelBalanceText {color: #486EBA;}\
@@ -159,10 +161,10 @@ void Theme::init(int type) {
                                 QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
                                 QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;} \
-                                QToolButton {color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;} \
-                                QDialogButtonBox {color:#2A2937; background-color: #F7F7F7; padding: 3px;} \
-                                QToolTip {color: #2A2937; border: 0px; background-color: #F7F7F7; opacity: 225;} \
-                                QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px;}\
+                                QToolButton {color:#2A2937; background-color: #bdc9db; padding: 3px; border: none;} \
+                                QDialogButtonBox {color:#2A2937; background-color: #bdc9db; padding: 3px;} \
+                                QToolTip {color: #2A2937; border: 0px; background-color: #bdc9db; opacity: 225;} \
+                                QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #bdc9db; color: #2A2937; padding: 8px;}\
                                 QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA;}\
                                 QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA;}\
                                 QStatusBar::item { border: 0px}\
@@ -180,7 +182,7 @@ void Theme::init(int type) {
             mainMenuNormalButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF";
             mainMenuSelectedButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA";
             mainMenuDeactivatedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #FFFFFF";
-            centralWidgetStyle = "background: #F7F7F7";
+            centralWidgetStyle = "background: #bdc9db";
 
             mainMenuOverviewNormalBtnIco = ":/icons/overview";
             mainMenuSendcoinsNormalBtnIco = ":/icons/send";
@@ -203,7 +205,7 @@ void Theme::init(int type) {
             mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed";
             
             qFrameGeneralStyle = "background-color: #FFFFFF;";
-            qFrameSecondaryMenuGeneralStyle = "background-color: #DFE9F7; padding: 8px;";
+            qFrameSecondaryMenuGeneralStyle = "background-color: #93a3bb; padding: 8px;";
             qLabelGeneralStyle = "color: #486EBA";
             qTableGeneralStyle = "QTableView {color: #565656; alternate-background-color: #D8D8D8; background-color: #FFFFFF;} \
                                 QScrollBar:vertical {border: 1px solid #FFFFFF; background: rgba(255, 255, 255, 0%); width: 24px; margin: 5px 5px 5px 5px;} \
@@ -214,7 +216,7 @@ void Theme::init(int type) {
                                 font-size: 14px; font-family: Helvetica Neue; \
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
-            qLineEdit = "background-color: #F7F7F7; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
+            qLineEdit = "background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);}";
             informationIco = ":/icons/information-blue";
             informationBtnStyle = "background-color: #FFFFFF; border: none";
@@ -224,8 +226,8 @@ void Theme::init(int type) {
                                 QComboBox::down-arrow { width: 14px; height: 14px; image: url(:/icons/arrow_down_white);}";
             qComboboxDateRangeStyle = "background-color: #FFFFFF; color: #486EBA; font-size: 12px; font-family: 'Helvetica Neue';\
                                 border: none; QComboBox::drop-down {border: none}";
-            qToolBtnStyle = "{color:#2A2937; background-color: #F7F7F7; padding: 3px; border: none;}";
-            qPushBtnStyle = "QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #F7F7F7; color: #2A2937; padding: 8px}\
+            qToolBtnStyle = "{color:#2A2937; background-color: #bdc9db; padding: 3px; border: none;}";
+            qPushBtnStyle = "QPushButton {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #bdc9db; color: #2A2937; padding: 8px}\
                                 QPushButton:pressed {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}\
                                 QPushButton:hover {font-family:'Helvetica Neue'; border: 1px solid #65676b; background-color: #FFFFFF; color: #486EBA}";
             aboutImg = ":/images/about_light";
@@ -234,6 +236,8 @@ void Theme::init(int type) {
             qTreeWidget = "QTreeView { color: #2B2B37; background-color:#c2c2ce; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #2B2B37; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
                                 QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;}";
+            statusBarBackgroundColor = "background-color: #f4f6f9;";
+            progressBarStyle = "color: #3dc28b; padding-left: 10px;  background-color: #f4f6f9;";
             break;
     }
 }
@@ -400,4 +404,11 @@ const QString Theme::getMainMenuLockWalletSelectedBtnIco() const {
     return mainMenuLockWalletSelectedBtnIco;
 }
 
+const QString Theme::getStatusBarBackgroundColor() const {
+    return statusBarBackgroundColor;
+}
+
+const QString Theme::getProgressBarStyle() const {
+    return progressBarStyle;
+}
 

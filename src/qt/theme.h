@@ -62,8 +62,6 @@ public:
 
     const QString getQTreeWidget() const;
 
-    const QString getThemeStyleSheet() const;
-
     const QString getMainMenuOverviewNormalBtnIco() const;
     const QString getMainMenuSendcoinsNormalBtnIco() const;
     const QString getMainMenuReceiveCoinsNormalBtnIco() const;
@@ -83,6 +81,8 @@ public:
     const QString getMainMenuExportSelectedBtnIco() const;
     const QString getMainMenuUnlockWalletSelectedBtnIco() const;
     const QString getMainMenuLockWalletSelectedBtnIco() const;
+	const QString getStatusBarBackgroundColor() const;
+    const QString getProgressBarStyle() const;
 
 private:
     QString themeStyleSheet;
@@ -128,6 +128,8 @@ private:
     QString fontBiggerIco;
     QString fontSmallerIco;
     QString qTreeWidget;
+	QString statusBarBackgroundColor;
+    QString progressBarStyle;
 };
 
 
