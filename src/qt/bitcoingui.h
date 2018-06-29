@@ -68,7 +68,7 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
-    void updateWindowStyle(int screen);
+    void updateToolBarStyleBySelectedScreen(int screen);
 
 protected:
     void changeEvent(QEvent *e);

@@ -33,10 +33,10 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #FFFFFF;}\
                                 QLabel#labelImmatureText {color: #898994;}\
                                 QLabel#labelImmature {color: #FFFFFF;}\
-                                QToolBar {color:white; background-color: #393947; width: 180px; border: 0px;} \
-                                QToolBar QToolButton {width: 180px; border:0; height:40px; text-align:left; color:white; background-color: #393947} \
-                                QToolBar QToolButton:pressed {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
-                                QToolBar QToolButton:checked {border:0; height:40px; text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar {color:white; background-color: #393947; border: 0px;} \
+                                QToolBar QToolButton {width: 180px; border:0; height:40px; padding-left: 15px; text-align:left; color:white; background-color: #393947} \
+                                QToolBar QToolButton:pressed {border:0; height:40px; padding-left: 15px; text-align:left; color:white; background-color: #486EBA} \
+                                QToolBar QToolButton:checked {border:0; height:40px; padding-left: 15px; text-align:left; color:white; background-color: #486EBA} \
                                 QTreeView { color: #FFFFFF; background-color:#393947; alternate-background-color: #538cc6;} \
                                 QTreeView::item {color: #FFFFFF; background-color: #393947; border: 1px solid #393947;} \
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;} \
@@ -152,7 +152,7 @@ void Theme::init(int type) {
                                 QLabel#labelUnconfirmed {color: #4D4D4D;}\
                                 QLabel#labelImmatureText {color: #486EBA;}\
                                 QLabel#labelImmature {color: #4D4D4D;}\
-                                QToolBar {color:white; background-color: #ffffff; width: 180px; border: 0px;}\
+                                QToolBar {color:white; background-color: #ffffff; border: 0px;}\
                                 QToolBar QToolButton {width: 180px; border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF} \
                                 QToolBar QToolButton:pressed {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \
                                 QToolBar QToolButton:checked {border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA} \

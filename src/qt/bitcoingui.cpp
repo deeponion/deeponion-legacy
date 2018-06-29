@@ -137,23 +137,34 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create application menu bar
     createMenuBar();
 
+    int toolBarWidth = 175;
     // Create the toolbars
     QToolBar *fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
     fakeToolbarForBlueLine->setFixedHeight(59);
     fakeToolbarForBlueLine->setMovable(false);
-    fakeToolbarForBlueLine->setStyleSheet("background: #486EBA; border: 0px;");
+    fakeToolbarForBlueLine->setStyleSheet("QToolBar {background: #486EBA; border: 0px;} \
+                                           QToolBar QToolButton {background: #486EBA; padding-left: 15px; padding-top: 10px; text-align:left;}");
+    fakeToolbarForBlueLine->setIconSize(QSize(146, 40));
+    QAction *deepOnionLogo = new QAction(QIcon(":/icons/DeepOnionLogoWithTextWhite"), "", this);
+    deepOnionLogo->setEnabled(false);
+    fakeToolbarForBlueLine->addAction(deepOnionLogo);
+    fakeToolbarForBlueLine->setOrientation(Qt::Vertical);
+    fakeToolbarForBlueLine->setFixedWidth(toolBarWidth);
+    fakeToolbarForBlueLine->setFixedHeight(59);
     addToolBar(Qt::LeftToolBarArea, fakeToolbarForBlueLine);
 
     QToolBar *fakeToolbarForSpacing = addToolBar(tr("Fake toolbar for spacing"));
+    fakeToolbarForSpacing->setOrientation(Qt::Vertical);
+    fakeToolbarForSpacing->setFixedWidth(toolBarWidth);
     fakeToolbarForSpacing->setFixedHeight(40);
     fakeToolbarForSpacing->setMovable(false);
     addToolBar(Qt::LeftToolBarArea, fakeToolbarForSpacing);
 
 	toolbar = addToolBar(tr("Tabs toolbar"));
     // QToolBar *toolbar = QtGui.QToolBar(this);
-    addToolBar(Qt::LeftToolBarArea, toolbar);
     toolbar->setOrientation(Qt::Vertical);
-    toolbar->setFixedWidth(180);
+    toolbar->setFixedWidth(toolBarWidth);
+    addToolBar(Qt::LeftToolBarArea, toolbar);
     createToolBars();
     
     setContextMenuPolicy(Qt::NoContextMenu);
@@ -936,7 +947,8 @@ void BitcoinGUI::gotoOverviewPage()
 {
     currentScreen = SCREEN_OVERVIEW;
     overviewAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(false);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(overviewPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -946,7 +958,8 @@ void BitcoinGUI::gotoMessagePage()
 {
     currentScreen = SCREEN_MESSAGES;
     messageAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(messagePage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -957,7 +970,8 @@ void BitcoinGUI::gotoHistoryPage()
 {
     currentScreen = SCREEN_TRANSACTIONS;
     historyAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(transactionsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -968,7 +982,8 @@ void BitcoinGUI::gotoAddressBookPage()
 {
     currentScreen = SCREEN_ADDRESSBOOK;
     addressBookAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(addressBookPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -979,7 +994,8 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 {
     currentScreen = SCREEN_RECEIVECOINS;
     receiveCoinsAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(receiveCoinsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -990,7 +1006,8 @@ void BitcoinGUI::gotoSendCoinsPage()
 {
     currentScreen = SCREEN_SENDCOINS;
     sendCoinsAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(false);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(sendCoinsPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -1229,7 +1246,7 @@ void BitcoinGUI::optionsDialogFinished (int result)
 void BitcoinGUI::refreshStyle()
 {
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
-    updateWindowStyle(currentScreen);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
@@ -1241,7 +1258,7 @@ void BitcoinGUI::refreshStyle()
     rpcConsole->refreshStyle();
 }
 
-void BitcoinGUI::updateWindowStyle(int screen)
+void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)
 {
 	/*
 	((QToolButton*)toolbar->widgetForAction(overviewAction))->setCheckable(false);
