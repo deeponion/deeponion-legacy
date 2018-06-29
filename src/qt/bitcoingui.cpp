@@ -137,23 +137,34 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     // Create application menu bar
     createMenuBar();
 
+    int toolBarWidth = 175;
     // Create the toolbars
     QToolBar *fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
     fakeToolbarForBlueLine->setFixedHeight(59);
     fakeToolbarForBlueLine->setMovable(false);
-    fakeToolbarForBlueLine->setStyleSheet("background: #486EBA; border: 0px;");
+    fakeToolbarForBlueLine->setStyleSheet("QToolBar {background: #486EBA; border: 0px;} \
+                                           QToolBar QToolButton {background: #486EBA; padding-left: 15px; padding-top: 10px; text-align:left;}");
+    fakeToolbarForBlueLine->setIconSize(QSize(146, 40));
+    QAction *deepOnionLogo = new QAction(QIcon(":/icons/DeepOnionLogoWithTextWhite"), "", this);
+    deepOnionLogo->setEnabled(false);
+    fakeToolbarForBlueLine->addAction(deepOnionLogo);
+    fakeToolbarForBlueLine->setOrientation(Qt::Vertical);
+    fakeToolbarForBlueLine->setFixedWidth(toolBarWidth);
+    fakeToolbarForBlueLine->setFixedHeight(59);
     addToolBar(Qt::LeftToolBarArea, fakeToolbarForBlueLine);
 
     QToolBar *fakeToolbarForSpacing = addToolBar(tr("Fake toolbar for spacing"));
+    fakeToolbarForSpacing->setOrientation(Qt::Vertical);
+    fakeToolbarForSpacing->setFixedWidth(toolBarWidth);
     fakeToolbarForSpacing->setFixedHeight(40);
     fakeToolbarForSpacing->setMovable(false);
     addToolBar(Qt::LeftToolBarArea, fakeToolbarForSpacing);
 
 	toolbar = addToolBar(tr("Tabs toolbar"));
     // QToolBar *toolbar = QtGui.QToolBar(this);
-    addToolBar(Qt::LeftToolBarArea, toolbar);
     toolbar->setOrientation(Qt::Vertical);
-    toolbar->setFixedWidth(180);
+    toolbar->setFixedWidth(toolBarWidth);
+    addToolBar(Qt::LeftToolBarArea, toolbar);
     createToolBars();
     
     setContextMenuPolicy(Qt::NoContextMenu);
@@ -212,11 +223,11 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->setSizeGripEnabled(false);
 
     // Status bar notification icons
-    QFrame *frameBlocks = new QFrame();
+    frameBlocks = new QFrame();
     frameBlocks->setObjectName("frameBlocks");
     frameBlocks->setContentsMargins(0, 0, 0, 0);
     frameBlocks->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
-    frameBlocks->setStyleSheet("background-color: #1A1A21;");
+    frameBlocks->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
 
 
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
@@ -224,23 +235,23 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     frameBlocksLayout->setSpacing(3);
     int statusIconLabelHeight = 32;
     labelEncryptionIcon = new QLabel();
-    labelEncryptionIcon->setStyleSheet("background-color: #1A1A21;");
+    labelEncryptionIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     labelEncryptionIcon->setMinimumWidth(statusIconLabelHeight);
     labelEncryptionIcon->setMinimumHeight(statusIconLabelHeight);
     labelStakingIcon = new QLabel();
-    labelStakingIcon->setStyleSheet("background-color: #1A1A21;");
+    labelStakingIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     labelStakingIcon->setMinimumWidth(statusIconLabelHeight);
     labelStakingIcon->setMinimumHeight(statusIconLabelHeight);
     labelConnectionsIcon = new QLabel();
-    labelConnectionsIcon->setStyleSheet("background-color: #1A1A21;");
+    labelConnectionsIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     labelConnectionsIcon->setMinimumWidth(statusIconLabelHeight);
     labelConnectionsIcon->setMinimumHeight(statusIconLabelHeight);
 	labelOnionIcon = new QLabel();
-    labelOnionIcon->setStyleSheet("background-color: #1A1A21;");
+    labelOnionIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     labelOnionIcon->setMinimumWidth(statusIconLabelHeight);
     labelOnionIcon->setMinimumHeight(statusIconLabelHeight);
     labelBlocksIcon = new QLabel();
-    labelBlocksIcon->setStyleSheet("background-color: #1A1A21;");
+    labelBlocksIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     labelBlocksIcon->setMinimumWidth(statusIconLabelHeight);
     labelBlocksIcon->setMinimumHeight(statusIconLabelHeight);
     //frameBlocksLayout->addStretch();
@@ -288,13 +299,12 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 //        QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FF8000, stop: 1 orange); margin: 0px; }");
 //    }
 
-    progressBar->setStyleSheet("color: #486EBA; background-color: #393947;");
-    progressBarLabel->setStyleSheet("color: #3dc28b; padding-left: 10px;  background-color: #1A1A21;");
+    progressBarLabel->setStyleSheet(themeManager->getCurrent()->getProgressBarStyle());
     progressBarLabel->setFrameStyle(QFrame::NoFrame);
     statusBar()->addWidget(progressBarLabel);
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
-    statusBar()->setStyleSheet("background-color: #1A1A21;");
+    statusBar()->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     statusBar()->setMinimumHeight(56);
     statusBar()->setMaximumHeight(56);
 
@@ -936,7 +946,8 @@ void BitcoinGUI::gotoOverviewPage()
 {
     currentScreen = SCREEN_OVERVIEW;
     overviewAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(false);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(overviewPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -946,7 +957,8 @@ void BitcoinGUI::gotoMessagePage()
 {
     currentScreen = SCREEN_MESSAGES;
     messageAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(messagePage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -957,7 +969,8 @@ void BitcoinGUI::gotoHistoryPage()
 {
     currentScreen = SCREEN_TRANSACTIONS;
     historyAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(transactionsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -968,7 +981,8 @@ void BitcoinGUI::gotoAddressBookPage()
 {
     currentScreen = SCREEN_ADDRESSBOOK;
     addressBookAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(addressBookPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -979,7 +993,8 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 {
     currentScreen = SCREEN_RECEIVECOINS;
     receiveCoinsAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(true);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(receiveCoinsPage);
     exportAction->setEnabled(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -990,7 +1005,8 @@ void BitcoinGUI::gotoSendCoinsPage()
 {
     currentScreen = SCREEN_SENDCOINS;
     sendCoinsAction->setChecked(true);
-    updateWindowStyle(currentScreen);
+    exportAction->setEnabled(false);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(sendCoinsPage);
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -1229,7 +1245,7 @@ void BitcoinGUI::optionsDialogFinished (int result)
 void BitcoinGUI::refreshStyle()
 {
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
-    updateWindowStyle(currentScreen);
+    updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
@@ -1239,9 +1255,18 @@ void BitcoinGUI::refreshStyle()
     messagePage->refreshStyle();
     signVerifyMessageDialog->refreshStyle();
     rpcConsole->refreshStyle();
+
+    frameBlocks->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    labelEncryptionIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    labelStakingIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    labelConnectionsIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    labelOnionIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    labelBlocksIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    progressBarLabel->setStyleSheet(themeManager->getCurrent()->getProgressBarStyle());
+    statusBar()->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
 }
 
-void BitcoinGUI::updateWindowStyle(int screen)
+void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)
 {
 	/*
 	((QToolButton*)toolbar->widgetForAction(overviewAction))->setCheckable(false);

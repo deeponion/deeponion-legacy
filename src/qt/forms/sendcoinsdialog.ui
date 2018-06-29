@@ -141,7 +141,7 @@
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>250</height>
+           <height>200</height>
           </size>
          </property>
          <property name="styleSheet">
@@ -819,7 +819,7 @@
             <x>0</x>
             <y>0</y>
             <width>822</width>
-            <height>105</height>
+            <height>85</height>
            </rect>
           </property>
           <property name="styleSheet">
@@ -1072,7 +1072,7 @@ border-width:0px;</string>
       <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
+      <enum>QSizePolicy::Expanding</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
