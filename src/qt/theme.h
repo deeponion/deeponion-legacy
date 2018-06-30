@@ -20,12 +20,6 @@ public:
 
     const QString getStyleSheet() const;
 
-    const QString getMainMenuNormalButtonStyle() const;
-
-    const QString getMainMenuSelectedButtonStyle() const;
-
-    const QString getMainMenuDeactivatedButtonStyle() const;
-
     const QString getCentralWidgetStyle() const;
 
     const QString getQFrameGeneralStyle() const;
@@ -84,11 +78,10 @@ public:
 	const QString getStatusBarBackgroundColor() const;
     const QString getProgressBarStyle() const;
 
+    const QString getMainMenuExportDeactivatedBtnIco() const;
+
 private:
     QString themeStyleSheet;
-    QString mainMenuNormalButtonStyle;
-    QString mainMenuSelectedButtonStyle;
-    QString mainMenuDeactivatedButtonStyle;
     QString centralWidgetStyle;
 
     QString mainMenuOverviewNormalBtnIco;
@@ -110,7 +103,9 @@ private:
     QString mainMenuExportSelectedBtnIco;
     QString mainMenuUnlockWalletSelectedBtnIco;
     QString mainMenuLockWalletSelectedBtnIco;
-    
+
+    QString mainMenuExportDeactivatedBtnIco;
+
     QString qFrameGeneralStyle;
     QString qFrameSecondaryMenuGeneralStyle;
     QString qLabelGeneralStyle;
