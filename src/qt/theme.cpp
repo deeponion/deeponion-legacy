@@ -60,10 +60,7 @@ void Theme::init(int type) {
                                 QScrollBar::handle:horizontal {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; }\
                                 QScrollBar::add-line:horizontal { background: #474758; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;}\
                                 QScrollBar::sub-line:horizontal { background: #474758; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
-            
-            mainMenuNormalButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:white; background-color: #393947";
-            mainMenuSelectedButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:white; background-color: #486EBA";
-            mainMenuDeactivatedButtonStyle = "border:0; height:40px; padding-left:15px; text-align:left; color:#787878; background-color: #393947";
+
             centralWidgetStyle = "background: #2B2B37";
              
             mainMenuOverviewNormalBtnIco = ":/icons/NewOverviewS";
@@ -85,6 +82,8 @@ void Theme::init(int type) {
             mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
             mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open_s";
             mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed_s";
+
+            mainMenuExportDeactivatedBtnIco = ":/icons/export_disabled";
             
             qFrameGeneralStyle = "background-color: #393947;";
             qFrameSecondaryMenuGeneralStyle = "background-color: #22222B; padding: 8px;";
@@ -179,9 +178,6 @@ void Theme::init(int type) {
                                 QScrollBar::add-line:horizontal { background: #D8D8D8; height: 0px; subcontrol-position: bottom; subcontrol-origin: margin;} \
                                 QScrollBar::sub-line:horizontal { background: #D8D8D8; height: 0px; subcontrol-position: top; subcontrol-origin: margin;}";
 
-            mainMenuNormalButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:#486EBA; background-color: #FFFFFF";
-            mainMenuSelectedButtonStyle = "border:0; height:40px; padding-left: 15px;text-align:left; color:white; background-color: #486EBA";
-            mainMenuDeactivatedButtonStyle = "border:0; height: 60px;padding-left: 15px;text-align:left;color: #787878;background-color: #FFFFFF";
             centralWidgetStyle = "background: #bdc9db";
 
             mainMenuOverviewNormalBtnIco = ":/icons/overview";
@@ -203,6 +199,8 @@ void Theme::init(int type) {
             mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
             mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open";
             mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed";
+
+            mainMenuExportDeactivatedBtnIco = ":/icons/export_disabled";
             
             qFrameGeneralStyle = "background-color: #FFFFFF;";
             qFrameSecondaryMenuGeneralStyle = "background-color: #93a3bb; padding: 8px;";
@@ -244,18 +242,6 @@ void Theme::init(int type) {
 
 const QString Theme::getStyleSheet() const {
     return themeStyleSheet;
-}
-
-const QString Theme::getMainMenuNormalButtonStyle() const {
-    return mainMenuNormalButtonStyle;
-}
-
-const QString Theme::getMainMenuSelectedButtonStyle() const {
-    return mainMenuSelectedButtonStyle;
-}
-
-const QString Theme::getMainMenuDeactivatedButtonStyle() const {
-    return mainMenuDeactivatedButtonStyle;
 }
 
 const QString Theme::getCentralWidgetStyle() const {
@@ -402,6 +388,10 @@ const QString Theme::getMainMenuUnlockWalletSelectedBtnIco() const {
 
 const QString Theme::getMainMenuLockWalletSelectedBtnIco() const {
     return mainMenuLockWalletSelectedBtnIco;
+}
+
+const QString Theme::getMainMenuExportDeactivatedBtnIco() const {
+    return mainMenuExportDeactivatedBtnIco;
 }
 
 const QString Theme::getStatusBarBackgroundColor() const {

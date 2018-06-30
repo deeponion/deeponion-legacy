@@ -946,10 +946,9 @@ void BitcoinGUI::gotoOverviewPage()
 {
     currentScreen = SCREEN_OVERVIEW;
     overviewAction->setChecked(true);
-    exportAction->setEnabled(false);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(overviewPage);
-    exportAction->setEnabled(false);
+    setEnabledExportAction(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
@@ -957,10 +956,9 @@ void BitcoinGUI::gotoMessagePage()
 {
     currentScreen = SCREEN_MESSAGES;
     messageAction->setChecked(true);
-    exportAction->setEnabled(true);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(messagePage);
-    exportAction->setEnabled(true);
+    setEnabledExportAction(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), messagePage, SLOT(exportClicked()));
 }
@@ -969,10 +967,9 @@ void BitcoinGUI::gotoHistoryPage()
 {
     currentScreen = SCREEN_TRANSACTIONS;
     historyAction->setChecked(true);
-    exportAction->setEnabled(true);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(transactionsPage);
-    exportAction->setEnabled(true);
+    setEnabledExportAction(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
 }
@@ -981,10 +978,9 @@ void BitcoinGUI::gotoAddressBookPage()
 {
     currentScreen = SCREEN_ADDRESSBOOK;
     addressBookAction->setChecked(true);
-    exportAction->setEnabled(true);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(addressBookPage);
-    exportAction->setEnabled(true);
+    setEnabledExportAction(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
 }
@@ -993,10 +989,9 @@ void BitcoinGUI::gotoReceiveCoinsPage()
 {
     currentScreen = SCREEN_RECEIVECOINS;
     receiveCoinsAction->setChecked(true);
-    exportAction->setEnabled(true);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(receiveCoinsPage);
-    exportAction->setEnabled(true);
+    setEnabledExportAction(true);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
 }
@@ -1005,10 +1000,9 @@ void BitcoinGUI::gotoSendCoinsPage()
 {
     currentScreen = SCREEN_SENDCOINS;
     sendCoinsAction->setChecked(true);
-    exportAction->setEnabled(false);
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setCurrentWidget(sendCoinsPage);
-    exportAction->setEnabled(false);
+    setEnabledExportAction(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
@@ -1242,6 +1236,16 @@ void BitcoinGUI::optionsDialogFinished (int result)
     refreshStyle();
 }
 
+void BitcoinGUI::setEnabledExportAction(bool state) {
+    if (state) {
+        exportAction->setEnabled(true);
+        exportAction->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportNormalBtnIco()));
+    } else {
+        exportAction->setEnabled(false);
+        exportAction->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportDeactivatedBtnIco()));
+    }
+}
+
 void BitcoinGUI::refreshStyle()
 {
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
@@ -1268,18 +1272,6 @@ void BitcoinGUI::refreshStyle()
 
 void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)
 {
-	/*
-	((QToolButton*)toolbar->widgetForAction(overviewAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(sendCoinsAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(receiveCoinsAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(historyAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(addressBookAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(messageAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(exportAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(unlockWalletAction))->setCheckable(false);
-	((QToolButton*)toolbar->widgetForAction(lockWalletAction))->setCheckable(false);
-	*/
-
 	((QToolButton*)toolbar->widgetForAction(overviewAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewNormalBtnIco()));
 	((QToolButton*)toolbar->widgetForAction(sendCoinsAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsNormalBtnIco()));
 	((QToolButton*)toolbar->widgetForAction(receiveCoinsAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsNormalBtnIco()));
@@ -1289,70 +1281,40 @@ void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)
 	((QToolButton*)toolbar->widgetForAction(exportAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportNormalBtnIco()));
 	((QToolButton*)toolbar->widgetForAction(unlockWalletAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuUnlockWalletNormalBtnIco()));
 	((QToolButton*)toolbar->widgetForAction(lockWalletAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuLockWalletNormalBtnIco()));
-
-	/*
-	toolbar->widgetForAction(overviewAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(sendCoinsAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(receiveCoinsAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(historyAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(addressBookAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(messageAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(exportAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(unlockWalletAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	toolbar->widgetForAction(lockWalletAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuNormalButtonStyle());
-	*/
 	
     switch(screen) {
         case SCREEN_OVERVIEW:
-        	// ((QToolButton*)toolbar->widgetForAction(overviewAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(overviewAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuOverviewSelectedBtnIco()));
-        	// toolbar->widgetForAction(overviewAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_SENDCOINS:
-        	// ((QToolButton*)toolbar->widgetForAction(sendCoinsAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(sendCoinsAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuSendcoinsSelectedBtnIco()));
-        	// toolbar->widgetForAction(sendCoinsAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_RECEIVECOINS:
-        	// ((QToolButton*)toolbar->widgetForAction(receiveCoinsAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(receiveCoinsAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuReceiveCoinsSelectedBtnIco()));
-        	// toolbar->widgetForAction(receiveCoinsAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_TRANSACTIONS:
-        	// ((QToolButton*)toolbar->widgetForAction(historyAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(historyAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuTransactionsSelectedBtnIco()));
-        	// toolbar->widgetForAction(historyAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_ADDRESSBOOK:
-        	// ((QToolButton*)toolbar->widgetForAction(addressBookAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(addressBookAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuAddressBookSelectedBtnIco()));
-        	// toolbar->widgetForAction(addressBookAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_MESSAGES:
-        	// ((QToolButton*)toolbar->widgetForAction(messageAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(messageAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuMessagesSelectedBtnIco()));
-        	// toolbar->widgetForAction(messageAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_EXPORT:
-        	// ((QToolButton*)toolbar->widgetForAction(exportAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(exportAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuExportSelectedBtnIco()));
-        	// toolbar->widgetForAction(exportAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         case SCREEN_UNLOCKWALLET:
-        	// ((QToolButton*)toolbar->widgetForAction(unlockWalletAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(unlockWalletAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuUnlockWalletSelectedBtnIco()));
-        	// toolbar->widgetForAction(unlockWalletAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-        	// ((QToolButton*)toolbar->widgetForAction(lockWalletAction))->setCheckable(true);
         	((QToolButton*)toolbar->widgetForAction(lockWalletAction))->setIcon(QIcon(themeManager->getCurrent()->getMainMenuLockWalletSelectedBtnIco()));
-        	// toolbar->widgetForAction(lockWalletAction)->setStyleSheet(themeManager->getCurrent()->getMainMenuSelectedButtonStyle());
-            break;
+        	break;
             
         default:
             break;

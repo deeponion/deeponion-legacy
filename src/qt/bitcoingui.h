@@ -232,6 +232,7 @@ private slots:
 
     void optionsDialogFinished (int);
     void refreshStyle();
+    void setEnabledExportAction(bool);
 };
 
 #endif
