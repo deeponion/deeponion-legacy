@@ -82,31 +82,30 @@ int64_t nTransactionFee = GetMinTxFee();
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static const int NUM_OF_POW_CHECKPOINT = 22;
+static const int NUM_OF_POW_CHECKPOINT = 21;
 static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 {
-		{  9601,  4611},
-		{ 19767,  6631},
-		{ 41366, 10850},
-		{ 60229, 15420},
-		{ 78842, 19751},
-		{102776, 25000},
-		{124376, 29266},
-		{150006, 31600},
-		{178922, 40208},
-		{200830, 44597},
-		{213786, 47226},
-		{230013, 50556},
-		{250008, 54582},
-		{272190, 59059},
-		{300836, 64774},
-		{321784, 68878},
-		{350003, 74350},
-		{375453, 79257},
-		{400494, 84066},
-		{434205, 90499},
-		{450225, 93657},
-		{468575, 97230},
+		{  9601,   4611},
+		{ 19767,   6631},
+		{ 41366,  10850},
+		{ 78842,  19751},
+		{102776,  25000},
+		{154723,  32554},
+		{200830,  44597},
+		{250008,  54582},
+		{300836,  64774},
+		{350003,  74350},
+		{375453,  79257},
+		{400494,  84066},
+		{434205,  90499},
+		{450225,  93657},
+		{475131,  98495},
+		{500001, 103315},
+		{526839, 108542},
+		{550004, 113079},
+		{575635, 118133},
+		{600014, 122831},
+		{621306, 126890},
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;
@@ -3157,7 +3156,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         CAddress addrFrom;
         uint64_t nNonce = 1;
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
-        if (pfrom->nVersion < MIN_PROTO_VERSION) 
+        if (pfrom->nVersion < MIN_PROTO_VERSION && pfrom->nVersion > 80000) 
         {
             printf("partner %s using obsolete version %i; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->nVersion);
             pfrom->fDisconnect = true;
