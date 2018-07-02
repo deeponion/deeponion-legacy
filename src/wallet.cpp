@@ -21,10 +21,24 @@ extern unsigned int nStakeMaxAge;
 unsigned int nStakeSplitAge = 20 * 24 * 60 * 60;
 int64_t nStakeCombineThreshold = 100 * COIN;
 
+/*
+# BTC checkpoint #1
 int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 543950;
 int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 523352;
 std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "db2b4c6d31844020af9ef4eb9253692efd65f35be85859f73ab7e4b41436eabe";
 std::string CWallet::LAST_REGISTERED_BTC_TX = "ba839a3a2d7c9e5a80cc891195e0518c37cded079c6ea8a8ce826b002d4c954e";
+
+# BTC checkpoint #2
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 624700;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 530149;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "b64616ef74cacc09d04c012b845d99ce109bbaf87ca0e76880b7e77e014ccc59";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "2e9a4f074eb4848bd4f5f93d4478d0273e2bb6201d2d38f3903837aacd092f44";
+*/
+
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 624700;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 530149;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "b64616ef74cacc09d04c012b845d99ce109bbaf87ca0e76880b7e77e014ccc59";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "2e9a4f074eb4848bd4f5f93d4478d0273e2bb6201d2d38f3903837aacd092f44";
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -3313,7 +3327,6 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 		{
 			CBlock block;
 			block.ReadFromDisk(pindex, true);
-			// txcount += (long)block.vtx.size();
 			uint256 bhash = block.GetHash();
 			std::string strHash = bhash.ToString();
 			SHA256_Update(&sha256, strHash.c_str(), strHash.size());
@@ -3331,8 +3344,6 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 			}
 		} // while (pindex)
 	}
-
-    // printf(">> block height = %d, tx count = %ld\n", count, txcount);
     
 	SHA256_Final(hash11, &sha256);
 
