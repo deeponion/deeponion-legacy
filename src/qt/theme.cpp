@@ -22,6 +22,7 @@ void Theme::init(int type) {
                                 QTabBar::tab {color:white; background-color: #474757; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
                                 QTabBar::tab:selected, QTabBar::tab:hover {color:white; background-color: #7272a3; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
                                 QDialog {color:white; background-color: #393947;} \
+                                QCheckBox {color:white; background-color: #393947;} \
                                 QLabel {color:#FFFFFF; background-color: #393947; font-family:'Helvetica Neue';} \
                                 QLabel#labelTotalText {color: #898994;}\
                                 QLabel#labelTotal {color: #FFFFFF;}\
@@ -143,6 +144,7 @@ void Theme::init(int type) {
                                 QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
                                 QTabBar::tab:selected, QTabBar::tab:hover {background-color: #bdc9db; color: #2A2937} \
                                 QDialog {color:#2A2937; background-color: #bdc9db;} \
+                                QCheckBox {color:#2A2937; background-color: #bdc9db;} \
                                 QLabel {color:#2A2937; background-color: #bdc9db; font-family:'Helvetica Neue';} \
                                 QLabel#labelTotalText {color: #486EBA;}\
                                 QLabel#labelTotal {color: #4D4D4D;}\
