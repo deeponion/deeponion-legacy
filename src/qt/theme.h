@@ -33,6 +33,8 @@ public:
     const QString getQListHeaderGeneralStyle() const;
 
     const QString getQLineEdit() const;
+    
+    const QString getQLineEditPassword() const;
 
     const QString getIconTextButtonStyle() const;
 
@@ -112,6 +114,7 @@ private:
     QString qTableGeneralStyle;
     QString qListHeaderGeneralStyle;
     QString qLineEdit;
+    QString qLineEditPassword;
     QString iconTextButtonStyle;
     QString informationIco;
     QString informationBtnStyle;

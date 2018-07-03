@@ -24,9 +24,9 @@ AskPassphraseDialog::AskPassphraseDialog(Mode mode, QWidget *parent) :
     ui->passEdit2->setMaxLength(MAX_PASSPHRASE_SIZE);
     ui->passEdit3->setMaxLength(MAX_PASSPHRASE_SIZE);
     
-    ui->passEdit1->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
-    ui->passEdit2->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
-    ui->passEdit3->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->passEdit1->setStyleSheet(themeManager->getCurrent()->getQLineEditPassword());
+    ui->passEdit2->setStyleSheet(themeManager->getCurrent()->getQLineEditPassword());
+    ui->passEdit3->setStyleSheet(themeManager->getCurrent()->getQLineEditPassword());
     
     // Setup Caps Lock detection.
     ui->passEdit1->installEventFilter(this);

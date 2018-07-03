@@ -15,8 +15,8 @@ void Theme::init(int type) {
                                 QHeaderView::section {color:white; background-color: #474757; } \
                                 QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
                                 QTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
-                                QLineEdit {background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
-                                QLineEdit:hover {border: 0px solid gray; background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
+                                QLineEdit {border: 1px solid gray; background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
+                                QLineEdit:hover {border: 1px solid gray; background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
                                 QTabWidget {color:white; background-color: #393947;} \
                                 QTabWidget::pane {color:white; background-color: #393947; border: 1px solid #2b2b37;} \
                                 QTabBar::tab {color:white; background-color: #474757; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -98,6 +98,7 @@ void Theme::init(int type) {
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
             qLineEdit = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+            qLineEditPassword = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #FFFFFF; border: none; background-color: rgba(255, 255, 255, 0);}";
             informationIco = ":/icons/information";
             informationBtnStyle = "background-color: #393947; border: none";
@@ -215,6 +216,7 @@ void Theme::init(int type) {
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
             qLineEdit = "background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
+            qLineEditPassword = "background-color: #D8D8DB; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);}";
             informationIco = ":/icons/information-blue";
             informationBtnStyle = "background-color: #FFFFFF; border: none";
@@ -270,6 +272,10 @@ const QString Theme::getQListHeaderGeneralStyle() const {
 
 const QString Theme::getQLineEdit() const {
     return qLineEdit;
+}
+
+const QString Theme::getQLineEditPassword() const {
+    return qLineEditPassword;
 }
 
 const QString Theme::getIconTextButtonStyle() const {
