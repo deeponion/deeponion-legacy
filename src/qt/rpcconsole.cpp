@@ -936,7 +936,7 @@ void RPCConsole::refreshStyle() {
 
 void RPCConsole::updateBlockchainStatus()
 {
-    if(walletModel) {
+    if(walletModel && !fTestNet) {
     	walletModel->updateBlockchainStatus();
     }
     

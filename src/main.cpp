@@ -125,7 +125,7 @@ int64_t GetMinTxFee()
 	if(pindexBest == NULL)
 		return MIN_TX_FEE;
 
-	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
+	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_TX_FEE; 
 
 	return MIN_TX_FEE_NEW;	
@@ -136,7 +136,7 @@ int64_t GetMinRelayTxFee()
 	if(pindexBest == NULL)
 		return MIN_RELAY_TX_FEE;
 
-	if((pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet) || (pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK_TESTNET && fTestNet))
+	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_RELAY_TX_FEE; 
  
 	return MIN_RELAY_TX_FEE_NEW;	
@@ -752,8 +752,7 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
     // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
     if(pindexBest != NULL)
     {
-    	if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
-    		|| (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+    	if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) || fTestNet)
     	{
     		if(!tx.CheckStealthTxNarrSize()) 
     		{
@@ -781,7 +780,7 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
     
     if(fTestNet && pindexBest != NULL)
     {
-    	if(pindexBest->nHeight > SWITCH_BLOCK_HARD_FORK_TESTNET && !tx.IsStandard())
+    	if(!tx.IsStandard())
      		return error("CTxMemPool::accept() : nonstandard transaction type for testnet");
     }
 
@@ -844,7 +843,7 @@ bool CTxMemPool::accept(CTxDB& txdb, CTransaction &tx, bool fCheckInputs,
 
         if(fTestNet && pindexBest != NULL)
         {
-        	if(pindexBest->nHeight > SWITCH_BLOCK_HARD_FORK_TESTNET && !tx.AreInputsStandard(mapInputs))
+        	if(!tx.AreInputsStandard(mapInputs))
         		return error("CTxMemPool::accept() : nonstandard transaction input for testnet");
         }
         
@@ -2387,8 +2386,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         if(fCheckSig && pindexBest != NULL)
         {
             // DeepOnion: check stealth tx, making sure the narration length does not exceed 24 ch, to avoid exploit
-            if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) 
-                    || (pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX && fTestNet))
+            if((pindexBest->nHeight >= SWITCH_BLOCK_HARD_FORK && !fTestNet) || fTestNet)
                 if(!tx.CheckStealthTxNarrSize()) 
                 {
                     mempool.remove(tx);
@@ -2790,7 +2788,7 @@ bool LoadBlockIndex(bool fAllowNew)
 		pchMessageStart[0] = 0xa1;
 		pchMessageStart[1] = 0xa0;
 		pchMessageStart[2] = 0xa2;
-		pchMessageStart[3] = 0xa3;
+		pchMessageStart[3] = 0xf3;
 		
 		bnTrustedModulus.SetHex("a8852ebf7c49f01cd196e35394f3b74dd86283a07f57e0a262928e7493d4a3961d93d93c90ea3369719641d626d28b9cddc6d9307b9aabdbffc40b6d6da2e329d079b4187ff784b2893d9f53e9ab913a04ff02668114695b07d8ce877c4c8cac1b12b9beff3c51294ebe349eca41c24cd32a6d09dd1579d3947e5c4dcc30b2090b0454edb98c6336e7571db09e0fdafbd68d8f0470223836e90666a5b143b73b9cd71547c917bf24c0efc86af2eba046ed781d9acb05c80f007ef5a0a5dfca23236f37e698e8728def12554bc80f294f71c040a88eff144d130b24211016a97ce0f5fe520f477e555c9997683d762aff8bd1402ae6938dd5c994780b1bf6aa7239e9d8101630ecfeaa730d2bbc97d39beb057f016db2e28bf12fab4989c0170c2593383fd04660b5229adcd8486ba78f6cc1b558bcd92f344100dff239a8c00dbc4c2825277f241691dbe4a7d9bd503abb9");
         bnProofOfWorkLimit = bnProofOfWorkLimitTestNet; 
@@ -2832,14 +2830,22 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1499843027;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
+        block.nTime    = 1499843027;
         block.nNonce   = 3832541;
 
         if(fTestNet)
         {
-        	block.nTime    = 1499845000;
-            block.nNonce   = 8141;
+            txNew.nTime 	= 1530740000;
+            
+            block.SetNull();
+            block.vtx.push_back(txNew);
+            block.hashPrevBlock = 0;
+            block.hashMerkleRoot = block.BuildMerkleTree();
+            block.nVersion 	= 1;
+            block.nBits    	= bnProofOfWorkLimit.GetCompact();
+        	block.nTime    	= 1530740000;
+            block.nNonce   	= 249570;
         }
 
  		if (false && (block.GetHash() != hashGenesisBlock)) {
@@ -2863,7 +2869,7 @@ bool LoadBlockIndex(bool fAllowNew)
 		printf("block.nNonce = %u \n", block.nNonce);
 
         //// debug print
-		assert(block.hashMerkleRoot == uint256("0x48a457c277b124a06b568c0036d2c834e918d952c5b2dbf4035d173f50c8d14c"));
+		assert(block.hashMerkleRoot == (!fTestNet ? hashMerkleRootMainNet : hashMerkleRootTestNet));
 		block.print();
 		assert(block.GetHash() == (!fTestNet ? hashGenesisBlock : hashGenesisBlockTestNet));
 		assert(block.CheckBlock());
@@ -3635,6 +3641,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 
         if (ProcessBlock(pfrom, &block))
             mapAlreadyAskedFor.erase(inv);
+        
         if (block.nDoS) pfrom->Misbehaving(block.nDoS);
 		if (fSecMsgEnabled)
             SecureMsgScanBlock(block);
