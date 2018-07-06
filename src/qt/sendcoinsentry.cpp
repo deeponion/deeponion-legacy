@@ -49,8 +49,6 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->label_4->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->label->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
 
-
-
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(ui->payTo);
 
@@ -89,6 +87,15 @@ void SendCoinsEntry::on_payTo_textChanged(const QString &address)
     QString associatedLabel = model->getAddressTableModel()->labelForAddress(address);
     if(!associatedLabel.isEmpty())
         ui->addAsLabel->setText(associatedLabel);
+    
+    if(address.length() > 0)
+    {
+    	setRemoveEnabled(true);
+    }
+    else
+    {
+    	setRemoveEnabled(false);
+    }
     
     if(address.length() > STEALTH_LENGTH_TRESHOLD)
     {
@@ -131,7 +138,8 @@ void SendCoinsEntry::clear()
 
 void SendCoinsEntry::on_deleteButton_clicked()
 {
-    emit removeEntry(this);
+	ui->payTo->clear();
+    // emit removeEntry(this);
 }
 
 bool SendCoinsEntry::validate()
