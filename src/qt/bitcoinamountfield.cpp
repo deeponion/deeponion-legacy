@@ -17,12 +17,14 @@
 BitcoinAmountField::BitcoinAmountField(QWidget *parent):
         QWidget(parent), amount(0), currentUnit(-1)
 {
+
     amount = new QDoubleSpinBox(this);
     amount->setLocale(QLocale::c());
     amount->setDecimals(8);
     amount->installEventFilter(this);
     amount->setMaximumWidth(170);
     amount->setSingleStep(0.001);
+    amount->setContextMenuPolicy(Qt::NoContextMenu);
 
     QHBoxLayout *layout = new QHBoxLayout(this);
     layout->addWidget(amount);
@@ -33,6 +35,7 @@ BitcoinAmountField::BitcoinAmountField(QWidget *parent):
     layout->setContentsMargins(0,0,0,0);
 
     setLayout(layout);
+
 
     setFocusPolicy(Qt::TabFocus);
     setFocusProxy(amount);
