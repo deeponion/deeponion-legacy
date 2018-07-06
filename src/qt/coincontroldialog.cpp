@@ -103,6 +103,9 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
     // click on header
     ui->treeWidget->header()->setSectionsClickable(true);
     ui->treeWidget->setStyleSheet(themeManager->getCurrent()->getQTreeWidget());
+    ui->radioTreeMode->setStyleSheet(themeManager->getCurrent()->getRadioTextStyle());
+    ui->radioListMode->setStyleSheet(themeManager->getCurrent()->getRadioTextStyle());
+
     connect(ui->treeWidget->header(), SIGNAL(sectionClicked(int)), this, SLOT(headerSectionClicked(int)));
 
     // ok button

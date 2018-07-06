@@ -82,6 +82,10 @@ public:
 
     const QString getMainMenuExportDeactivatedBtnIco() const;
 
+	const QString getRadioTextStyle() const;
+    const QString getPayAmountStyle() const;
+
+
 private:
     QString themeStyleSheet;
     QString centralWidgetStyle;
@@ -128,6 +132,8 @@ private:
     QString qTreeWidget;
 	QString statusBarBackgroundColor;
     QString progressBarStyle;
+	QString radioTextStyle;
+    QString payAmountStyle;
 };
 
 

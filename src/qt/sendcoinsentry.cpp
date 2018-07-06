@@ -42,7 +42,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     ui->addAsNarration->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     ui->payTo->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     ui->addAsLabel->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
-    ui->payAmount->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->payAmount->setStyleSheet(themeManager->getCurrent()->getPayAmountStyle());
 
     ui->label_5->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->label_2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());

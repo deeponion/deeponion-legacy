@@ -14,9 +14,11 @@ void Theme::init(int type) {
                                 QMainWindow {background-color: #393947; border:none;font-family:'Helvetica Neue';} \
                                 QHeaderView::section {color:white; background-color: #474757; } \
                                 QPlainTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
+                                QPlainTextEdit:ContextMenu {height: 200px;}\
                                 QTextEdit {color: white; background-color: #2b2b37; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
                                 QLineEdit {border: 1px solid gray; background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
                                 QLineEdit:hover {border: 1px solid gray; background-color: #2b2b37; color: #FFFFFF; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} \
+                                QLineEdit:ContextMenu {height: 200px;}\
                                 QTabWidget {color:white; background-color: #393947;} \
                                 QTabWidget::pane {color:white; background-color: #393947; border: 1px solid #2b2b37;} \
                                 QTabBar::tab {color:white; background-color: #474757; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -98,8 +100,9 @@ void Theme::init(int type) {
                                 font-size: 14px; font-family: Helvetica Neue; \
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
-            qLineEdit = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+            qLineEdit = "QLineEdit {background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}  QLineEdit:ContextMenu {height: 200px;}";
             qLineEditPassword = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+            payAmountStyle = "BitcoinAmountField {background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;} BitcoinAmountField:ContextMenu {height: 200px;}";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #FFFFFF; border: none; background-color: rgba(255, 255, 255, 0);}";
             informationIco = ":/icons/information";
             informationBtnStyle = "background-color: #393947; border: none";
@@ -121,6 +124,7 @@ void Theme::init(int type) {
                                 QTreeView::item:hover {color: #FFFFFF; background-color: #79a6d2; border: 1px solid #393947;}";
             statusBarBackgroundColor = "background-color: #1A1A21;";
             progressBarStyle = "color: #3dc28b; padding-left: 10px;  background-color: #1A1A21;";
+            radioTextStyle = "color: #FFFFFF";
             break;
             
         case ORIGINAL_LIGHT:
@@ -136,9 +140,11 @@ void Theme::init(int type) {
                                 QMainWindow {background-color: #FFFFFF; border:none;font-family:'Helvetica Neue';} \
                                 QHeaderView::section {color:#2A2937; background-color: #d8d8d8; } \
                                 QPlainTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
+                                QPlainTextEdit:ContextMenu {height: 200px;}\
                                 QTextEdit {color: #2B2B37; background-color: #D8D8D8; selection-background-color: #79a6d2; font-size: 13px; font-family: 'Helvetica Neue';} \
-                                QLineEdit {background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 0px;}\
-                                QLineEdit:hover {border: 0px solid d3d3d3; background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+                                QLineEdit {border: 1px solid #7A7A7A; background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+                                QLineEdit:hover {border: 1px solid #7A7A7A; background-color: #bdc9db; color: #2B2B37; selection-background-color: #79a6d2; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}\
+                                QLineEdit:ContextMenu {height: 200px;}\
                                 QTabWidget {color:#2A2937; background-color: #bdc9db;} \
                                 QTabWidget::pane {color:#2A2937; background-color: #bdc9db; border: 1px solid #393947;} \
                                 QTabBar::tab {color: #2A2937; background-color: #D8D8D8; border: 1px solid #393947; padding: 3px; border-top-left-radius: 4px; border-top-right-radius: 4px;} \
@@ -217,8 +223,9 @@ void Theme::init(int type) {
                                 font-size: 14px; font-family: Helvetica Neue; \
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
-            qLineEdit = "background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
+            qLineEdit = "QLineEdit {background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;} QLineEdit:ContextMenu {height: 200px;}";
             qLineEditPassword = "background-color: #D8D8DB; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
+            payAmountStyle = "BitcoinAmountField {background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;} BitcoinAmountField:ContextMenu {height: 200px;}";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);}";
             informationIco = ":/icons/information-blue";
             informationBtnStyle = "background-color: #FFFFFF; border: none";
@@ -240,6 +247,7 @@ void Theme::init(int type) {
                                 QTreeView::item:hover {color: #2B2B37; background-color: #79a6d2; border: 1px solid #c2c2ce;}";
             statusBarBackgroundColor = "background-color: #f4f6f9;";
             progressBarStyle = "color: #3dc28b; padding-left: 10px;  background-color: #f4f6f9;";
+            radioTextStyle = "color: #000000";
             break;
     }
 }
@@ -408,5 +416,13 @@ const QString Theme::getStatusBarBackgroundColor() const {
 
 const QString Theme::getProgressBarStyle() const {
     return progressBarStyle;
+}
+
+const QString Theme::getRadioTextStyle() const {
+    return radioTextStyle;
+}
+
+const QString Theme::getPayAmountStyle() const {
+    return payAmountStyle;
 }
 
