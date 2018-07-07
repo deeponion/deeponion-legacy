@@ -811,7 +811,7 @@
        <item>
         <widget class="QScrollArea" name="scrollArea">
          <property name="styleSheet">
-          <string notr="true">border: none;</string>
+          <string notr="true"/>
          </property>
          <property name="widgetResizable">
           <bool>true</bool>
@@ -821,7 +821,7 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>822</width>
+            <width>820</width>
             <height>85</height>
            </rect>
           </property>
