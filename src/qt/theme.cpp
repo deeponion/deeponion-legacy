@@ -101,7 +101,7 @@ void Theme::init(int type) {
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
             qLineEdit = "QLineEdit {background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}  QLineEdit:ContextMenu {height: 200px;}";
-            qLineEditPassword = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
+            qLineEditPassword = "QLineEdit {background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;}  QLineEdit:ContextMenu {height: 200px;}";
             payAmountStyle = "background-color: #2b2b37; color: #FFFFFF; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #FFFFFF; border: none; background-color: rgba(255, 255, 255, 0);}";
             informationIco = ":/icons/information";
@@ -224,7 +224,7 @@ void Theme::init(int type) {
                                 padding-left: 8px; padding-right: 8px; \
                                 padding-top: 14px; padding-bottom: 14px;}";
             qLineEdit = "QLineEdit {background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;} QLineEdit:ContextMenu {height: 200px;}";
-            qLineEditPassword = "background-color: #D8D8DB; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
+            qLineEditPassword = "QLineEdit {background-color: #D8D8DB; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2; } QLineEdit:ContextMenu {height: 200px;}";
             payAmountStyle = "background-color: #bdc9db; color: #2B2B37; selection-background-color: #d7e6ff; font-size: 13px; padding-left: 5px; font-family: 'Helvetica Neue'; height: 32px; border: 1px solid #c2c2c2;";
             iconTextButtonStyle = "QPushButton, QPushButton:hover {color: #486EBA; border: none; background-color: rgba(255, 255, 255, 10);}";
             informationIco = ":/icons/information-blue";
