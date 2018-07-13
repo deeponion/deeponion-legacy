@@ -24,7 +24,7 @@ class TransactionView : public QWidget
     Q_OBJECT
 public:
     explicit TransactionView(QWidget *parent = 0);
-
+    void refreshStyle();
     void setModel(WalletModel *model);
 
     // Date ranges for filter
@@ -48,6 +48,9 @@ private:
     QComboBox *typeWidget;
     QLineEdit *addressWidget;
     QLineEdit *amountWidget;
+
+    QFrame *frameForAmount;
+    QFrame *frameForAddress;
 
     QMenu *contextMenu;
 

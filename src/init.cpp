@@ -395,7 +395,6 @@ bool AppInit2()
     nDerivationMethodIndex = 0;
 
     fTestNet = GetBoolArg("-testnet");
-    //fTestNet = true;
 
     if (mapArgs.count("-bind")) {
         // when specifying an explicit binding address, you want to listen on it
@@ -868,7 +867,9 @@ bool AppInit2()
 
     printf("Checking blockchain hash...\n");
     uiInterface.InitMessage(_("Checking blockchain hash..."));
-    pwalletMain->ScanBlockchainForHash(true);
+    
+    if(!fTestNet)
+    	pwalletMain->ScanBlockchainForHash(true);
     
     // ********************************************************* Step 10: load peers
 

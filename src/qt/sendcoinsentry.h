@@ -2,6 +2,7 @@
 #define SENDCOINSENTRY_H
 
 #include <QFrame>
+#include "bitcoingui.h"
 
 namespace Ui {
     class SendCoinsEntry;

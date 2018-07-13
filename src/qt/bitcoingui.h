@@ -26,7 +26,23 @@ class QModelIndex;
 class QProgressBar;
 class QStackedWidget;
 class QUrl;
+class QFrame;
 QT_END_NAMESPACE
+
+
+enum Screen_Name
+{
+    SCREEN_OVERVIEW = 0,
+	SCREEN_SENDCOINS = 1,
+	SCREEN_RECEIVECOINS = 2,
+	SCREEN_TRANSACTIONS = 3,
+	SCREEN_ADDRESSBOOK = 4,
+	SCREEN_MESSAGES = 5,
+	SCREEN_EXPORT = 6,
+	SCREEN_UNLOCKWALLET = 7,
+	SCREEN_DEEPVAULT = 8
+};
+
 
 /**
   Bitcoin GUI main class. This class represents the main window of the Bitcoin UI. It communicates with both the client and
@@ -53,6 +69,7 @@ public:
         functionality.
     */
 	void setMessageModel(MessageModel *messageModel);
+    void updateToolBarStyleBySelectedScreen(int screen);
 
 protected:
     void changeEvent(QEvent *e);
@@ -81,6 +98,9 @@ private:
     QLabel *labelBlocksIcon;
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
+    QFrame *frameBlocks;
+
+    QToolBar *toolbar;
 
     QMenuBar *appMenuBar;
     QAction *overviewAction;
@@ -112,15 +132,20 @@ private:
     RPCConsole *rpcConsole;
 
     QMovie *syncIconMovie;
+    int spinnerFrame;
+    int prevBlocks;
+    int currentScreen;
+
 
     /** Create the main UI actions. */
     void createActions();
     /** Create the menu bar and sub-menus. */
     void createMenuBar();
     /** Create the toolbars */
-    void createToolBars(QToolBar* toolbar);
+    void createToolBars();
     /** Create system tray (notification) icon */
     void createTrayIcon();
+
 
 public slots:
     /** Set number of connections shown in the UI */
@@ -204,6 +229,10 @@ private slots:
 
     void updateStakingIcon();
 	void updateOnionIcon();
+
+    void optionsDialogFinished (int);
+    void refreshStyle();
+    void setEnabledExportAction(bool);
 };
 
 #endif

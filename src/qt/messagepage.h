@@ -31,6 +31,7 @@ public:
     explicit MessagePage(QWidget *parent = 0);
     ~MessagePage();
 
+    void refreshStyle();
     void setModel(MessageModel *model);
 
 private:

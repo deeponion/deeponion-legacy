@@ -9,11 +9,14 @@
 #include "optionsmodel.h"
 #include "walletmodel.h"
 #include "wallet.h"
+#include "thememanager.h"
 
 #include <string>
 #include <vector>
 
 #include <QClipboard>
+
+extern ThemeManager *themeManager;
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
@@ -43,6 +46,15 @@ SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
 
     ui->signatureOut_SM->setFont(GUIUtil::bitcoinAddressFont());
     ui->signatureIn_VM->setFont(GUIUtil::bitcoinAddressFont());
+
+    ui->addressIn_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureOut_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addressIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->verifyMessageButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
 }
 
 SignVerifyMessageDialog::~SignVerifyMessageDialog()
@@ -86,7 +98,7 @@ void SignVerifyMessageDialog::on_addressBookButton_SM_clicked()
 {
     if (model && model->getAddressTableModel())
     {
-        AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this);
+        AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this, AddressBookPage::FromSignVerifyMessageDialog);
         dlg.setModel(model->getAddressTableModel());
         if (dlg.exec())
         {
@@ -175,7 +187,7 @@ void SignVerifyMessageDialog::on_addressBookButton_VM_clicked()
 {
     if (model && model->getAddressTableModel())
     {
-        AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this);
+        AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::SendingTab, this, AddressBookPage::FromSignVerifyMessageDialog);
         dlg.setModel(model->getAddressTableModel());
         if (dlg.exec())
         {
@@ -271,4 +283,15 @@ bool SignVerifyMessageDialog::eventFilter(QObject *object, QEvent *event)
         }
     }
     return QDialog::eventFilter(object, event);
+}
+
+void SignVerifyMessageDialog::refreshStyle() {
+    ui->addressIn_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureOut_SM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->addressIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->signatureIn_VM->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
+    ui->verifyMessageButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_VM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->signMessageButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton_SM->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
 }

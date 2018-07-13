@@ -6,13 +6,15 @@ QT_TS = \
   qt/locale/bitcoin_en.ts \
   qt/locale/bitcoin_fr.ts \
   qt/locale/bitcoin_ru.ts \
-  qt/locale/bitcoin_es.ts
+  qt/locale/bitcoin_es.ts \
+  qt/locale/bitcoin_de.ts \
+  qt/locale/bitcoin_zh-CN.ts
   
 QT_FORMS_UI = \
   qt/forms/aboutdialog.ui \
   qt/forms/addressbookpage.ui \
   qt/forms/askpassphrasedialog.ui \
-  qt/forms/blockchaindialog.ui \  
+  qt/forms/blockchaindialog.ui \
   qt/forms/coincontroldialog.ui \
   qt/forms/editaddressdialog.ui \
   qt/forms/intro.ui \
@@ -50,8 +52,8 @@ QT_MOC_CPP = \
   qt/moc_macdockiconhandler.cpp \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_monitoreddatamapper.cpp \
-  qt/moc_messagepage.cpp \
   qt/moc_messagemodel.cpp \
+  qt/moc_messagepage.cpp \
   qt/plugins/mrichtexteditor/moc_mrichtextedit.cpp \
   qt/moc_notificator.cpp \
   qt/moc_optionsdialog.cpp \
@@ -132,6 +134,10 @@ BITCOIN_QT_H = \
   qt/sendmessagesdialog.h \
   qt/sendmessagesentry.h \
   qt/signverifymessagedialog.h \
+  qt/theme.h \
+  qt/themeoriginaldark.h \
+  qt/themeoriginallight.h \
+  qt/thememanager.h \
   qt/trafficgraphwidget.h \
   qt/transactiondesc.h \
   qt/transactiondescdialog.h \
@@ -237,6 +243,10 @@ BITCOIN_QT_CPP += \
   qt/qvaluecombobox.cpp \
   qt/plugins/mrichtexteditor/mrichtextedit.cpp \
   qt/signverifymessagedialog.cpp \
+  qt/theme.cpp \
+  qt/themeoriginaldark.cpp \
+  qt/themeoriginallight.cpp \
+  qt/thememanager.cpp \
   qt/trafficgraphwidget.cpp \
   qt/scicon.cpp \
   qt/transactiondesc.cpp \

@@ -1,12 +1,12 @@
 #include "sendmessagesdialog.h"
 #include "ui_sendmessagesdialog.h"
-//#include "init.h"
 #include "walletmodel.h"
 #include "messagemodel.h"
 #include "addressbookpage.h"
 #include "optionsmodel.h"
 #include "sendmessagesentry.h"
-//#include "guiutil.h"
+
+#include "thememanager.h"
 
 #include <QMessageBox>
 #include <QLocale>
@@ -14,6 +14,8 @@
 #include <QScrollBar>
 #include <QClipboard>
 #include <QDataWidgetMapper>
+
+extern ThemeManager *themeManager;
 
 SendMessagesDialog::SendMessagesDialog(Mode mode, Type type, QWidget *parent) :
     QDialog(parent),
@@ -37,6 +39,10 @@ SendMessagesDialog::SendMessagesDialog(Mode mode, Type type, QWidget *parent) :
         ui->addressFrom->setPlaceholderText(tr("Enter an address"));
  #endif
     addEntry();
+    ui->addButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->sendButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->closeButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
 
     connect(ui->addButton, SIGNAL(clicked()), this, SLOT(addEntry()));
     connect(ui->clearButton, SIGNAL(clicked()), this, SLOT(clear()));
@@ -113,7 +119,7 @@ void SendMessagesDialog::on_addressBookButton_clicked()
     if(!model)
         return;
 
-    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this);
+    AddressBookPage dlg(AddressBookPage::ForSending, AddressBookPage::ReceivingTab, this, AddressBookPage::FromSendMessagesDialog);
 
     dlg.setModel(model->getWalletModel()->getAddressTableModel());
 
@@ -336,4 +342,12 @@ void SendMessagesDialog::pasteEntry(const SendMessagesRecipient &rv)
         entry = addEntry();
 
     entry->setValue(rv);
+}
+
+void SendMessagesDialog::refreshStyle() {
+    ui->addButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->clearButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->sendButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    ui->closeButton->setStyleSheet(themeManager->getCurrent()->getIconTextButtonStyle());
+    clear();
 }

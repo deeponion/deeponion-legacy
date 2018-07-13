@@ -2,7 +2,7 @@
 
 TEMPLATE = app
 TARGET = DeepOnion-qt
-VERSION = 1.7.1.0
+VERSION = 1.7.3.0
 INCLUDEPATH += src src/json \
     src/qt \
     src/qt/plugins/mrichtexteditor \
@@ -28,10 +28,10 @@ win32 {
     LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lcrypt32
     LIBS += -lws2_32 -lole32 -loleaut32 -luuid -lgdi32
     LIBS += -lboost_system-mgw49-mt-s-1_57 -lboost_filesystem-mgw49-mt-s-1_57 -lboost_program_options-mgw49-mt-s-1_57 -lboost_thread-mgw49-mt-s-1_57
-    LIBS += -L"C:/deps/MinGW/msys/1.0/local/lib"
-    LIBS += -L"C:/deps/libcommuni-3.2.0/lib"
+    LIBS += -L"C:/bin/mingwX/msys/1.0/local/lib"
+    LIBS += -L"C:/deps/libcommuni/lib"
 
-    INCLUDEPATH += "C:/deps/MinGW/msys/1.0/local/include"
+    INCLUDEPATH += "C:/bin/mingwX/msys/1.0/local/include"
 
 BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57
 BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
@@ -231,6 +231,10 @@ lessThan(QT_MAJOR_VERSION, 5) {
 # Input
 DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
+	src/qt/theme.h \
+	src/qt/themeoriginaldark.h \
+	src/qt/themeoriginallight.h \
+	src/qt/thememanager.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
 	src/qt/bantablemodel.h \
@@ -349,6 +353,10 @@ HEADERS += src/qt/bitcoingui.h \
 
 SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoingui.cpp \
+	src/qt/theme.cpp \
+	src/qt/themeoriginaldark.cpp \
+	src/qt/themeoriginallight.cpp \
+	src/qt/thememanager.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
 	src/qt/bantablemodel.cpp \

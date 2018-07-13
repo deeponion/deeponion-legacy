@@ -9,6 +9,7 @@
 #include "wallet.h"
 #include "anonymize.h"
 
+
 extern CWallet* pwalletMain;
 extern CClientUIInterface uiInterface;
 extern std::string strWalletFileName;

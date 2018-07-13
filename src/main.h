@@ -40,8 +40,6 @@ static const int64_t MAX_MONEY = 25000000 * COIN;
 static const int64_t MAX_PROOF_OF_STAKE_STABLE = 0.01 * COIN;	
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
 static const int SWITCH_BLOCK_HARD_FORK = 540000;
-static const int SWITCH_BLOCK_HARD_FORK_TESTNET = 95000;
-static const int SWITCH_BLOCK_HARD_FORK_TESTNET_NARRATION_FIX = 120300;
 
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
@@ -54,7 +52,9 @@ static const int fHaveUPnP = false;
 #endif
 
 static const uint256 hashGenesisBlock("0x000004e29458ef4f2e0abab544737b07344e6ff13718f7c2d12926166db07b5e");
-static const uint256 hashGenesisBlockTestNet("0x0000054e005ba4c0e13aef3de90c6510612259895f2b83db2f6d05e7e86e2b44");
+static const uint256 hashGenesisBlockTestNet("0x0000024e03c36fa1727092fd3093fc8526a126bd4607e3619fb04d3ab782fa0e");
+static const uint256 hashMerkleRootMainNet("0x48a457c277b124a06b568c0036d2c834e918d952c5b2dbf4035d173f50c8d14c");
+static const uint256 hashMerkleRootTestNet("0x0dff26605532ed8ec42a995c54216210feeeefe896e1469e9d599f9b5bbf8ead");
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
