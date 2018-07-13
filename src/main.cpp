@@ -78,7 +78,7 @@ CScript COINBASE_FLAGS;
 const string strMessageMagic = "DeepOnion Signed Message:\n";
 
 // Settings
-int64_t nTransactionFee = GetMinTxFee();
+int64_t nTransactionFee = MIN_TX_FEE_NEW;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
@@ -123,7 +123,7 @@ int64_t FutureDrift(int64_t nTime)
 int64_t GetMinTxFee() 
 {
 	if(pindexBest == NULL)
-		return MIN_TX_FEE;
+		return MIN_TX_FEE_NEW;
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_TX_FEE; 
@@ -134,7 +134,7 @@ int64_t GetMinTxFee()
 int64_t GetMinRelayTxFee() 
 {
 	if(pindexBest == NULL)
-		return MIN_RELAY_TX_FEE;
+		return MIN_RELAY_TX_FEE_NEW;
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_RELAY_TX_FEE; 
