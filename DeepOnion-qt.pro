@@ -232,6 +232,8 @@ lessThan(QT_MAJOR_VERSION, 5) {
 DEPENDPATH += src src/json src/qt
 HEADERS += src/qt/bitcoingui.h \
 	src/qt/theme.h \
+	src/qt/themeoriginaldark.h \
+	src/qt/themeoriginallight.h \
 	src/qt/thememanager.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
@@ -352,6 +354,8 @@ HEADERS += src/qt/bitcoingui.h \
 SOURCES += src/qt/bitcoin.cpp \
     src/qt/bitcoingui.cpp \
 	src/qt/theme.cpp \
+	src/qt/themeoriginaldark.cpp \
+	src/qt/themeoriginallight.cpp \
 	src/qt/thememanager.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \

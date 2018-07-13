@@ -10,52 +10,30 @@
 class Theme {
 public:
 	
-	enum Screen_Name
-	{
-	    ORIGINAL_DARK = 0,
-	    ORIGINAL_LIGHT = 1
-	};
-	
-    void init(int type);
+	static const QString THEME_ORIGINAL_DARK;
+	static const QString THEME_ORIGINAL_LIGHT;
+	static const QString THEME_FANCY_PURPLE;
 
     const QString getStyleSheet() const;
 
     const QString getCentralWidgetStyle() const;
-
     const QString getQFrameGeneralStyle() const;
-
     const QString getQFrameSecondaryMenuGeneralStyle() const;
-
     const QString getQLabelGeneralStyle() const;
-
     const QString getQTableGeneralStyle() const;
-
     const QString getQListHeaderGeneralStyle() const;
-
     const QString getQLineEdit() const;
-    
     const QString getQLineEditPassword() const;
-
     const QString getIconTextButtonStyle() const;
-
     const QString getInformationIco() const;
-
     const QString getInformationBtnStyle() const;
-
     const QString getQComboboxTransactionsFilteringStyle() const;
-
     const QString getQComboboxDateRangeStyle() const;
-
     const QString getQToolBtnStyle() const;
-
     const QString getQPushBtnStyle() const;
-
     const QString getAboutImg() const;
-
     const QString getFontBiggerIco() const;
-
     const QString getFontSmallerIco() const;
-
     const QString getQTreeWidget() const;
 
     const QString getMainMenuOverviewNormalBtnIco() const;
@@ -81,12 +59,10 @@ public:
     const QString getProgressBarStyle() const;
 
     const QString getMainMenuExportDeactivatedBtnIco() const;
-
 	const QString getRadioTextStyle() const;
     const QString getPayAmountStyle() const;
 
-
-private:
+protected:
     QString themeStyleSheet;
     QString centralWidgetStyle;
 

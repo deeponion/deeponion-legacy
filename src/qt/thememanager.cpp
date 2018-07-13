@@ -2,56 +2,39 @@
 // Created by arcas on 5/18/2018.
 //
 
-#include "thememanager.h"
-#include <QString>
 #include <QSettings>
+#include "thememanager.h"
+#include "themeoriginaldark.h"
+#include "themeoriginallight.h"
+
 
 ThemeManager::ThemeManager()
 {
-
-    // Dark Theme
-    Theme* t = new Theme();
-    t->init(0);
-    allThemes[0] = t;
-
-
-    // Light Theme
-    t = new Theme();
-    t->init(1);
-    allThemes[1] = t;
-
+	defaultTheme = Theme::THEME_ORIGINAL_DARK;
+	
+    allThemes[Theme::THEME_ORIGINAL_DARK] = new ThemeOriginalDark();
+    allThemes[Theme::THEME_ORIGINAL_LIGHT] = new ThemeOriginalLight();
 }
 
 void ThemeManager::applyCurrentTheme() {
     QSettings settings;
-    QString currentTheme = settings.value("theme", "dark").toString();
-
-    if (currentTheme.compare("light", Qt::CaseSensitive) == 0) {
-        current = allThemes[1];
-        currentType = 1;
-    } else {
-        current = allThemes[0];
-        currentType = 0;
-    }
+    QString currentTheme = settings.value("theme", defaultTheme).toString();
+    
+    if(allThemes.find(currentTheme) != allThemes.end())
+    	current = allThemes[currentTheme];
+    else
+    	current = allThemes[defaultTheme];
 }
 
 void ThemeManager::switchTheme(QString newTypeS)
 {
-    int newType;
-    if (newTypeS.compare("light", Qt::CaseSensitive) == 0) {
-        newType = 1;
-    } else {
-        newType = 0;
-    }
-
-
-    if(newType == currentType)
-        return;
-
-    currentType = newType;
-    current = allThemes.at(newType);
+    if(allThemes.find(newTypeS) != allThemes.end())
+    	current = allThemes[newTypeS];
+    else
+    	current = allThemes[defaultTheme];
 }
 
 Theme* ThemeManager::getCurrent() {
     return current;
 }
+

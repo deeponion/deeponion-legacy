@@ -9,6 +9,7 @@
 #include "monitoreddatamapper.h"
 #include "netbase.h"
 #include "optionsmodel.h"
+#include "theme.h"
 
 #include <QDir>
 #include <QIntValidator>
@@ -84,8 +85,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
-    ui->theme->addItem(tr("Dark"), QVariant("dark"));
-    ui->theme->addItem(tr("Light"), QVariant("light"));
+    ui->theme->addItem(Theme::THEME_ORIGINAL_DARK, "Original Dark");
+    ui->theme->addItem(Theme::THEME_ORIGINAL_LIGHT, "Original Light");
     ui->unit->setModel(new BitcoinUnits(this));
 
     /* Widget-to-option mapper */

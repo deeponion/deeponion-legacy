@@ -1232,6 +1232,7 @@ void BitcoinGUI::optionsDialogFinished (int result)
     if(result != QDialog::Accepted){
         return;
     }
+
     themeManager->switchTheme(clientModel->getOptionsModel()->getTheme());
     refreshStyle();
 }

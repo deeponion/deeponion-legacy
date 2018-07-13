@@ -15,10 +15,11 @@ public:
     void applyCurrentTheme();
     Theme* getCurrent();
     void switchTheme(QString newType);
+    
 private:
-    int currentType;
     Theme* current;
-    std::map<int, Theme*> allThemes;
+    std::map<QString, Theme*> allThemes;
+    QString defaultTheme;
 };
 
 
