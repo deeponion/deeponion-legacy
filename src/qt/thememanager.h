@@ -5,6 +5,7 @@
 #ifndef DEEPONION_THEME_THEMEMANAGERX_H
 #define DEEPONION_THEME_THEMEMANAGERX_H
 #include <iostream>
+#include <string>
 #include <map>
 #include "theme.h"
 #include <QString>
@@ -18,8 +19,8 @@ public:
     
 private:
     Theme* current;
-    std::map<QString, Theme*> allThemes;
-    QString defaultTheme;
+    std::map<std::string, Theme*> allThemes;
+    std::string defaultTheme;
 };
 
 

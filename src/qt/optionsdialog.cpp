@@ -85,8 +85,8 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
-    ui->theme->addItem(THEME_ORIGINAL_DARK, "Original Dark");
-    ui->theme->addItem(THEME_ORIGINAL_LIGHT, "Original Light");
+    ui->theme->addItem(QString::fromStdString(THEME_ORIGINAL_DARK), "Original Dark");
+    ui->theme->addItem(QString::fromStdString(THEME_ORIGINAL_LIGHT), "Original Light");
     ui->unit->setModel(new BitcoinUnits(this));
 
     /* Widget-to-option mapper */

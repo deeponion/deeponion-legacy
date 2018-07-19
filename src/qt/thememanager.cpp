@@ -18,7 +18,7 @@ ThemeManager::ThemeManager()
 
 void ThemeManager::applyCurrentTheme() {
     QSettings settings;
-    QString currentTheme = settings.value("theme", defaultTheme).toString();
+    std::string currentTheme = settings.value("theme", QString::fromStdString(defaultTheme)).toString().toStdString();
     
     if(allThemes.find(currentTheme) != allThemes.end())
     	current = allThemes[currentTheme];
@@ -28,8 +28,9 @@ void ThemeManager::applyCurrentTheme() {
 
 void ThemeManager::switchTheme(QString newTypeS)
 {
-    if(allThemes.find(newTypeS) != allThemes.end())
-    	current = allThemes[newTypeS];
+	std::string newType = newTypeS.toStdString();
+    if(allThemes.find(newType) != allThemes.end())
+    	current = allThemes[newType];
     else
     	current = allThemes[defaultTheme];
 }
