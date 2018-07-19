@@ -10,17 +10,28 @@
 #include "theme.h"
 #include <QString>
 
+enum ThemeType
+{
+	THEME_ORIGINAL_DARK = 1,
+	THEME_ORIGINAL_LIGHT = 2,
+	THEME_FANCY_PURPLE = 3
+};
+
+
 class ThemeManager {
 public:
     ThemeManager();
     void applyCurrentTheme();
     Theme* getCurrent();
     void switchTheme(QString newType);
+    QString getThemeName(ThemeType type);
+    ThemeType getThemeType(QString themeName);
     
 private:
     Theme* current;
     std::map<std::string, Theme*> allThemes;
     std::string defaultTheme;
+    std::map<ThemeType, QString> themeTypeToName;
 };
 
 

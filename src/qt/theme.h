@@ -7,10 +7,6 @@
 
 #include <QString>
 
-static const std::string THEME_ORIGINAL_DARK = "Original Dark";
-static const std::string THEME_ORIGINAL_LIGHT = "Original Light";
-static const std::string THEME_FANCY_PURPLE = "Fancy Purple";
-
 
 class Theme {
 public:
