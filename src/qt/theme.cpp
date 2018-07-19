@@ -4,12 +4,6 @@
 
 #include "theme.h"
 
-
-const QString Theme::THEME_ORIGINAL_DARK = "Original Dark";
-const QString Theme::THEME_ORIGINAL_LIGHT = "Original Light";
-const QString Theme::THEME_FANCY_PURPLE = "Fancy Purple";
-
-
 const QString Theme::getStyleSheet() const {
     return themeStyleSheet;
 }

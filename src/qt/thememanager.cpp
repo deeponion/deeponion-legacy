@@ -10,10 +10,10 @@
 
 ThemeManager::ThemeManager()
 {
-	defaultTheme = Theme::THEME_ORIGINAL_DARK;
+	defaultTheme = THEME_ORIGINAL_DARK;
 	
-    allThemes[Theme::THEME_ORIGINAL_DARK] = new ThemeOriginalDark();
-    allThemes[Theme::THEME_ORIGINAL_LIGHT] = new ThemeOriginalLight();
+    allThemes[THEME_ORIGINAL_DARK] = new ThemeOriginalDark();
+    allThemes[THEME_ORIGINAL_LIGHT] = new ThemeOriginalLight();
 }
 
 void ThemeManager::applyCurrentTheme() {

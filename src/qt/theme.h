@@ -7,13 +7,14 @@
 
 #include <QString>
 
+static const QString THEME_ORIGINAL_DARK = "Original Dark";
+static const QString THEME_ORIGINAL_LIGHT = "Original Light";
+static const QString THEME_FANCY_PURPLE = "Fancy Purple";
+
+
 class Theme {
 public:
 	
-	static const QString THEME_ORIGINAL_DARK;
-	static const QString THEME_ORIGINAL_LIGHT;
-	static const QString THEME_FANCY_PURPLE;
-
     const QString getStyleSheet() const;
 
     const QString getCentralWidgetStyle() const;
