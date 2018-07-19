@@ -47,10 +47,9 @@ Build with autotools:
 
 For ECDSA_SIG related errors, change the key.h file for the [Raspberry Pi branch](https://github.com/deeponion/deeponion/blob/raspberry/src/key.h) version then re-build:
 
-    sudo apt install curl
-    cd ~/deeponion/src
+    cd deeponion/src
     sudo rm key.h
-    curl -o key.h https://raw.githubusercontent.com/deeponion/deeponion/raspberry/src/key.h
+    cp ../contrib/ubuntu18/key.h .
     cd .. && make
 
 **Ubuntu 14.04**
