@@ -29,8 +29,8 @@ public:
     
 private:
     Theme* current;
-    std::map<std::string, Theme*> allThemes;
-    std::string defaultTheme;
+    std::map<ThemeType, Theme*> allThemes;
+    ThemeType defaultTheme;
     std::map<ThemeType, QString> themeTypeToName;
 };
 
