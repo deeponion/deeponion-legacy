@@ -1,5 +1,5 @@
-deeponion (1.7.3-2) unstable; urgency=medium; NMU
+deeponion (1.7.3-2) unstable; urgency=medium
 
-  * Initial release (Closes: #899367, #899363)
+  * Initial release (Closes: #899367, #899363) NMU
 
  -- Liam Alford <nezero@nezero.co.uk>  Wed, 18 Jul 2018 11:27:47 +0100
