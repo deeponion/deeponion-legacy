@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=DeepOnion Qt
+Comment=The GUI version of the DeepOnion wallet.
+Exec=DeepOnion-qt
+Icon=DeepOnion
+Type=Application
+Keywords=wallet,crypto,tor,
+Categories=Utility;

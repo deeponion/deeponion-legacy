@@ -1,59 +1,39 @@
-Source: novacoin
-Section: utils
+Source: deeponion
+Section: Utility
 Priority: optional
-Maintainer: Jonas Smedegaard <dr@jones.dk>
-Uploaders: Micah Anderson <micah@debian.org>
-Build-Depends: debhelper,
- devscripts,
- bash-completion,
- libboost-system-dev (>> 1.35) | libboost-system1.35-dev,
- libdb4.8++-dev,
- libssl-dev,
- pkg-config,
- libminiupnpc8-dev,
- libboost-filesystem-dev (>> 1.35) | libboost-filesystem1.35-dev,
- libboost-program-options-dev (>> 1.35) | libboost-program-options1.35-dev,
- libboost-thread-dev (>> 1.35) | libboost-thread1.35-dev,
- libboost-test-dev (>> 1.35) | libboost-test1.35-dev,
- qt4-qmake,
- libqt4-dev,
- libqrencode-dev
-Standards-Version: 3.9.2
-Homepage: http://www.novacoin.su/
-Vcs-Git: git://github.com/CryptoManiac/novacoin.git
-Vcs-Browser: http://github.com/CryptoManiac/novacoin
+Maintainer: Nezero <nezero@nezero.co.uk>
+Build-Depends: debhelper (>= 9), libtool, dh-autoreconf, autoconf, pkg-config, libboost-all-dev, libqrencode-dev,
+ libminiupnpc-dev, libevent-dev, libcap-dev, libseccomp-dev, git, bsdmainutils, libqt5gui5, libqt5core5a, libqt5dbus5,
+ qttools5-dev, qttools5-dev-tools, libprotobuf-dev, protobuf-compiler, libdb4.8-dev, libdb4.8++-dev, libssl1.0-dev
+Standards-Version: 4.1.4
+Homepage: https://deeponion.org/
+Vcs-Git: https://github.com/deeponion/deeponion.git
+Vcs-Browser: https://github.com/deeponion/deeponion.git
 
-Package: novacoind
+Package: deeponion-qt
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: peer-to-peer network based digital currency - daemon
- Novacoin is a free open source peer-to-peer electronic cash system that
- is completely decentralized, without the need for a central server or
- trusted parties.  Users hold the crypto keys to their own money and
- transact directly with each other, with the help of a P2P network to
- check for double-spending.
+Description: GUI package for the DeepOnion Blockchain
+ An anonymous and 100% untraceable cryptocurrency sent through the TOR network.
  .
- By default connects to an IRC network to discover other peers.
- .
- Full transaction history is stored locally at each client.  This
- requires 2+ GB of space, slowly growing.
- .
- This package provides novacoind, a combined daemon and CLI tool to
- interact with the daemon.
+ DeepOnion is an anonymous cryptocurrency that is natively integrated with the
+ Tor network. It increases the level of privacy for crypto users to reduce
+ the likelihood of being hacked or attacked by other legal & illegal entities.
+ With DeepOnion, you can send and receive onions (ONION) over the Tor network.
+ With DeepOnion your anonymity is guaranteed, you can send and receive private
+ transactions using the DeepOnion wallet.
 
-Package: novacoin-qt
+Package: deeponiond
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: peer-to-peer network based digital currency - Qt GUI
- Novacoin is a free open source peer-to-peer electronic cash system that
- is completely decentralized, without the need for a central server or
- trusted parties.  Users hold the crypto keys to their own money and
- transact directly with each other, with the help of a P2P network to
- check for double-spending.
+Description: daemon and command line package for the DeepOnion Blockchain
+ An anonymous and 100% untraceable cryptocurrency sent through the TOR network.
  .
- By default connects to an IRC network to discover other peers.
- .
- Full transaction history is stored locally at each client.  This
- requires 2+ GB of space, slowly growing.
- .
- This package provides Novacoin-Qt, a GUI for Novacoin based on Qt.
+ The command line package is designed for integration with other services and
+ can be considered for server based systems and system that do not have a VDU.
+ DeepOnion is an anonymous cryptocurrency that is natively integrated with the
+ Tor network. It increases the level of privacy for crypto users to reduce
+ the likelihood of being hacked or attacked by other legal & illegal entities.
+ With DeepOnion, you can send and receive onions (ONION) over the Tor network.
+ With DeepOnion your anonymity is guaranteed, you can send and receive private
+ transactions using the DeepOnion wallet.

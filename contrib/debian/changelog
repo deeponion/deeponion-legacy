@@ -1,6 +1,5 @@
-novacoin (0.4.0~dfsg-1) unstable; urgency=low
+deeponion (1.7.3-2) unstable; urgency=medium
 
-  [ Balthazar ]
-  * Initial release.
+  * Initial release (Closes: #899367, #899363) NMU
 
- -- Balthazar <balthazar@yandex.ru>  Mon, 15 Apr 2013 22:15:22 +0100
+ -- Liam Alford <nezero@nezero.co.uk>  Wed, 18 Jul 2018 11:27:47 +0100

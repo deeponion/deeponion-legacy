@@ -3569,8 +3569,8 @@ int SecureMsgSend(std::string &addressFrom, std::string &addressTo, std::string 
 
     if (pwalletMain->IsLocked())
     {
-        sError = "Wallet is locked, wallet must be unlocked to send and recieve messages.";
-        printf("Wallet is locked, wallet must be unlocked to send and recieve messages.\n");
+        sError = "Wallet is locked, wallet must be unlocked to send and receive messages.";
+        printf("Wallet is locked, wallet must be unlocked to send and receive messages.\n");
         return 1;
     };
 
@@ -3952,7 +3952,7 @@ int SecureMsgDecrypt(bool fTestOnly, std::string &address, unsigned char *pHeade
         coinAddrFrom.Set(ckidFrom);
         if (!coinAddrFrom.IsValid())
         {
-            printf("From Addess is invalid.\n");
+            printf("From Address is invalid.\n");
             return 1;
         };
 

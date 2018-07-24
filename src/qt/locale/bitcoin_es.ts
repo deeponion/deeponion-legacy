@@ -3014,7 +3014,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     </message>
     <message>
         <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
+        <source>WARNING: synchronized checkpoint violation detected, but skipped!</source>
         <translation>ADVERTENCIA: violación de un punto de control sincronizado detectada, se omitirá.</translation>
     </message>
     <message>

@@ -1,0 +1,2 @@
+# Requires specific db version
+deeponiond: build-depends-on-versioned-berkeley-db
