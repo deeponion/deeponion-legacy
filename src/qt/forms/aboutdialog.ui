@@ -25,7 +25,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap>:/images/about_new</pixmap>
+        <pixmap>:/images/about</pixmap>
        </property>
       </widget>
      </item>
