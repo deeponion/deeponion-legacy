@@ -80,18 +80,18 @@ void ThemeOriginalLight::init()
     mainMenuAddressBookNormalBtnIco = ":/icons/address-book";
     mainMenuMessagesNormalBtnIco = ":/icons/messaging";
     mainMenuExportNormalBtnIco = ":/icons/export";
-    mainMenuUnlockWalletNormalBtnIco = ":/icons/new_lock_open";
-    mainMenuLockWalletNormalBtnIco = ":/icons/new_lock_closed";
+    mainMenuUnlockWalletNormalBtnIco = ":/icons/lock_open";
+    mainMenuLockWalletNormalBtnIco = ":/icons/lock_closed";
     
-    mainMenuOverviewSelectedBtnIco = ":/icons/NewOverviewS";
-    mainMenuSendcoinsSelectedBtnIco = ":/icons/NewSendCoinsS";
-    mainMenuReceiveCoinsSelectedBtnIco = ":/icons/NewReceiveCoinsS";
-    mainMenuTransactionsSelectedBtnIco = ":/icons/NewTransactionsS";
-    mainMenuAddressBookSelectedBtnIco = ":/icons/NewAddressBookS";
-    mainMenuMessagesSelectedBtnIco = ":/icons/NewMessagesS";
-    mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
-    mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open";
-    mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed";
+    mainMenuOverviewSelectedBtnIco = ":/icons/OverviewS";
+    mainMenuSendcoinsSelectedBtnIco = ":/icons/SendCoinsS";
+    mainMenuReceiveCoinsSelectedBtnIco = ":/icons/ReceiveCoinsS";
+    mainMenuTransactionsSelectedBtnIco = ":/icons/TransactionsS";
+    mainMenuAddressBookSelectedBtnIco = ":/icons/AddressBookS";
+    mainMenuMessagesSelectedBtnIco = ":/icons/MessagesS";
+    mainMenuExportSelectedBtnIco = ":/icons/ExportUS";
+    mainMenuUnlockWalletSelectedBtnIco = ":/icons/lock_open";
+    mainMenuLockWalletSelectedBtnIco = ":/icons/lock_closed";
 
     mainMenuExportDeactivatedBtnIco = ":/icons/export_disabled";
     

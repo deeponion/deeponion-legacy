@@ -69,25 +69,25 @@ void ThemeOriginalDark::init()
 
 	centralWidgetStyle = "background: #2B2B37";
              
-	mainMenuOverviewNormalBtnIco = ":/icons/NewOverviewS";
-	mainMenuSendcoinsNormalBtnIco = ":/icons/NewSendCoinsS";
-    mainMenuReceiveCoinsNormalBtnIco = ":/icons/NewReceiveCoinsS";
-    mainMenuTransactionsNormalBtnIco = ":/icons/NewTransactionsS";
-    mainMenuAddressBookNormalBtnIco = ":/icons/NewAddressBookS";
-    mainMenuMessagesNormalBtnIco = ":/icons/NewMessagesS";
-    mainMenuExportNormalBtnIco = ":/icons/NewExportUS";
-    mainMenuUnlockWalletNormalBtnIco = ":/icons/new_lock_open_s";
-    mainMenuLockWalletNormalBtnIco = ":/icons/new_lock_closed_s";
+	mainMenuOverviewNormalBtnIco = ":/icons/OverviewS";
+	mainMenuSendcoinsNormalBtnIco = ":/icons/SendCoinsS";
+    mainMenuReceiveCoinsNormalBtnIco = ":/icons/ReceiveCoinsS";
+    mainMenuTransactionsNormalBtnIco = ":/icons/TransactionsS";
+    mainMenuAddressBookNormalBtnIco = ":/icons/AddressBookS";
+    mainMenuMessagesNormalBtnIco = ":/icons/MessagesS";
+    mainMenuExportNormalBtnIco = ":/icons/ExportUS";
+    mainMenuUnlockWalletNormalBtnIco = ":/icons/lock_open_s";
+    mainMenuLockWalletNormalBtnIco = ":/icons/lock_closed_s";
             
-   	mainMenuOverviewSelectedBtnIco = ":/icons/NewOverviewS";
-   	mainMenuSendcoinsSelectedBtnIco = ":/icons/NewSendCoinsS";
-   	mainMenuReceiveCoinsSelectedBtnIco = ":/icons/NewReceiveCoinsS";
-  	mainMenuTransactionsSelectedBtnIco = ":/icons/NewTransactionsS";
-  	mainMenuAddressBookSelectedBtnIco = ":/icons/NewAddressBookS";
-  	mainMenuMessagesSelectedBtnIco = ":/icons/NewMessagesS";
-  	mainMenuExportSelectedBtnIco = ":/icons/NewExportUS";
-  	mainMenuUnlockWalletSelectedBtnIco = ":/icons/new_lock_open_s";
-   	mainMenuLockWalletSelectedBtnIco = ":/icons/new_lock_closed_s";
+   	mainMenuOverviewSelectedBtnIco = ":/icons/OverviewS";
+   	mainMenuSendcoinsSelectedBtnIco = ":/icons/SendCoinsS";
+   	mainMenuReceiveCoinsSelectedBtnIco = ":/icons/ReceiveCoinsS";
+  	mainMenuTransactionsSelectedBtnIco = ":/icons/TransactionsS";
+  	mainMenuAddressBookSelectedBtnIco = ":/icons/AddressBookS";
+  	mainMenuMessagesSelectedBtnIco = ":/icons/MessagesS";
+  	mainMenuExportSelectedBtnIco = ":/icons/ExportUS";
+  	mainMenuUnlockWalletSelectedBtnIco = ":/icons/lock_open_s";
+   	mainMenuLockWalletSelectedBtnIco = ":/icons/lock_closed_s";
 
 	mainMenuExportDeactivatedBtnIco = ":/icons/export_disabled";
             
