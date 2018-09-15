@@ -1,27 +1,27 @@
 //
 //
 
-#include "themeoriginaldark.h"
+#include "themefancypurple.h"
 
 
-ThemeOriginalDark::ThemeOriginalDark() 
+ThemeFancyPurple::ThemeFancyPurple()
 	: Theme()
 {
 	init();
 }
 
-void ThemeOriginalDark::init() 
+void ThemeFancyPurple::init()
 {
-	QString title_background = "#486EBA";
+	QString title_background = "#7d50cf";
     QString status_bar_background = "#1A1A21";
-    QString widgets_background = "#393848";
+    QString widgets_background = "#282a3e";
     QString menu_background = "#2A2937";
-    QString input_background = "#2b2b37";
-    QString frame_background = "#393947";
+    QString input_background = "#222435";
+    QString frame_background = "#282a3e";
     QString font_family = "'Helvetica Neue'";
     QString selected_item_background = "#79a6d2";
     QString text_color = "#FFFFFF";
-    QString alternate_background = "#474758";
+    QString alternate_background = "#36384a";
     QString tab_background = "#474757";
     QString selected_tab_background = "#7272a3";
     QString secondary_label_color = "#898994";
@@ -150,7 +150,7 @@ void ThemeOriginalDark::init()
 	statusBarBackgroundColor = "background-color: " + status_bar_background + ";";
 	progressBarStyle = "color: " + progress_bar_background + "; padding-left: 10px;  background-color: " + status_bar_background + ";";
 	radioTextStyle = "color: " + text_color;
-	mainHeaderStyle = "background-color: " + title_background + "; color: white; padding-right: 10px;";
+    mainHeaderStyle = "background-color: " + title_background + "; color: white; padding-right: 10px;";
     menuHeaderStyle = "QToolBar {background: " + title_background + "; border: 0px;} \
         QToolBar QToolButton {background: " + title_background + "; padding-left: 15px; padding-top: 10px; text-align:left;}";
     subSectionTitleStyle = "padding-left: 10px; background-color: " + title_background + ";";

@@ -30,7 +30,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="pageTitleLabel">
+    <widget class="QLabel" name="pageTitle">
      <property name="minimumSize">
       <size>
        <width>0</width>

@@ -83,6 +83,7 @@ extern unsigned int nStakeTargetSpacing;
 double GetPoSKernelPS();
 
 ThemeManager *themeManager = new ThemeManager();
+QToolBar *fakeToolbarForBlueLine;
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
@@ -139,11 +140,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     int toolBarWidth = 175;
     // Create the toolbars
-    QToolBar *fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
+    fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
     fakeToolbarForBlueLine->setFixedHeight(59);
     fakeToolbarForBlueLine->setMovable(false);
-    fakeToolbarForBlueLine->setStyleSheet("QToolBar {background: #486EBA; border: 0px;} \
-                                           QToolBar QToolButton {background: #486EBA; padding-left: 15px; padding-top: 10px; text-align:left;}");
+    fakeToolbarForBlueLine->setStyleSheet(themeManager->getCurrent()->getMenuHeaderStyle());
     fakeToolbarForBlueLine->setIconSize(QSize(146, 40));
     QAction *deepOnionLogo = new QAction(QIcon(":/icons/DeepOnionLogoWithTextWhite"), "", this);
     deepOnionLogo->setEnabled(false);
@@ -1252,6 +1252,7 @@ void BitcoinGUI::refreshStyle()
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
+    fakeToolbarForBlueLine->setStyleSheet(themeManager->getCurrent()->getMenuHeaderStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
     receiveCoinsPage->refreshStyle();

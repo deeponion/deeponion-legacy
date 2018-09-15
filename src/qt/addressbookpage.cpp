@@ -51,12 +51,20 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
         setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
     }
 
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
     ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
     ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
     ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->secondaryMenuFrame->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
+    ui->newAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->copyToClipboard->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->showQRCode->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->signMessage->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->verifyMessage->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->deleteButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->buttonBox->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 
     switch(mode)
     {
@@ -72,13 +80,13 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
     switch(tab)
     {
     case SendingTab:
-        ui->pageTitleLabel->setText(tr("Address Book"));
+        ui->pageTitle->setText(tr("Address Book"));
         ui->frameExplanation->setVisible(false);
         ui->deleteButton->setVisible(true);
         ui->signMessage->setVisible(false);
         break;
     case ReceivingTab:
-        ui->pageTitleLabel->setText(tr("Receive Coins"));
+        ui->pageTitle->setText(tr("Receive Coins"));
         ui->deleteButton->setVisible(false);
         ui->signMessage->setVisible(true);
         break;
@@ -86,7 +94,7 @@ AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent, FromWhere
 
     if (fromWhere == FromSendMessagesDialog || fromWhere == FromSendCoinsEntry ||
             fromWhere == FromSignVerifyMessageDialog || fromWhere == FromSendMessagesEntry) {
-        ui->pageTitleLabel->setVisible(false);
+        ui->pageTitle->setVisible(false);
     }
 
     // Context menu actions
@@ -405,6 +413,8 @@ void AddressBookPage::selectNewAddress(const QModelIndex &parent, int begin, int
 }
 
 void AddressBookPage::refreshStyle() {
+
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
     ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
     ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
@@ -414,4 +424,12 @@ void AddressBookPage::refreshStyle() {
 
     ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
     ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
+
+    ui->newAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->copyToClipboard->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->showQRCode->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->signMessage->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->verifyMessage->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->deleteButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->buttonBox->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 }

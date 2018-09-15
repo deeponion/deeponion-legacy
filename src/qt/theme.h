@@ -13,7 +13,7 @@ public:
 	
     const QString getStyleSheet() const;
 
-    const QString getCentralWidgetStyle() const;
+	const QString getCentralWidgetStyle() const;
     const QString getQFrameGeneralStyle() const;
     const QString getQFrameSecondaryMenuGeneralStyle() const;
     const QString getQLabelGeneralStyle() const;
@@ -58,6 +58,11 @@ public:
     const QString getMainMenuExportDeactivatedBtnIco() const;
 	const QString getRadioTextStyle() const;
     const QString getPayAmountStyle() const;
+
+    const QString getMainHeaderStyle() const;
+    const QString getMenuHeaderStyle() const;
+    const QString getSubSectionTitleStyle() const;
+    const QString getRoundedButtonStyle() const;
 
 protected:
     QString themeStyleSheet;
@@ -107,6 +112,10 @@ protected:
     QString progressBarStyle;
 	QString radioTextStyle;
     QString payAmountStyle;
+	QString mainHeaderStyle;
+    QString menuHeaderStyle;
+    QString subSectionTitleStyle;
+    QString roundedButtonStyle;
 };
 
 

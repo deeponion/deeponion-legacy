@@ -87,6 +87,7 @@ OptionsDialog::OptionsDialog(QWidget *parent) :
         }
     }
 
+    ui->theme->addItem(themeManager->getThemeName(THEME_FANCY_PURPLE), "Fancy Purple");
     ui->theme->addItem(themeManager->getThemeName(THEME_ORIGINAL_DARK), "Original Dark");
     ui->theme->addItem(themeManager->getThemeName(THEME_ORIGINAL_LIGHT), "Original Light");
     ui->unit->setModel(new BitcoinUnits(this));
