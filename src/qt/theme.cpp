@@ -178,3 +178,19 @@ const QString Theme::getPayAmountStyle() const {
     return payAmountStyle;
 }
 
+const QString Theme::getMainHeaderStyle() const {
+    return mainHeaderStyle;
+}
+
+const QString Theme::getMenuHeaderStyle() const {
+    return menuHeaderStyle;
+}
+
+const QString Theme::getSubSectionTitleStyle() const {
+    return subSectionTitleStyle;
+}
+
+const QString Theme::getRoundedButtonStyle() const {
+    return roundedButtonStyle;
+}
+

@@ -154,4 +154,9 @@ void ThemeOriginalLight::init()
     statusBarBackgroundColor = "background-color: #" + status_bar_background + ";";
     progressBarStyle = "color: " + progress_bar_background + "; padding-left: 10px;  background-color: #" + status_bar_background + ";";
     radioTextStyle = "color: #000000";
+    mainHeaderStyle = "background-color: " + title_background + "; color: white; padding-right: 10px;";
+    menuHeaderStyle = "QToolBar {background: " + title_background + "; border: 0px;} \
+        QToolBar QToolButton {background: " + title_background + "; padding-left: 15px; padding-top: 10px; text-align:left;}";
+    subSectionTitleStyle = "color: #FFFFFF; padding-left: 10px; background-color: " + title_background + ";";
+    roundedButtonStyle = "background-color: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
 }

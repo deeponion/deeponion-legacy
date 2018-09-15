@@ -75,6 +75,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(clipboardPriorityAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardPriority()));
     connect(clipboardLowOutputAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardLowOutput()));
     connect(clipboardChangeAction, SIGNAL(triggered()), this, SLOT(coinControlClipboardChange()));
+
     ui->labelCoinControlQuantity->addAction(clipboardQuantityAction);
     ui->labelCoinControlAmount->addAction(clipboardAmountAction);
     ui->labelCoinControlFee->addAction(clipboardFeeAction);
@@ -84,6 +85,8 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     ui->labelCoinControlLowOutput->addAction(clipboardLowOutputAction);
     ui->labelCoinControlChange->addAction(clipboardChangeAction);
 
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
+    ui->labelCoinControlFeatures->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
     ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
     ui->labelBalance->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->label->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
@@ -121,6 +124,8 @@ void SendCoinsDialog::setModel(WalletModel *model)
         ui->checkBoxCoinControlChange->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
         ui->lineEditCoinControlChange->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
         ui->pushButtonCoinControl->setStyleSheet(themeManager->getCurrent()->getQPushBtnStyle());
+        ui->sendCoinsFormTitle->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
+        ui->sendButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 
         coinControlUpdateLabels();
     }
@@ -545,6 +550,8 @@ void SendCoinsDialog::coinControlUpdateLabels()
 
 void SendCoinsDialog::refreshStyle() {
 
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
+    ui->labelCoinControlFeatures->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
     ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
     ui->labelBalance->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->label->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
@@ -556,6 +563,9 @@ void SendCoinsDialog::refreshStyle() {
     ui->checkBoxCoinControlChange->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->lineEditCoinControlChange->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     ui->pushButtonCoinControl->setStyleSheet(themeManager->getCurrent()->getQPushBtnStyle());
+
+    ui->sendCoinsFormTitle->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
+    ui->sendButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 
     clear();
 }

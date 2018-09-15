@@ -115,12 +115,20 @@ MessagePage::MessagePage(QWidget *parent) :
     ui->listConversation->setMinimumHeight(NUM_ITEMS * (DECORATION_SIZE + 2));
     ui->listConversation->setAttribute(Qt::WA_MacShowFocusRect, false);
 
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
+
     ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
     ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
     ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
     ui->labelExplanation1->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->labelExplanation2->setStyleSheet(themeManager->getCurrent()->getQLabelGeneralStyle());
     ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
+
+    ui->copyToAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->newButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->copyFromAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->sendButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->deleteButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 }
 
 MessagePage::~MessagePage()
@@ -443,6 +451,8 @@ void MessagePage::contextualMenu(const QPoint &point)
 }
 
 void MessagePage::refreshStyle() {
+
+    ui->pageTitle->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     ui->frameExplanation->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
     ui->informationPushButton->setIcon(QIcon(themeManager->getCurrent()->getInformationIco()));
     ui->informationPushButton->setStyleSheet(themeManager->getCurrent()->getInformationBtnStyle());
@@ -451,4 +461,10 @@ void MessagePage::refreshStyle() {
     ui->tableView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
     ui->tableView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
     ui->frameMenu->setStyleSheet(themeManager->getCurrent()->getQFrameSecondaryMenuGeneralStyle());
+
+    ui->copyToAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->newButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->copyFromAddressButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->sendButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
+    ui->deleteButton->setStyleSheet(themeManager->getCurrent()->getRoundedButtonStyle());
 }
