@@ -32,6 +32,7 @@
 #include <QDateTimeEdit>
 
 extern ThemeManager *themeManager;
+QLabel *pageTitleLabel;
 
 TransactionView::TransactionView(QWidget *parent) :
         QWidget(parent), model(0), transactionProxyModel(0),
@@ -39,11 +40,10 @@ TransactionView::TransactionView(QWidget *parent) :
 {
 
     //Adding the Page Title QLabel
-    QLabel *pageTitleLabel = new QLabel(tr("Transactions"));
+    pageTitleLabel = new QLabel(tr("Transactions"));
     pageTitleLabel->setAlignment(Qt::AlignRight | Qt::AlignVCenter);
     pageTitleLabel->setFixedHeight(59);
-    pageTitleLabel->setStyleSheet("background-color: #486EBA; color: white;padding-right: 10px; font-size: 16pt; \
-                                          font-weight: bold; font-family: Helvetica Neue");
+    pageTitleLabel->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
 
     // Build filter row
     setContentsMargins(0,0,0,0);
@@ -510,6 +510,7 @@ void TransactionView::focusTransaction(const QModelIndex &idx)
 
 void TransactionView::refreshStyle()
 {
+    pageTitleLabel->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     transactionView->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
     transactionView->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
     dateWidget->setStyleSheet(themeManager->getCurrent()->getQComboboxDateRangeStyle());

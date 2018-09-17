@@ -150,9 +150,11 @@ void ThemeOriginalDark::init()
 	statusBarBackgroundColor = "background-color: " + status_bar_background + ";";
 	progressBarStyle = "color: " + progress_bar_background + "; padding-left: 10px;  background-color: " + status_bar_background + ";";
 	radioTextStyle = "color: " + text_color;
-	mainHeaderStyle = "background-color: " + title_background + "; color: white; padding-right: 10px;";
+	mainHeaderStyle = "background-color: " + title_background + "; color: white; padding-right: 10px; font-size: 24px; font-weight: bold";
     menuHeaderStyle = "QToolBar {background: " + title_background + "; border: 0px;} \
         QToolBar QToolButton {background: " + title_background + "; padding-left: 15px; padding-top: 10px; text-align:left;}";
     subSectionTitleStyle = "padding-left: 10px; background-color: " + title_background + ";";
     roundedButtonStyle = "background-color: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
+
+	deepOnionLogo = ":/icons/DeepOnionLogo";
 }
