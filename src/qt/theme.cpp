@@ -194,3 +194,7 @@ const QString Theme::getRoundedButtonStyle() const {
     return roundedButtonStyle;
 }
 
+const QString Theme::getDeepOnionLogo()const {
+    return deepOnionLogo;
+}
+

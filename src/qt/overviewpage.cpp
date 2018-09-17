@@ -112,6 +112,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->wallet_summary->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
     ui->page_title->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     ui->walletSummaryHeader->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
+    ui->do_icon->setIcon(QIcon(themeManager->getCurrent()->getDeepOnionLogo()));
     // Recent transactions
     //ui->listTransactions->setItemDelegate(txdelegate);
     //ui->listTransactions->setIconSize(QSize(DECORATION_SIZE, DECORATION_SIZE));
@@ -271,6 +272,7 @@ void OverviewPage::refreshStyle() {
     ui->page_title->setStyleSheet(themeManager->getCurrent()->getMainHeaderStyle());
     ui->walletSummaryHeader->setStyleSheet(themeManager->getCurrent()->getSubSectionTitleStyle());
     ui->wallet_summary->setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
+    ui->do_icon->setIcon(QIcon(themeManager->getCurrent()->getDeepOnionLogo()));
     ui->listTransactions->setStyleSheet(themeManager->getCurrent()->getQTableGeneralStyle());
     ui->listTransactions->horizontalHeader()->setStyleSheet(themeManager->getCurrent()->getQListHeaderGeneralStyle());
 }

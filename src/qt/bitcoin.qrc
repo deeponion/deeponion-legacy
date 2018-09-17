@@ -43,6 +43,7 @@
         <file alias="ExportUS">res/icons/export_us.png</file>
         <file alias="export_disabled">res/icons/export-g.png</file>
         <file alias="DeepOnionLogo">res/icons/deepOnionLogo.png</file>
+        <file alias="DeepOnionLogoPurple">res/icons/deepOnionLogo-purple.png</file>
         <file alias="DeepOnionLogoWithTextWhite">res/icons/deepOnionLogoWithTextWhite.png</file>
         <file alias="lock_closed">res/icons/lock_closed.png</file>
         <file alias="lock_open">res/icons/lock_open.png</file>

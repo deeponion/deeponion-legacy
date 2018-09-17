@@ -64,6 +64,9 @@ public:
     const QString getSubSectionTitleStyle() const;
     const QString getRoundedButtonStyle() const;
 
+	const QString getDeepOnionLogo() const;
+
+
 protected:
     QString themeStyleSheet;
     QString centralWidgetStyle;
@@ -116,6 +119,8 @@ protected:
     QString menuHeaderStyle;
     QString subSectionTitleStyle;
     QString roundedButtonStyle;
+
+    QString deepOnionLogo;
 };
 
 
