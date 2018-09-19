@@ -33,12 +33,18 @@ int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 624700;
 int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 530149;
 std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "b64616ef74cacc09d04c012b845d99ce109bbaf87ca0e76880b7e77e014ccc59";
 std::string CWallet::LAST_REGISTERED_BTC_TX = "2e9a4f074eb4848bd4f5f93d4478d0273e2bb6201d2d38f3903837aacd092f44";
+
+# BTC checkpoint #3
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 771900;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 542026;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "bf453bbb134a753a5e20a32e49c95d3463ffb25fdad7543f227fded2d29ff17f";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "955936b949892f01b52bd1c1fa5f1e4b612a1517add044e95c18417ca616b667";
 */
 
-int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 624700;
-int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 530149;
-std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "b64616ef74cacc09d04c012b845d99ce109bbaf87ca0e76880b7e77e014ccc59";
-std::string CWallet::LAST_REGISTERED_BTC_TX = "2e9a4f074eb4848bd4f5f93d4478d0273e2bb6201d2d38f3903837aacd092f44";
+int CWallet::LAST_REGISTERED_BLOCK_HEIGHT = 771900;
+int CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT = 542026;
+std::string CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH = "bf453bbb134a753a5e20a32e49c95d3463ffb25fdad7543f227fded2d29ff17f";
+std::string CWallet::LAST_REGISTERED_BTC_TX = "955936b949892f01b52bd1c1fa5f1e4b612a1517add044e95c18417ca616b667";
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -3312,7 +3318,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
 	blockchainStatus = 0;
-	int maxBlock = 700000;
+	int maxBlock = 800000;
 	if(pindexBest != NULL)
 	{
 		maxBlock = pindexBest->nHeight;
@@ -3337,7 +3343,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 			
 			if(bDisplay)
 			{
-				if(count % 5000 == 0)
+				if(count % 10000 == 0)
 				{
 					std::string percentage = boost::lexical_cast<std::string>(100 * count / maxBlock);
 					uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
