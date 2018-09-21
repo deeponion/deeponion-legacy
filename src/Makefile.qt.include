@@ -138,6 +138,7 @@ BITCOIN_QT_H = \
   qt/themeoriginaldark.h \
   qt/themeoriginallight.h \
   qt/themefancypurple.h \
+  qt/themelightpurple.h \
   qt/thememanager.h \
   qt/trafficgraphwidget.h \
   qt/transactiondesc.h \
@@ -248,6 +249,7 @@ BITCOIN_QT_CPP += \
   qt/themeoriginaldark.cpp \
   qt/themeoriginallight.cpp \
   qt/themefancypurple.cpp \
+  qt/themelightpurple.cpp \
   qt/thememanager.cpp \
   qt/trafficgraphwidget.cpp \
   qt/scicon.cpp \
