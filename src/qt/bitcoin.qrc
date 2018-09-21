@@ -72,6 +72,17 @@
         <file alias="deepVaultLogoWhite">res/icons/dv-white-logo.png</file>
         <file alias="deepVaultLogoColor">res/icons/dv-color-logo.png</file>
     </qresource>
+    <qresource prefix="/icons/purple">
+        <file alias="overview">res/icons/purple/overview.png</file>
+        <file alias="send">res/icons/purple/send.png</file>
+        <file alias="receiving_addresses">res/icons/purple/receive.png</file>
+        <file alias="history">res/icons/purple/history.png</file>
+        <file alias="address-book">res/icons/purple/address-book.png</file>
+        <file alias="messaging">res/icons/purple/message.png</file>
+        <file alias="export">res/icons/purple/export.png</file>
+        <file alias="lock_open">res/icons/purple/lock_open.png</file>
+        <file alias="lock_closed">res/icons/purple/lock_closed.png</file>
+    </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
         <file alias="spinner-001">res/movies/spinner-001.png</file>

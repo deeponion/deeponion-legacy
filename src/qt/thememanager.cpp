@@ -7,6 +7,7 @@
 #include "themeoriginaldark.h"
 #include "themeoriginallight.h"
 #include "themefancypurple.h"
+#include "themelightpurple.h"
 
 ThemeManager::ThemeManager()
 {
@@ -16,10 +17,12 @@ ThemeManager::ThemeManager()
     allThemes[THEME_ORIGINAL_DARK] = new ThemeOriginalDark();
     allThemes[THEME_ORIGINAL_LIGHT] = new ThemeOriginalLight();
     allThemes[THEME_FANCY_PURPLE] = new ThemeFancyPurple();
+    allThemes[THEME_LIGHT_PURPLE] = new ThemeLightPurple();
 
     themeTypeToName[THEME_ORIGINAL_DARK] = QString("Original Dark");
     themeTypeToName[THEME_ORIGINAL_LIGHT] = QString("Original Light");
     themeTypeToName[THEME_FANCY_PURPLE] = QString("Fancy Purple");
+    themeTypeToName[THEME_LIGHT_PURPLE] = QString("Light Purple");
 }
 
 void ThemeManager::applyCurrentTheme() {

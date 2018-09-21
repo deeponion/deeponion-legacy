@@ -1270,6 +1270,7 @@ void BitcoinGUI::refreshStyle()
     labelBlocksIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     progressBarLabel->setStyleSheet(themeManager->getCurrent()->getProgressBarStyle());
     statusBar()->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    
 }
 
 void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)
