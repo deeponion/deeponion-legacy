@@ -145,7 +145,7 @@ void ThemeLightPurple::init()
     qPushBtnStyle = "QPushButton {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + menu_background + "; color: " + push_button_text_color + "; padding: 8px}\
                         QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + frame_background + "; color: " + title_background + "}\
                         QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + frame_background + "; color: " + title_background + "}";
-    aboutImg = ":/images/about_light";
+    aboutImg = ":/images/about_light_purple";
     fontBiggerIco = ":/icons/fontbigger_light";
     fontSmallerIco = ":/icons/fontsmaller_light";
     qTreeWidget = "QTreeView { color: " + text_color + "; background-color:#c2c2ce; alternate-background-color: " + tree_item_alternate_background + ";} \

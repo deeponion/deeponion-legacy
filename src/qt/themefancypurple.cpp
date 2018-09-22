@@ -141,7 +141,7 @@ void ThemeFancyPurple::init()
 	qPushBtnStyle = "QPushButton {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + input_background + "; color: " + push_button_text_color + "; padding: 8px}\
 		QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
 		QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}";
-	aboutImg = ":/images/about_dark";
+	aboutImg = ":/images/about_dark_purple";
 	fontBiggerIco = ":/icons/fontbigger_dark";
 	fontSmallerIco = ":/icons/fontsmaller_dark";
 	qTreeWidget = "QTreeView { color: " + text_color + "; background-color:" + frame_background + "; alternate-background-color: " + tree_item_alternate_background + ";} \

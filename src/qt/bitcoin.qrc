@@ -129,8 +129,10 @@
 
     <qresource prefix="/images">
         <file alias="about">res/images/about.png</file>
-        <file alias="about_dark">res/images/white-wallet-logo.png</file>
+        <file alias="about_dark">res/images/wallet.png</file>
         <file alias="about_light">res/images/colored-wallet-logo.png</file>
+        <file alias="about_dark_purple">res/images/wallet-purple-white.png</file>
+        <file alias="about_light_purple">res/images/wallet-purple.png</file>
         <file alias="splash">res/images/splash.png</file>
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="wallet_logo">res/images/wallet.png</file>
