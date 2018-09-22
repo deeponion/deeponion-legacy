@@ -465,27 +465,15 @@ border-width:0px; margin-left: 8px;</string>
              </widget>
             </item>
             <item>
-             <widget class="QDialogButtonBox" name="buttonBox">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
+             <widget class="QPushButton" name="buttonBox">
               <property name="styleSheet">
                <string notr="true">background-color: #486EBA;
 color: white;
 border-radius:14px;
 border-width:0px; margin-left: 8px; width: 40;</string>
               </property>
-              <property name="standardButtons">
-               <set>QDialogButtonBox::Ok</set>
+              <property name="text">
+               <string>OK</string>
               </property>
              </widget>
             </item>
