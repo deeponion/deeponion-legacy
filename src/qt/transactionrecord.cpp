@@ -67,7 +67,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
                 {
                 	sub.narration = mi->second;
-                	LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                	// LogPrintf("CREDIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
                 }
                 
                 if (wtx.IsCoinBase())
@@ -157,7 +157,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 if (mi != wtx.mapValue.end() && !mi->second.empty())
                 {
                 	sub.narration = mi->second;
-                	LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
+                	// LogPrintf("DEBIT | ADDED NARRATION: %s from POSITION: %s\n", sub.narration.c_str(), mi->first.c_str());
                	}
 
                 int64 nValue = txout.nValue;
