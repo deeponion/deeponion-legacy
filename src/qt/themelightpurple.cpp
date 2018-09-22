@@ -76,7 +76,7 @@ void ThemeLightPurple::init()
                         QTreeView::item {color: " + text_color + "; background-color: #c2c2ce; border: 1px solid #c2c2ce;} \
                         QTreeView::item:hover {color: " + text_color + "; background-color: " + selected_item_background + "; border: 1px solid #c2c2ce;} \
                         QToolButton {color:" + push_button_text_color + "; background-color: " + menu_background + "; padding: 3px; border: none;} \
-                        QDialogButtonBox {color:" + push_button_text_color + "; background-color: " + menu_background + "; padding: 3px;} \
+                        QDialogButtonBox {color:" + push_button_text_color + "; background-color: " + title_background + "; padding: 3px;} \
                         QToolTip {color: " + push_button_text_color + "; border: 0px; background-color: " + menu_background + "; opacity: 225;} \
                         QPushButton {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + menu_background + "; color: " + push_button_text_color + "; padding: 8px;}\
                         QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + frame_background + "; color: " + title_background + ";}\
@@ -159,6 +159,7 @@ void ThemeLightPurple::init()
         QToolBar QToolButton {background: " + title_background + "; padding-left: 15px; padding-top: 10px; text-align:left;}";
     subSectionTitleStyle = "color: #FFFFFF; padding-left: 10px; background-color: " + title_background + ";";
     roundedButtonStyle = "background-color: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
+    roundedButtonBoxStyle = "background: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
 
     deepOnionLogo = ":/icons/DeepOnionLogoPurple";
 }
