@@ -159,7 +159,6 @@ void ThemeLightPurple::init()
         QToolBar QToolButton {background: " + title_background + "; padding-left: 15px; padding-top: 10px; text-align:left;}";
     subSectionTitleStyle = "color: #FFFFFF; padding-left: 10px; background-color: " + title_background + ";";
     roundedButtonStyle = "background-color: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
-    roundedButtonBoxStyle = "background: " + title_background + ";color: white;border-radius:14px;border-width:0px; margin-left: 8px;";
 
     deepOnionLogo = ":/icons/DeepOnionLogoPurple";
 }
