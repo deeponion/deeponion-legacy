@@ -326,7 +326,7 @@ Dieses Produkt enthält Software, die vom OpenSSL Project für den Einsatz im Op
     <message>
         <location line="-319"/>
         <source>&amp;Overview</source>
-        <translation>О&amp;Übersicht</translation>
+        <translation>&amp;Übersicht</translation>
     </message>
     <message>
         <location line="+1"/>
