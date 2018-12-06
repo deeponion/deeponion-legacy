@@ -82,7 +82,7 @@ int64_t nTransactionFee = MIN_TX_FEE_NEW;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static const int NUM_OF_POW_CHECKPOINT = 19;
+static const int NUM_OF_POW_CHECKPOINT = 22;
 static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 {
 		{  9601,   4611},
@@ -103,7 +103,10 @@ static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 		{650002, 132389},
 		{700006, 141959},
 		{750001, 151428},
-		{773216, 155840},
+		{800002, 160957},
+		{850000, 170567},
+		{900012, 179975},
+		{915288, 182779},
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;

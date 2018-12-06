@@ -3315,10 +3315,11 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
 void CWallet::ScanBlockchainForHash(bool bDisplay)
 {
 	printf(">> calling ScanBlockchainForHash ...\n");
+
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
 	blockchainStatus = 0;
-	int maxBlock = 800000;
+	int maxBlock = 900000;
 	if(pindexBest != NULL)
 	{
 		maxBlock = pindexBest->nHeight;
