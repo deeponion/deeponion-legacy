@@ -3346,12 +3346,12 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     <name>WalletModel</name>
     <message>
         <location filename="../walletmodel.cpp" line="+648"/>
-        <source>The DeepOnoion blockchain is not fully sychronized..</source>
+        <source>The DeepOnion blockchain is not fully sychronized..</source>
         <translation>La DeepOnion blockchain n'est pas entièrement synchronisée...</translation>
     </message>
         <message>
         <location line="+650"/>
-        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
+        <source>The DeepOnion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
         <translation>La DeepOnion blockchain est synchronisée mais le hash ne correspond pas au dernier point de sauvegarde de celui-ci au bloc </translation>
     </message>
      <message>
@@ -3366,7 +3366,7 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     </message>
     <message>
         <location line="+654"/>
-        <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
+        <source>The DeepOnion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
         <translation>La DeepOnion blockchain est entiérement synchronisée. Elle est authentique! Ceci est garantie par le Bitcoin blockchain </translation>
     </message>
     <message>
@@ -3376,7 +3376,7 @@ Si le fichier n&apos;existe pas, créez-le avec les droits de lecture seule acco
     </message>
     <message>
         <location line="+667"/>
-        <source>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </source>
+        <source>We can't verify the DeepOnion blockchain as it is not fully sychronized yet. </source>
         <translation>Nous ne pouvons pas vérifier la DeepOnion blockchain tant qu&apos;elle n&apos;est pas totalement synchronisée. </translation>
     </message>
     <message>

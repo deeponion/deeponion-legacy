@@ -38,7 +38,7 @@ unsigned int nMinerSleep;
 bool fUseFastIndex;
 enum Checkpoints::CPMode CheckpointsMode;
 CService addrOnion;
-int blockchainStatus;	// -1 out of sync, 0 sync'd unmatch, 1 sync'd match
+int blockchainStatus;	// -2 blockchain check off, -1 out of sync, 0 sync'd unmatch, 1 sync'd match
 int blockchainStatusLast;	
 unsigned short const onion_port = 9081;
 
@@ -492,10 +492,10 @@ bool AppInit2()
 
     fCheckBlockchain = GetBoolArg("-checkblockchain",true);
 
+    blockchainStatusLast = -1;
+
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
-    blockchainStatus = -1;
-    blockchainStatusLast = -1;
     std::string strDataDir = GetDataDir().string();
     std::string strWalletFileName = GetArg("-wallet", "wallet.dat");
 
@@ -869,10 +869,16 @@ bool AppInit2()
     }
 
     if(!fTestNet && fCheckBlockchain){
+
+        blockchainStatus = -1;
+
         printf("Checking blockchain hash...\n");
         uiInterface.InitMessage(_("Checking blockchain hash...")); 	
         
         pwalletMain->ScanBlockchainForHash(true);
+    }
+    else{
+        blockchainStatus = -2;
     }
     
     // ********************************************************* Step 10: load peers

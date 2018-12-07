@@ -241,9 +241,9 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
 
                     if (fDebug)
                     {
-                        LogPrintf("Stealth send to generated pubkey %u: %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
+                        LogPrintf("Stealth send to generated pubkey %lu: %s\n", pkSendTo.size(), HexStr(pkSendTo).c_str());
                         LogPrintf("hash %s\n", addrTo.ToString().c_str());
-                        LogPrintf("ephem_pubkey %u: %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
+                        LogPrintf("ephem_pubkey %lu: %s\n", ephem_pubkey.size(), HexStr(ephem_pubkey).c_str());
                     }
 
                     CScript scriptPubKey;
@@ -636,48 +636,56 @@ void WalletModel::listLockedCoins(std::vector<COutPoint>& vOutpts)
 
 void WalletModel::updateBlockchainStatus()
 {
-	if(blockchainStatus == -1)
+
+    if(blockchainStatus == -1)
 		wallet->ScanBlockchainForHash();
+
+    return;
 }
 
 QString WalletModel::getBlockchainStatusText()
 {
 	QString text;
-	
-	if(blockchainStatus == -1)
-		text = QString("The DeepOnoion blockchain is not fully sychronized.");
-	else if(blockchainStatus == 0)
-		text = QString("The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block ")
-			+ QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
-			+ QString("So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.");
-	else
-		text = QString("The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain ")
-			+ QString("(the most secure immutable database in the world) up to Block ") 
-			+ QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(".");
-	
-	return text;
+
+    if(blockchainStatus == -2)
+        text = QString("The authenticity of the DeepOnion blockchain has not yet been verified.");
+    else if(blockchainStatus == -1)
+        text = QString("The DeepOnion blockchain is not fully sychronized 2.");
+    else if(blockchainStatus == 0)
+        text = QString("The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block ")
+            + QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
+            + QString("So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.");
+    else
+        text = QString("The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain ")
+            + QString("(the most secure immutable database in the world) up to Block ")
+            + QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(".");
+
+    return text;
 }
 
 
 QString WalletModel::getBlockchainStatusDetailsText()
 {
-	QString text;
-	
-	if(blockchainStatus == -1)
-		text = QString("We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. ")
-				+ QString("Please wait until it is fully synchronized and check back.");
-	else if(blockchainStatus == 0)
-		text = QString("The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block ")
-			+ QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
-			+ QString("So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.");
-	else
-		text = QString("The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height ")
-			+ QString::number(CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT) + QString(". The matched hash is ") 
-			+ QString::fromUtf8(CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH.c_str()) + QString(", which is registered at Bitcoin blockchain at Block ")
-			+ QString::number(CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT) + QString(", with txid ")
-			+ QString::fromUtf8(CWallet::LAST_REGISTERED_BTC_TX.c_str()) + QString(".");
-	
-	return text;
+    QString text;
+
+    if(blockchainStatus == -2)
+        text = QString("The authenticity of the DeepOnion blockchain has not yet been verified. ")
+            + QString("Please change your settings in the conf file in order to verify it");
+    else if(blockchainStatus == -1)
+        text = QString("We can't verify the DeepOnion blockchain as it is not fully sychronized yet. ")
+            + QString("Please wait until it is fully synchronized and check back.");
+    else if(blockchainStatus == 0)
+        text = QString("The DeepOnion blockchain sychronized, but it does not match the latest checkpoint hash at Block ")
+            + QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
+            + QString("So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.");
+    else
+        text = QString("The current DeepOnion blockchain you are using matches the hash registered in the Bitcoin blockchain at height ")
+            + QString::number(CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT) + QString(". The matched hash is ") 
+            + QString::fromUtf8(CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH.c_str()) + QString(", which is registered at Bitcoin blockchain at Block ")
+            + QString::number(CWallet::LAST_REGISTERED_BTC_BLOCK_HEIGHT) + QString(", with txid ")
+            + QString::fromUtf8(CWallet::LAST_REGISTERED_BTC_TX.c_str()) + QString(".");
+
+    return text;
 }
 
 
@@ -685,7 +693,7 @@ QString WalletModel::getBlockchainTextStylesheet()
 {
 	QString stylesheet;
 	
-	if(blockchainStatus == -1)
+    if(blockchainStatus < 0 )
 		stylesheet = "QLabel {font-weight: bold; color: white;}";
 	else if(blockchainStatus == 0)
 		stylesheet = "QLabel {font-weight: bold; color: red;}";
