@@ -636,9 +636,9 @@ void WalletModel::listLockedCoins(std::vector<COutPoint>& vOutpts)
 
 void WalletModel::updateBlockchainStatus()
 {
-
-    if(blockchainStatus == -1)
-		wallet->ScanBlockchainForHash();
+    if(blockchainStatus == -1){
+		pwalletMain->ScanBlockchainForHash();
+    }
 
     return;
 }

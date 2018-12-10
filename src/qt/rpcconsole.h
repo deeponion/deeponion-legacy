@@ -58,6 +58,8 @@ private slots:
     void on_openDebugLogfileButton_clicked();
     /** open the blockchain info page */
     void on_showMeDetailsButton_clicked();
+    /** Start the blockchain verification procedure */
+    void on_verifyBlockchainButton_clicked();
     /** display messagebox with program parameters (same as bitcoin-qt --help) */
     void on_showCLOptionsButton_clicked();
     /** change the time range of the network traffic graph */

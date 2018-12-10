@@ -3358,7 +3358,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 			}
 		} // while (pindex)
 	}
-    
+
 	SHA256_Final(hash11, &sha256);
 
 	std::stringstream ss;
@@ -3374,7 +3374,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 		blockchainStatus = 1;
 	else
 		blockchainStatus = 0;
-		
+
 	printf(">> blockchain hash at %d: %s\n", LAST_REGISTERED_BLOCK_HEIGHT, hash0.c_str());
 	printf(">> blockchainStatus = %d\n", blockchainStatus);
 }
