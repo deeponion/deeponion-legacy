@@ -4,12 +4,6 @@
 
 #include "theme.h"
 
-
-const QString Theme::THEME_ORIGINAL_DARK = "Original Dark";
-const QString Theme::THEME_ORIGINAL_LIGHT = "Original Light";
-const QString Theme::THEME_FANCY_PURPLE = "Fancy Purple";
-
-
 const QString Theme::getStyleSheet() const {
     return themeStyleSheet;
 }
@@ -182,5 +176,25 @@ const QString Theme::getRadioTextStyle() const {
 
 const QString Theme::getPayAmountStyle() const {
     return payAmountStyle;
+}
+
+const QString Theme::getMainHeaderStyle() const {
+    return mainHeaderStyle;
+}
+
+const QString Theme::getMenuHeaderStyle() const {
+    return menuHeaderStyle;
+}
+
+const QString Theme::getSubSectionTitleStyle() const {
+    return subSectionTitleStyle;
+}
+
+const QString Theme::getRoundedButtonStyle() const {
+    return roundedButtonStyle;
+}
+
+const QString Theme::getDeepOnionLogo()const {
+    return deepOnionLogo;
 }
 

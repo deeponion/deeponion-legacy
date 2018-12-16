@@ -2999,7 +2999,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
+        <source>WARNING: synchronized checkpoint violation detected, but skipped!</source>
         <translation></translation>
     </message>
     <message>
@@ -3364,13 +3364,13 @@ If the file does not exist, create it with owner-readable-only file permissions.
     <name>WalletModel</name>
     <message>
         <location filename="../walletmodel.cpp" line="+648"/>
-        <source>The DeepOnoion blockchain is not fully sychronized.</source>
-        <translation>The DeepOnoion blockchain is not fully sychronized.</translation>
+        <source>The DeepOnion blockchain is not fully sychronized.</source>
+        <translation>The DeepOnion blockchain is not fully sychronized.</translation>
     </message>
         <message>
         <location line="+650"/>
-        <source>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
-        <translation>The DeepOnoion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
+        <source>The DeepOnion blockchain sychronized, but it does not match the latest checkpoint hash at Block </source>
+        <translation>The DeepOnion blockchain sychronized, but it does not match the latest checkpoint hash at Block </translation>
     </message>
      <message>
         <location line="+651"/>
@@ -3384,8 +3384,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+654"/>
-        <source>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
-        <translation>The DeepOnoion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </translation>
+        <source>The DeepOnion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </source>
+        <translation>The DeepOnion blockchain is fully sychronized. It is authentic! It is guaranteed by Bitcoin blockchain </translation>
     </message>
     <message>
         <location line="+655"/>
@@ -3394,8 +3394,8 @@ If the file does not exist, create it with owner-readable-only file permissions.
     </message>
     <message>
         <location line="+667"/>
-        <source>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </source>
-        <translation>We can't verify the DeepOnoion blockchain as it is not fully sychronized yet. </translation>
+        <source>We can't verify the DeepOnion blockchain as it is not fully sychronized yet. </source>
+        <translation>We can't verify the DeepOnion blockchain as it is not fully sychronized yet. </translation>
     </message>
     <message>
         <location line="+668"/>

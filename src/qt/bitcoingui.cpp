@@ -83,6 +83,7 @@ extern unsigned int nStakeTargetSpacing;
 double GetPoSKernelPS();
 
 ThemeManager *themeManager = new ThemeManager();
+QToolBar *fakeToolbarForBlueLine;
 
 BitcoinGUI::BitcoinGUI(QWidget *parent):
     QMainWindow(parent),
@@ -139,11 +140,10 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     int toolBarWidth = 175;
     // Create the toolbars
-    QToolBar *fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
+    fakeToolbarForBlueLine = addToolBar(tr("Fake toolbar for blue line"));
     fakeToolbarForBlueLine->setFixedHeight(59);
     fakeToolbarForBlueLine->setMovable(false);
-    fakeToolbarForBlueLine->setStyleSheet("QToolBar {background: #486EBA; border: 0px;} \
-                                           QToolBar QToolButton {background: #486EBA; padding-left: 15px; padding-top: 10px; text-align:left;}");
+    fakeToolbarForBlueLine->setStyleSheet(themeManager->getCurrent()->getMenuHeaderStyle());
     fakeToolbarForBlueLine->setIconSize(QSize(146, 40));
     QAction *deepOnionLogo = new QAction(QIcon(":/icons/DeepOnionLogoWithTextWhite"), "", this);
     deepOnionLogo->setEnabled(false);
@@ -412,7 +412,7 @@ void BitcoinGUI::createActions()
     optionsAction->setToolTip(tr("Modify configuration options for DeepOnion"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
     toggleHideAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Show / Hide"), this);
-    encryptWalletAction = new QAction(QIcon(":/icons/new_lock_closed"), tr("&Encrypt Wallet..."), this);
+    encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
     encryptWalletAction->setCheckable(true);
     openConfEditorAction = new QAction(QIcon(":/icons/edit"), tr("Open configuration &file..."), this);
@@ -668,25 +668,25 @@ void BitcoinGUI::setNumConnections(int count)
     QString icon;
     switch (count)
     {
-    	case 0: icon = ":/icons/new_connect_0"; 
+    	case 0: icon = ":/icons/connect_0";
     		break;
     	case 1: 
     	case 2: 
     	case 3: 
-    		icon = ":/icons/new_connect_1"; 
+    		icon = ":/icons/connect_1";
     		break;
     	case 4: 
     	case 5: 
     	case 6: 
-    		icon = ":/icons/new_connect_2"; 
+    		icon = ":/icons/connect_2";
     		break;
     	case 7: 
     	case 8: 
     	case 9: 
-    		icon = ":/icons/new_connect_3"; 
+    		icon = ":/icons/connect_3";
     		break;
     	default: 
-    		icon = ":/icons/new_connect_4"; 
+    		icon = ":/icons/connect_4";
     		break;
     }
     
@@ -778,7 +778,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     if(secs < 5400 && count >= nTotalBlocks)
     {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
-        labelBlocksIcon->setPixmap(QIcon(":/icons/new_synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        labelBlocksIcon->setPixmap(QIcon(":/icons/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 
         overviewPage->showOutOfSyncWarning(false);
         rpcConsole->updateBlockchainStatus();
@@ -789,7 +789,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         //Old version using the movie, even though, I have never seen the movie so I doubt it works..
         //labelBlocksIcon->setMovie(syncIconMovie);
         //syncIconMovie->start();
-        //labelBlocksIcon->setPixmap(QIcon(":/icons/new_notsynced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+        //labelBlocksIcon->setPixmap(QIcon(":/icons/notsynced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         if(count != prevBlocks) {
             labelBlocksIcon->setPixmap(QIcon(QString(":/movies/spinner-%1").arg(spinnerFrame, 3, 10, QChar('0'))).
                     pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -1079,7 +1079,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Unlocked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/new_lock_open2").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_open2").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1089,7 +1089,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         break;
     case WalletModel::Locked:
         labelEncryptionIcon->show();
-        labelEncryptionIcon->setPixmap(QIcon(":/icons/new_lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelEncryptionIcon->setPixmap(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
         encryptWalletAction->setChecked(true);
         changePassphraseAction->setEnabled(true);
@@ -1190,12 +1190,12 @@ void BitcoinGUI::updateStakingIcon()
     {
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
-        labelStakingIcon->setPixmap(QIcon(":/icons/new_staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         labelStakingIcon->setToolTip(tr("Staking.<br>Your weight is %1<br>Network weight is %2").arg(nWeight).arg(nNetworkWeight));
     }
     else
     {
-        labelStakingIcon->setPixmap(QIcon(":/icons/new_staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelStakingIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
         if (pwalletMain && pwalletMain->IsLocked())
             labelStakingIcon->setToolTip(tr("Not staking because wallet is locked"));
         else if (vNodes.empty())
@@ -1216,13 +1216,13 @@ void BitcoinGUI::updateOnionIcon()
 
 	if (ipaddress == std::string("0.0.0.0"))
 	{
-		labelOnionIcon->setPixmap(QIcon(":/icons/new_tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		labelOnionIcon->setPixmap(QIcon(":/icons/tor_inactive").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr("Connecting over the Tor Network"));
 	}
 	else
 	{
 		std::string display = std::string("Connected over the Tor Network. IP: ") + ipaddress;
-		labelOnionIcon->setPixmap(QIcon(":/icons/new_tor_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+		labelOnionIcon->setPixmap(QIcon(":/icons/tor_active").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 		labelOnionIcon->setToolTip(tr(display.c_str()));
 	}
 }
@@ -1252,6 +1252,7 @@ void BitcoinGUI::refreshStyle()
     qApp->setStyleSheet(themeManager->getCurrent()->getStyleSheet());
     updateToolBarStyleBySelectedScreen(currentScreen);
     centralWidget->setStyleSheet(themeManager->getCurrent()->getCentralWidgetStyle());
+    fakeToolbarForBlueLine->setStyleSheet(themeManager->getCurrent()->getMenuHeaderStyle());
     overviewPage->refreshStyle();
     sendCoinsPage->refreshStyle();
     receiveCoinsPage->refreshStyle();
@@ -1269,6 +1270,7 @@ void BitcoinGUI::refreshStyle()
     labelBlocksIcon->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
     progressBarLabel->setStyleSheet(themeManager->getCurrent()->getProgressBarStyle());
     statusBar()->setStyleSheet(themeManager->getCurrent()->getStatusBarBackgroundColor());
+    
 }
 
 void BitcoinGUI::updateToolBarStyleBySelectedScreen(int screen)

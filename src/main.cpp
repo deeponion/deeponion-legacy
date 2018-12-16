@@ -78,11 +78,11 @@ CScript COINBASE_FLAGS;
 const string strMessageMagic = "DeepOnion Signed Message:\n";
 
 // Settings
-int64_t nTransactionFee = GetMinTxFee();
+int64_t nTransactionFee = MIN_TX_FEE_NEW;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static const int NUM_OF_POW_CHECKPOINT = 21;
+static const int NUM_OF_POW_CHECKPOINT = 22;
 static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 {
 		{  9601,   4611},
@@ -95,17 +95,18 @@ static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 		{250008,  54582},
 		{300836,  64774},
 		{350003,  74350},
-		{375453,  79257},
 		{400494,  84066},
-		{434205,  90499},
 		{450225,  93657},
-		{475131,  98495},
 		{500001, 103315},
-		{526839, 108542},
 		{550004, 113079},
-		{575635, 118133},
 		{600014, 122831},
-		{621306, 126890},
+		{650002, 132389},
+		{700006, 141959},
+		{750001, 151428},
+		{800002, 160957},
+		{850000, 170567},
+		{900012, 179975},
+		{915288, 182779},
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;
@@ -123,7 +124,7 @@ int64_t FutureDrift(int64_t nTime)
 int64_t GetMinTxFee() 
 {
 	if(pindexBest == NULL)
-		return MIN_TX_FEE;
+		return MIN_TX_FEE_NEW;
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_TX_FEE; 
@@ -134,7 +135,7 @@ int64_t GetMinTxFee()
 int64_t GetMinRelayTxFee() 
 {
 	if(pindexBest == NULL)
-		return MIN_RELAY_TX_FEE;
+		return MIN_RELAY_TX_FEE_NEW;
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_RELAY_TX_FEE; 
@@ -2472,7 +2473,7 @@ bool CBlock::AcceptBlock()
         return error("AcceptBlock() : rejected by synchronized checkpoint");
 
     if (CheckpointsMode == Checkpoints::ADVISORY && !cpSatisfies)
-        strMiscWarning = _("WARNING: syncronized checkpoint violation detected, but skipped!");
+        strMiscWarning = _("WARNING: synchronized checkpoint violation detected, but skipped!");
 
     // Enforce rule that the coinbase starts with serialized block height
     CScript expect = CScript() << nHeight;
@@ -2628,7 +2629,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
         mapOrphanBlocksByPrev.erase(hashPrev);
     }
 
-    printf("ProcessBlock: ACCEPTED\n");
+    // printf("ProcessBlock: ACCEPTED\n");
 
     // DeepOnion: if responsible for sync-checkpoint send it
     if (pfrom && !CSyncCheckpoint::strMasterPrivKey.empty())
@@ -2786,8 +2787,8 @@ bool LoadBlockIndex(bool fAllowNew)
     if (fTestNet)
     {
 		pchMessageStart[0] = 0xa1;
-		pchMessageStart[1] = 0xa0;
-		pchMessageStart[2] = 0xa2;
+		pchMessageStart[1] = 0xa2;
+		pchMessageStart[2] = 0xa0;
 		pchMessageStart[3] = 0xf3;
 		
 		bnTrustedModulus.SetHex("a8852ebf7c49f01cd196e35394f3b74dd86283a07f57e0a262928e7493d4a3961d93d93c90ea3369719641d626d28b9cddc6d9307b9aabdbffc40b6d6da2e329d079b4187ff784b2893d9f53e9ab913a04ff02668114695b07d8ce877c4c8cac1b12b9beff3c51294ebe349eca41c24cd32a6d09dd1579d3947e5c4dcc30b2090b0454edb98c6336e7571db09e0fdafbd68d8f0470223836e90666a5b143b73b9cd71547c917bf24c0efc86af2eba046ed781d9acb05c80f007ef5a0a5dfca23236f37e698e8728def12554bc80f294f71c040a88eff144d130b24211016a97ce0f5fe520f477e555c9997683d762aff8bd1402ae6938dd5c994780b1bf6aa7239e9d8101630ecfeaa730d2bbc97d39beb057f016db2e28bf12fab4989c0170c2593383fd04660b5229adcd8486ba78f6cc1b558bcd92f344100dff239a8c00dbc4c2825277f241691dbe4a7d9bd503abb9");
@@ -2836,7 +2837,7 @@ bool LoadBlockIndex(bool fAllowNew)
 
         if(fTestNet)
         {
-            txNew.nTime 	= 1530740000;
+            txNew.nTime 	= 1537396257;
             
             block.SetNull();
             block.vtx.push_back(txNew);
@@ -2844,8 +2845,8 @@ bool LoadBlockIndex(bool fAllowNew)
             block.hashMerkleRoot = block.BuildMerkleTree();
             block.nVersion 	= 1;
             block.nBits    	= bnProofOfWorkLimit.GetCompact();
-        	block.nTime    	= 1530740000;
-            block.nNonce   	= 249570;
+        	block.nTime    	= 1537396257;
+            block.nNonce   	= 446047;
         }
 
  		if (false && (block.GetHash() != hashGenesisBlock)) {

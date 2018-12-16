@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>731</width>
-    <height>487</height>
+    <height>582</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -143,7 +143,7 @@
              <number>0</number>
             </property>
             <item>
-             <widget class="QFrame" name="frame">
+             <widget class="QFrame" name="walletSummaryHeader">
               <property name="styleSheet">
                <string notr="true">background-color: #486EBA;</string>
               </property>
@@ -158,7 +158,7 @@
                 <number>0</number>
                </property>
                <property name="leftMargin">
-                <number>10</number>
+                <number>0</number>
                </property>
                <property name="topMargin">
                 <number>10</number>

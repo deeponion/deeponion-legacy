@@ -38,7 +38,7 @@ unsigned int nMinerSleep;
 bool fUseFastIndex;
 enum Checkpoints::CPMode CheckpointsMode;
 CService addrOnion;
-int blockchainStatus;	// -1 out of sync, 0 sync'd unmatch, 1 sync'd match
+int blockchainStatus;	// -2 blockchain check off, -1 out of sync, 0 sync'd unmatch, 1 sync'd match
 int blockchainStatusLast;	
 unsigned short const onion_port = 9081;
 
@@ -307,6 +307,7 @@ std::string HelpMessage()
         "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 2500, 0 = all)") + "\n" +
         "  -checklevel=<n>        " + _("How thorough the block verification is (0-6, default: 1)") + "\n" +
         "  -loadblock=<file>      " + _("Imports blocks from external blk000?.dat file") + "\n" +
+        "  -checkblockchain       " + _("Checks of chain hash with Bitcoin registered info (default: 1)") + "\n" +
 
         "\n" + _("Block creation options:") + "\n" +
         "  -blockminsize=<n>      "   + _("Set minimum block size in bytes (default: 0)") + "\n" +
@@ -489,10 +490,12 @@ bool AppInit2()
             return InitError(strprintf(_("Invalid amount for -mininput=<amount>: '%s'"), mapArgs["-mininput"].c_str()));
     }
 
+    fCheckBlockchain = GetBoolArg("-checkblockchain",true);
+
+    blockchainStatusLast = -1;
+
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
-    blockchainStatus = -1;
-    blockchainStatusLast = -1;
     std::string strDataDir = GetDataDir().string();
     std::string strWalletFileName = GetArg("-wallet", "wallet.dat");
 
@@ -865,11 +868,18 @@ bool AppInit2()
         }
     }
 
-    printf("Checking blockchain hash...\n");
-    uiInterface.InitMessage(_("Checking blockchain hash..."));
-    
-    if(!fTestNet)
-    	pwalletMain->ScanBlockchainForHash(true);
+    if(!fTestNet && fCheckBlockchain){
+
+        blockchainStatus = -1;
+
+        printf("Checking blockchain hash...\n");
+        uiInterface.InitMessage(_("Checking blockchain hash...")); 	
+        
+        pwalletMain->ScanBlockchainForHash(true);
+    }
+    else{
+        blockchainStatus = -2;
+    }
     
     // ********************************************************* Step 10: load peers
 

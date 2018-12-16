@@ -11,16 +11,16 @@
     <message>
         <location line="+39"/>
         <source>&lt;b&gt;DeepOnion&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;DeepOnion&lt;/b&gt; version</translation>
+        <translation>&lt;b&gt;DeepOnion&lt;/b&gt; versión</translation>
     </message>
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2014 The Bitcoin developers
 Copyright © 2012-2014 The NovaCoin developers
 Copyright © 2014 The DeepOnion developers</source>
-        <translation>Copyright © 2009-2014 The Bitcoin developers
-Copyright © 2012-2014 The NovaCoin developers
-Copyright © 2014 The DeepOnion developers</translation>
+        <translation>Copyright © 2009-2014 Los desarrolladores de Bitcoin
+Copyright © 2012-2014 Los desarrolladores de Novacoin
+Copyright © 2014 Los desarrolladores de DeepOnion</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -31,11 +31,11 @@ Distributed under the MIT/X11 software license, see the accompanying file COPYIN
 
 This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</source>
         <translation>
-This is experimental software.
+Éste es un software experimental.
 
-Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php.
+Distribuido bajo la licencia del software MIT/X11, ve el siguiente archivo adjunto http://www.opensource.org/licenses/mit-license.php.
 
-This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit (http://www.openssl.org/) and cryptographic software written by Eric Young (eay@cryptsoft.com) and UPnP software written by Thomas Bernard.</translation>
+Éste producto incluye el software desarrollado por el Proyecto OpenSSL Project, para ser usado en el Kit de Herramientas de OpenSSL (http://www.openssl.org/), el software criptográfico escrito por Eric Young (eay@cryptsoft.com) y el software UPnP escrito por Thomas Bernard.</translation>
     </message>
 </context>
 <context>
@@ -43,12 +43,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../forms/addressbookpage.ui" line="+14"/>
         <source>Address Book</source>
-        <translation>Libreta de Direcciones</translation>
+        <translation>Direcciones</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>Double-click to edit address or label</source>
-        <translation>Haga doble clic para editar una etiqueta o dirección </translation>
+        <translation>Haz doble clic para editar una etiqueta o dirección </translation>
     </message>
     <message>
         <location line="+27"/>
@@ -68,7 +68,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-46"/>
         <source>These are your DeepOnion addresses for receiving payments. You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Estas son las direcciones de DeepOnion para recibir pagos. Es posible que desee dar una diferente a cada remitente para que pueda realizar un seguimiento de quien te está pagando.</translation>
+        <translation>Éstas son las direcciones de DeepOnion para recibir pagos. Es posible que desees dar una diferente a cada remitente para que puedas realizar un seguimiento de quien te está pagando.</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -78,12 +78,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+11"/>
         <source>Show &amp;QR Code</source>
-        <translation>Enseñar Códgio &amp;QR</translation>
+        <translation>Mostrar Códgio &amp;QR</translation>
     </message>
     <message>
         <location line="+11"/>
         <source>Sign a message to prove you own a DeepOnion address</source>
-        <translation>Firmar un mensaje para demostrar que es dueño de su dirección de DeepOnion</translation>
+        <translation>Firmar un mensaje para demostrar que eres dueño de tu dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -98,7 +98,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-14"/>
         <source>Verify a message to ensure it was signed with a specified DeepOnion address</source>
-        <translation>Verifique el mensaje para asegurarse que fue firmado por una dirección específica de DeepOnion</translation>
+        <translation>Verifica el mensaje para asegurarte que fue firmado por una dirección específica de DeepOnion</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -123,7 +123,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+250"/>
         <source>Export Address Book Data</source>
-        <translation>Exportar Data de Libro de Direcciones</translation>
+        <translation>Exportar Datos del Libro de Direcciones</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -133,7 +133,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+13"/>
         <source>Error exporting</source>
-        <translation>Error exportando</translation>
+        <translation>Error al exportar</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -179,12 +179,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+14"/>
         <source>Repeat new passphrase</source>
-        <translation>Repita la nueva contraseña</translation>
+        <translation>Repite la nueva contraseña</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Sirve para desactivar SendMoney cuando la cuenta del Sistema Operativo está comprometida. No ofrece seguridad real.</translation>
+        <translation>Sirve para desactivar la función "Enviar Dinero" cuando la cuenta del Sistema Operativo está comprometida. No ofrece seguridad real.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -194,17 +194,17 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location filename="../askpassphrasedialog.cpp" line="+35"/>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;10 or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>Introduzca la nueva contraseña del monedero.&lt;br/&gt;Por favor, use una contraseña de &lt;b&gt;10 caracteres aleatorios&lt;/b&gt;, o &lt;b&gt;ocho o más plalabras.&lt;/b&gt;.</translation>
+        <translation>Introduce la nueva contraseña del monedero.&lt;br/&gt;Por favor, usa una contraseña de &lt;b&gt;10 caracteres aleatorios&lt;/b&gt;, u &lt;b&gt;ocho o más plalabras.&lt;/b&gt;.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Encrypt wallet</source>
-        <translation>Cifrar el monedero</translation>
+        <translation>Encriptar el monedero</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>Esta operación requiere su contraseña para desbloquear el monedero.</translation>
+        <translation>Esta operación requiere tu contraseña para desbloquear el monedero.</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -214,12 +214,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+3"/>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>Esta operación requiere su contraseña para descifrar el monedero.</translation>
+        <translation>Esta operación requiere tu contraseña para desencriptar el monedero.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Decrypt wallet</source>
-        <translation>Descifrar el monedero</translation>
+        <translation>Desencriptar el monedero</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -229,27 +229,27 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+1"/>
         <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Introduzca la contraseña anterior del monedero y la nueva. </translation>
+        <translation>Introduce la contraseña anterior y la nueva del monedero. </translation>
     </message>
     <message>
         <location line="+46"/>
         <source>Confirm wallet encryption</source>
-        <translation>Confirmar cifrado del monedero</translation>
+        <translation>Confirmar encriptado del monedero</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR COINS&lt;/b&gt;!</source>
-        <translation>Advertencia: Si encripta su monedero y pierde su frase de contraseña, puede &lt;b&gt;PERDER TODAS SUS MONEDAS&lt;/ b&gt;!</translation>
+        <translation>Advertencia: Si encriptas tu monedero y pierdes tu frase de contraseña, &lt;b&gt;PERDERÁS TODAS TUS MONEDAS&lt;/ b&gt;!</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>¿Seguro que desea cifrar su monedero?</translation>
+        <translation>¿Seguro que deseas encriptar tu monedero?</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>IMPORTANTE: Cualquier copia de seguridad que haya realizado previamente de su archivo de monedero debe reemplazarse con el nuevo archivo de monedero cifrado. Por razones de seguridad, las copias de seguridad previas del archivo de monedero no cifradas serán inservibles en cuanto comience a usar el nuevo monedero cifrado.</translation>
+        <translation>IMPORTANTE: Cualquier copia de seguridad que hayas realizado previamente de tu archivo del monedero, debe reemplazarse por el nuevo archivo de monedero encriptado. Por razones de seguridad, las copias de seguridad previas del archivo de monedero no encriptadas serán inservibles en cuanto comience a usar el nuevo monedero encriptado.</translation>
     </message>
     <message>
         <location line="+103"/>
@@ -261,12 +261,12 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="-133"/>
         <location line="+60"/>
         <source>Wallet encrypted</source>
-        <translation>Monedero cifrado</translation>
+        <translation>Monedero encriptado</translation>
     </message>
     <message>
         <location line="-58"/>
         <source>DeepOnion will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>DeepOnion cerrará para terminar el proceso de encriptación. Recuerde que la encriptación de su monedero no puede proteger completamente que sus monedas sean robadas por malware infectando su computadora.</translation>
+        <translation>DeepOnion se cerrará para terminar el proceso de encriptación. Recuerda que la encriptación de tu monedero no puede proteger completamente que tus monedas sean robadas por malware infectando tu computadora.</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -274,12 +274,12 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+44"/>
         <location line="+6"/>
         <source>Wallet encryption failed</source>
-        <translation>Ha fallado el cifrado del monedero</translation>
+        <translation>Ha fallado la encriptación del monedero</translation>
     </message>
     <message>
         <location line="-56"/>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>Ha fallado el cifrado del monedero debido a un error interno. El monedero no ha sido cifrado.</translation>
+        <translation>Ha fallado la encriptación del monedero debido a un error interno. El monedero no ha sido encriptado.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -297,12 +297,12 @@ This product includes software developed by the OpenSSL Project for use in the O
         <location line="+12"/>
         <location line="+19"/>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>La contraseña introducida para descifrar el monedero es incorrecta.</translation>
+        <translation>La contraseña introducida para desencriptar el monedero es incorrecta.</translation>
     </message>
     <message>
         <location line="-20"/>
         <source>Wallet decryption failed</source>
-        <translation>Ha fallado el descifrado del monedero</translation>
+        <translation>Ha fallado la desencriptación del monedero</translation>
     </message>
     <message>
         <location line="+14"/>
@@ -345,7 +345,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+5"/>
         <source>&amp;Address Book</source>
-        <translation>&amp;Libreta de Direcciones</translation>
+        <translation>&amp;Direcciones</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -400,7 +400,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+4"/>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;Cifrar monedero...</translation>
+        <translation>&amp;Encriptar monedero...</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -410,14 +410,14 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>&amp;Change Passphrase...</source>
-        <translation>&amp;Cambiar frase de contraseña...</translation>
+        <translation>&amp;Cambiar frase de la contraseña...</translation>
     </message>
     <message numerus="yes">
         <location line="+259"/>
         <source>~%n block(s) remaining</source>
         <translation>
-            <numerusform>~%n block remaining</numerusform>
-            <numerusform>~%n blocks remaining</numerusform>
+            <numerusform>~%n bloque restante</numerusform>
+            <numerusform>~%n bloques restantes</numerusform>
         </translation>
     </message>
     <message>
@@ -433,12 +433,12 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-64"/>
         <source>Send coins to a DeepOnion address</source>
-        <translation>Enviar monedas a dirección DeepOnion</translation>
+        <translation>Enviar monedas a una dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="+47"/>
         <source>Modify configuration options for DeepOnion</source>
-        <translation>Modificar opciones de configuración para DeepOnion</translation>
+        <translation>Modificar opciones de configuración de DeepOnion</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -448,7 +448,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="-14"/>
         <source>Encrypt or decrypt wallet</source>
-        <translation>Cifrar o descifrar el monedero</translation>
+        <translation>Encriptar o desencriptar el monedero</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -458,7 +458,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>Cambiar la contraseña utilizada para el cifrado del monedero</translation>
+        <translation>Cambiar la contraseña utilizada para la encriptación del monedero</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -488,7 +488,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+180"/>
         <source>&amp;About DeepOnion</source>
-        <translation>&amp;About DeepOnion</translation>
+        <translation>&amp;Acerca de DeepOnion</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -523,7 +523,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+8"/>
         <source>&amp;Help</source>
-        <translation>A&amp;yuda</translation>
+        <translation>&amp;Ayuda</translation>
     </message>
     <message>
         <location line="+12"/>
@@ -563,7 +563,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+413"/>
         <source>Staking.&lt;br&gt;Your weight is %1&lt;br&gt;Network weight is %2&lt;br&gt;Expected time to earn reward is %3</source>
-        <translation>Staking.&lt;br&gt;Su contribución es %1&lt;br&gt;Contribución de la red es %2&lt;br&gt;Tiempo esperado para ganar la recompensa es %3</translation>
+        <translation>Staking.&lt;br&gt;Tu contribución es %1&lt;br&gt;Contribución de la red es %2&lt;br&gt;Tiempo esperado para ganar la recompensa es %3</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -583,7 +583,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>Not staking because you don&apos;t have mature coins</source>
-        <translation>No se está haciendo &quot;Staking&quot; ya que no tiene monedas maduras</translation>
+        <translation>No se está haciendo &quot;Staking&quot; ya que no tienes monedas maduras</translation>
     </message>
     <message numerus="yes">
         <location line="-403"/>
@@ -645,7 +645,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+10"/>
         <source>Last received block was generated %1.</source>
-        <translation>El último bloque recibido se generó %1.</translation>
+        <translation>El último bloque recibido se generó hace %1.</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -690,27 +690,27 @@ Dirección: %4
         <location line="-15"/>
         <location line="+15"/>
         <source>URI can not be parsed! This can be caused by an invalid DeepOnion address or malformed URI parameters.</source>
-        <translation>¿URI no se puede analizar! Esto puede ser causado por una dirección de DeepOnion no válida o parámetros de URI malformados.</translation>
+        <translation>El URI no se puede analizar! Esto puede ser causado por una dirección de DeepOnion no válida o parámetros de URI malformados.</translation>
     </message>
     <message>
         <location line="+18"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>El monedero está &lt;b&gt;cifrado&lt;/b&gt; y actualmente &lt;b&gt;desbloqueado&lt;/b&gt;</translation>
+        <translation>El monedero está &lt;b&gt;encriptado&lt;/b&gt; y actualmente &lt;b&gt;desbloqueado&lt;/b&gt;</translation>
     </message>
     <message>
         <location line="+10"/>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>El monedero está &lt;b&gt;cifrado&lt;/b&gt; y actualmente &lt;b&gt;bloqueado&lt;/b&gt;</translation>
+        <translation>El monedero está &lt;b&gt;encriptado&lt;/b&gt; y actualmente &lt;b&gt;bloqueado&lt;/b&gt;</translation>
     </message>
     <message>
         <location line="+25"/>
         <source>Backup Wallet</source>
-        <translation>Copia de Seguridad de Monedero</translation>
+        <translation>Copia de Seguridad del Monedero</translation>
     </message>
     <message>
         <location line="+0"/>
         <source>Wallet Data (*.dat)</source>
-        <translation>Data de Monedero (*.dat)</translation>
+        <translation>Datos del Monedero (*.dat)</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -720,7 +720,7 @@ Dirección: %4
     <message>
         <location line="+0"/>
         <source>There was an error trying to save the wallet data to the new location.</source>
-        <translation>Hubo un error al tratar de salvar los datos de su monedero a la nueva ubicación.</translation>
+        <translation>Hubo un error al tratar de guardar los datos de tu monedero en la nueva ubicación.</translation>
     </message>
     <message numerus="yes">
         <location line="+76"/>
@@ -778,7 +778,7 @@ Dirección: %4
     <message>
         <location filename="../forms/coincontroldialog.ui" line="+14"/>
         <source>Coin Control</source>
-        <translation>Control de Moneda</translation>
+        <translation>Control de Monedas</translation>
     </message>
     <message>
         <location line="+31"/>
@@ -843,7 +843,7 @@ Dirección: %4
     <message>
         <location line="+45"/>
         <source>Amount</source>
-        <translation>Cuantía</translation>
+        <translation>Importe</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -889,7 +889,7 @@ Dirección: %4
         <location line="+1"/>
         <location line="+26"/>
         <source>Copy amount</source>
-        <translation>Copiar cuantía</translation>
+        <translation>Copiar importe</translation>
     </message>
     <message>
         <location line="-25"/>
@@ -969,7 +969,7 @@ Dirección: %4
     <message>
         <location line="+155"/>
         <source>DUST</source>
-        <translation>DUST</translation>
+        <translation>BASURA</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -983,7 +983,7 @@ Dirección: %4
  This means a fee of at least %1 per kb is required.
 
  Can vary +/- 1 Byte per input.</source>
-        <translation>Esta etiqueta se convierte en roja si el tamaño de la transacción es mayor que 10000 bytes.
+        <translation>Ésta etiqueta se convierte en roja si el tamaño de la transacción es mayor que 10000 bytes.
 
 Esto significa que se requiere una tasa de al menos el %1 por kb.
 
@@ -998,9 +998,9 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
  This means a fee of at least %1 per kb is required.</source>
         <translation>Las transacciones con mayor prioridad tienen más posbilidades de entrar en un bloque. 
 
-Esta etiqueta se convierte en roja si la prioridad es menor que la &quot;media&quot;.
+Ésta etiqueta se convierte en roja si la prioridad es menor que la &quot;media&quot;.
 
-Esto significa que se requiere una tasa de al menos el %1 por kb.</translation>
+Ésto significa que se requiere una tasa de al menos el %1 por kb.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1009,18 +1009,18 @@ Esto significa que se requiere una tasa de al menos el %1 por kb.</translation>
  This means a fee of at least %2 is required. 
 
  Amounts below 0.546 times the minimum relay fee are shown as DUST.</source>
-        <translation>Esta etiqueta se convierte en roja si cualquier recipiente recibe una cantidad menor que %1.
+        <translation>Ésta etiqueta se convierte en roja si cualquier recipiente recibe una cantidad menor que %1.
 
-Esto significa que se requiere una tasa de al menos %2.
+Ésto significa que se requiere una tasa de al menos %2.
 
-Las cantidades inferiores a 0.546 veces la tasa mínima del relé se muestran en forma de DUST.</translation>
+Las cantidades inferiores a 0.546 veces la tasa mínima del recargo se muestran en forma de BASURA.</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>This label turns red, if the change is smaller than %1.
 
  This means a fee of at least %2 is required.</source>
-        <translation>Esta etiqueta se convierte en roja si el cambio es menor que %1.
+        <translation>Ésta etiqueta se convierte en roja si el cambio es menor que %1.
 
 Esto significa que se requiere una tasa de al menos %2.</translation>
     </message>
@@ -1135,12 +1135,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+4"/>
         <source>UI options</source>
-        <translation>opciones del interfaz de usuario</translation>
+        <translation>opciones de la interfaz del usuario</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Set language, for example &quot;de_DE&quot; (default: system locale)</source>
-        <translation>Defina el idioma, por ejemplo &quot;de_DE&quot; (predeterminado: región del sistema)</translation>
+        <translation>Define el idioma, por ejemplo &quot;de_DE&quot; (predeterminado: región del sistema)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1168,7 +1168,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+6"/>
         <source>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</source>
-        <translation>Tasa de transacción opcional por kB que ayuda a asegurarse de que sus transacciones se procesan rápidamente. La mayoría de las transacciones son 1 kB. Cuota de 0.01 recomendada.</translation>
+        <translation>Tasa de transacción opcional por kB que ayuda a asegurarse de que tus transacciones se procesan rápidamente. La mayoría de las transacciones son 1 kB. Cuota de 0.01 recomendada.</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1178,7 +1178,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+31"/>
         <source>Reserved amount does not participate in staking and is therefore spendable at any time.</source>
-        <translation>Cantidad reservada no participa en el &quot;Staking&quot; y por lo tanto se puede gastar en cualquier momento.</translation>
+        <translation>La cantidad reservada no forma parte del &quot;Staking&quot; y por lo tanto se puede gastar en cualquier momento.</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1213,7 +1213,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+6"/>
         <source>Automatically open the DeepOnion client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Abrir automáticamente el puerto de cliente DeepOnion en el router. Esto sólo funciona cuando el router es compatible con UPnP y está habilitado.</translation>
+        <translation>Abrir automáticamente el puerto del cliente DeepOnion en el router. Esto sólo funciona cuando el router es compatible con UPnP y está habilitado.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1268,7 +1268,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+6"/>
         <source>Show only a tray icon after minimizing the window.</source>
-        <translation>Minimizar la ventana a la bandeja de iconos del sistema.</translation>
+        <translation>Minimizar la ventana a la bandeja de íconos del sistema.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1278,7 +1278,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimizar en lugar de salir de la aplicación al cerrar la ventana. Cuando esta opción está activa, la aplicación solo se puede cerrar seleccionando Salir desde el menú.</translation>
+        <translation>Minimizar en lugar de salir de la aplicación al cerrar la ventana. Cuando ésta opción está activa, la aplicación solo se puede cerrar seleccionando "Salir" desde el menú.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1298,7 +1298,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+13"/>
         <source>The user interface language can be set here. This setting will take effect after restarting DeepOnion.</source>
-        <translation>El idioma de la interfaz de usuario se puede configurar aquí. Esta configuración se aplicará después de reiniciar DeepOnion.</translation>
+        <translation>El idioma de la interfaz de usuario se puede configurar aquí. Ésta configuración se aplicará después de reiniciar DeepOnion.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -1313,7 +1313,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+9"/>
         <source>Whether to show DeepOnion addresses in the transaction list or not.</source>
-        <translation>Mostrar o no mostrar direcciones DeepOnion en la lista de transacciones.</translation>
+        <translation>Mostrar o no mostrar direcciones de DeepOnion en la lista de transacciones.</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1323,12 +1323,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Whether to show coin control features or not.</source>
-        <translation>Mostrar o no funcionalidad de Coin Control</translation>
+        <translation>Mostrar o no funcionalidad del Control de Monedas</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Display coin &amp;control features (experts only!)</source>
-        <translation>Mostrar moneda y Coin &amp;Control (expertos solamente!)</translation>
+        <translation>Mostrar moneda y Control &amp;de Monedas (expertos solamente!)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1360,7 +1360,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="-9"/>
         <location line="+9"/>
         <source>This setting will take effect after restarting DeepOnion.</source>
-        <translation>Esta configuración se aplicará después de reiniciar DeepOnion.</translation>
+        <translation>Ésta configuración se aplicará después de reiniciar DeepOnion.</translation>
     </message>
     <message>
         <location line="+29"/>
@@ -1379,7 +1379,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="+33"/>
         <location line="+231"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DeepOnion network after a connection is established, but this process has not completed yet.</source>
-        <translation>La información mostrada podría estar obsoleta. Tu monedero se sincroniza automáticamente con la red DeepOnion después de establecerse una  conexión, pero este proceso aún no se completa.</translation>
+        <translation>La información mostrada podría ser obsoleta. Tu monedero se sincroniza automáticamente con la red de DeepOnion después de establecerse una conexión, pero este proceso aún no se ha completado.</translation>
     </message>
     <message>
         <location line="-160"/>
@@ -1404,7 +1404,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+16"/>
         <source>Your current spendable balance</source>
-        <translation>Su actual balance disponible</translation>
+        <translation>Tu saldo actual disponible</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1414,7 +1414,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+13"/>
         <source>Mined balance that has not yet matured</source>
-        <translation>Saldo recién minado que aún no está disponible.</translation>
+        <translation>Saldo recién minado pero aún no disponible.</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1424,7 +1424,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+16"/>
         <source>Your current total balance</source>
-        <translation>Su balance actual total</translation>
+        <translation>Tu saldo actual total</translation>
     </message>
     <message>
         <location line="+46"/>
@@ -1434,12 +1434,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-108"/>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the current balance</source>
-        <translation>Total de transacciones que aún no se han confirmado, y aún no cuentan para el balance actual</translation>
+        <translation>Total de transacciones que aún no se han confirmado, y aún no cuentan para el saldo actual</translation>
     </message>
     <message>
         <location line="-29"/>
         <source>Total of coins that was staked, and do not yet count toward the current balance</source>
-        <translation>Total de las monedas que fueron &quot;Staked&quot;, y aún no cuentan para el balance actual</translation>
+        <translation>Total de las monedas que fueron &quot;Stakeadasquot;, y aún no cuentan para el saldo actual</translation>
     </message>
     <message>
         <location filename="../overviewpage.cpp" line="+113"/>
@@ -1453,7 +1453,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location filename="../forms/qrcodedialog.ui" line="+14"/>
         <source>QR Code Dialog</source>
-        <translation>Código Diálogo QR</translation>
+        <translation>Código de Diálogo QR</translation>
     </message>
     <message>
         <location line="+59"/>
@@ -1488,12 +1488,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+40"/>
         <source>The entered amount is invalid, please check.</source>
-        <translation>La cantidad introducida es inválida, compruebe por favor.</translation>
+        <translation>La cantidad introducida es inválida, comprueba por favor.</translation>
     </message>
     <message>
         <location line="+23"/>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>La URI es demasiado larga, pruebe a acortar el texto para la etiqueta / mensaje</translation>
+        <translation>La URI es demasiado larga, prueba con acortar el texto para la etiqueta / mensaje</translation>
     </message>
     <message>
         <location line="+25"/>
@@ -1620,7 +1620,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+25"/>
         <source>DeepOnion Core</source>
-        <translation>Núcleo DeepOnion</translation>
+        <translation>Núcleo de DeepOnion</translation>
     </message>
     <message>
         <location line="+279"/>
@@ -1630,7 +1630,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Open the DeepOnion debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Abre el archivo de registro de DeepOnion del directorio de datos actual. Esto puede tardar algunos segundos para archivos grandes.</translation>
+        <translation>Abre el archivo de registro de DeepOnion del directorio de datos actual. Esto puede tardar algunos segundos en el caso de archivos grandes.</translation>
     </message>
     <message>
         <location line="+102"/>
@@ -1670,7 +1670,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+76"/>
         <source>Coin Control Features</source>
-        <translation>Características de Coin Control</translation>
+        <translation>Características del Control de Monedas</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1706,7 +1706,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+51"/>
         <source>Amount:</source>
-        <translation>Cuantía:</translation>
+        <translation>Importe:</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -1759,7 +1759,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+106"/>
         <source>Send to multiple recipients at once</source>
-        <translation>Enviar a múltiples destinatarios de una vez</translation>
+        <translation>Enviar a múltiples destinatarios en una sola vez</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1769,7 +1769,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+20"/>
         <source>Remove all transaction fields</source>
-        <translation>Elimina todos los campos de transacciones</translation>
+        <translation>Eliminar todos los campos de transacciones</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -1799,7 +1799,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
         <source>Enter a DeepOnion address</source>
-        <translation>Introduce una dirección DeepOnion</translation>
+        <translation>Introduce una dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1809,7 +1809,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Copy amount</source>
-        <translation>Copiar cuantía</translation>
+        <translation>Copiar importe</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -1839,7 +1839,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Copy change</source>
-        <translation>Copiar Cambio</translation>
+        <translation>Copiar cambio</translation>
     </message>
     <message>
         <location line="+86"/>
@@ -1864,22 +1864,22 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+29"/>
         <source>The recipient address is not valid, please recheck.</source>
-        <translation>La dirección de recepción no es válida, compruébela de nuevo.</translation>
+        <translation>La dirección de recepción no es válida, compruébala de nuevo.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>La cantidad por pagar tiene que ser mayor de 0.</translation>
+        <translation>La cantidad a pagar tiene que ser mayor a 0.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The amount exceeds your balance.</source>
-        <translation>La cantidad sobrepasa su saldo.</translation>
+        <translation>La cantidad sobrepasa tu saldo.</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>El total sobrepasa su saldo cuando se incluye la tasa de envío de %1</translation>
+        <translation>El total sobrepasa tu saldo cuando se incluye la tasa de envío de %1</translation>
     </message>
     <message>
         <location line="+6"/>
@@ -1894,12 +1894,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+5"/>
         <source>Error: The transaction was rejected. This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacción ha sido rechazada. Esto puede ocurrir si algunas de sus monedas en el monedero ya se gastaron, por ejemplo, si se usa una copia del wallet.dat y se gastaron las monedas de la copia pero no se han marcado como gastadas aquí.</translation>
+        <translation>Error: La transacción ha sido rechazada. Esto puede ocurrir si algunas de tus monedas en el monedero ya se gastaron, por ejemplo, si se usa una copia del wallet.dat y se gastaron las monedas de dicha copia, pero no se han marcado como gastadas.</translation>
     </message>
     <message>
         <location line="+251"/>
         <source>WARNING: Invalid DeepOnion address</source>
-        <translation>ADVERTENCIA: Dirección DeepOnion es inválida</translation>
+        <translation>ADVERTENCIA: La dirección de DeepOnion es inválida</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1933,7 +1933,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="+24"/>
         <location filename="../sendcoinsentry.cpp" line="+25"/>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>Etiquete esta dirección para añadirla a la libreta</translation>
+        <translation>Etiqueta esta dirección para añadirla a la libreta de direcciones</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -1948,7 +1948,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+10"/>
         <source>Choose address from address book</source>
-        <translation>Elije dirección de la libreta de direcciones</translation>
+        <translation>Elige una dirección de la libreta de direcciones</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1958,7 +1958,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Paste address from clipboard</source>
-        <translation>Pegar dirección desde portapapeles</translation>
+        <translation>Pegar dirección desde el portapapeles</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -1968,12 +1968,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Remove this recipient</source>
-        <translation>Elimina este beneficiario</translation>
+        <translation>Elimina éste beneficiario</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
         <source>Enter a DeepOnion address</source>
-        <translation>Introduce una dirección DeepOnion</translation>
+        <translation>Introduce una dirección de DeepOnion</translation>
     </message>
 </context>
 <context>
@@ -1981,7 +1981,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location filename="../forms/signverifymessagedialog.ui" line="+14"/>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>Firmas - Firmar / verificar un mensaje</translation>
+        <translation>Firmas - Firmar / Verificar un Mensaje</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -1992,7 +1992,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-118"/>
         <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Puedes firmar mensajes con tus direcciones para probar que eres el propietario. Asegúrate de no firmar nada que parezca vago, ya que ataques de phishing pueden engañarte para obtener tu firma. Solamente firma declaraciones completamente detalladas con las que estés de acuerdo.</translation>
+        <translation>Puedes firmar mensajes con tus direcciones para probar que eres el propietario. Asegúrate de no firmar nada que parezca inseguro, ya que puedes perder tu firma mediante ataques de phishing. Solamente firma declaraciones completamente detalladas con las que estés de acuerdo.</translation>
     </message>
     <message>
         <location line="+18"/>
@@ -2003,7 +2003,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="+10"/>
         <location line="+203"/>
         <source>Choose an address from the address book</source>
-        <translation>Elije una dirección de la libreta de direcciones</translation>
+        <translation>Elige una dirección de la libreta de direcciones</translation>
     </message>
     <message>
         <location line="-193"/>
@@ -2014,7 +2014,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-193"/>
         <source>Paste address from clipboard</source>
-        <translation>Pegar dirección desde portapapeles</translation>
+        <translation>Pegar dirección desde el portapapeles</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2024,7 +2024,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+12"/>
         <source>Enter the message you want to sign here</source>
-        <translation>Introduzca el mensaje que desea firmar aquí</translation>
+        <translation>Introduce el mensaje que deseas firmar aquí</translation>
     </message>
     <message>
         <location line="+24"/>
@@ -2034,12 +2034,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+21"/>
         <source>Sign the message to prove you own this DeepOnion address</source>
-        <translation>Firma el mensaje para demostrar que posees esta dirección DeepOnion</translation>
+        <translation>Firma el mensaje para demostrar que posees ésta dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Reset all sign message fields</source>
-        <translation>Vaciar todos los campos de la firma de mensaje</translation>
+        <translation>Vaciar todos los campos de la firma del mensaje</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2056,7 +2056,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-64"/>
         <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Introduzca la dirección para la firma, el mensaje (asegurándose de copiar tal cual los saltos de línea, espacios, tabulaciones, etc.) y la firma a continuación para verificar el mensaje. Tenga cuidado de no asumir más información de lo que dice el propio mensaje firmado para evitar fraudes basados en ataques de tipo man-in-the-middle.</translation>
+        <translation>Introduce la dirección para la firma, el mensaje (asegurándote de copiar tal cual los saltos de línea, espacios, tabulaciones, etc.) y la firma a continuación para verificar el mensaje. Ten cuidado de no asumir más información de lo que dice el propio mensaje firmado, para evitar fraudes basados en ataques de tipo man-in-the-middle.</translation>
     </message>
     <message>
         <location line="+21"/>
@@ -2066,28 +2066,28 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+40"/>
         <source>Verify the message to ensure it was signed with the specified DeepOnion address</source>
-        <translation>Verifique el mensaje para asegurarse de que se firmó con la dirección DeepOnion especificada.</translation>
+        <translation>Verifica el mensaje para asegurarte de que se firmó con la dirección de DeepOnion especificada.</translation>
     </message>
     <message>
         <location line="+17"/>
         <source>Reset all verify message fields</source>
-        <translation>Vaciar todos los campos de la verificación de mensaje</translation>
+        <translation>Vaciar todos los campos de la verificación del mensaje</translation>
     </message>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
         <source>Enter a DeepOnion address </source>
-        <translation>Introduce una dirección DeepOnion</translation>
+        <translation>Introduce una dirección de DeepOnion</translation>
     </message>
     <message>
         <location line="-2"/>
         <source>Click &quot;Sign Message&quot; to generate signature</source>
-        <translation>Haga clic en &quot;Firmar mensaje&quot; para generar la firma</translation>
+        <translation>Haz clic en &quot;"Firmar mensaje"&quot; para generar la firma</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Enter DeepOnion signature</source>
-        <translation>Introduce la firma DeepOnion</translation>
+        <translation>Introduce la firma de DeepOnion</translation>
     </message>
     <message>
         <location line="+82"/>
@@ -2101,7 +2101,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="+73"/>
         <location line="+8"/>
         <source>Please check the address and try again.</source>
-        <translation>Verifique la dirección e inténtelo de nuevo.</translation>
+        <translation>Verifica la dirección e inténtalo de nuevo.</translation>
     </message>
     <message>
         <location line="-81"/>
@@ -2138,7 +2138,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
         <location line="+0"/>
         <location line="+13"/>
         <source>Please check the signature and try again.</source>
-        <translation>Compruebe la firma e inténtelo de nuevo.</translation>
+        <translation>Comprueba la firma e inténtalo de nuevo.</translation>
     </message>
     <message>
         <location line="+0"/>
@@ -2263,7 +2263,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>not accepted</source>
-        <translation>no aceptados</translation>
+        <translation>no aceptado</translation>
     </message>
     <message>
         <location line="+44"/>
@@ -2301,7 +2301,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+3"/>
         <source>Generated coins must mature 110 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Las monedas generadas deben madurar 110 bloques antes de que puedan gastarse. Cuando generaste este bloque, este fue transmitido a la red para ser añadido a la cadena de bloques. Si falla al introducirse en la cadena, su estado cambiará a &quot;no aceptado&quot; y no se podrá gastar. Esto ocasionalmente puede ocurrir si otro nodo genera un bloque a unos segundos que el tuyo.</translation>
+        <translation>Las monedas generadas deben madurar 110 bloques antes de que puedan gastarse. Cuando generaste el bloque, éste fue transmitido a la red para ser añadido a la cadena de bloques. Si falla al introducirse en la cadena, su estado cambiará a &quot;no aceptado&quot; y no se podrá gastar. Ésto ocasionalmente puede ocurrir si otro nodo genera un bloque a unos segundos del tuyo.</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2336,7 +2336,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-211"/>
         <source>, has not been successfully broadcast yet</source>
-        <translation>, todavía no se ha sido difundido satisfactoriamente</translation>
+        <translation>, todavía no se ha sido transmitido satisfactoriamente</translation>
     </message>
     <message>
         <location line="+35"/>
@@ -2354,7 +2354,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+6"/>
         <source>This pane shows a detailed description of the transaction</source>
-        <translation>Esta ventana muestra información detallada sobre la transacción</translation>
+        <translation>Ésta ventana muestra información detallada sobre la transacción</translation>
     </message>
 </context>
 <context>
@@ -2425,7 +2425,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+3"/>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>Este bloque no ha sido recibido por otros nodos y probablemente no sea aceptado!</translation>
+        <translation>Éste bloque no ha sido recibido por otros nodos y probablemente no sea aceptado!</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2440,7 +2440,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>Received from</source>
-        <translation>Recibidos de</translation>
+        <translation>Recibido de</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2465,7 +2465,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+190"/>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>Estado de transacción. Pasa el ratón sobre este campo para ver el número de confirmaciones.</translation>
+        <translation>Estado de transacción. Pasa el mouse sobre este campo para ver el número de confirmaciones.</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2549,12 +2549,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Other</source>
-        <translation>Otra</translation>
+        <translation>Otro</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>Enter address or label to search</source>
-        <translation>Introduce una dirección o etiqueta que buscar</translation>
+        <translation>Introduce una dirección o etiqueta a buscar</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2574,7 +2574,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Copy amount</source>
-        <translation>Copiar cuantía</translation>
+        <translation>Copiar importe</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2670,7 +2670,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location filename="../bitcoinstrings.cpp" line="+33"/>
         <source>DeepOnion version</source>
-        <translation>Versión DeepOnion</translation>
+        <translation>Versión de DeepOnion</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2680,7 +2680,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Send command to -server or DeepOniond</source>
-        <translation>Envía un comando a -server o  DeepOniond</translation>
+        <translation>Envía un comando a -server o DeepOniond</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2690,7 +2690,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Get help for a command</source>
-        <translation>Get help for a command</translation>
+        <translation>Obtener ayuda para un comando</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -2700,7 +2700,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>Specify configuration file (default: DeepOnion.conf)</source>
-        <translation>Especifica un archivo de configuración (por defecto:  DeepOnion.conf)</translation>
+        <translation>Especifica un archivo de configuración (por defecto: DeepOnion.conf)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2710,7 +2710,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>Specify wallet file (within data directory)</source>
-        <translation>Especificar archivo de monedero (dentro del directorio de datos)</translation>
+        <translation>Especificar el archivo del monedero (dentro del directorio de datos)</translation>
     </message>
     <message>
         <location line="-1"/>
@@ -2730,7 +2730,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+6"/>
         <source>Listen for connections on &lt;port&gt; (default: 15714 or testnet: 25714)</source>
-        <translation>Escuchando conexiones en el puerto &lt;port&gt; (por defecto: 15714 o testnet: 25714)</translation>
+        <translation>Escuchar conexiones en el puerto &lt;port&gt; (por defecto: 15714 o testnet: 25714)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2745,47 +2745,47 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Specify your own public address</source>
-        <translation>Especifique su propia dirección pública</translation>
+        <translation>Especifica tu propia dirección pública</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Bind to given address. Use [host]:port notation for IPv6</source>
-        <translation>Enlazar a la dirección dada. Utilice la notación [host]:puerto para IPv6</translation>
+        <translation>Enlazar a la dirección dada. Utiliza la notación [host]:puerto para IPv6</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation>Realiza stake a fin de ayudar a la red y ganar recompensas (default: 1)</translation>
+        <translation>Realiza el stake con el fin de ayudar a la red y ganar recompensas (default: 1)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Threshold for disconnecting misbehaving peers (default: 100)</source>
-        <translation>Umbral para la desconexión de pares con mal comportamiento (predeterminado: 100)</translation>
+        <translation>Umbral para la desconexión de pares con mal desempeño (predeterminado: 100)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: 86400)</source>
-        <translation>Número de segundos en que se evita la reconexión de pares con mal comportamiento (predeterminado: 86400)</translation>
+        <translation>Número de segundos en que se evita la reconexión de pares con mal desempeño (predeterminado: 86400)</translation>
     </message>
     <message>
         <location line="-44"/>
         <source>An error occurred while setting up the RPC port %u for listening on IPv4: %s</source>
-        <translation>Ha ocurrido un error al configurar el puerto RPC %u para escucha en IPv4: %s</translation>
+        <translation>Ha ocurrido un error al configurar el puerto RPC %u para escuchar en IPv4: %s</translation>
     </message>
     <message>
         <location line="+51"/>
         <source>Detach block and address databases. Increases shutdown time (default: 0)</source>
-        <translation>Desconectar base de datos de bloque y direcciones. Aumenta el tiempo de cierre (Por defecto: 0)</translation>
+        <translation>Desconectar bases de datos de bloques y direcciones. Aumenta el tiempo de cierre (Por defecto: 0)</translation>
     </message>
     <message>
         <location line="+109"/>
         <source>Error: The transaction was rejected.  This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Error: La transacción ha sido rechazada. Esto puede ocurrir si algunas de la monedas de tu monedero ya han sido gastadas, como si hubieras utilizado una copia de wallet.dat donde las monedas han sido gastadas y no han sido marcadas como gatadas aquí.</translation>
+        <translation>Error: La transacción ha sido rechazada. Esto puede ocurrir si algunas de las monedas de tu monedero ya han sido gastadas, como si hubieras utilizado una copia del wallet.dat donde las monedas han sido efectivamente gastadas pero no marcadas como tales.</translation>
     </message>
     <message>
         <location line="-5"/>
         <source>Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds  </source>
-        <translation>Error: Esta transacción requiera una tasa del almenos %s por su cantida, complejidad o el uso de fondos recebidos recientemente.</translation>
+        <translation>Error: Esta transacción requiere una tasa del al menos %s debido a su cantidad, complejidad o el uso de fondos recibidos recientemente.</translation>
     </message>
     <message>
         <location line="-87"/>
@@ -2810,12 +2810,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-8"/>
         <source>Importing blockchain data file.</source>
-        <translation>Importando fichero de datos del blockchain</translation>
+        <translation>Importando fichero de datos de la blockchain</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Importing bootstrap blockchain data file.</source>
-        <translation>Importando fichero de arranque de datos del blockchain</translation>
+        <translation>Importando fichero de arranque de datos de la blockchain</translation>
     </message>
     <message>
         <location line="-88"/>
@@ -2840,7 +2840,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+117"/>
         <source>Error initializing database environment %s! To recover, BACKUP THAT DIRECTORY, then remove everything from it except for wallet.dat.</source>
-        <translation>¡Error inicializando el entorno de base de datos %s! Para recuperarlo, HAZ UNA COPIA DEL DIRECTORIO, luego borra todo a excepción de wallet.dat</translation>
+        <translation>¡Error inicializando el entorno de base de datos %s! Para recuperarlo, HAZ UNA COPIA DEL DIRECTORIO, luego borra todo a excepción del wallet.dat</translation>
     </message>
     <message>
         <location line="-20"/>
@@ -2850,27 +2850,27 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+11"/>
         <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Aviso: ¡-paytxfee tiene un valor muy alto! Esta es la tasa que pagará si envía una transacción.</translation>
+        <translation>Advertencia: ¡La tasa para pagar el tx tiene un valor muy alto! Ésta es la tasa que pagarás si envías una transacción.</translation>
     </message>
     <message>
         <location line="+61"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong DeepOnion will not work properly.</source>
-        <translation>Advertencia: Verifique que la fecha y hora del equipo sean correctas! Si su reloj es erróneo DeepOnion no funcionará correctamente.</translation>
+        <translation>Advertencia: Verifica que la fecha y hora del equipo sean correctas! Si tu reloj es erróneo DeepOnion no funcionará correctamente.</translation>
     </message>
     <message>
         <location line="-31"/>
         <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Aviso: ¡Error al leer wallet.dat! Todas las claves se han leído correctamente, pero podrían faltar o ser incorrectos los datos de transacciones o las entradas de la libreta de direcciones.</translation>
+        <translation>Advertencia: ¡Error al leer el wallet.dat! Todas las claves se han leído correctamente, pero podrían faltar o ser incorrectos los datos de transacciones o las entradas de la libreta de direcciones.</translation>
     </message>
     <message>
         <location line="-18"/>
         <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Aviso: ¡Recuperados datos de wallet.dat corrupto! El wallet.dat original se ha guardado como wallet.{timestamp}.bak en %s; si hubiera errores en su saldo o transacciones, deberá restaurar una copia de seguridad.</translation>
+        <translation>Aviso: ¡El walet.dat se encuentra corrupto, pero los datos se han salvado! El wallet.dat original se ha guardado como wallet.{timestamp}.bak en %s; si existen errores en tu saldo o transacciones, deberás restaurar una copia de seguridad.</translation>
     </message>
     <message>
         <location line="-30"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Intento de recuperar claves privadas de un wallet.dat corrupto</translation>
+        <translation>Intenta de recuperar claves privadas de un wallet.dat corrupto</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2890,7 +2890,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+94"/>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Ha fallado la escucha en todos los puertos. Use -listen=0 si desea esto.</translation>
+        <translation>Ha fallado la escucha en todos los puertos. Use -listen=0 si deseas esto.</translation>
     </message>
     <message>
         <location line="-90"/>
@@ -2920,7 +2920,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Búfer de recepción máximo por conexión, , &lt;n&gt;*1000 bytes (predeterminado: 1000)</translation>
+        <translation>Búfer de recepción máximo por conexión, &lt;n&gt;*1000 bytes (predeterminado: 1000)</translation>
     </message>
     <message>
         <location line="-16"/>
@@ -2950,7 +2950,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-74"/>
         <source>Select the version of socks proxy to use (4-5, default: 5)</source>
-        <translation>Selecciona la version de sock proxy a usar (4-5, Por defecto: 5)</translation>
+        <translation>Selecciona la versión de sock proxy a usar (4-5, Por defecto: 5)</translation>
     </message>
     <message>
         <location line="+41"/>
@@ -3005,8 +3005,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+42"/>
         <source>Username for JSON-RPC connections</source>
-        <translation>Nombre de usuario para las conexiones JSON-RPC
-</translation>
+        <translation>Nombre de usuario para las conexiones JSON-RPC</translation>
     </message>
     <message>
         <location line="+47"/>
@@ -3015,8 +3014,8 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     </message>
     <message>
         <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
-        <translation>ADVERTENCIA: violación de un punto de control sincronizado detectada, se saltará.</translation>
+        <source>WARNING: synchronized checkpoint violation detected, but skipped!</source>
+        <translation>ADVERTENCIA: violación de un punto de control sincronizado detectada, se omitirá.</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3057,8 +3056,8 @@ Se recomienda que uses la siguiente contraseña aleatoria:
 rpcuser=bitcoinrpc
 rpcpassword=%s
 (no necesitas recordar esta contraseña)
-Si el fichero no existe, crear uno con permisos de lectura solamente.
-Se recomienda también activar las alarmas para que te sean notificados los problmeas;
+Si el fichero no existe, crea uno con permisos de lectura unicamente.
+Se recomienda también activar las alarmas para que los problemas te sean notificados;
 por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@foo.com
 </translation>
     </message>
@@ -3070,12 +3069,12 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+5"/>
         <source>Sync time with other nodes. Disable if time on your system is precise e.g. syncing with NTP (default: 1)</source>
-        <translation>Sincronizar el tiempo con otros nodos. Desactivar si el tiempo en su sistema es preciso, por ejemplo si usa sincronización con NTP (por defecto: 1)</translation>
+        <translation>Sincronizar el tiempo con otros nodos. Desactivar si el tiempo en tu sistema es preciso, por ejemplo si usas sincronización con NTP (por defecto: 1)</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>When creating transactions, ignore inputs with value less than this (default: 0.01)</source>
-        <translation>Al crear transacciones, ignorar las entradas con valor inferior a esta (por defecto: 0.01)</translation>
+        <translation>Al crear transacciones, ignorar las entradas con valor inferior a ésta (por defecto: 0.01)</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3130,12 +3129,12 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+2"/>
         <source>How many blocks to check at startup (default: 2500, 0 = all)</source>
-        <translation>HCantidad de bloques revisar al inicio (Por defecto: 2500, 0 = all)</translation>
+        <translation>Cantidad de bloques a revisar al inicio (Por defecto: 2500, 0 = all)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>How thorough the block verification is (0-6, default: 1)</source>
-        <translation>Cómo de minuciosa es la verificación del bloque (0-6, por defecto: 1)</translation>
+        <translation>Cuán minuciosa es la verificación del bloque (0-6, por defecto: 1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3160,7 +3159,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Cifrados aceptables  (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+        <translation>Cifrados aceptables (predeterminado: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
         <location line="+53"/>
@@ -3170,12 +3169,12 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+18"/>
         <source>WARNING: Invalid checkpoint found! Displayed transactions may not be correct! You may need to upgrade, or notify developers.</source>
-        <translation>ADVERTENCIA: Punto de control no válido encontrado! Las transacciones que se muestran pueden no ser correctas! Puede que tenga que actualizar o notificar a los desarrolladores.</translation>
+        <translation>ADVERTENCIA: Punto de control no válido encontrado! Las transacciones que se muestran pueden no ser correctas! Puede que tengas que actualizar o notificar esto a los desarrolladores.</translation>
     </message>
     <message>
         <location line="-158"/>
         <source>This help message</source>
-        <translation>Este mensaje de ayuda</translation>
+        <translation>Éste mensaje de ayuda</translation>
     </message>
     <message>
         <location line="+95"/>
@@ -3185,7 +3184,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Cannot obtain a lock on data directory %s.  DeepOnion is probably already running.</source>
-        <translation>No se puede obtener un bloqueo sobre el directorio de datos %s. DeepOnion está probablemente ejecutándose ya.</translation>
+        <translation>No se puede obtener un bloqueo sobre el directorio de datos %s. Probablemente DeepOnion ya se está ejecutando.</translation>
     </message>
     <message>
         <location line="-98"/>
@@ -3195,7 +3194,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+140"/>
         <source>Unable to bind to %s on this computer (bind returned error %d, %s)</source>
-        <translation>No se logró enlazar a %s en este computador (enlace retornó error %d, %s)</translation>
+        <translation>No se logró enlazar a %s en ésta computadora (el enlace retornó con error %d, %s)</translation>
     </message>
     <message>
         <location line="-130"/>
@@ -3230,7 +3229,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Wallet needed to be rewritten: restart DeepOnion to complete</source>
-        <translation>El monedero necesita ser reescrito: reinicie DeepOnion para completar</translation>
+        <translation>El monedero necesita ser reescrito: reinicia DeepOnion para completar</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3270,7 +3269,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+44"/>
         <source>Error: could not start node</source>
-        <translation>Error: no se pudo iniciar nodo</translation>
+        <translation>Error: no se pudo iniciar el nodo</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -3280,7 +3279,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+5"/>
         <source>Invalid amount</source>
-        <translation>Cuantía no válida</translation>
+        <translation>Importe no válido</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3305,7 +3304,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="-97"/>
         <source>Fee per KB to add to transactions you send</source>
-        <translation>Tasa por KB a añadir a las transacciones que envía</translation>
+        <translation>Tasa por KB a añadir a las transacciones que envías</translation>
     </message>
     <message>
         <location line="+55"/>
@@ -3357,9 +3356,9 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
         <source>You must set rpcpassword=&lt;password&gt; in the configuration file:
 %s
 If the file does not exist, create it with owner-readable-only file permissions.</source>
-        <translation>Tiene que establecer rpcpassword=&lt;contraseña&gt; en el fichero de configuración: ⏎
-%s ⏎
-Si el archivo no existe, créelo con permiso de lectura solamente del propietario.</translation>
+        <translation>Tienes que establecer rpcpassword=&lt;contraseña&gt; en el fichero de configuración: ⏎
+%s 
+Si el archivo no existe, créalo con permiso de lectura solamente del propietario.</translation>
     </message>
 </context>
 </TS>

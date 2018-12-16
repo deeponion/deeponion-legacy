@@ -326,7 +326,7 @@ Dieses Produkt enthält Software, die vom OpenSSL Project für den Einsatz im Op
     <message>
         <location line="-319"/>
         <source>&amp;Overview</source>
-        <translation>О&amp;Übersicht</translation>
+        <translation>&amp;Übersicht</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2969,7 +2969,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location line="+57"/>
-        <source>WARNING: syncronized checkpoint violation detected, but skipped!</source>
+        <source>WARNING: synchronized checkpoint violation detected, but skipped!</source>
         <translation>WARNUNG: syncronisierte Checkpointverletzung erkannt, aber übersprungen!</translation>
     </message>
     <message>

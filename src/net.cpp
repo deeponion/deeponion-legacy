@@ -1276,24 +1276,22 @@ static const char *strDNSSeed[][2] = {};
 
 // hidden service seeds
 static const char *strMainNetOnionSeed[][1] = {
-    {"5h2mgqgwwwaautbv.onion"},
-    {"xui3kzolhlf7l27o.onion"},
-    {"2cwpvkcb5jtjstl6.onion"},
+    {"cv3pjwxjembvpkuo.onion"},
+    {"dkj6rkpe73xlar4n.onion"},
     {"3abqfoqreyvvn3ar.onion"},
+    {"rrzb22urydhdjzlc.onion"},
     {"s62fag4q7vndmlzv.onion"},
-    {"byna6dnpchz5pg6i.onion"},
-    {"mbzs3fl3j5zbeq4x.onion"},
-    {"d3rr6k7gmecy6ypa.onion"},
-    {"amvkvsn2acljbepf.onion"},
-    {"soixq24dni2s42hb.onion"},
-    {"uhiqc3ge6iawnejq.onion"},
-    {"x3t3u2hwfaxq4q5w.onion"},
+    {"iceitzd3po4mi6bj.onion"},
+    {"wuwbjld7zusmhd4x.onion"},
+    {"265xliusr5tel7ju.onion"},
+    {"g4tjwah6tdmrhwel.onion"},
+    {"pdlwfclhd6sil4qy.onion"},
+    {"ydm4hyqr2uw3nyt4.onion"},
+	{"ikrogfme7we52isx.onion"},
     {NULL}};
 
 static const char *strTestNetOnionSeed[][1] = {
     {"7awqzas2gdrhvhlh.onion"},
-    {"ut7sroqvi6aonro3.onion"},
-    {"734d6h5tnplvcxel.onion"},
     {NULL}};
 
 void ThreadDNSAddressSeed(void *parg)

@@ -36,7 +36,7 @@
        <item>
         <widget class="QLabel" name="transactionFeeInfoLabel">
          <property name="text">
-          <string>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are 1 kB. Fee 0.01 recommended.</string>
+          <string>Optional transaction fee per kB that helps make sure your transactions are processed quickly. Most transactions are less than1 kB. Minimum fee 0.0001 recommended.</string>
          </property>
          <property name="textFormat">
           <enum>Qt::PlainText</enum>
@@ -254,14 +254,14 @@
          </item>
          <item>
           <widget class="QValueComboBox" name="socksVersion">
-           <property name="toolTip">
-            <string>SOCKS version of the proxy (e.g. 5)</string>
-           </property>
            <property name="minimumSize">
             <size>
              <width>75</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="toolTip">
+            <string>SOCKS version of the proxy (e.g. 5)</string>
            </property>
           </widget>
          </item>

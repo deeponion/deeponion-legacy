@@ -18,7 +18,7 @@
 
 #include "main.h"
 #include "util.h"
-
+#include "init.h"
 
 #include <QTime>
 #include <QTimer>
@@ -263,7 +263,6 @@ RPCConsole::RPCConsole(QWidget *parent) : QDialog(parent),
     icon2.addFile(themeManager->getCurrent()->getFontBiggerIco(), QSize(), QIcon::Normal, QIcon::Off);
     ui->fontBiggerButton->setIcon(icon2);
     ui->clearButton->setStyleSheet(themeManager->getCurrent()->getQToolBtnStyle());
-
 
     clear();
 }
@@ -657,6 +656,14 @@ void RPCConsole::on_showMeDetailsButton_clicked()
     BlockchainDialog dlg;
     dlg.setLabelText(walletModel);
     dlg.exec();
+}
+
+void RPCConsole::on_verifyBlockchainButton_clicked()
+{
+    if(walletModel && !fTestNet) {
+        blockchainStatus = -1;
+        pwalletMain->ScanBlockchainForHash();
+    }
 }
 
 void RPCConsole::scrollToEnd()

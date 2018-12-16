@@ -153,6 +153,7 @@ extern bool fNoListen;
 extern bool fLogTimestamps;
 extern bool fReopenDebugLog;
 extern bool fPrintDebugLog;
+extern bool fCheckBlockchain;
 
 void RandAddSeed();
 void RandAddSeedPerfmon();

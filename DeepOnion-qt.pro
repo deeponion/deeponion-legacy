@@ -234,6 +234,8 @@ HEADERS += src/qt/bitcoingui.h \
 	src/qt/theme.h \
 	src/qt/themeoriginaldark.h \
 	src/qt/themeoriginallight.h \
+	src/qt/themefancypurple.h \
+	src/qt/themelightpurple.h \
 	src/qt/thememanager.h \
     src/qt/transactiontablemodel.h \
     src/qt/addresstablemodel.h \
@@ -356,6 +358,8 @@ SOURCES += src/qt/bitcoin.cpp \
 	src/qt/theme.cpp \
 	src/qt/themeoriginaldark.cpp \
 	src/qt/themeoriginallight.cpp \
+	src/qt/themefancypurple.cpp \
+	src/qt/themelightpurple.cpp \
 	src/qt/thememanager.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \

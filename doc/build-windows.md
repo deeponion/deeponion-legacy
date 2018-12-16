@@ -34,11 +34,8 @@ Then expand your system PATH variable so that it contains the location of the *b
 
 The usual way to change those settings is via System/Environment Variables
 
-![env-vars](https://img3.picload.org/image/ddilaorl/env_vars.png)
 
 Click `Environment Variables`, then search for the entry `PATH` in the newly opened window. Click on `New` and add the **full path** to the *bin* subdirectory of mingw. Take care of moving the entry to the top of the list. Just in case you have several GCC compilers available.
-
-![env-settings](https://img2.picload.org/image/ddiloirw/env_settings.png)
 
 
 Apply those changes, close the toolboxes and open a DOS window. Type `gcc -v` to check if you get a response like this one:
@@ -64,7 +61,6 @@ After having installed the MSYS & MinGW tools the next steps will be to download
 
 Here I'll use `C:\deps` as the root directory for the below libraries. If not stated otherwise, all of them will be unpacked there.
 
-![all-libs](https://img3.picload.org/image/ddilowgw/all_libs.png)
 
 #### OpenSSL
 
@@ -105,7 +101,6 @@ b2 --build-type=complete --with-chrono --with-filesystem --with-program_options 
 
 The compiled libraries will land in the `stage/lib` directory as stated in the command above.
 
-![boost-stage](https://img2.picload.org/image/ddilaioi/boost_stage.png)
 
 #### MiniUPNPC
 
@@ -200,7 +195,6 @@ make
 
 Here, again, take care of providing **your own paths to compiler toolchains**. After the compilation has finished copy those libraries to our default `src/torlibs-win` path. You can see the list of all libraries inside the Qt Project file.
 
-![tor-libs-paths](https://img3.picload.org/image/ddillpla/tor_libs_paths.png)
 
 
 
@@ -210,7 +204,6 @@ You have to download two packages from QT: [QtBase](https://download.qt.io/archi
 
 My local root for is `C:/Qt/5.3.2` for **QtBase** and `C:/Qt/qt-tools-opensource-src-5.3.2` for **QtTools**.
 
-![qt-root](https://img2.picload.org/image/ddilorgr/qt_root.png)
 
 Open a Windows command prompt (not MSYS!) and type the following commands one by one.
 
@@ -252,11 +245,11 @@ Another problem is the correct writing of paths inside the generated Makefiles (
 
 But before you can generate a proper Makefile you'll have to adjust your local paths inside the DeepOnion.pro (the QT project file) as well. Open this file in your editor and go to the line 23. You'll see several paths that look like this:
 
-![qt-pro-original](https://img3.picload.org/image/ddilolcl/qt_pro_original.png)
+
 
 You'll have to set the paths to your locally compiled libraries. Here's how my local [DeepOnion.pro](https://github.com/brakmic/deeponion/blob/qt-local/DeepOnion-qt.pro) looks like:
 
-![qt-pro-local](https://img1.picload.org/image/ddilocol/qt-local.png) 
+
 
 #### Compiling LevelDb
 

@@ -384,7 +384,7 @@
           <string notr="true">color: rgb(0, 170, 0);</string>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;The DeepOnoion blockchain is not fully sychronized.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ffffff;&quot;&gt;The DeepOnion blockchain is not fully sychronized.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="textFormat">
           <enum>Qt::RichText</enum>
@@ -453,6 +453,16 @@
         <widget class="QPushButton" name="showMeDetailsButton">
          <property name="text">
           <string>Show More Details</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="1">
+        <widget class="QPushButton" name="verifyBlockchainButton">
+         <property name="toolTip">
+          <string>Verify DeepOnion blockchain authenticity. This acction can take some time (minutes).</string>
+         </property>
+         <property name="text">
+          <string>Verify blockchain</string>
          </property>
         </widget>
        </item>
