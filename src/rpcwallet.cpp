@@ -2205,3 +2205,32 @@ Value getnettotals(const Array &params, bool fHelp)
     obj.push_back(Pair("timemillis", GetTimeMillis()));
     return obj;
 }
+
+// DeepOnion: Verify blockchain authenticity
+Value verifyblockchain(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 0)
+        throw runtime_error(
+            "verifyblockchain\n"
+            "Verifies the authenticity of the DeepOnion blockchain.\n"
+            "This action can take some time (minutes)");
+
+    pwalletMain->ScanBlockchainForHash();
+
+    Object obj;
+
+    string result = "";
+
+    if(blockchainStatus == -2)
+        result = "The authenticity of the DeepOnion blockchain has not yet been verified.";
+    else if(blockchainStatus == -1)
+        result = "The DeepOnion blockchain is not fully sychronized.";
+    else if(blockchainStatus == 0)
+        result = "The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block " +                   std::to_string(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + " (which is registered and guaranteed by the Bitcoin blockchain). So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.";
+    else
+        result = "The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain (the most secure immutable database in the world) up to Block " + std::to_string(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + ".";
+
+    obj.push_back(Pair("result", result));
+
+    return obj;
+}

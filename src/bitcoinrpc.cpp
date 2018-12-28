@@ -299,6 +299,7 @@ static const CRPCCommand vRPCCommands[] =
         {"blockchain",        "settxfee",               &settxfee,               false,  false},
         {"blockchain",        "submitblock",            &submitblock,            false,  false},
         {"blockchain",        "reservebalance",         &reservebalance,         false,  true },      
+        {"blockchain",        "verifyblockchain",       &verifyblockchain,       true,   false},
 
         /* Wallet */
         {"wallet",            "addmultisigaddress",     &addmultisigaddress,     false,  false},
