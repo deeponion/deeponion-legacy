@@ -11,6 +11,8 @@
 #include "base58.h"
 #include "stealth.h"
 
+#include "boost/lexical_cast.hpp"
+
 using namespace json_spirit;
 using namespace std;
 
@@ -2226,9 +2228,12 @@ Value verifyblockchain(const Array& params, bool fHelp)
     else if(blockchainStatus == -1)
         result = "The DeepOnion blockchain is not fully sychronized.";
     else if(blockchainStatus == 0)
-        result = "The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block " +                   std::to_string(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + " (which is registered and guaranteed by the Bitcoin blockchain). So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.";
+        result = "The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block " + 
+			boost::lexical_cast<std::string>(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + 
+			" (which is registered and guaranteed by the Bitcoin blockchain). So you are most likely on a forked chain, please resync with official peers at https://deeponion.org.";
     else
-        result = "The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain (the most secure immutable database in the world) up to Block " + std::to_string(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + ".";
+        result = "The DeepOnion blockchain is fully synchronized. It is authentic! It is guaranteed by the Bitcoin blockchain (the most secure immutable database in the world) up to Block " 
+        		+ boost::lexical_cast<std::string>(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + ".";
 
     obj.push_back(Pair("result", result));
 
