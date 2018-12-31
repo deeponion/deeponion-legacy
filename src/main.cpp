@@ -2786,10 +2786,10 @@ bool LoadBlockIndex(bool fAllowNew)
 
     if (fTestNet)
     {
-		pchMessageStart[0] = 0xa1;
-		pchMessageStart[1] = 0xa2;
+		pchMessageStart[0] = 0xa2;
+		pchMessageStart[1] = 0xa1;
 		pchMessageStart[2] = 0xa0;
-		pchMessageStart[3] = 0xf3;
+		pchMessageStart[3] = 0xf2;
 		
 		bnTrustedModulus.SetHex("a8852ebf7c49f01cd196e35394f3b74dd86283a07f57e0a262928e7493d4a3961d93d93c90ea3369719641d626d28b9cddc6d9307b9aabdbffc40b6d6da2e329d079b4187ff784b2893d9f53e9ab913a04ff02668114695b07d8ce877c4c8cac1b12b9beff3c51294ebe349eca41c24cd32a6d09dd1579d3947e5c4dcc30b2090b0454edb98c6336e7571db09e0fdafbd68d8f0470223836e90666a5b143b73b9cd71547c917bf24c0efc86af2eba046ed781d9acb05c80f007ef5a0a5dfca23236f37e698e8728def12554bc80f294f71c040a88eff144d130b24211016a97ce0f5fe520f477e555c9997683d762aff8bd1402ae6938dd5c994780b1bf6aa7239e9d8101630ecfeaa730d2bbc97d39beb057f016db2e28bf12fab4989c0170c2593383fd04660b5229adcd8486ba78f6cc1b558bcd92f344100dff239a8c00dbc4c2825277f241691dbe4a7d9bd503abb9");
         bnProofOfWorkLimit = bnProofOfWorkLimitTestNet; 
@@ -2837,7 +2837,7 @@ bool LoadBlockIndex(bool fAllowNew)
 
         if(fTestNet)
         {
-            txNew.nTime 	= 1537396257;
+            txNew.nTime 	= 1546281565;
             
             block.SetNull();
             block.vtx.push_back(txNew);
@@ -2845,8 +2845,8 @@ bool LoadBlockIndex(bool fAllowNew)
             block.hashMerkleRoot = block.BuildMerkleTree();
             block.nVersion 	= 1;
             block.nBits    	= bnProofOfWorkLimit.GetCompact();
-        	block.nTime    	= 1537396257;
-            block.nNonce   	= 446047;
+        	block.nTime    	= 1546281565;
+            block.nNonce   	= 1249377;
         }
 
  		if (false && (block.GetHash() != hashGenesisBlock)) {

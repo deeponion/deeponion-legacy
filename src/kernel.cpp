@@ -44,7 +44,7 @@ static std::map<int, unsigned int> mapStakeModifierCheckpoints =
 // Hard checkpoints of stake modifiers to ensure they are deterministic (testNet)
 static std::map<int, unsigned int> mapStakeModifierCheckpointsTestNet =
     boost::assign::map_list_of
-    ( 0, 0xfd11f4e7u )
+    ( 0, 0xe00670bu )
     ;
 
 // Get time weight
@@ -404,7 +404,7 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 // Check stake modifier hard checkpoints
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum)
 {
-	// printf(">> Height = %d, nStakeModifierChecksum = %x\n", nHeight, nStakeModifierChecksum);
+	printf(">> Height = %d, nStakeModifierChecksum = %x\n", nHeight, nStakeModifierChecksum);
     MapModifierCheckpoints& checkpoints = (fTestNet ? mapStakeModifierCheckpointsTestNet : mapStakeModifierCheckpoints);
 
     if (checkpoints.count(nHeight))

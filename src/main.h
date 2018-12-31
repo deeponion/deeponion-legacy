@@ -52,9 +52,9 @@ static const int fHaveUPnP = false;
 #endif
 
 static const uint256 hashGenesisBlock("0x000004e29458ef4f2e0abab544737b07344e6ff13718f7c2d12926166db07b5e");
-static const uint256 hashGenesisBlockTestNet("0x0000064baedecff7fe74ce415cdad1949632c4433b16a4467ceebeaf195e404a");
+static const uint256 hashGenesisBlockTestNet("0x0000045eea7d9a4337a90e48d6269cc97b01874deac2aaf5a3e89c543329ab03");
 static const uint256 hashMerkleRootMainNet("0x48a457c277b124a06b568c0036d2c834e918d952c5b2dbf4035d173f50c8d14c");
-static const uint256 hashMerkleRootTestNet("0x61cdd3474ff5015d5507a508fde4dd79375aa22d8ea963e2b4a9088023400628");
+static const uint256 hashMerkleRootTestNet("0xcc3337810d74da69570c3f2778cb2bc7ad78d51d8791b13a6f8d9ee9e8457727");
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
