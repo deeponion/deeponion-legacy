@@ -3322,10 +3322,15 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 {
 	printf(">> calling ScanBlockchainForHash ...\n");
 
+    ShowProgress(_("Verifing..."), 0);// show progress dialog in GUI
+
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
+
 	blockchainStatus = 0;
 	int maxBlock = 1000000;
+    int percentage = 0;
+
 	if(pindexBest != NULL)
 	{
 		maxBlock = pindexBest->nHeight;
@@ -3348,14 +3353,16 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 			pindex = pindex->pnext;
 			++count;
 			
-			if(bDisplay)
-			{
-				if(count % 10000 == 0)
-				{
-					std::string percentage = boost::lexical_cast<std::string>(100 * count / maxBlock);
-					uiInterface.InitMessage("Verifying blockchain hash: " + percentage + "%");
-				}
-			}
+            if(count % 10000 == 0)
+            {
+                percentage = (100 * count / maxBlock);
+                ShowProgress(_("Verifing..."), percentage);
+
+                if(bDisplay){
+                    std::string s_percentage = boost::lexical_cast<std::string>(percentage);
+                    uiInterface.InitMessage("Verifying blockchain hash: " +  s_percentage + "%");
+                }
+            }
 		} // while (pindex)
 	}
 
@@ -3374,6 +3381,8 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 		blockchainStatus = 1;
 	else
 		blockchainStatus = 0;
+
+    ShowProgress(_("Verifing..."), 100); // hide progress dialog in GUI
 
 	printf(">> blockchain hash at %d: %s\n", LAST_REGISTERED_BLOCK_HEIGHT, hash0.c_str());
 	printf(">> blockchainStatus = %d\n", blockchainStatus);
