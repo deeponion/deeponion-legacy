@@ -684,7 +684,7 @@ QString WalletModel::getBlockchainStatusText()
     if(blockchainStatus == -2)
         text = QString("The authenticity of the DeepOnion blockchain has not yet been verified.");
     else if(blockchainStatus == -1)
-        text = QString("The DeepOnion blockchain is not fully sychronized 2.");
+        text = QString("The DeepOnion blockchain is not fully sychronized.");
     else if(blockchainStatus == 0)
         text = QString("The DeepOnion blockchain synchronized, but it does not match the latest checkpoint hash at Block ")
             + QString::number(CWallet::LAST_REGISTERED_BLOCK_HEIGHT) + QString(" (which is registered and guaranteed by the Bitcoin blockchain). ")
