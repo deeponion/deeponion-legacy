@@ -1254,7 +1254,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+21"/>
         <source>&amp;Display</source>
-        <translation>О&amp;Anzeige</translation>
+        <translation>&amp;Anzeige</translation>
     </message>
     <message>
         <location line="+8"/>
