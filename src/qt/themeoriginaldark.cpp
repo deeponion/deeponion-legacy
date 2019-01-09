@@ -78,6 +78,7 @@ void ThemeOriginalDark::init()
         QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
         QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
         QStatusBar::item { border: 0px}\
+        QProgressBar::horizontal { text-align: middle;}\
         QProgressBar::chunk { background-color:" + progress_bar_background + ";}\
         QTableView {color: " + tableview_text_color + "; alternate-background-color: " + alternate_background + "; background-color: " + widgets_background + ";}\
         QScrollBar:vertical {border: 1px solid " + input_background + "; background: " + input_background + "; width: 24px; margin: 5px 5px 5px 5px;}\

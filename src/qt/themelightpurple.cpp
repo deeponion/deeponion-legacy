@@ -82,7 +82,8 @@ void ThemeLightPurple::init()
                         QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + frame_background + "; color: " + title_background + ";}\
                         QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + frame_background + "; color: " + title_background + ";}\
                         QStatusBar::item { border: 0px}\
-                        QProgressBar::chunk { background-color:" + progress_bar_background + ";}\
+        				QProgressBar::horizontal { text-align: middle;}\
+        				QProgressBar::chunk { background-color:" + progress_bar_background + ";}\
                         QTableView {color: " + tableview_text_color + "; alternate-background-color: " + widgets_background + "; background-color: " + frame_background + ";} \
                         QScrollBar:vertical {border: 1px solid #FFFFFF; background: " + scrollbar_handle_color + "; width: 24px; margin: 5px 5px 5px 5px;} \
                         QScrollBar::handle:vertical {border-radius: 4px; background: #C1C1C1; min-height: 25px; max-width: 12px; } \

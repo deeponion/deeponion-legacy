@@ -662,6 +662,7 @@ void RPCConsole::on_verifyBlockchainButton_clicked()
 	// printf(">> on_verifyBlockchainButton_clicked called\n");
     if(walletModel && !fTestNet) {
     	walletModel->scanBlockchainValidaty(this);
+    	updateBlockchainStatus();
     }
 }
 
@@ -946,6 +947,11 @@ void RPCConsole::updateBlockchainStatus()
     {
     	ui->labelBlockchainInfo->setStyleSheet(walletModel->getBlockchainTextStylesheet());
     	ui->labelBlockchainInfo->setText(walletModel->getBlockchainStatusText());
+    }
+    
+    if(blockchainStatus == 1)
+    {
+    	ui->verifyBlockchainButton->setEnabled(false);
     }
 }
 

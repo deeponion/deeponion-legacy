@@ -720,7 +720,6 @@ void WalletModel::scanBlockchainValidaty(QWidget* pWidget)
 	progress.setMaximumHeight(120);
 	progress.setMinimumWidth(350);
 	progress.setMaximumWidth(350);
-	// progress.setStyleSheet("QProgressDialog {width: 500px; height: 100px;}");
 	progress.show();
 	QApplication::processEvents();
 	
