@@ -172,7 +172,7 @@ public:
     bool EncryptWallet(const SecureString& strWalletPassphrase);
 
     void GetKeyBirthTimes(std::map<CKeyID, int64_t> &mapKeyBirth) const;
-
+    CBlockIndex* GetGenesisBlock() const {return pindexGenesisBlock;}
 
     /** Increment the next transaction order id
         @return next transaction order id
@@ -353,9 +353,6 @@ public:
      * @note called with lock cs_wallet held.
      */
     boost::signals2::signal<void (CWallet *wallet, const uint256 &hashTx, ChangeType status)> NotifyTransactionChanged;
-
-    /** Show progress e.g. for rescan */
-    boost::signals2::signal<void (const std::string &title, int nProgress)> ShowProgress;
 };
 
 /** A key allocated from the key pool. */

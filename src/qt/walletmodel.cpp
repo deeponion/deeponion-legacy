@@ -16,6 +16,7 @@
 #include <QSet>
 #include <QTimer>
 #include <QProgressDialog>
+#include <QApplication>
 
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),
@@ -120,29 +121,6 @@ void WalletModel::updateTransaction(const QString &hash, int status)
         cachedNumTransactions = newNumTransactions;
         emit numTransactionsChanged(newNumTransactions);
     }
-}
-
-void WalletModel::showProgress(const QString &title, int nProgress)
-{
-    if (nProgress == 0)
-    {
-        progressDialog = new QProgressDialog(title, "", 0, 100);
-        progressDialog->setWindowModality(Qt::ApplicationModal);
-        progressDialog->setMinimumDuration(0);
-        progressDialog->setCancelButton(0);
-        progressDialog->setAutoClose(false);
-        progressDialog->setValue(0);
-    }
-    else if (nProgress == 100)
-    {
-        if (progressDialog)
-        {
-            progressDialog->close();
-            progressDialog->deleteLater();
-        }
-    }
-    else if (progressDialog)
-        progressDialog->setValue(nProgress);
 }
 
 void WalletModel::updateAddressBook(const QString &address, const QString &label, bool isMine, int status)
@@ -522,21 +500,12 @@ static void NotifyTransactionChanged(WalletModel *walletmodel, CWallet *wallet, 
                               Q_ARG(int, status));
 }
 
-static void ShowProgress(WalletModel *walletmodel, const std::string &title, int nProgress)
-{
-    // emits signal "showProgress"
-    QMetaObject::invokeMethod(walletmodel, "showProgress", Qt::QueuedConnection,
-                              Q_ARG(QString, QString::fromStdString(title)),
-                              Q_ARG(int, nProgress));
-}
-
 void WalletModel::subscribeToCoreSignals()
 {
     // Connect signals to wallet
     wallet->NotifyStatusChanged.connect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
     wallet->NotifyAddressBookChanged.connect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5));
     wallet->NotifyTransactionChanged.connect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
-    wallet->ShowProgress.connect(boost::bind(ShowProgress, this, _1, _2));
 }
 
 void WalletModel::unsubscribeFromCoreSignals()
@@ -545,7 +514,6 @@ void WalletModel::unsubscribeFromCoreSignals()
     wallet->NotifyStatusChanged.disconnect(boost::bind(&NotifyKeyStoreStatusChanged, this, _1));
     wallet->NotifyAddressBookChanged.disconnect(boost::bind(NotifyAddressBookChanged, this, _1, _2, _3, _4, _5));
     wallet->NotifyTransactionChanged.disconnect(boost::bind(NotifyTransactionChanged, this, _1, _2, _3));
-    wallet->ShowProgress.disconnect(boost::bind(ShowProgress, this, _1, _2));
 }
 
 // WalletModel::UnlockContext implementation
@@ -668,15 +636,6 @@ void WalletModel::listLockedCoins(std::vector<COutPoint>& vOutpts)
     return;
 }
 
-void WalletModel::updateBlockchainStatus()
-{
-    if(blockchainStatus == -1){
-    	wallet->ScanBlockchainForHash();
-    }
-
-    return;
-}
-
 QString WalletModel::getBlockchainStatusText()
 {
 	QString text;
@@ -748,3 +707,71 @@ bool WalletModel::needUpdateBlockchainStatusUI()
 	blockchainStatusLast = blockchainStatus;
 	return true;
 }
+
+
+void WalletModel::scanBlockchainValidaty(QWidget* pWidget)
+{
+    int count = 0;
+	int maxBlockNum = nBestHeight / 1000;
+
+	QProgressDialog progress(QString("Checking the DeepOnion Blockchain..."), QString("Cancel"), 0, maxBlockNum, pWidget);
+	progress.setWindowModality(Qt::WindowModal);
+	progress.setMinimumHeight(120);
+	progress.setMaximumHeight(120);
+	progress.setMinimumWidth(350);
+	progress.setMaximumWidth(350);
+	// progress.setStyleSheet("QProgressDialog {width: 500px; height: 100px;}");
+	progress.show();
+	QApplication::processEvents();
+	
+    CBlockIndex* pindex = wallet->GetGenesisBlock();
+	unsigned char hash11[SHA256_DIGEST_LENGTH];
+	SHA256_CTX sha256;
+	SHA256_Init(&sha256);
+	{
+		while (pindex && count != CWallet::LAST_REGISTERED_BLOCK_HEIGHT)
+		{
+			CBlock block;
+			block.ReadFromDisk(pindex, true);
+			uint256 bhash = block.GetHash();
+			std::string strHash = bhash.ToString();
+			SHA256_Update(&sha256, strHash.c_str(), strHash.size());
+
+			pindex = pindex->pnext;
+			++count;
+			
+			if(count % 5000 == 0)
+			{
+				progress.setValue(count / 1000);
+				QApplication::processEvents();
+					
+        		if (progress.wasCanceled())
+        		{
+        			break;
+        		}
+			}
+			
+		} // while (pindex)
+	}
+
+    progress.setValue(maxBlockNum);
+    QApplication::processEvents();
+
+	SHA256_Final(hash11, &sha256);
+	std::stringstream ss;
+	for(int i = 0; i < SHA256_DIGEST_LENGTH; i++)
+	{
+		ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash11[i];
+	}
+	std::string hash0 = ss.str();
+
+	if(count != CWallet::LAST_REGISTERED_BLOCK_HEIGHT)
+		blockchainStatus = -1;
+	else if(hash0 == CWallet::LAST_REGISTERED_BLOCKCHAIN_HASH)
+		blockchainStatus = 1;
+	else
+		blockchainStatus = 0;
+
+	printf(">> blockchainStatus = %d\n", blockchainStatus);
+ }
+

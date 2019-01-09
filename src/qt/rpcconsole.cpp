@@ -18,7 +18,6 @@
 
 #include "main.h"
 #include "util.h"
-#include "init.h"
 
 #include <QTime>
 #include <QTimer>
@@ -660,9 +659,9 @@ void RPCConsole::on_showMeDetailsButton_clicked()
 
 void RPCConsole::on_verifyBlockchainButton_clicked()
 {
+	// printf(">> on_verifyBlockchainButton_clicked called\n");
     if(walletModel && !fTestNet) {
-        blockchainStatus = -1;
-        pwalletMain->ScanBlockchainForHash();
+    	walletModel->scanBlockchainValidaty(this);
     }
 }
 
@@ -942,11 +941,7 @@ void RPCConsole::refreshStyle() {
 
 
 void RPCConsole::updateBlockchainStatus()
-{
-    if(walletModel && !fTestNet) {
-    	walletModel->updateBlockchainStatus();
-    }
-    
+{ 
     if(walletModel->needUpdateBlockchainStatusUI())
     {
     	ui->labelBlockchainInfo->setStyleSheet(walletModel->getBlockchainTextStylesheet());

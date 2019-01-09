@@ -492,8 +492,6 @@ bool AppInit2()
 
     fCheckBlockchain = GetBoolArg("-checkblockchain",true);
 
-    blockchainStatusLast = -1;
-
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
     std::string strDataDir = GetDataDir().string();
@@ -871,7 +869,8 @@ bool AppInit2()
     if(!fTestNet && fCheckBlockchain){
 
         blockchainStatus = -1;
-
+        blockchainStatusLast = -1;
+        
         printf("Checking blockchain hash...\n");
         uiInterface.InitMessage(_("Checking blockchain hash...")); 	
         
@@ -879,6 +878,7 @@ bool AppInit2()
     }
     else{
         blockchainStatus = -2;
+        blockchainStatusLast = -2;
     }
     
     // ********************************************************* Step 10: load peers

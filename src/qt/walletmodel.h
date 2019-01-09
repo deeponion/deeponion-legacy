@@ -6,6 +6,7 @@
 #define WALLETMODEL_H
 
 #include <QObject>
+#include <QWidget>
 #include <vector>
 #include <map>
 
@@ -24,7 +25,6 @@ class CCoinControl;
 
 QT_BEGIN_NAMESPACE
 class QTimer;
-class QProgressDialog;
 QT_END_NAMESPACE
 
 class SendCoinsRecipient
@@ -133,13 +133,13 @@ public:
     void lockCoin(COutPoint& output);
     void unlockCoin(COutPoint& output);
     void listLockedCoins(std::vector<COutPoint>& vOutpts);
-    void updateBlockchainStatus();
     QString getBlockchainStatusText();
     QString getBlockchainStatusDetailsText();
     QString getBlockchainTextStylesheet();
     bool needUpdateBlockchainStatusUI();
     CWallet* getWallet();
-
+    void scanBlockchainValidaty(QWidget* pWidget);
+    
 private:
     CWallet *wallet;
 
@@ -160,7 +160,6 @@ private:
     int cachedNumBlocks;
 
     QTimer *pollTimer;
-    QProgressDialog *progressDialog;
 
     void subscribeToCoreSignals();
     void unsubscribeFromCoreSignals();
@@ -172,8 +171,6 @@ public slots:
     void updateStatus();
     /* New transaction, or transaction changed status */
     void updateTransaction(const QString &hash, int status);
-    /* Show progress dialog e.g. for rescan */
-    void showProgress(const QString &title, int nProgress);
     /* New, updated or removed address book entry */
     void updateAddressBook(const QString &address, const QString &label, bool isMine, int status);
     /* Current, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so */
