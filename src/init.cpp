@@ -490,7 +490,7 @@ bool AppInit2()
             return InitError(strprintf(_("Invalid amount for -mininput=<amount>: '%s'"), mapArgs["-mininput"].c_str()));
     }
 
-    fCheckBlockchain = GetBoolArg("-checkblockchain",true);
+    fCheckBlockchain = GetBoolArg("-checkblockchain");
 
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
