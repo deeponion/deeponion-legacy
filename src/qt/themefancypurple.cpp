@@ -33,7 +33,7 @@ void ThemeFancyPurple::init()
     QString progress_bar_background = "#3dc28b";
     QString tableview_text_color = "#D5D5D9";
     QString scrollbar_handle_color = "#C1C1C1";
-    QString disabled_text_color = "#e1e1ea";
+    QString disabled_text_color = "#5b608e";
     
     themeStyleSheet = "QMenu {color: " + text_color + "; background-color: " + menu_background + "; border-color: " + menu_background + ";} \
     	QMenu::item:selected {background-color: " + selected_menu_item_background + ";}\
@@ -78,7 +78,7 @@ void ThemeFancyPurple::init()
         QPushButton {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + input_background + "; color: " + push_button_text_color + "; padding: 8px}\
         QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
         QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
-		QPushButton:disabled {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + disabled_text_color + ";}\
+	QPushButton:disabled {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + input_background + "; color: " + disabled_text_color + ";}\
         QStatusBar::item { border: 0px}\
         QProgressBar::horizontal { text-align: middle;}\
         QProgressBar::chunk { background-color:" + progress_bar_background + ";}\
@@ -144,7 +144,7 @@ void ThemeFancyPurple::init()
 	qPushBtnStyle = "QPushButton {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + input_background + "; color: " + push_button_text_color + "; padding: 8px}\
 		QPushButton:pressed {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
 		QPushButton:hover {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + push_button_text_color + "}\
-		QPushButton:disabled {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + push_button_background + "; color: " + disabled_text_color + ";}";
+		QPushButton:disabled {font-family:" + font_family + "; border: 1px solid " + push_button_border_color + "; background-color: " + input_background + "; color: " + disabled_text_color + ";}";
 	aboutImg = ":/images/about_dark_purple";
 	fontBiggerIco = ":/icons/fontbigger_dark";
 	fontSmallerIco = ":/icons/fontsmaller_dark";
