@@ -2464,6 +2464,29 @@ bool CBlock::AcceptBlock()
             printf("WARNING: ProcessBlock(): check proof-of-stake failed for block %s\n", hash.ToString().c_str());
             return false; // do not error here as we expect this during initial block download
         }
+        
+        CTxDB txdb("r");
+        CTransaction txstake = vtx[1];
+        map<uint256, CTxIndex> mapQueuedChanges;
+        MapPrevTx inputs;
+        bool fInvalid;        
+        if(!txstake.FetchInputs(txdb, mapQueuedChanges, true, false, inputs, fInvalid))
+        	return error("AcceptBlock() : can't fetch inputs");
+
+        for (unsigned int i = 0; i < txstake.vin.size(); i++)
+        {
+             COutPoint prevout = txstake.vin[i].prevout;
+             if(inputs.count(prevout.hash) <= 0)
+             {
+            	 printf(">> error. can't find vin prevout hash in input. i=%d, hash=%s\n", i, prevout.hash.ToString().c_str());
+            	 return error("AcceptBlock() : can't find prev hash in inputs.");
+             }
+             
+             CTxIndex& txindex = inputs[prevout.hash].first;
+             if (!txindex.vSpent[prevout.n].IsNull())
+                 return error("AcceptBlock() : %s prev tx already used at %s", 
+                		 GetHash().ToString().substr(0,10).c_str(), txindex.vSpent[prevout.n].ToString().c_str());
+        }
     }
 
     bool cpSatisfies = Checkpoints::CheckSync(hash, pindexPrev);
