@@ -3325,7 +3325,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
 	blockchainStatus = 0;
-	int maxBlock = 1000000;
+	int maxBlock = 1100000;
 
 	if(pindexBest != NULL)
 	{
@@ -3335,7 +3335,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 	unsigned char hash11[SHA256_DIGEST_LENGTH];
 	SHA256_CTX sha256;
 	SHA256_Init(&sha256);
-
+	
 	{
 		LOCK(cs_wallet);
 		while (pindex && count != LAST_REGISTERED_BLOCK_HEIGHT)
