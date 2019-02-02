@@ -104,3 +104,12 @@ Another option (untested) could be execute `./configure` with the following flag
 
     ./configure --with-incompatible-bdb CXXFLAGS=“-DBOOST_NO_CXX11_SCOPED_ENUMS”
 
+
+**Centos**
+
+Use yum instead of apt-get. 
+
+In some cases you need to install devel version. Such as
+	yum install libcap-devel libseccomp-developers
+	
+You may also need to patch `/src/walletdb.h` as listed above in Debian 8 section.
