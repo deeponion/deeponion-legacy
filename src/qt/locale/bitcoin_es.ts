@@ -48,7 +48,7 @@ Distribuido bajo la licencia del software MIT/X11, ve el siguiente archivo adjun
     <message>
         <location line="+22"/>
         <source>Double-click to edit address or label</source>
-        <translation>Haz doble clic para editar una etiqueta o dirección </translation>
+        <translation>Haz doble clic para editar una etiqueta o dirección</translation>
     </message>
     <message>
         <location line="+27"/>
@@ -78,7 +78,7 @@ Distribuido bajo la licencia del software MIT/X11, ve el siguiente archivo adjun
     <message>
         <location line="+11"/>
         <source>Show &amp;QR Code</source>
-        <translation>Mostrar Códgio &amp;QR</translation>
+        <translation>Mostrar Código &amp;QR</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -229,7 +229,7 @@ Distribuido bajo la licencia del software MIT/X11, ve el siguiente archivo adjun
     <message>
         <location line="+1"/>
         <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Introduce la contraseña anterior y la nueva del monedero. </translation>
+        <translation>Introduce la contraseña anterior y la nueva del monedero.</translation>
     </message>
     <message>
         <location line="+46"/>
@@ -255,7 +255,7 @@ Distribuido bajo la licencia del software MIT/X11, ve el siguiente archivo adjun
         <location line="+103"/>
         <location line="+24"/>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>Aviso: ¡La tecla de bloqueo de mayúsculas está activada!</translation>
+        <translation>Advertencia: ¡La tecla de bloqueo de mayúsculas está activada!</translation>
     </message>
     <message>
         <location line="-133"/>
@@ -757,7 +757,7 @@ Dirección: %4
     <message>
         <location line="+18"/>
         <source>Not staking</source>
-        <translation>No haciendo staking</translation>
+        <translation>No está haciendo staking</translation>
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+109"/>
@@ -1323,12 +1323,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+7"/>
         <source>Whether to show coin control features or not.</source>
-        <translation>Mostrar o no funcionalidad del Control de Monedas</translation>
+        <translation>Mostrar o no la funcionalidad del Control de Monedas</translation>
     </message>
     <message>
         <location line="+3"/>
         <source>Display coin &amp;control features (experts only!)</source>
-        <translation>Mostrar moneda y Control &amp;de Monedas (expertos solamente!)</translation>
+        <translation>Mostrar funciones del Control &amp;de Monedas (expertos solamente!)</translation>
     </message>
     <message>
         <location line="+71"/>
@@ -1650,7 +1650,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+1"/>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Escribe &lt;b&gt;help&lt;/b&gt; para una lista de los comandos disponibles.</translation>
+        <translation>Escribe &lt;b&gt;help&lt;/b&gt; para ver una lista de los comandos disponibles.</translation>
     </message>
 </context>
 <context>
@@ -2460,7 +2460,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+38"/>
         <source>(n/a)</source>
-        <translation>(n/a)</translation>
+        <translation>(n/d)</translation>
     </message>
     <message>
         <location line="+190"/>
@@ -2755,7 +2755,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+2"/>
         <source>Stake your coins to support network and gain reward (default: 1)</source>
-        <translation>Realiza el stake con el fin de ayudar a la red y ganar recompensas (default: 1)</translation>
+        <translation>Realiza el stake con el fin de ayudar a la red y ganar recompensas (predeterminado: 1)</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -2775,7 +2775,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+51"/>
         <source>Detach block and address databases. Increases shutdown time (default: 0)</source>
-        <translation>Desconectar bases de datos de bloques y direcciones. Aumenta el tiempo de cierre (Por defecto: 0)</translation>
+        <translation>Desconectar bases de datos de bloques y direcciones. Aumenta el tiempo de cierre (Predeterminado: 0)</translation>
     </message>
     <message>
         <location line="+109"/>
@@ -2790,7 +2790,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-87"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 15715 or testnet: 25715)</source>
-        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (predeterminado: 15715 o testnet: 25715)</translation>
+        <translation>Escuchar conexiones JSON-RPC en &lt;port&gt; (Predeterminado: 15715 o Testnet: 25715)</translation>
     </message>
     <message>
         <location line="-11"/>
@@ -2810,7 +2810,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-8"/>
         <source>Importing blockchain data file.</source>
-        <translation>Importando fichero de datos de la blockchain</translation>
+        <translation>Importando fichero de datos de la cadena de bloques</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2830,7 +2830,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-24"/>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Aceptar conexiones desde el exterior (predeterminado: 1 si no -proxy o -connect)</translation>
+        <translation>Aceptar conexiones desde el exterior (Predeterminado: 1 si no -proxy o -connect)</translation>
     </message>
     <message>
         <location line="-38"/>
@@ -2840,12 +2840,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+117"/>
         <source>Error initializing database environment %s! To recover, BACKUP THAT DIRECTORY, then remove everything from it except for wallet.dat.</source>
-        <translation>¡Error inicializando el entorno de base de datos %s! Para recuperarlo, HAZ UNA COPIA DEL DIRECTORIO, luego borra todo a excepción del wallet.dat</translation>
+        <translation>¡Error al iniciar el entorno de base de datos %s! Para recuperarlo, HAZ UNA COPIA DEL DIRECTORIO, luego borra todo a excepción del wallet.dat</translation>
     </message>
     <message>
         <location line="-20"/>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)</source>
-        <translation>Establecer el tamaño máximo de las transacciones alta-prioridad/baja-tasa en bytes (por defecto: 27000)</translation>
+        <translation>Establecer el tamaño máximo de las transacciones alta-prioridad/baja-tasa en bytes (Predeterminado: 27000)</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -2870,7 +2870,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-30"/>
         <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Intenta de recuperar claves privadas de un wallet.dat corrupto</translation>
+        <translation>Intenta recuperar claves privadas de un wallet.dat corrupto</translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2885,22 +2885,22 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+4"/>
         <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Descubrir dirección IP propia (predeterminado: 1 al escuchar sin -externalip)</translation>
+        <translation>Descubrir dirección IP propia (Predeterminado: 1 al escuchar sin -externalip)</translation>
     </message>
     <message>
         <location line="+94"/>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>Ha fallado la escucha en todos los puertos. Use -listen=0 si deseas esto.</translation>
+        <translation>Ha fallado la escucha en todos los puertos. Usa -listen=0 si deseas esto.</translation>
     </message>
     <message>
         <location line="-90"/>
         <source>Find peers using DNS lookup (default: 1)</source>
-        <translation>Buscar pares usando búsqueda DNS (Por defecto: 0)</translation>
+        <translation>Buscar pares usando búsqueda DNS (Predeterminado: 0)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Sync checkpoints policy (default: strict)</source>
-        <translation>Política de puntos de control de sincronización (por defecto: estricta)</translation>
+        <translation>Política de puntos de control de sincronización (Predeterminado: estricta)</translation>
     </message>
     <message>
         <location line="+83"/>
@@ -2915,12 +2915,12 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-82"/>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: 5000)</source>
-        <translation>Búfer de recepción máximo por conexión, &lt;n&gt;*1000 bytes (predeterminado: 5000)</translation>
+        <translation>Búfer de recepción máximo por conexión, &lt;n&gt;*1000 bytes (Predeterminado: 5000)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: 1000)</source>
-        <translation>Búfer de recepción máximo por conexión, &lt;n&gt;*1000 bytes (predeterminado: 1000)</translation>
+        <translation>Búfer de recepción máximo por conexión, &lt;n&gt;*1000 bytes (Predeterminado: 1000)</translation>
     </message>
     <message>
         <location line="-16"/>
@@ -2950,7 +2950,7 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-74"/>
         <source>Select the version of socks proxy to use (4-5, default: 5)</source>
-        <translation>Selecciona la versión de sock proxy a usar (4-5, Por defecto: 5)</translation>
+        <translation>Selecciona la versión de sock proxy a usar (4-5, Predeterminado: 5)</translation>
     </message>
     <message>
         <location line="+41"/>
@@ -2965,22 +2965,22 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="+28"/>
         <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Establecer el tamaño máximo de bloque en bytes (por defecto: 250000)</translation>
+        <translation>Establecer el tamaño máximo de bloque en bytes (Predeterminado: 250000)</translation>
     </message>
     <message>
         <location line="-1"/>
         <source>Set minimum block size in bytes (default: 0)</source>
-        <translation>Establecer tamaño mínimo de bloque en bytes (predeterminado: 0)</translation>
+        <translation>Establecer tamaño mínimo de bloque en bytes (Predeterminado: 0)</translation>
     </message>
     <message>
         <location line="-29"/>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>Reducir el archivo debug.log al iniciar el cliente (predeterminado: 1 sin -debug)</translation>
+        <translation>Reducir el archivo debug.log al iniciar el cliente (Predeterminado: 1 sin -debug)</translation>
     </message>
     <message>
         <location line="-42"/>
         <source>Specify connection timeout in milliseconds (default: 5000)</source>
-        <translation>Especificar el tiempo máximo de conexión en milisegundos (predeterminado: 5000)</translation>
+        <translation>Especificar el tiempo máximo de conexión en milisegundos (Predeterminado: 5000)</translation>
     </message>
     <message>
         <location line="+109"/>
@@ -2990,17 +2990,17 @@ Esto significa que se requiere una tasa de al menos %2.</translation>
     <message>
         <location line="-80"/>
         <source>Use UPnP to map the listening port (default: 0)</source>
-        <translation>Usar UPnP para mapear puesto de escucha (Por defecto: 0)</translation>
+        <translation>Usar UPnP para mapear puesto de escucha (Predeterminado: 0)</translation>
     </message>
     <message>
         <location line="-1"/>
         <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Usar UPnP para asignar el puerto de escucha (predeterminado: 1 al escuchar)</translation>
+        <translation>Usar UPnP para asignar el puerto de escucha (Predeterminado: 1 al escuchar)</translation>
     </message>
     <message>
         <location line="-25"/>
         <source>Use proxy to reach tor hidden services (default: same as -proxy)</source>
-        <translation>Usar proxy para alcanzar a ver los servicios ocultos (por defecto: los mismos que -proxy)</translation>
+        <translation>Usar proxy para alcanzar a ver los servicios ocultos (Predeterminado: los mismos que -proxy)</translation>
     </message>
     <message>
         <location line="+42"/>
@@ -3064,17 +3064,17 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+51"/>
         <source>Find peers using internet relay chat (default: 0)</source>
-        <translation>Buscar pares usando IRC (Por defecto: 1)</translation>
+        <translation>Buscar pares usando IRC (Predeterminado: 1)</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Sync time with other nodes. Disable if time on your system is precise e.g. syncing with NTP (default: 1)</source>
-        <translation>Sincronizar el tiempo con otros nodos. Desactivar si el tiempo en tu sistema es preciso, por ejemplo si usas sincronización con NTP (por defecto: 1)</translation>
+        <translation>Sincronizar el tiempo con otros nodos. Desactivar si el tiempo en tu sistema es preciso, por ejemplo si usas sincronización con NTP (Predeterminado: 1)</translation>
     </message>
     <message>
         <location line="+15"/>
         <source>When creating transactions, ignore inputs with value less than this (default: 0.01)</source>
-        <translation>Al crear transacciones, ignorar las entradas con valor inferior a ésta (por defecto: 0.01)</translation>
+        <translation>Al crear transacciones, ignorar las entradas con valor inferior a ésta (Predeterminado: 0.01)</translation>
     </message>
     <message>
         <location line="+16"/>
@@ -3084,7 +3084,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Send commands to node running on &lt;ip&gt; (default: 127.0.0.1)</source>
-        <translation>Enviar comando al nodo situado en &lt;ip&gt; (predeterminado: 127.0.0.1)</translation>
+        <translation>Enviar comando al nodo situado en &lt;ip&gt; (Predeterminado: 127.0.0.1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3099,12 +3099,12 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+3"/>
         <source>Require a confirmations for change (default: 0)</source>
-        <translation>Requerir confirmaciones para cambio (por defecto: 0)</translation>
+        <translation>Requerir confirmaciones para cambio (Predeterminado: 0)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Enforce transaction scripts to use canonical PUSH operators (default: 1)</source>
-        <translation>Forzar los scripts de transación al utilizar los operadores de PUSH canónicos (por defecto: 1)</translation>
+        <translation>Forzar los scripts de transación al utilizar los operadores de PUSH canónicos (Predeterminado: 1)</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -3119,7 +3119,7 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Set key pool size to &lt;n&gt; (default: 100)</source>
-        <translation>Ajustar el número de claves en reserva &lt;n&gt; (predeterminado: 100)</translation>
+        <translation>Ajustar el número de claves en reserva &lt;n&gt; (Predeterminado: 100)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3129,12 +3129,12 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+2"/>
         <source>How many blocks to check at startup (default: 2500, 0 = all)</source>
-        <translation>Cantidad de bloques a revisar al inicio (Por defecto: 2500, 0 = all)</translation>
+        <translation>Cantidad de bloques a revisar al inicio (Predeterminado: 2500, 0 = all)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>How thorough the block verification is (0-6, default: 1)</source>
-        <translation>Cuán minuciosa es la verificación del bloque (0-6, por defecto: 1)</translation>
+        <translation>Cuán minuciosa es la verificación del bloque (0-6, Predeterminado: 1)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3149,17 +3149,17 @@ por ejemplo: alertnotify=echo %%s | mail -s &quot;DeepOnion Alert&quot; admin@fo
     <message>
         <location line="+1"/>
         <source>Server certificate file (default: server.cert)</source>
-        <translation>Certificado del servidor (predeterminado: server.cert)</translation>
+        <translation>Certificado del servidor (Predeterminado: server.cert)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Server private key (default: server.pem)</source>
-        <translation>Clave privada del servidor (predeterminado: server.pem)</translation>
+        <translation>Clave privada del servidor (Predeterminado: server.pem)</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</source>
-        <translation>Cifrados aceptables (predeterminado: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
+        <translation>Cifrados aceptables (Predeterminado: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:@STRENGTH)</translation>
     </message>
     <message>
         <location line="+53"/>
