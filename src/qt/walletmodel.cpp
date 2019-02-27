@@ -259,7 +259,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                     {
                         std::string sNarr = rcp.narration.toStdString();
 
-                        if (sNarr.length() > 24)
+                        if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
                         {
                             LogPrintf("Narration is too long.\n");
                             return NarrationTooLong;
@@ -276,7 +276,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                             return Aborted;
                         }
 
-                        if (vchNarr.size() > 48)
+                        if (vchNarr.size() > MAX_STEALTH_NARRATION_SIZE_ENCRYPTED)
                         {
                             LogPrintf("Encrypted narration is too long.\n");
                             return Aborted;
@@ -302,7 +302,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
             {
                 std::string sNarr = rcp.narration.toStdString();
 
-                if (sNarr.length() > 24)
+                if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
                 {
                     LogPrintf("Narration is too long.\n");
                     return NarrationTooLong;

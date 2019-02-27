@@ -686,7 +686,7 @@ bool CTransaction::CheckStealthTxNarrSize() const
                         && vchENarr.size() > 0)
                     {
                         std::string sNarr = std::string(vchENarr.begin(), vchENarr.end());
-                        if(sNarr.size() > 24)
+                        if(sNarr.size() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
                             return false;
                     }
                 }
@@ -701,7 +701,7 @@ bool CTransaction::CheckStealthTxNarrSize() const
                 && txout.scriptPubKey.GetOp(itTxA, opCode, vchENarr)
                 && vchENarr.size() > 0)
             {
-                if (vchENarr.size() > 64)
+                if (vchENarr.size() > MAX_STEALTH_NARRATION_SIZE_ENCRYPTED)
                 {
                     return false;
                 }

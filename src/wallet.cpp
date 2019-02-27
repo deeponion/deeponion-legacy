@@ -1894,7 +1894,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     return true;
 }
 
-
 // Call after CreateTransaction unless you want to abort
 bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey)
 {
@@ -1953,7 +1952,6 @@ bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey)
     return true;
 }
 
-
 string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee)
 {
     CReserveKey reservekey(this);
@@ -1991,8 +1989,6 @@ string CWallet::SendMoney(CScript scriptPubKey, int64_t nValue, std::string& sNa
     return "";
 }
 
-
-
 string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nValue, std::string& sNarr, CWalletTx& wtxNew, bool fAskFee)
 {
     // Check amount
@@ -2001,7 +1997,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nVal
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
 
-    if (sNarr.length() > 24)
+    if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
         return _("Narration must be 24 characters or less.");
     
     // Parse Bitcoin address
@@ -3071,7 +3067,7 @@ bool CWallet::SendStealthMoneyToDestination(CStealthAddress& sxAddress, int64_t 
             return false;
         }
         
-        if (vchNarr.size() > 48)
+        if (vchNarr.size() > MAX_STEALTH_NARRATION_SIZE_ENCRYPTED)
         {
             sError = "Encrypted narration is too long.";
             return false;

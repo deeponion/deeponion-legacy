@@ -37,7 +37,7 @@ SendCoinsEntry::SendCoinsEntry(QWidget *parent) :
     setStyleSheet(themeManager->getCurrent()->getQFrameGeneralStyle());
 
     ui->addAsNarration->setPlaceholderText(tr("Enter a short note to send with payment (max 24 characters) - only available for payment to Stealth Address"));
-    ui->addAsNarration->setMaxLength(24);
+    ui->addAsNarration->setMaxLength(MAX_STEALTH_NARRATION_SIZE_PLAINTEXT);
 
     ui->addAsNarration->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
     ui->payTo->setStyleSheet(themeManager->getCurrent()->getQLineEdit());
@@ -186,9 +186,9 @@ SendCoinsRecipient SendCoinsEntry::getValue()
         rv.narration = ui->addAsNarration->text();
         
         // limit max 24 characters only, this as a safety measure
-        if(rv.narration.size() > 24) 
+        if(rv.narration.size() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
         {
-        	rv.narration = rv.narration.left(24);
+            rv.narration = rv.narration.left(MAX_STEALTH_NARRATION_SIZE_PLAINTEXT);
         }
     } else {
         rv.typeInd = AddressTableModel::AT_Normal;

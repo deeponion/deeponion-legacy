@@ -335,7 +335,7 @@ Value sendtoaddress(const Array& params, bool fHelp)
     if (params.size() > 2 && params[2].type() != null_type && !params[2].get_str().empty())
         sNarr = params[2].get_str();
 
-    if (sNarr.length() > 24)
+    if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
         throw runtime_error("Narration must be 24 characters or less.");
 
     // Wallet comments
@@ -709,7 +709,7 @@ Value sendfrom(const Array& params, bool fHelp)
     if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
         sNarr = params[4].get_str();
 
-    if (sNarr.length() > 24)
+    if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
         throw runtime_error("Narration must be 24 characters or less.");
 
     if (params.size() > 5 && params[5].type() != null_type && !params[5].get_str().empty())
@@ -2060,7 +2060,7 @@ Value sendtostealthaddress(const Array &params, bool fHelp)
     if (params.size() > 2 && params[2].type() != null_type && !params[2].get_str().empty())
         sNarr = params[2].get_str();
 
-    if (sNarr.length() > 24)
+    if (sNarr.length() > MAX_STEALTH_NARRATION_SIZE_PLAINTEXT)
         throw runtime_error("Narration must be 24 characters or less.");
 
     CStealthAddress sxAddr;
