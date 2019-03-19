@@ -2466,6 +2466,7 @@ bool CBlock::AcceptBlock()
             return false; // do not error here as we expect this during initial block download
         }
         
+        /* 
         CTxDB txdb("r");
         CTransaction txstake = vtx[1];
         map<uint256, CTxIndex> mapQueuedChanges;
@@ -2488,6 +2489,7 @@ bool CBlock::AcceptBlock()
                  return error("AcceptBlock() : %s prev tx already used at %s", 
                 		 GetHash().ToString().substr(0,10).c_str(), txindex.vSpent[prevout.n].ToString().c_str());
         }
+        */
     }
 
     bool cpSatisfies = Checkpoints::CheckSync(hash, pindexPrev);
