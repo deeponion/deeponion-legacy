@@ -108,6 +108,8 @@ static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 		{ 900012, 179975},
 		{ 950005, 189263},
 		{1000006, 198720},
+		{1050000, 207822},
+		{1100013, 216829},
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;
