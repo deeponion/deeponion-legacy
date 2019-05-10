@@ -1,6 +1,8 @@
 ![alt text](https://image.ibb.co/mfR4R6/DO.png "DeepOnion")
 =====================================
 
+##### This is DeepOnion legacy source code. It is superseded by the new code based on the latest bitcoin/litecoin codebase. All DeepOnion features are ported to the new codebase. The legacy codebase will be frozen unless for the critical bug fixes. It will co-exist with the new wallet for a while, then we will stop using the legacy codebase (timeline to be determined).
+
 DeepOnion (ONION) is an anonymous and untraceable cryptocurrency. All transactions are private and sent through the TOR network.
 
 The integration with TOR ensures that users are always on a secure environment. There is no client-side configuration needed. Our client will automatically join the TOR network and connect to available TOR nodes on the network (including our seed nodes). After a successful connection to the DeepOnion network, you may check your displayed IP using the DeepOnion client console, where you will see that your client is assigned a TOR hidden service address (.onion address).
