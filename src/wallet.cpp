@@ -3334,7 +3334,7 @@ void CWallet::ScanBlockchainForHash(bool bDisplay)
 	CBlockIndex* pindex = pindexGenesisBlock;
 	int count = 0;
 	blockchainStatus = 0;
-	int maxBlock = 1200000;
+	int maxBlock = 1500000;
 
 	if(pindexBest != NULL)
 	{
