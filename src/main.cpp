@@ -82,7 +82,7 @@ int64_t nTransactionFee = MIN_TX_FEE_NEW;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static const int NUM_OF_POW_CHECKPOINT = 29;
+static const int NUM_OF_POW_CHECKPOINT = 31;
 static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 {
 		{   9601,   4611},
@@ -114,6 +114,8 @@ static const int checkpointPoWHeight[NUM_OF_POW_CHECKPOINT][2] =
 		{1200000, 235100},
 		{1250000, 243054},
 		{1300021, 252612},
+		{1350006, 261895},
+		{1390072, 269386},
 };
 
 extern enum Checkpoints::CPMode CheckpointsMode;
@@ -135,7 +137,10 @@ int64_t GetMinTxFee()
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_TX_FEE; 
-
+	
+	if((pindexBest->nHeight > SWITCH_BLOCK_DSBUG_START && pindexBest->nHeight < SWITCH_BLOCK_DSBUG_END) && !fTestNet)
+		return MIN_TX_FEE_NEW2;
+	
 	return MIN_TX_FEE_NEW;	
 }
 
@@ -146,7 +151,10 @@ int64_t GetMinRelayTxFee()
 
 	if(pindexBest->nHeight < SWITCH_BLOCK_HARD_FORK && !fTestNet)
 		return MIN_RELAY_TX_FEE; 
- 
+
+	if((pindexBest->nHeight > SWITCH_BLOCK_DSBUG_START && pindexBest->nHeight < SWITCH_BLOCK_DSBUG_END) && !fTestNet)
+		return MIN_RELAY_TX_FEE_NEW2;
+
 	return MIN_RELAY_TX_FEE_NEW;	
 }
 
@@ -1718,7 +1726,7 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTx
 
             // enforce transaction fees for every block
             if (nTxFee < GetMinFee())
-                return fBlock? DoS(100, error("ConnectInputs() : %s not paying required fee=%s, paid=%s", GetHash().ToString().substr(0,10).c_str(), FormatMoney(GetMinFee()).c_str(), FormatMoney(nTxFee).c_str())) : false;
+                return fBlock? DoS(100, error("ConnectInputs() : %s not paying required fee=%s, paid=%s", GetHash().ToString().c_str(), FormatMoney(GetMinFee()).c_str(), FormatMoney(nTxFee).c_str())) : false;
 
             nFees += nTxFee;
             if (!MoneyRange(nFees))
